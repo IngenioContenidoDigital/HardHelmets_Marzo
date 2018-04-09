@@ -188,9 +188,9 @@ public class manoJuego : MonoBehaviour {
 	bool animandosalida;*/
 	string nomm;
 	// Update is called once per frame
+	public bool completa;
 	void Update ()
 	{
-
 		Load.fillAmount = 1-Barra.GetComponent<barraOflline>().fill*100/costo;
 
 		if(Load.fillAmount <= 0)
@@ -251,6 +251,7 @@ public class manoJuego : MonoBehaviour {
 			{
 				Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(gameObject);
 			}
+			completa = true;
 			listo = true;	
 		}
 		if(Barra.GetComponent<barraOflline>().fill*100 < costo)// && cantidad >= 1)
@@ -262,7 +263,12 @@ public class manoJuego : MonoBehaviour {
 			{
 				animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "inactiva", false);
 			}
+			completa = false;
 			selected = false;
+		}
+		if(costo <= 0)
+		{
+			completa = false;
 		}
 
 		if(selected)
@@ -290,6 +296,7 @@ public class manoJuego : MonoBehaviour {
 			StartCoroutine(Reactivar());
 		}
 	}
+
 	IEnumerator Reactivar()
 	{
 		yield return new WaitForSeconds(1f);
@@ -446,6 +453,8 @@ public class manoJuego : MonoBehaviour {
 			transform.localPosition = inicial;
 		}
 		arrastrar = false;
+
+		StartCoroutine(momentoselect());
 		//preview = false;
 		//cursor.SetActive(false);
 	}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Prototype.NetworkLobby;
 
 public class LobbyButtonSearch2 : MonoBehaviour {
 
@@ -15,6 +16,9 @@ public class LobbyButtonSearch2 : MonoBehaviour {
 
 	public string buscar;
 	public string buscar2;
+	public GameObject buscar3;
+
+	public GameObject lista;
 
 
 	// Use this for initialization
@@ -28,9 +32,20 @@ public class LobbyButtonSearch2 : MonoBehaviour {
 	{
 		if(boton == null)
 		{
-			boton = GameObject.Find(buscar2);
+			if(lista.GetComponent<regresaLobby>().actual == "servidores")
+			{
+				boton = buscar3;
+			}else
+			{
+				boton = GameObject.Find(buscar2);
+			}
 		}else
 		{
+			if(lista.GetComponent<regresaLobby>().actual != "servidores")
+			{
+				boton = GameObject.Find(buscar2);
+			}
+
 			navegar.mode = Navigation.Mode.Explicit;
 
 			if(direccion == "derecha")
@@ -47,7 +62,6 @@ public class LobbyButtonSearch2 : MonoBehaviour {
 			{
 				boton.GetComponent<LobbyButtonSearch>().boton = gameObject;
 			}
-
 		}
 	}
 }

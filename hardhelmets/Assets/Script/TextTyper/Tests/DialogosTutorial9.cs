@@ -49,7 +49,7 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Para hacerse con la victoria hay que capturar los puntos de control. acérquese a la bandera y espere hasta capturar el punto");
+			dialogueLines.Enqueue("To claim the victory in every battle you’ll have to claim some checkpoints. Get yourself close to the Flag and wait there until you capture the checkpoint.");
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

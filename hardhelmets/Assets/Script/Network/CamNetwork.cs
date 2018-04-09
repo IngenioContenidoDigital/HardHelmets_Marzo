@@ -73,6 +73,10 @@ public class CamNetwork : NetworkBehaviour {
 	bool ver;
 
 	public bool mouse;
+
+	//LIMITES DE CAMARA
+	public int limiteObjetivo;
+	public int limiteAleja;
 	// Use this for initialization
 	void Start ()
 	{
@@ -101,6 +105,22 @@ public class CamNetwork : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		if(Application.loadedLevelName == "LevelNetwork0")
+		{
+			limiteObjetivo = -200;
+			limiteAleja = -200;
+		}
+		if(Application.loadedLevelName == "LevelNetwork1")
+		{
+			limiteObjetivo = -50;
+			limiteAleja = -200;
+		}
+		if(Application.loadedLevelName == "LevelNetwork2")
+		{
+			limiteObjetivo = -80;
+			limiteAleja = -200;
+		}
+
 		if(!Player.GetComponent<NetworkIdentity>().isLocalPlayer)
 		{
 			return;
@@ -256,7 +276,7 @@ public class CamNetwork : NetworkBehaviour {
 
 			if(objetivo)
 			{
-				velocidad = -220;
+				velocidad = limiteObjetivo;
 				if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")
 				{
 					nextPosition = new Vector3(Player.transform.position.x+20, Player.transform.position.y+10, velocidad);
@@ -304,7 +324,7 @@ public class CamNetwork : NetworkBehaviour {
 			}
 
 			velocidad -= 0.3f;
-			if(transform.position.z <= -200)//LIMITE EN Z
+			if(transform.position.z <= limiteAleja)//LIMITE EN Z
 			{
 				velocidad = -200;
 			}else if(velocidad <= Player.transform.position.z-70)

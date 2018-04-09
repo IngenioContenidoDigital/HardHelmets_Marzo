@@ -414,12 +414,30 @@ namespace Prototype.NetworkLobby
             }
         }
 
+		public GameObject mensajeError;
+
+		public override void OnServerDisconnect(NetworkConnection conn)
+		{
+			base.OnClientDisconnect(conn);
+			//ChangeTo(mainMenuPanel);
+			mensajeError.SetActive(true);
+			StartCoroutine(reiniciar());
+		}
 
         public override void OnClientDisconnect(NetworkConnection conn)
         {
             base.OnClientDisconnect(conn);
             //ChangeTo(mainMenuPanel);
+			mensajeError.SetActive(true);
+			StartCoroutine(reiniciar());
         }
+
+		IEnumerator reiniciar()
+		{
+			yield return new WaitForSeconds(2);
+			mensajeError.SetActive(false);
+			Application.LoadLevel("Lobby");
+		}
 
         public override void OnClientError(NetworkConnection conn, int errorCode)
         {

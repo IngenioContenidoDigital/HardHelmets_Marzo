@@ -21,16 +21,37 @@ namespace Prototype.NetworkLobby {
 		public GameObject mensaje;
 
 		//PANELES
+		public GameObject titulo;
+		public GameObject botonBack;
+
 		public GameObject crear;
 		public GameObject lista;
 		public GameObject jugadores;
 		public GameObject servidores;
 		public GameObject master;
+		public GameObject versus;
+
+		public GameObject Player1;
+		public GameObject Player2;
 
 		public bool jugado;
+		public bool jugado2;
 
 		public void Update()
 		{
+			Player1 = GameObject.Find("PlayerInfo1");
+			Player2 = GameObject.Find("PlayerInfo2");
+
+			if(Player1 != null && Player2 != null)
+			{
+				jugado2 = true;
+			}else if(Application.loadedLevelName == "Lobby" && jugado2)
+			{
+				StartCoroutine(desconectar());
+
+				jugado2 = false;
+			}
+
 			if(master.GetComponent<LobbyManager>().actual == "partida")
 			{
 				actual = "partida";
@@ -93,19 +114,57 @@ namespace Prototype.NetworkLobby {
 				lista.SetActive(false);
 				jugadores.SetActive(false);
 				servidores.SetActive(false);
-				jugadores.SetActive(false);
-				jugadores.SetActive(false);
+				perfilServer.SetActive(false);
+				perfilLista.SetActive(false);
+				versus.SetActive(false);
 
 				jugado = true;
 			}
 			if(Application.loadedLevelName == "Lobby" && jugado)
 			{
+				master.GetComponent<LobbyManager>().actual = "";
+
 				actual = "";
 				actual2 = "";
 
+				versus.SetActive(false);
+
+				Network.Disconnect();
+
 				jugado = false;
 			}
+			if(Application.loadedLevelName == "menu" || Application.loadedLevelName == "Community")
+			{
+				actual = "";
+				actual2 = "";
+
+				versus.SetActive(false);
+
+				jugado = false;
+
+				Network.Disconnect();
+
+				Destroy(master);
+			}
 		}
+
+		IEnumerator desconectar()
+		{
+			yield return new WaitForSeconds(2f);
+			master.GetComponent<LobbyManager>().actual = "";
+
+			actual = "";
+			actual2 = "";
+
+			Network.Disconnect();
+
+			Destroy(master);
+
+			Application.LoadLevel("Load");
+			loading.nombre = "Lobby";
+		}
+
+
 		IEnumerator seleccionarboton()
 		{
 			yield return new WaitForSeconds(0.5f);
@@ -171,22 +230,37 @@ namespace Prototype.NetworkLobby {
 				{
 					if(actual == "jugadores" || actual == "partida")
 					{
+						jugado2 = false;
+						master.GetComponent<LobbyManager>().actual = "";
 						actual = "";
 						//Network.CloseConnection(Network.connections[0], true);
 						Network.Disconnect();
+
+						crear.SetActive(true);
+						lista.SetActive(true);
+						jugadores.SetActive(false);
+						servidores.SetActive(false);
 						perfilServer.SetActive(false);
 						perfilLista.SetActive(false);
+						versus.SetActive(false);
 
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(crearButton);
 
 					}else if(actual == "servidores")
 					{
+						master.GetComponent<LobbyManager>().actual = "";
 						actual = "";
 
+						crear.SetActive(true);
+						lista.SetActive(true);
+						jugadores.SetActive(false);
+						servidores.SetActive(false);
 						perfilServer.SetActive(false);
 						perfilLista.SetActive(false);
+						versus.SetActive(false);
+
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(crearButton);
-					}else
+					}else if(actual != "jugando")
 					{
 						Application.LoadLevel("Load");
 						loading.nombre = "menu";

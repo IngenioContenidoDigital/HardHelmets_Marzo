@@ -482,6 +482,8 @@ MonoBehaviour:
   joinButton: {fileID: 7642138}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300032, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300032, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -2278,7 +2280,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 66841444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12601acaf9af72343b85bace4eb57570, type: 3}
   m_Name: 
@@ -6257,6 +6259,8 @@ MonoBehaviour:
   joinButton: {fileID: 147451593}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300010, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300010, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -7006,6 +7010,8 @@ MonoBehaviour:
   joinButton: {fileID: 161785739}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300006, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300006, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -7384,6 +7390,8 @@ MonoBehaviour:
   joinButton: {fileID: 164870539}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300028, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -11712,6 +11720,8 @@ MonoBehaviour:
   joinButton: {fileID: 237741951}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300026, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300026, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -14436,6 +14446,8 @@ MonoBehaviour:
   joinButton: {fileID: 286819223}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300012, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300012, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -25768,7 +25780,7 @@ GameObject:
   - component: {fileID: 525618092}
   - component: {fileID: 525618091}
   m_Layer: 0
-  m_Name: SkeletonGraphic (skeleton) (1)
+  m_Name: SkeletonGraphic (skeleton) (Community)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28660,6 +28672,8 @@ MonoBehaviour:
   joinButton: {fileID: 593758059}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300020, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300020, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -29724,6 +29738,8 @@ MonoBehaviour:
   joinButton: {fileID: 620039761}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   normal: {fileID: 21300000, guid: 4ea7e3971a965e647ab31083f9f6e66b, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -31150,7 +31166,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 654134438}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842745363}
+        m_MethodName: atras
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &654134438
@@ -35797,6 +35824,8 @@ MonoBehaviour:
   joinButton: {fileID: 735797017}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300024, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300024, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -45252,6 +45281,8 @@ MonoBehaviour:
   joinButton: {fileID: 890080578}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300000, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300000, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -48141,6 +48172,8 @@ MonoBehaviour:
   joinButton: {fileID: 937907790}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300042, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300042, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -48645,6 +48678,8 @@ MonoBehaviour:
   joinButton: {fileID: 940731519}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300014, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300014, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -51826,6 +51861,8 @@ MonoBehaviour:
   joinButton: {fileID: 1005821008}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300044, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300044, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -55494,6 +55531,8 @@ MonoBehaviour:
   joinButton: {fileID: 1068222817}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300018, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300018, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -66012,6 +66051,8 @@ MonoBehaviour:
   joinButton: {fileID: 1221777844}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300040, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300040, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -67116,6 +67157,8 @@ MonoBehaviour:
   joinButton: {fileID: 1229830492}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300030, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -72410,6 +72453,8 @@ MonoBehaviour:
   joinButton: {fileID: 1325202707}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300008, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300008, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -76567,6 +76612,8 @@ MonoBehaviour:
   joinButton: {fileID: 1383993492}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300016, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300016, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -83179,6 +83226,8 @@ MonoBehaviour:
   joinButton: {fileID: 1498057832}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300022, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300022, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -84062,6 +84111,18 @@ MonoBehaviour:
   Estrella: {fileID: 1290239686}
   P1: {fileID: 94082794}
   P2: {fileID: 1796903624}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player1Skin: {fileID: 0}
+  Player2Skin: {fileID: 0}
+  name1: {fileID: 0}
+  level1: {fileID: 0}
+  torres1: {fileID: 0}
+  bases1: {fileID: 0}
+  name2: {fileID: 0}
+  level2: {fileID: 0}
+  torres2: {fileID: 0}
+  bases2: {fileID: 0}
 --- !u!114 &1506316221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86006,6 +86067,8 @@ MonoBehaviour:
   joinButton: {fileID: 1557670373}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300038, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300038, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -88509,6 +88572,8 @@ MonoBehaviour:
   joinButton: {fileID: 1608804560}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300002, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300002, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -89876,6 +89941,8 @@ MonoBehaviour:
   joinButton: {fileID: 1623188326}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300034, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300034, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -92572,6 +92639,8 @@ MonoBehaviour:
   joinButton: {fileID: 1683848797}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300036, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300036, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -99458,6 +99527,8 @@ MonoBehaviour:
   joinButton: {fileID: 1804766563}
   selected: 0
   audio1: {fileID: 1229830495}
+  eventsystem: {fileID: 1166589156}
+  flecha: {fileID: 654134436}
   atras: {fileID: 21300004, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   normal: {fileID: 21300004, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
@@ -104948,7 +105019,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1889046226}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842745363}
+        m_MethodName: adelante
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1889046226

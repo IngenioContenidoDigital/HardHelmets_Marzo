@@ -49,7 +49,7 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Muy bien, ahora vamos a practicar la puntería, muévase hacia arriba o hacia abajo hasta que el circulo de mira aparezca sobre el objetivo.");
+			dialogueLines.Enqueue("Alright!!, now, let’s focus on your aiming, move towards top and bottom until the aiming circle shows on top of your objective.");
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

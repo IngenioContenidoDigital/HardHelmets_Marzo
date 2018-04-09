@@ -337,18 +337,22 @@ namespace Prototype.NetworkLobby
 				if(isLocalPlayer)
 				{
 					gameObject.name = "PlayerInfo1";
+					readyButton.name = "ENTRARPARTIDA";
 				}else
 				{
 					gameObject.name = "PlayerInfo2";
+					readyButton.name = "ENTRARPARTIDA2";
 				}
 			}else
 			{
 				if(isLocalPlayer)
 				{
 					gameObject.name = "PlayerInfo2";
+					readyButton.name = "ENTRARPARTIDA2";
 				}else
 				{
 					gameObject.name = "PlayerInfo1";
+					readyButton.name = "ENTRARPARTIDA";
 				}
 			}
 			if(isLocalPlayer)

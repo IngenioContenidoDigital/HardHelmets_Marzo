@@ -9,6 +9,8 @@ public class CrearCartasNetwork : NetworkBehaviour {
 
 	public GameObject nace2;
 
+	public bool tirar;
+
 	//[SyncVar(hook = "OnChange")]
 	//public float valorNace;
 
@@ -42,6 +44,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public GameObject campamento;
 	public GameObject torreta;
 	public GameObject torretaMisil;
+	public GameObject mina;
 	//------MALOS
 
 	//PERSONAJES NORMALES 
@@ -62,7 +65,6 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public GameObject campamentoMalo;
 	public GameObject torretaMalo;
 	public GameObject torretaMisilMalo;
-	public GameObject mina;
 	public GameObject minaMalo;
 
 	public bool martillar;
@@ -128,7 +130,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 				crear = false;
 			}
 		}
+		if(tirar)
+		{
+			StartCoroutine(reactivar());
+		}
 		//nace.transform.position = new Vector3(valorNace, -20, transform.position.z);
+	}
+
+	IEnumerator reactivar()
+	{
+		yield return new WaitForSeconds(0.2f);
+		tirar = false;
 	}
 
 	/*void OnChange(float valorNace)
@@ -139,7 +151,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//FUSIL
 	public void crearFusil()
 	{
-		CmdFusilBueno();
+		if(!tirar)
+		{
+			CmdFusilBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdFusilBueno()
@@ -150,7 +167,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//ESCOPETA
 	public void crearEscopeta()
 	{
-		CmdEscopetaBueno();
+		if(!tirar)
+		{
+			CmdEscopetaBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdEscopetaBueno()
@@ -161,7 +183,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//SUBMETRA
 	public void crearSubmetra()
 	{
-		CmdSubmetraBueno();
+		if(!tirar)
+		{
+			CmdSubmetraBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdSubmetraBueno()
@@ -172,7 +199,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//METRA
 	public void crearMetra()
 	{
-		CmdMetraBueno();
+		if(!tirar)
+		{
+			CmdMetraBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdMetraBueno()
@@ -183,7 +215,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//SNIPER
 	public void crearSniper()
 	{
-		CmdSniperBueno();
+		if(!tirar)
+		{
+			CmdSniperBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdSniperBueno()
@@ -194,7 +231,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//GRANADA
 	public void crearGranada()
 	{
-		CmdGranadaBueno();
+		if(!tirar)
+		{
+			CmdGranadaBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdGranadaBueno()
@@ -205,7 +247,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//SUPPLIES
 	public void crearSupplies()
 	{
-		CmdSuppliesBueno();
+		if(!tirar)
+		{
+			CmdSuppliesBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdSuppliesBueno()
@@ -216,7 +263,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//LANSA LLAMAS
 	public void crearLansaLlamas()
 	{
-		CmdLansaLlamasBueno();
+		if(!tirar)
+		{
+			CmdLansaLlamasBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdLansaLlamasBueno()
@@ -227,7 +279,12 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//PANZER
 	public void crearBazooka()
 	{
-		CmdBazookaBueno();
+		if(!tirar)
+		{
+			CmdBazookaBueno();
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdBazookaBueno()
@@ -239,12 +296,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//FUSILERO
 	public void crearFusilero()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdFusileroBueno();
-		}else
-		{
-			CmdFusileroMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdFusileroBueno();
+			}else
+			{
+				CmdFusileroMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -264,12 +326,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//ESCOPETO
 	public void crearEscopeto()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdEscopetoBueno();
-		}else
-		{
-			CmdEscopetoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdEscopetoBueno();
+			}else
+			{
+				CmdEscopetoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -287,12 +354,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//SUBMETRALLETO
 	public void crearSubmetralleto()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdSubmetralletoBueno();
-		}else
-		{
-			CmdSubmetralletoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdSubmetralletoBueno();
+			}else
+			{
+				CmdSubmetralletoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -310,12 +382,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//METRALLETO
 	public void crearMetralleto()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdMetralletoBueno();
-		}else
-		{
-			CmdMetralletoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdMetralletoBueno();
+			}else
+			{
+				CmdMetralletoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -333,12 +410,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//MEDICO
 	public void crearMedico()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdMedicoBueno();
-		}else
-		{
-			CmdMedicoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdMedicoBueno();
+			}else
+			{
+				CmdMedicoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -357,12 +439,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//MG
 	public void crearMg()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdMgBueno();
-		}else
-		{
-			CmdMgMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdMgBueno();
+			}else
+			{
+				CmdMgMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -380,12 +467,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//MORTERO
 	public void crearMortero()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdMorteroBueno();
-		}else
-		{
-			CmdMorteroMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdMorteroBueno();
+			}else
+			{
+				CmdMorteroMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -403,12 +495,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//PANZER
 	public void crearPanzer()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdPanzerBueno();
-		}else
-		{
-			CmdPanzerMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdPanzerBueno();
+			}else
+			{
+				CmdPanzerMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -428,12 +525,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//TANQUE PESADO
 	public void crearTanquePesado()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdTanquePesadoBueno();
-		}else
-		{
-			CmdTanquePesadoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdTanquePesadoBueno();
+			}else
+			{
+				CmdTanquePesadoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -451,12 +553,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//VIKINGO
 	public void crearVikingo ()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdVikingoBueno();
-		}else
-		{
-			CmdVikingoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdVikingoBueno();
+			}else
+			{
+				CmdVikingoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -474,12 +581,17 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//CAMPAMENTO
 	public void crearCampamento ()
 	{
-		if(gameObject.tag == "Player")
+		if(!tirar)
 		{
-			CmdCampamentoBueno();
-		}else
-		{
-			CmdCampamentoMalo();
+			if(gameObject.tag == "Player")
+			{
+				CmdCampamentoBueno();
+			}else
+			{
+				CmdCampamentoMalo();
+			}
+
+			tirar = true;
 		}
 	}
 	[Command]
@@ -515,14 +627,24 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdTorretaBueno()
 	{
-		var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdTorretaMalo()
 	{
-		var objeto = (GameObject)Instantiate(torretaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	//TORRETA MISIL
 	public void crearTorretaMisil ()
@@ -536,14 +658,24 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdTorretaMisilBueno()
 	{
-		var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdTorretaMisilMalo()
 	{
-		var objeto = (GameObject)Instantiate(torretaMisilMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMisilMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	//MINA
 	public void crearMina ()
@@ -557,17 +689,27 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdcrearMinaBueno()
 	{
-		var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
-		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104;
-		print(GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104);
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
+			objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104;
+			print(GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104);
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdcrearMinaMalo()
 	{
-		var objeto = (GameObject)Instantiate(minaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
-		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax2*objeto.GetComponent<mina>().poder/104;
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(minaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+			objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax2*objeto.GetComponent<mina>().poder/104;
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	int hammer;
 	//OBJETOS CON MARTILLOS

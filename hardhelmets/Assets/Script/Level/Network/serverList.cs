@@ -27,12 +27,29 @@ public class serverList : MonoBehaviour {
 	{
 		
 	}
-	
+	public bool mouse;
+	public void ratonEntra()
+	{
+		mouse = true;
+		zona = true;
+		LobbyServerEntry.zona = true;
+	}
+	public void ratonSale()
+	{
+		mouse = false;
+		zona = false;
+		LobbyServerEntry.zona = false;
+	}
 	// Update is called once per frame
 	void Update ()
 	{
 		cantidad = transform.childCount;
 
+		/*if(mouse)
+		{
+			Selector.transform.position = new Vector2(Selector.transform.position.x, Input.mousePosition.y);
+			//Selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(Selector.GetComponent<RectTransform>().anchoredPosition.x,Input.mousePosition.y);
+		}*/
 		if(zona && !soltar)
 		{
 			if(Input.GetButtonDown("up") && serverListObject.activo != 1 || Input.GetAxis("Vertical") > 0 && serverListObject.activo != 1 || Input.GetAxis("VerticalUI") > 0 && serverListObject.activo != 1)
@@ -45,6 +62,7 @@ public class serverList : MonoBehaviour {
 					content.GetComponent<RectTransform>().anchoredPosition = new Vector3(content.GetComponent<RectTransform>().anchoredPosition.x,content.GetComponent<RectTransform>().anchoredPosition.y-mover);
 				}
 				soltar = true;
+				mouse = false;
 				StartCoroutine(momento());
 			}
 			//ABAJO
@@ -58,6 +76,7 @@ public class serverList : MonoBehaviour {
 					content.GetComponent<RectTransform>().anchoredPosition = new Vector3(content.GetComponent<RectTransform>().anchoredPosition.x,content.GetComponent<RectTransform>().anchoredPosition.y+mover);
 				}
 				soltar = true;
+				mouse = false;
 				StartCoroutine(momento());
 			}
 		}

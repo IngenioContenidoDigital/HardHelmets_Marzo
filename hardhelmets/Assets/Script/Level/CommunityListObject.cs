@@ -219,6 +219,9 @@ public class CommunityListObject : MonoBehaviour {
 
 		PlayerPrefs.SetInt("levelCommunity", level);
 
+		PlayerPrefs.SetInt("nameTorres", Random.Range(5,30));
+		PlayerPrefs.SetInt("nameBases", Random.Range(1,20));
+
 		PlayerPrefs.SetInt("ManoComunity1", carta1);
 		PlayerPrefs.SetInt("ManoComunity2", carta2);
 		PlayerPrefs.SetInt("ManoComunity3", carta3);

@@ -1823,6 +1823,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject MenuPause;
 	public void Pausa()
 	{
+		ready = false;
 		SniperCam.GetComponent<Grayscale>().enabled = true;
 		MenuPause.SetActive(true);
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(pausa1);

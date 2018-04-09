@@ -208,6 +208,7 @@ public class ManoJuegoNetwork : NetworkBehaviour {
 	bool animandosalida;*/
 	string nomm;
 	// Update is called once per frame
+	public bool completa;
 	void Update ()
 	{
 
@@ -271,6 +272,7 @@ public class ManoJuegoNetwork : NetworkBehaviour {
 			{
 				Player.GetComponent<HeroNetwork>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(gameObject);
 			}
+			completa = true;
 			listo = true;
 		}
 		if(Barra.GetComponent<barra>().fill*100 < costo)// && cantidad >= 1)
@@ -282,7 +284,12 @@ public class ManoJuegoNetwork : NetworkBehaviour {
 			{
 				animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "inactiva", false);
 			}
+			completa = false;
 			selected = false;
+		}
+		if(costo <= 0)
+		{
+			completa = false;
 		}
 
 		/*if(Player.GetComponent<HeroNetwork>().salud > 0 && Input.GetAxis("Horizontal") > 0 && !selected &&  !amiga1.GetComponent<ManoJuegoNetwork>().selected && !amiga2.GetComponent<ManoJuegoNetwork>().selected

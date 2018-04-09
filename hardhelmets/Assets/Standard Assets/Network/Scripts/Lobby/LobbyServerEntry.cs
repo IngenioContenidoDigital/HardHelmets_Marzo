@@ -77,6 +77,20 @@ namespace Prototype.NetworkLobby
 				master.GetComponent<LobbyManager>().actual = "partida";
 				eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
 			}
+			if(simular)
+			{
+				joinButton.onClick.Invoke();
+				master.GetComponent<LobbyManager>().actual = "partida";
+				eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
+
+				simular = false;
+			}
+		}
+
+		public bool simular;
+		public void clicar()
+		{
+			simular = true;
 		}
 
 		public bool selected; 

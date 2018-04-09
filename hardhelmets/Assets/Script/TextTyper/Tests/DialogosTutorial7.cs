@@ -49,8 +49,8 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Muy bien... ahora cuenta con un arma de gran poder.");
-			dialogueLines.Enqueue("<b>DESTROCE LOS BLANCOS SOLDADO</b>");
+			dialogueLines.Enqueue("Very well ... now has a weapon of great power.");
+			dialogueLines.Enqueue("<b>DESTROY THOSE BLANKS SOLDIER</b>");
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

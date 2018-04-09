@@ -158,7 +158,7 @@ public class EnemyTutorial : MonoBehaviour {
 			/*animator.SetBool("granada", true);
 			animator.SetInteger("cascado", 10);*/
 
-			salud -= col.gameObject.GetComponent<ExploOffline>().poder;
+			salud -= col.gameObject.GetComponent<ExploOffline>().poder*3;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<ExploOffline>().poder.ToString("F0");

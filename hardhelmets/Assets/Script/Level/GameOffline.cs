@@ -182,8 +182,6 @@ public class GameOffline : MonoBehaviour {
 
 	bool listoTodos;
 
-	bool animarBarra;
-
 	public GameObject musica;
 
 	// Use this for initialization
@@ -208,6 +206,9 @@ public class GameOffline : MonoBehaviour {
 		nombres2.text = nombre2;
 		level2 = PlayerPrefs.GetInt("levelCommunity");
 		marine2.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("levelCommunity").ToString();
+
+		cofre = PlayerPrefs.GetInt("caja1");
+		banderasCofre = PlayerPrefs.GetInt("banderasCofre");
 	}
 
 	// SOLO EL SERVIDOR
@@ -344,6 +345,15 @@ public class GameOffline : MonoBehaviour {
 
 	bool finalizado;
 
+	public int cofre;
+	public int banderasCofre;
+
+	public GameObject Baul;
+
+	public bool sumar1;
+	public bool sumar2;
+	public bool sumar3;
+
 	//SERVIDOR Y CLIENTE
 	void FixedUpdate ()
 	{
@@ -427,14 +437,40 @@ public class GameOffline : MonoBehaviour {
 
 				if(AlphaTomada == "Buena")
 				{
-					PlayerPrefs.SetInt("Banderas", PlayerPrefs.GetInt("Banderas")+1);
+					if(Application.loadedLevelName != "Tutorial")
+					{
+						if(!sumar1)
+						{
+							int sumarBase = PlayerPrefs.GetInt("Banderas")+1;
+							PlayerPrefs.SetInt("Banderas", sumarBase);
+							int sumarCofre = PlayerPrefs.GetInt("banderasCofre")+1;
+							PlayerPrefs.SetInt("banderasCofre", sumarCofre);
+
+							banderasCofre = PlayerPrefs.GetInt("banderasCofre");
+
+							sumar1 = true;
+						}
+					}
 					StartCoroutine(EspSale1());
 					//Medalla1.SetActive(true);
 					//Medalla1.GetComponent<combinedSkins>().skinsToCombine[0] = "bueno";
 				}
 				if(BetaTomada == "Buena")
 				{
-					PlayerPrefs.SetInt("Banderas", PlayerPrefs.GetInt("Banderas")+1);
+					if(Application.loadedLevelName != "Tutorial")
+					{
+						if(!sumar2)
+						{
+							int sumarBase = PlayerPrefs.GetInt("Banderas")+1;
+							PlayerPrefs.SetInt("Banderas", sumarBase);
+							int sumarCofre = PlayerPrefs.GetInt("banderasCofre")+1;
+							PlayerPrefs.SetInt("banderasCofre", sumarCofre);
+
+							banderasCofre = PlayerPrefs.GetInt("banderasCofre");
+
+							sumar2 = true;
+						}
+					}
 					if(AlphaTomada == "Buena")
 					{
 						StartCoroutine(EspSale2());
@@ -453,39 +489,54 @@ public class GameOffline : MonoBehaviour {
 					if(AlphaTomada == "Buena" && BetaTomada == "Buena")
 					{
 						StartCoroutine(EspSale3c());
-					}else if(AlphaTomada == "Buena" || BetaTomada == "Buena")
+					}else if(AlphaTomada == "Buena")
 					{
 						StartCoroutine(EspSale3b());
 					}else
 					{
 						StartCoroutine(EspSale3());
 					}
-					PlayerPrefs.SetInt("Bases", PlayerPrefs.GetInt("Bases")+1);
+					if(Application.loadedLevelName != "Tutorial")
+					{
+						if(!sumar3)
+						{
+							int sumarBandera = PlayerPrefs.GetInt("Bases")+1;
+							PlayerPrefs.SetInt("Bases", sumarBandera);
+
+							sumar3 = true;
+						}
+					}
 					BaseDestroyedB = 1;
 					//MedallaTorre.SetActive(true);
 					//MedallaTorre.GetComponent<combinedSkins>().skinsToCombine[0] = "torreBueno";
 				}
 			}
 
-			if(banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops") //.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
+			if(!finalizado)
+			{
+				StartCoroutine(esperaSumar());
+				finalizado = true;
+			}
+
+			if(banderaBuena.activeSelf && banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops") //.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
 			{
 				StartCoroutine(EspBandera1());
 			}
 
-			if(banderaMala.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
+			if(banderaMala.activeSelf && banderaMala.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
 			{
 				StartCoroutine(EspBandera2());
 			}
 
-			if(Medalla1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Medalla1.activeSelf && Medalla1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
 				StartCoroutine(EspHabla1());
 			}
-			if(MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(MedallaTorre.activeSelf && MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
 				StartCoroutine(EspHablaTorre());
 			}
-			if(Medalla2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Medalla2.activeSelf && Medalla2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
 				StartCoroutine(EspHabla2());
 			}
@@ -497,15 +548,6 @@ public class GameOffline : MonoBehaviour {
 			if(rango2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
 				StartCoroutine(EspRango2());
-			}
-			animarBarra = true;
-
-			if(!finalizado)
-			{
-				//StartCoroutine(esperaSumar());
-				sumatoria = true;
-				audio1.Play();
-				finalizado = true;
 			}
 		}
 
@@ -630,6 +672,21 @@ public class GameOffline : MonoBehaviour {
 		}
 		if(sumatoria3)
 		{
+			if(banderasCofre >= 3)
+			{
+				PlayerPrefs.SetInt("caja1", cofre+1);
+				PlayerPrefs.SetInt("banderasCofre", PlayerPrefs.GetInt("banderasCofre")-3);
+
+				if(PlayerPrefs.GetInt("banderasCofre") <= 0)
+				{
+					PlayerPrefs.SetInt("banderasCofre", 0);
+				}
+
+				Baul.SetActive(true);
+				Baul.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
+
+				banderasCofre = 0;
+			}
 			StolenCardsB2 += 100;
 			if(StolenCardsB2 >= StolenCardsB*380)
 			{
@@ -727,7 +784,10 @@ public class GameOffline : MonoBehaviour {
 		{
 			XPNext = level1Next*10000*level1Next/4;
 
-			PlayerPrefs.SetInt("PlayerLevel",level1+1);
+			if(Application.loadedLevelName != "Tutorial")
+			{
+				PlayerPrefs.SetInt("PlayerLevel",level1+1);
+			}
 			level1Next = level1+1;
 
 			rangoUP.SetActive(true);
@@ -742,10 +802,10 @@ public class GameOffline : MonoBehaviour {
 		if(continuar)
 		{
 			siguiente.SetActive(true);
-			if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump"))
+			if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 			{
 				Application.LoadLevel("Load");
-				loading.nombre = "menu";
+				loading.nombre = "Comunity";
 			}
 		}
 	}

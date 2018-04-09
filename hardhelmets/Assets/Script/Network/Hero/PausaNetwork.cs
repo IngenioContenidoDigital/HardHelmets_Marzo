@@ -135,6 +135,7 @@ public class PausaNetwork : MonoBehaviour {
 		pantalla = "";
 		Time.timeScale = 1;
 		Player.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = false;
+		Player.GetComponent<HeroNetwork>().ready = false;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(carta1);
 		gameObject.SetActive(false);
 	}
@@ -198,6 +199,7 @@ public class PausaNetwork : MonoBehaviour {
 	public void Si()
 	{
 		pantalla = "";
+		Network.Disconnect();
 		Application.LoadLevel("Load");
 		loading.nombre = "menu";
 	}

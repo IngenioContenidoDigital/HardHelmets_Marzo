@@ -38,6 +38,19 @@ public class serverListObject : MonoBehaviour {
 		}
 	}
 
+	void OnMouseEnter ()
+	{
+		activo = int.Parse(gameObject.name);
+		selected = true;
+		GetComponent<AudioSource>().Play();
+		boton.GetComponent<UnityEngine.UI.Image>().sprite = a2;
+	}
+	void OnMouseExit ()
+	{
+		selected = false;
+		boton.GetComponent<UnityEngine.UI.Image>().sprite = a1;
+	}
+
 	void OnTriggerEnter2D (Collider2D col)
 	{
 		if(col.gameObject.tag == "Player")

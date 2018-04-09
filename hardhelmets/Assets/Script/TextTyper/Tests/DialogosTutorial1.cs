@@ -47,10 +47,11 @@
             this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
             this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Bienvenido soldado.");
-			dialogueLines.Enqueue("Tiene un aspecto muy <delay=0.25>extraño</delay> si no le importa que se lo diga soldado");
-			dialogueLines.Enqueue("Soy el <b>CAPITÁN <delay=0.25>MOSTACHO</delay></b>. y estoy encargado de guiarlo y asegurarme que aprenda todas las técnicas básicas para que se desempeñe como un guerrero en el campo de batalla");
-			dialogueLines.Enqueue("Menos charla y más acción vamos a comenzar con el entrenamiento. Muévase hasta el siguiente punto.");
+			dialogueLines.Enqueue("Welcome Soldier.");
+			dialogueLines.Enqueue("You look very <delay=0.25>strange</delay> If you don’t mind, I'm telling you.");
+			dialogueLines.Enqueue("I’m <b>CAPTAIN  <delay=0.25>MUSTACHE</delay></b>. and I will be in charge of guiding you and make sure you’ll learn all basic techniques to behave as a real warrior in the Field.");
+			dialogueLines.Enqueue("Less Talk, More Action. Let’s start with your training.");
+			dialogueLines.Enqueue("Move yourself to the next spot.");
             /*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

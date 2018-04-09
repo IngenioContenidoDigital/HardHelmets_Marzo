@@ -196,6 +196,11 @@ public class CommunityList : MonoBehaviour {
 
 	public void aceptar ()
 	{
+		//PlayerPrefs.SetString("nameCommunity", nombre);
+		//PlayerPrefs.SetInt("levelCommunity", level);
+		PlayerPrefs.SetString("FondoCommunity", skinFondo);
+		PlayerPrefs.SetString("BordeCommunity", skinBorde);
+
 		Application.LoadLevel("Load2");
 		loading2.nombre = "ComunityMatch"+nivel;
 	}

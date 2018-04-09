@@ -744,7 +744,7 @@ public class Menu : MonoBehaviour {
 		//FLECHAS CHARACTER CUSTOMIZATION
 		if(Icustom && !wait)
 		{
-			if(Input.GetButtonDown("left") || Input.GetAxis("Horizontal") < 0)
+			if(Input.GetButtonDown("left") || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("HorizontalUI") < 0)
 			{
 				skinAtras();
 				wait = true;
@@ -754,7 +754,7 @@ public class Menu : MonoBehaviour {
 		}
 		if(Dcustom && !wait)
 		{
-			if(Input.GetButtonDown("right") || Input.GetAxis("Horizontal") > 0)
+			if(Input.GetButtonDown("right") || Input.GetAxis("Horizontal") > 0 || Input.GetAxis("HorizontalUI") > 0)
 			{
 				skinAdelante();
 				wait = true;

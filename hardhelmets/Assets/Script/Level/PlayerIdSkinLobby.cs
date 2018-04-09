@@ -76,6 +76,16 @@ public class PlayerIdSkinLobby : NetworkBehaviour {
 	[ClientRpc]
 	public void RpcGetName (string newAvatar, string newBorde, string newFondo, string newName, int newNivel, int newFlags, int newBas)
 	{
+		avatar = newAvatar;
+		borde = newBorde;
+		fondo = newFondo;
+
+		name = newName;
+
+		nivel = newNivel;
+		flags = newFlags;
+		bas = newBas;
+
 		nombre.text = newName;
 
 		level.text = newNivel.ToString();

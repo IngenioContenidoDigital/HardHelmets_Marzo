@@ -195,9 +195,17 @@ public class Hero : MonoBehaviour{
 		_currentDirection = "right";
 		//transform.rotation = Quaternion.Euler(0,0,0);
 	}
-
+	//public GameObject selectedObj;
 	void FixedUpdate()
 	{
+		//RESELECCIONAR ELEMENTO DE MENU
+		/*if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null && Input.GetAxis("Horizontal") != 0)
+		{
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(selectedObj);
+		}
+
+		selectedObj = eventsystem.GetComponent<EventSystem>().currentSelectedGameObject;*/
+
 		nacerZ = bulletSpawn.rotation.z;
 
 		if(!apuntar.GetComponent<apuntar>().apunta)

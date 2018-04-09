@@ -8,6 +8,8 @@ public class CrearCartas : MonoBehaviour {
 
 	public GameObject nace2;
 
+	public bool tirar;
+
 	//[SyncVar(hook = "OnChange")]
 	//public float valorNace;
 
@@ -83,7 +85,18 @@ public class CrearCartas : MonoBehaviour {
 				crear = false;
 			}
 		}
+
+		if(tirar)
+		{
+			StartCoroutine(reactivar());
+		}
 		//nace.transform.position = new Vector3(valorNace, -20, transform.position.z);
+	}
+
+	IEnumerator reactivar()
+	{
+		yield return new WaitForSeconds(0.2f);
+		tirar = false;
 	}
 
 	/*void OnChange(float valorNace)
@@ -99,8 +112,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void FusilBueno()
 	{
-		var objeto = (GameObject)Instantiate(fusil, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(fusil, nace.transform.position, transform.rotation);
 
+			tirar = true;
+		}
 	}
 	//ESCOPETA
 	public void crearEscopeta()
@@ -110,7 +127,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void EscopetaBueno()
 	{
-		var objeto = (GameObject)Instantiate(escopeta, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(escopeta, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 
 	}
 	//SUBMETRA
@@ -121,7 +143,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void SubmetraBueno()
 	{
-		var objeto = (GameObject)Instantiate(submetra, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(submetra, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 
 	}
 	//METRA
@@ -132,7 +159,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void MetraBueno()
 	{
-		var objeto = (GameObject)Instantiate(metra, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(metra, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 	}
 	//SNIPER
 	public void crearSniper()
@@ -142,7 +174,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void SniperBueno()
 	{
-		var objeto = (GameObject)Instantiate(sniper, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(sniper, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 	}
 	//GRANADA
 	public void crearGranada()
@@ -152,7 +189,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void GranadaBueno()
 	{
-		var objeto = (GameObject)Instantiate(granada, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(granada, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 	}
 	//SUPPLIES
 	public void crearSupplies()
@@ -162,7 +204,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void SuppliesBueno()
 	{
-		var objeto = (GameObject)Instantiate(supplies, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(supplies, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 	}
 	//LANSA LLAMAS
 	public void crearLansaLlamas()
@@ -172,7 +219,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void LansaLlamasBueno()
 	{
-		var objeto = (GameObject)Instantiate(lansaLlamas, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(lansaLlamas, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 	}
 	//PANZER
 	public void crearBazooka()
@@ -182,7 +234,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void BazookaBueno()
 	{
-		var objeto = (GameObject)Instantiate(bazooka, nace.transform.position, transform.rotation);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(bazooka, nace.transform.position, transform.rotation);
+
+			tirar = true;
+		}
 	}
 	//-------------------PERSONAJES BASICOS
 	//FUSILERO
@@ -193,7 +250,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void FusileroBueno()
 	{
-		var objeto = (GameObject)Instantiate(fusilero, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(fusilero, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//ESCOPETO
 	public void crearEscopeto()
@@ -203,8 +265,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void EscopetoBueno()
 	{
-		var objeto = (GameObject)Instantiate(escopeto, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(escopeto, nace.transform.position, Quaternion.Euler(0,0,0));
 
+			tirar = true;
+		}
 	}
 	//SUBMETRALLETO
 	public void crearSubmetralleto()
@@ -214,7 +280,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void SubmetralletoBueno()
 	{
-		var objeto = (GameObject)Instantiate(submetro, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(submetro, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//METRALLETO
 	public void crearMetralleto()
@@ -224,7 +295,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void MetralletoBueno()
 	{
-		var objeto = (GameObject)Instantiate(metralleto, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(metralleto, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//MEDICO
 	public void crearMedico()
@@ -234,7 +310,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void MedicoBueno()
 	{
-		var objeto = (GameObject)Instantiate(medico, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(medico, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//-------------------PERSOJAES DEFENSA
 	//MG
@@ -245,7 +326,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void MgBueno()
 	{
-		var objeto = (GameObject)Instantiate(mg, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(mg, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//MORTERO
 	public void crearMortero()
@@ -255,7 +341,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void MorteroBueno()
 	{
-		var objeto = (GameObject)Instantiate(mortero, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(mortero, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//PANZER
 	public void crearPanzer()
@@ -265,7 +356,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void PanzerBueno()
 	{
-		var objeto = (GameObject)Instantiate(panzer, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(panzer, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//----------VEHICULOS
 	//TANQUE LIGERO
@@ -277,7 +373,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void TanquePesadoBueno()
 	{
-		var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
+
+			tirar = true;
+		}
 	}
 	//VIKINGO
 	public void crearVikingo ()
@@ -287,7 +388,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void VikingoBueno()
 	{
-		var objeto = (GameObject)Instantiate(vikingo, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(vikingo, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//CAMPAMENTO
 	public void crearCampamento ()
@@ -297,7 +403,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void CampamentoBueno()
 	{
-		var objeto = (GameObject)Instantiate(campamento, nace.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(campamento, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//TORRETA
 	public void crearTorreta ()
@@ -311,7 +422,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void TorretaBueno()
 	{
-		var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//TORRETA MISIL
 	public void crearTorretaMisil ()
@@ -325,7 +441,12 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void TorretaMisilBueno()
 	{
-		var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
 	}
 	//MINA
 	public void crearMina ()
@@ -339,9 +460,14 @@ public class CrearCartas : MonoBehaviour {
 	
 	public void crearMinaBueno()
 	{
-		var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
-		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104;
-		print(GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
+			objeto.GetComponent<MinaOffline>().poder = GetComponent<Hero>().saludMax*objeto.GetComponent<MinaOffline>().poder/104;
+			print(GetComponent<Hero>().saludMax*objeto.GetComponent<MinaOffline>().poder/104);
+
+			tirar = true;
+		}
 	}
 	int hammer;
 	//OBJETOS CON MARTILLOS

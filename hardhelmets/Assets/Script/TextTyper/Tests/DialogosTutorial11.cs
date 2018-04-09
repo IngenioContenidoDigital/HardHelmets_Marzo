@@ -49,8 +49,8 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("La forma más fácil de alcanzar la victoria es destrosando la base enemiga.");
-			dialogueLines.Enqueue("Pero es un trabajo muy duro para un solo hombre. despliegue algunas cartas de apoyo y destruya la base enemiga.");
+			dialogueLines.Enqueue("The fastest way to claim the victory is by destroying the enemy facilities.");
+			dialogueLines.Enqueue("It is a tough job for a man alone. Deploy some support cards and proceed to destroy enemy’s base.");
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

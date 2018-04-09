@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Cards : MonoBehaviour {
 
@@ -28,9 +29,14 @@ public class Cards : MonoBehaviour {
 		level = PlayerPrefs.GetInt("card"+carta+"level");
 	}
 	public AudioSource audio1;
+	public EventSystem eventsystem;
+	public GameObject flecha;
 	public void click ()
 	{
-		if(!usada && mano.GetComponent<Mano>().zona && selected)
+		mano.GetComponent<Mano>().zona = true;
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(flecha);
+
+		if(!usada && selected)
 		{
 			audio1.volume = 1;
 			audio1.clip = selec[Random.Range(0,selec.Length)];
