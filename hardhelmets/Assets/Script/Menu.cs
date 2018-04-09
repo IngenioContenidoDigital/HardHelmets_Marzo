@@ -275,9 +275,9 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetString("casco","Casco1");
 			PlayerPrefs.SetString("cara","Cara1");
 			//BAULES
-			PlayerPrefs.SetInt("caja1", 2);
+			/*PlayerPrefs.SetInt("caja1", 3);
 			PlayerPrefs.SetInt("caja2", 2);
-			PlayerPrefs.SetInt("caja3", 2);
+			PlayerPrefs.SetInt("caja3", 2);*/
 			//DEJA DE SER LA PRIMERA VEZ
 			PlayerPrefs.SetInt("FirstTime",1);
 		}
@@ -800,6 +800,8 @@ public class Menu : MonoBehaviour {
 		yield return new WaitForSeconds(0.2f);
 		wait = false;
 	}
+
+	public GameObject baulregalo;
 	//ESPERAR
 	IEnumerator esperaAnim ()
 	{
@@ -808,6 +810,15 @@ public class Menu : MonoBehaviour {
 		menu2.GetComponent<Animator>().SetBool("entra", false);
 		menu1.GetComponent<Animator>().SetBool("sale", false);
 		menu2.GetComponent<Animator>().SetBool("sale", false);
+
+		if(PlayerPrefs.GetInt("regaloBaul") == 0)
+		{
+			baulregalo.SetActive(true);
+
+			PlayerPrefs.SetInt("caja1", 3);
+
+			PlayerPrefs.SetInt("regaloBaul", 1);
+		}
 	}
 	//FUNCIONES BOTONES
 	public GameObject global;
