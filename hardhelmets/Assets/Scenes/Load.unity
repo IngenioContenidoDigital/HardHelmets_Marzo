@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1246,12 +1246,13 @@ MonoBehaviour:
   personaje: {fileID: 387800150}
   fin: 0
   Tips:
-  - Use mortars and explotions to shoot down heavy enemies like tank and turrets
-  - Use action button over defender card to orden a new position
-  - Use moves button to make especial moves
-  - Use ricght click to see laser gun
-  - If shoot crouch yo have less probabilities to been shooted
-  - Increase your rank to have more healt and abilities
+  - Use mortars and explotions to shoot down heavy enemies like tanks and turrets.
+  - Use long range attacks such as sniper and mortars against slow enemies.
+  - You can also obtain war bonds by defeating enemies in man to man combat.
+  - Hand granades will always be a useful ally against strong enemies.
+  - If you keep crouched, you'll have less chances to be damaged by enemy's attacks.
+  - The higher battle range will upgrade attack and defense power of your own war
+    bonds.
   Tip: {fileID: 1321382006}
 --- !u!1 &1901466723
 GameObject:

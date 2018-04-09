@@ -25,7 +25,7 @@ public class loading : MonoBehaviour {
 	public bool fin;
 
 	//TEXTOS
-	public string[] Tips = {"Use mortars and explotions to shoot down heavy enemies like tank and turrets","Use action button over defender card to orden a new position","Use moves button to make especial moves","Use ricght click to see laser gun","If shoot crouch yo have less probabilities to been shooted","Increase your rank to have more healt and abilities"};
+	public string[] Tips = {"Use mortars and explotions to shoot down heavy enemies like tanks and turrets.","Use long range attacks such as sniper and mortars against slow enemies.","Use move button to make especial moves","Hand granades will always be a useful ally against strong enemies.","If you keep crouched, you'll have less chances to be damaged by enemy's attacks.","The higher battle range will upgrade attack and defense power of your own war bonds.","You can also obtain war bonds by defeating enemies in man to man combat."};
 	public UnityEngine.UI.Text Tip;
 
 	bool cambio;
