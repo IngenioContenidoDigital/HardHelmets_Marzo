@@ -1,0 +1,246 @@
+fileFormatVersion: 2
+guid: e148af850afa9464b84824a574e3613e
+timeCreated: 1455971848
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: breech
+    100004: cannon
+    100006: main_part
+    100008: pivoting_arm
+    100010: base
+    100012: originBulletCase
+    100014: originExplosion
+    100016: Empty
+    100018: rotationMainPart
+    100020: origin_bullet_case
+    100022: origin_explosion
+    100024: rotation_main_part
+    400000: //RootNode
+    400002: breech
+    400004: cannon
+    400006: main_part
+    400008: pivoting_arm
+    400010: base
+    400012: originBulletCase
+    400014: originExplosion
+    400016: Empty
+    400018: rotationMainPart
+    400020: origin_bullet_case
+    400022: origin_explosion
+    400024: rotation_main_part
+    2300000: //RootNode
+    2300002: breech
+    2300004: cannon
+    2300006: main_part
+    2300008: pivoting_arm
+    2300010: base
+    3300000: //RootNode
+    3300002: breech
+    3300004: cannon
+    3300006: main_part
+    3300008: pivoting_arm
+    3300010: base
+    4300000: base
+    4300002: pivoting_arm
+    4300004: main_part
+    4300006: breech
+    4300008: cannon
+    7400000: base|Cube.003Action
+    7400002: base|Cube.003Action.001
+    7400004: base|Cube.008Action
+    7400006: base|Cube.008Action.008
+    7400008: base|Cube.008Action.014
+    7400010: base|Cylinder.004Action
+    7400012: base|Cylinder.004Action.001
+    7400014: base|Cylinder.005Action
+    7400016: base|Cylinder.005Action.001
+    7400018: base|Cylinder.005Action.002
+    7400020: base|Cylinder.009Action
+    7400022: base|CylinderAction.001
+    7400024: base|CylinderAction.002
+    7400026: base|CylinderAction.003
+    7400028: base|Plane.002Action
+    7400030: base|Plane.002Action.001
+    7400032: base|Plane.003Action
+    7400034: base|Plane.003Action.001
+    7400036: pivoting_arm|Cube.003Action
+    7400038: pivoting_arm|Cube.003Action.001
+    7400040: pivoting_arm|Cube.008Action
+    7400042: pivoting_arm|Cube.008Action.008
+    7400044: pivoting_arm|Cube.008Action.014
+    7400046: pivoting_arm|Cylinder.004Action
+    7400048: pivoting_arm|Cylinder.004Action.001
+    7400050: pivoting_arm|Cylinder.005Action
+    7400052: pivoting_arm|Cylinder.005Action.001
+    7400054: pivoting_arm|Cylinder.005Action.002
+    7400056: pivoting_arm|Cylinder.009Action
+    7400058: pivoting_arm|CylinderAction.001
+    7400060: pivoting_arm|CylinderAction.002
+    7400062: pivoting_arm|CylinderAction.003
+    7400064: pivoting_arm|Plane.002Action
+    7400066: pivoting_arm|Plane.002Action.001
+    7400068: pivoting_arm|Plane.003Action
+    7400070: pivoting_arm|Plane.003Action.001
+    7400072: main_part|Cube.003Action
+    7400074: main_part|Cube.003Action.001
+    7400076: main_part|Cube.008Action
+    7400078: main_part|Cube.008Action.008
+    7400080: main_part|Cube.008Action.014
+    7400082: main_part|Cylinder.004Action
+    7400084: main_part|Cylinder.004Action.001
+    7400086: main_part|Cylinder.005Action
+    7400088: main_part|Cylinder.005Action.001
+    7400090: main_part|Cylinder.005Action.002
+    7400092: main_part|Cylinder.009Action
+    7400094: main_part|CylinderAction.001
+    7400096: main_part|CylinderAction.002
+    7400098: main_part|CylinderAction.003
+    7400100: main_part|Plane.002Action
+    7400102: main_part|Plane.002Action.001
+    7400104: main_part|Plane.003Action
+    7400106: main_part|Plane.003Action.001
+    7400108: breech|Cube.003Action
+    7400110: breech|Cube.003Action.001
+    7400112: breech|Cube.008Action
+    7400114: breech|Cube.008Action.008
+    7400116: breech|Cube.008Action.014
+    7400118: breech|Cylinder.004Action
+    7400120: breech|Cylinder.004Action.001
+    7400122: breech|Cylinder.005Action
+    7400124: breech|Cylinder.005Action.001
+    7400126: breech|Cylinder.005Action.002
+    7400128: breech|Cylinder.009Action
+    7400130: breech|CylinderAction.001
+    7400132: breech|CylinderAction.002
+    7400134: breech|CylinderAction.003
+    7400136: breech|Plane.002Action
+    7400138: breech|Plane.002Action.001
+    7400140: breech|Plane.003Action
+    7400142: breech|Plane.003Action.001
+    7400144: cannon|Cube.003Action
+    7400146: cannon|Cube.003Action.001
+    7400148: cannon|Cube.008Action
+    7400150: cannon|Cube.008Action.008
+    7400152: cannon|Cube.008Action.014
+    7400154: cannon|Cylinder.004Action
+    7400156: cannon|Cylinder.004Action.001
+    7400158: cannon|Cylinder.005Action
+    7400160: cannon|Cylinder.005Action.001
+    7400162: cannon|Cylinder.005Action.002
+    7400164: cannon|Cylinder.009Action
+    7400166: cannon|CylinderAction.001
+    7400168: cannon|CylinderAction.002
+    7400170: cannon|CylinderAction.003
+    7400172: cannon|Plane.002Action
+    7400174: cannon|Plane.002Action.001
+    7400176: cannon|Plane.003Action
+    7400178: cannon|Plane.003Action.001
+    7400180: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 1
+      lastFrame: 2
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: base
+        weight: 1
+      - path: breech
+        weight: 1
+      - path: cannon
+        weight: 1
+      - path: main_part
+        weight: 1
+      - path: pivoting_arm
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
