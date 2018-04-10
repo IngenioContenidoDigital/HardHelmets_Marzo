@@ -47,7 +47,7 @@ public class loading : MonoBehaviour {
 
 	void Update ()
 	{
-		if(Input.GetButtonDown("DISPARO"))
+		if(Input.GetButtonDown("DISPARO 2") || Input.GetAxis("DISPARO") != 0)
 		{
 			if(inicio == "walk")
 			{

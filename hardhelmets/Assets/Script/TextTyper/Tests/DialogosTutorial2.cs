@@ -49,8 +49,8 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("During the combat you will have a deck of war bonds. you will be able to use those cards to gain some advantage over you enemy.");
-			dialogueLines.Enqueue("Select the assault rifle from the deck of battle cards, <b>“DEPLOY AND EQUIP SOLDIER”</b>");
+			dialogueLines.Enqueue("During the combat you will have a deck of war bonds. you will be able to use those bonds to gain some advantage over you enemy.");
+			dialogueLines.Enqueue("Select the assault rifle from the deck of war bonds, <b>“DEPLOY AND EQUIP SOLDIER”</b>");
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

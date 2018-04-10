@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Spine.Unity;
-//using Steamworks;
+using Steamworks;
 
 public class Menu : MonoBehaviour {
 
@@ -80,11 +80,11 @@ public class Menu : MonoBehaviour {
 
 	//BOTON ATRAS
 	public GameObject regresar;
-	/*
+
 	//STEAM
 	[Header ("UI Component")]
 	public string SteamName;
-	*/
+
 
 	//ORDEN DE BOTONES
 	//MENU 1
@@ -113,16 +113,13 @@ public class Menu : MonoBehaviour {
 
 	void Start ()
 	{
-		/*
-		if(!SteamManager.Initialized)
+		if(SteamManager.Initialized)
 		{
-			return;
+			//Display User Name
+			SteamName = SteamFriends.GetPersonaName();
+			PlayerPrefs.SetString("SteamName", SteamName);
 		}
 
-		//Display User Name
-		//SteamName = SteamFriends.GetPersonaName();
-		//PlayerPrefs.SetString("SteamName", SteamName);
-		*/
 
 		//Cursor.visible = true;
 
@@ -1050,7 +1047,7 @@ public class Menu : MonoBehaviour {
 	//MENU 2
 	public void MultiplayerText ()
 	{
-		descripcion.text = "Face other players in online matches";
+		descripcion.text = "Face other players in an online match";
 	}
 	public void Multiplayer ()
 	{
@@ -1451,23 +1448,23 @@ public class Menu : MonoBehaviour {
 	//TEXT
 	public void CommunityText ()
 	{
-		descripcion.text = "Face other players' cards";
+		descripcion.text = "Play offline against AI generated players";
 	}
 	public void CustomizationText ()
 	{
-		descripcion.text = "customize the player's appearance";
+		descripcion.text = "Customize player's appearance";
 	}
 	public void CardDeckText ()
 	{
-		descripcion.text = "Choose the cards you want to use in the battlefield";
+		descripcion.text = "Prepare the deck of war bonds you'll use in the field.";
 	}
 	public void TutorialText ()
 	{
-		descripcion.text = "learn how to use skills on the battlefield";
+		descripcion.text = "Get to learn the basics.";
 	}
 	public void PracticeText ()
 	{
-		descripcion.text = "Train to improve your skills";
+		descripcion.text = "Train to improve your skills and gain some ability to command your men.";
 	}
 	//REGRESAR
 	public GameObject mano;

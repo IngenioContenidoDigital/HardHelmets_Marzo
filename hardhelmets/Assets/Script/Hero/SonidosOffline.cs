@@ -191,16 +191,24 @@ public class SonidosOffline : MonoBehaviour {
 	}
 	void metrareload()
 	{
-		if(GetComponent<Hero>().arma == "metra")
+		if(GetComponent<Hero>() != null)
 		{
-			audio2.volume = efectos;
-			audio2.clip = rmetra;
-			audio2.Play();
+			if(GetComponent<Hero>().arma == "metra")
+			{
+				audio1.volume = efectos;
+				audio1.clip = rmetra;
+				audio1.Play();
+			}else
+			{
+				audio1.volume = efectos;
+				audio1.clip = rbusmetra;
+				audio1.Play();
+			}
 		}else
 		{
-			audio2.volume = efectos;
-			audio2.clip = rbusmetra;
-			audio2.Play();
+			audio1.volume = efectos;
+			audio1.clip = rmetra;
+			audio1.Play();
 		}
 	}
 	public AudioClip cuchillo1;

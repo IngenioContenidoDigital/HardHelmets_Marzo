@@ -49,7 +49,7 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Very well ... now has a weapon of great power.");
+			dialogueLines.Enqueue("Very well ... now you have a weapon of great power.");
 			dialogueLines.Enqueue("<b>DESTROY THOSE BLANKS SOLDIER</b>");
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
