@@ -53,6 +53,8 @@ public class BaseNeutra : MonoBehaviour {
 			Bandera.GetComponent<Renderer>().material.mainTexture = bad;
 		}
 	}
+
+	public GameObject Panel;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -79,7 +81,7 @@ public class BaseNeutra : MonoBehaviour {
 			audio1.Stop();
 		}
 
-		if(puntosBueno > 0)
+		if(puntosBueno > 0 && !Panel.GetComponent<GameOffline>().final)
 		{
 			sumarBueno = true;
 		}else
@@ -90,7 +92,7 @@ public class BaseNeutra : MonoBehaviour {
 		altura = -0.58f+ajuste;
 		mover.transform.localPosition = new Vector3(mover.transform.localPosition.x, altura, mover.transform.localPosition.z);
 
-		if(puntosMalo > 0)
+		if(puntosMalo > 0 && !Panel.GetComponent<GameOffline>().final)
 		{
 			sumarMalo = true;
 		}else
