@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Spine.Unity;
-using Steamworks;
+//using Steamworks;
 
 public class Menu : MonoBehaviour {
 
@@ -113,12 +113,12 @@ public class Menu : MonoBehaviour {
 
 	void Start ()
 	{
-		if(SteamManager.Initialized)
+		/*if(SteamManager.Initialized)
 		{
 			//Display User Name
 			SteamName = SteamFriends.GetPersonaName();
 			PlayerPrefs.SetString("SteamName", SteamName);
-		}
+		}*/
 
 
 		//Cursor.visible = true;
@@ -1649,6 +1649,18 @@ public class Menu : MonoBehaviour {
 			Dcustom = false;
 			Icustom = false;
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(ch7);
+		}
+		if(pantalla == "online" || pantalla == "comunity" || pantalla == "tutorial" || pantalla == "practica")
+		{
+			pantalla = "menu2";
+			mensajes = "";
+
+			mensaje.GetComponent<Animator>().SetBool("salir", true);
+
+			menu2.GetComponent<Animator>().SetBool("sale", false);
+			menu2.GetComponent<Animator>().SetBool("entra", true);
+
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m2);
 		}
 	}
 	IEnumerator esconder()

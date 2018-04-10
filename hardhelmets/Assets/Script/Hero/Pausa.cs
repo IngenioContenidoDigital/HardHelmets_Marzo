@@ -199,6 +199,7 @@ public class Pausa : MonoBehaviour {
 	public void Si()
 	{
 		pantalla = "";
+		Time.timeScale = 1;
 		Application.LoadLevel("Load");
 		loading.nombre = "menu";
 	}

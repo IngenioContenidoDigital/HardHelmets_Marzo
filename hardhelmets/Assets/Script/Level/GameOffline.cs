@@ -386,7 +386,7 @@ public class GameOffline : MonoBehaviour {
 			esperando.SetActive(false);
 		}else
 		{
-			esperando.SetActive(true);
+			//esperando.SetActive(true);
 		}
 
 		if(Player1 != null && !listo)

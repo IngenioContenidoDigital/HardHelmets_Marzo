@@ -33,6 +33,10 @@ public class mensajes : MonoBehaviour {
 		if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("entrada"))
 		{
 			GetComponent<Animator>().SetBool("entrada", false);
+			//GetComponent<Animator>().SetBool("salir", false);
+		}
+		if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("entrada2"))
+		{
 			GetComponent<Animator>().SetBool("salir", false);
 		}
 
