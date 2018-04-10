@@ -804,6 +804,7 @@ public class GameOffline : MonoBehaviour {
 			siguiente.SetActive(true);
 			if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 			{
+				Time.timeScale = 1;
 				Application.LoadLevel("Load");
 				loading.nombre = "Comunity";
 			}

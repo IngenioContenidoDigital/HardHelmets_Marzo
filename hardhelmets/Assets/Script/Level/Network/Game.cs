@@ -924,6 +924,7 @@ public class Game : NetworkBehaviour {
 				siguiente.SetActive(true);
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
+					Time.timeScale = 1;
 					Network.Disconnect();
 					Application.LoadLevel("Load");
 					loading.nombre = "menu";

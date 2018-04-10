@@ -112,7 +112,7 @@ public class CamNetwork : NetworkBehaviour {
 		}
 		if(Application.loadedLevelName == "LevelNetwork1")
 		{
-			limiteObjetivo = -50;
+			limiteObjetivo = +35;
 			limiteAleja = -200;
 		}
 		if(Application.loadedLevelName == "LevelNetwork2")
