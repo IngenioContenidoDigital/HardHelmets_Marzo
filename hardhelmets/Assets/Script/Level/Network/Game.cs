@@ -925,9 +925,11 @@ public class Game : NetworkBehaviour {
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
 					Time.timeScale = 1;
-					//Network.Disconnect();
-					NetworkManager.singleton.StopHost();
-					NetworkManager.singleton.StopClient();
+					Network.Disconnect();
+
+					//NetworkManager.singleton.StopHost();
+					//NetworkManager.singleton.StopClient();
+
 					Application.LoadLevel("Load");
 					loading.nombre = "menu";
 				}
@@ -962,15 +964,20 @@ public class Game : NetworkBehaviour {
 			}
 			if(sumatoria3)
 			{
-				if(cofre >= 3)
+				if(banderasCofre >= 3)
 				{
 					PlayerPrefs.SetInt("caja1", cofre+1);
-					PlayerPrefs.SetInt("banderasCofre", 0);
+					PlayerPrefs.SetInt("banderasCofre", PlayerPrefs.GetInt("banderasCofre")-3);
+
+					if(PlayerPrefs.GetInt("banderasCofre") <= 0)
+					{
+						PlayerPrefs.SetInt("banderasCofre", 0);
+					}
 
 					Baul.SetActive(true);
-					Baul.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre2", false);
+					Baul.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
 
-					cofre = 0;
+					banderasCofre = 0;
 				}
 
 				StolenCardsM2 += 100;
@@ -1080,9 +1087,12 @@ public class Game : NetworkBehaviour {
 				siguiente.SetActive(true);
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
-					//Network.Disconnect();
-					NetworkManager.singleton.StopHost();
-					NetworkManager.singleton.StopClient();
+					Time.timeScale = 1;
+					Network.Disconnect();
+
+					//NetworkManager.singleton.StopHost();
+					//NetworkManager.singleton.StopClient();
+
 					Application.LoadLevel("Load");
 					loading.nombre = "menu";
 				}

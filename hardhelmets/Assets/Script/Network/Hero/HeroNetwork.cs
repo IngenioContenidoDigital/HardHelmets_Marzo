@@ -2099,6 +2099,8 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		yield return new WaitForSeconds(5f);
 		GetComponent<HeroNetwork>().menu.SetActive(true);
+		SniperCam.GetComponent<Grayscale>().enabled = true;
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(muerto1);
 	}
 	IEnumerator resetArma ()
 	{

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Spine.Unity;
-//using Steamworks;
+using UnityEngine.Networking;
+using Steamworks;
 
 public class Menu : MonoBehaviour {
 
@@ -113,13 +114,12 @@ public class Menu : MonoBehaviour {
 
 	void Start ()
 	{
-		/*if(SteamManager.Initialized)
+		if(SteamManager.Initialized)
 		{
 			//Display User Name
 			SteamName = SteamFriends.GetPersonaName();
 			PlayerPrefs.SetString("SteamName", SteamName);
-		}*/
-
+		}
 
 		//Cursor.visible = true;
 

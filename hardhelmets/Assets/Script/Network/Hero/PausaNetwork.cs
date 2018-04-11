@@ -139,7 +139,7 @@ public class PausaNetwork : MonoBehaviour {
 		pantalla = "";
 		Time.timeScale = 1;
 		Player.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = false;
-		Player.GetComponent<HeroNetwork>().ready = false;
+		Player.GetComponent<HeroNetwork>().ready = true;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(carta1);
 		gameObject.SetActive(false);
 	}

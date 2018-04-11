@@ -32,6 +32,7 @@ public class Logo : MonoBehaviour {
 				negro.color = new Color32(0,0,0,alp);
 				if(alp >= 255)
 				{
+					alp = 255;
 					Application.LoadLevel("menu");
 				}
 			}
@@ -54,6 +55,7 @@ public class Logo : MonoBehaviour {
 				negro.color = new Color32(0,0,0,alp);
 				if(alp >= 255)
 				{
+					alp = 255;
 					Application.LoadLevel("menu");
 				}
 			}
