@@ -47,8 +47,8 @@ public class PlayerIdSkinLobby : NetworkBehaviour {
 
 			name = PlayerPrefs.GetString("SteamName");
 			nivel = PlayerPrefs.GetInt("PlayerLevel");
-			flags = PlayerPrefs.GetInt("banderas");
-			bas = PlayerPrefs.GetInt("bases");
+			flags = PlayerPrefs.GetInt("Banderas");
+			bas = PlayerPrefs.GetInt("Bases");
 
 			nombre.text = name;
 

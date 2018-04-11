@@ -165,7 +165,7 @@ namespace Prototype.NetworkLobby
 			if(!primera && !isServer)
 			{
 				print("CORRER ESCENARIOS ARRIBA");
-				escenarios.GetComponent<RectTransform>().anchoredPosition = new Vector3(escenarios.GetComponent<RectTransform>().anchoredPosition.x, escenarios.GetComponent<RectTransform>().anchoredPosition.y+100, 0);
+				escenarios.GetComponent<RectTransform>().anchoredPosition = new Vector3(escenarios.GetComponent<RectTransform>().anchoredPosition.x, escenarios.GetComponent<RectTransform>().anchoredPosition.y+150, 0);
 				primera = true;
 			}
 			escenarios.GetComponent<Animator>().SetBool("entra", true);

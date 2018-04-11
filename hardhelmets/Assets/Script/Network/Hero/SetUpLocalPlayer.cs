@@ -92,6 +92,8 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 				//Colision.gameObject.tag = "enemy";//.layer = LayerMask.NameToLayer("Enemy");
 				Mira.gameObject.layer = LayerMask.NameToLayer("miraMalo");
 
+				GetComponent<HeroNetwork>().CmdChangeDirection ("left");
+
 				Destroy(this);
 			}else
 			{

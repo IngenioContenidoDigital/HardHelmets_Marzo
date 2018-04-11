@@ -2160,7 +2160,7 @@ public class HeroNetwork : NetworkBehaviour{
 	}
 	//CAMBIAR DIRECCION
 	[Command]
-	void CmdChangeDirection(string direction)
+	public void CmdChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
 		{
