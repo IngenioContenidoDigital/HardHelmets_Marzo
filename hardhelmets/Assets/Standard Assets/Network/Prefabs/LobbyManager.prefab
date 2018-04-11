@@ -3391,6 +3391,7 @@ MonoBehaviour:
   hostInfo: {fileID: 11415712}
   _playerNumber: 0
   _isMatchmaking: 0
+  mensajeError: {fileID: 0}
   tablero: 0000000000000000
   final: 0
   azar: 0
@@ -3403,8 +3404,12 @@ MonoBehaviour:
   partida: {fileID: 0}
   servers: {fileID: 0}
   info: {fileID: 0}
-  cartas: {fileID: 0}
+  cartas1: {fileID: 0}
+  cartas2: {fileID: 0}
   mensajes: {fileID: 0}
+  eventsystem: {fileID: 0}
+  selectedObj: {fileID: 0}
+  jugado: 0
   actual: 
 --- !u!114 &11476426
 MonoBehaviour:
@@ -6164,6 +6169,18 @@ MonoBehaviour:
   Estrella: {fileID: 1857194510647364}
   P1: {fileID: 1930666257577308}
   P2: {fileID: 1717772263631796}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player1Skin: {fileID: 0}
+  Player2Skin: {fileID: 0}
+  name1: {fileID: 0}
+  level1: {fileID: 0}
+  torres1: {fileID: 0}
+  bases1: {fileID: 0}
+  name2: {fileID: 0}
+  level2: {fileID: 0}
+  torres2: {fileID: 0}
+  bases2: {fileID: 0}
 --- !u!114 &114125416103725530
 MonoBehaviour:
   m_ObjectHideFlags: 1

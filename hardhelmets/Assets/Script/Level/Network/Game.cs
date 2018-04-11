@@ -925,7 +925,9 @@ public class Game : NetworkBehaviour {
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
 					Time.timeScale = 1;
-					Network.Disconnect();
+					//Network.Disconnect();
+					NetworkManager.singleton.StopHost();
+					NetworkManager.singleton.StopClient();
 					Application.LoadLevel("Load");
 					loading.nombre = "menu";
 				}
@@ -1078,7 +1080,9 @@ public class Game : NetworkBehaviour {
 				siguiente.SetActive(true);
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
-					Network.Disconnect();
+					//Network.Disconnect();
+					NetworkManager.singleton.StopHost();
+					NetworkManager.singleton.StopClient();
 					Application.LoadLevel("Load");
 					loading.nombre = "menu";
 				}

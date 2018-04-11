@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.UI;
+using Prototype.NetworkLobby;
+using UnityEngine.Networking;
+using UnityEngine.Networking.Types;
+using UnityEngine.Networking.Match;
 
 public class PausaNetwork : MonoBehaviour {
 
@@ -199,7 +203,9 @@ public class PausaNetwork : MonoBehaviour {
 	public void Si()
 	{
 		pantalla = "";
-		Network.Disconnect();
+		//Network.Disconnect();
+		NetworkManager.singleton.StopHost();
+		NetworkManager.singleton.StopClient();
 		Application.LoadLevel("Load");
 		loading.nombre = "menu";
 	}

@@ -48,23 +48,29 @@ public class versus : MonoBehaviour {
 		Player1 = GameObject.Find("PlayerInfo1");
 		Player2 = GameObject.Find("PlayerInfo2");
 
-		Player1Skin.GetComponent<combinedSkins>().skinsToCombine[0] = Player1.GetComponent<PlayerIdSkinLobby>().avatar;
-		Player1Skin.GetComponent<combinedSkins>().skinsToCombine[1] = Player1.GetComponent<PlayerIdSkinLobby>().borde;
-		Player1Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player1.GetComponent<PlayerIdSkinLobby>().fondo;
+		if(Player1 != null)
+		{
+			name1.text = Player1.GetComponent<PlayerIdSkinLobby>().name;
+			level1.text = Player1.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
+			torres1.text = Player1.GetComponent<PlayerIdSkinLobby>().flags.ToString();
+			bases1.text = Player1.GetComponent<PlayerIdSkinLobby>().bas.ToString();
 
-		Player2Skin.GetComponent<combinedSkins>().skinsToCombine[0] = Player2.GetComponent<PlayerIdSkinLobby>().avatar;
-		Player2Skin.GetComponent<combinedSkins>().skinsToCombine[1] = Player2.GetComponent<PlayerIdSkinLobby>().borde;
-		Player2Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player2.GetComponent<PlayerIdSkinLobby>().fondo;
+			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[0] = Player1.GetComponent<PlayerIdSkinLobby>().avatar;
+			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[1] = Player1.GetComponent<PlayerIdSkinLobby>().borde;
+			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player1.GetComponent<PlayerIdSkinLobby>().fondo;
+		}
 
-		name1.text = Player1.GetComponent<PlayerIdSkinLobby>().name;
-		level1.text = Player1.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
-		torres1.text = Player1.GetComponent<PlayerIdSkinLobby>().flags.ToString();
-		bases1.text = Player1.GetComponent<PlayerIdSkinLobby>().bas.ToString();
+		if(Player2 != null)
+		{
+			name2.text = Player2.GetComponent<PlayerIdSkinLobby>().name;
+			level2.text = Player2.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
+			torres2.text = Player2.GetComponent<PlayerIdSkinLobby>().flags.ToString();
+			bases2.text = Player2.GetComponent<PlayerIdSkinLobby>().bas.ToString();
 
-		name2.text = Player2.GetComponent<PlayerIdSkinLobby>().name;
-		level2.text = Player2.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
-		torres2.text = Player2.GetComponent<PlayerIdSkinLobby>().flags.ToString();
-		bases2.text = Player2.GetComponent<PlayerIdSkinLobby>().bas.ToString();
+			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[0] = Player2.GetComponent<PlayerIdSkinLobby>().avatar;
+			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[1] = Player2.GetComponent<PlayerIdSkinLobby>().borde;
+			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player2.GetComponent<PlayerIdSkinLobby>().fondo;
+		}
 	}
 
 	IEnumerator momentoFondo()

@@ -116,7 +116,7 @@ namespace Prototype.NetworkLobby
             {
                 //ChangeTo(null);
 
-                Destroy(GameObject.Find("MainMenuUI(Clone)"));
+                //Destroy(GameObject.Find("MainMenuUI(Clone)"));
 
                 //backDelegate = StopGameClbk;
                 topPanel.isInGame = true;

@@ -129,7 +129,9 @@ namespace Prototype.NetworkLobby {
 
 				versus.SetActive(false);
 
-				Network.Disconnect();
+				//Network.Disconnect();
+				NetworkManager.singleton.StopHost();
+				NetworkManager.singleton.StopClient();
 
 				jugado = false;
 			}
@@ -142,7 +144,9 @@ namespace Prototype.NetworkLobby {
 
 				jugado = false;
 
-				Network.Disconnect();
+				//Network.Disconnect();
+				NetworkManager.singleton.StopHost();
+				NetworkManager.singleton.StopClient();
 
 				Destroy(master);
 			}
@@ -156,7 +160,9 @@ namespace Prototype.NetworkLobby {
 			actual = "";
 			actual2 = "";
 
-			Network.Disconnect();
+			//Network.Disconnect();
+			NetworkManager.singleton.StopHost();
+			NetworkManager.singleton.StopClient();
 
 			Destroy(master);
 
@@ -234,7 +240,10 @@ namespace Prototype.NetworkLobby {
 						master.GetComponent<LobbyManager>().actual = "";
 						actual = "";
 						//Network.CloseConnection(Network.connections[0], true);
-						Network.Disconnect();
+						//Network.Disconnect();
+
+						NetworkManager.singleton.StopHost();
+						NetworkManager.singleton.StopClient();
 
 						crear.SetActive(true);
 						lista.SetActive(true);
