@@ -274,10 +274,10 @@ public class AIMetra : MonoBehaviour {
 		}else
 		{
 			mira.SetActive(false);
-			if(matrix == 1 && !matrix2 && Player.name == "Hero")
+			/*if(matrix == 1 && !matrix2 && Player.name == "Hero")
 			{
 				//Manager.lenta = true;
-			}
+			}*/
 			gameObject.layer = LayerMask.NameToLayer("muerto");
 			Base.layer = LayerMask.NameToLayer("mira");
 			//gameObject.tag = "Untagged";

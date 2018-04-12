@@ -30,6 +30,7 @@ public class GameOffline : MonoBehaviour {
 
 
 	public bool final;
+	public bool final2;
 
 	//TIEMPO DE PARTIDA
 
@@ -184,6 +185,18 @@ public class GameOffline : MonoBehaviour {
 
 	public GameObject musica;
 
+	public GameObject fondo;
+
+	public GameObject finpartida;
+
+	public GameObject Ganador;
+	public GameObject Perdedor;
+	public GameObject Empate;
+
+	bool titulos;
+	bool titulos2;
+	bool titulos3;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -269,8 +282,9 @@ public class GameOffline : MonoBehaviour {
 				Falta -= Time.deltaTime;
 			}
 
-			if(Falta <= 0 && !muerte)
+			if(Falta <= 0 && !final && !muerte)
 			{
+				Player1.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
 				final = true;
 			}
 
@@ -416,19 +430,64 @@ public class GameOffline : MonoBehaviour {
 		nivel1.text = ""+level1;
 		nivel2.text = ""+level2;
 
-		if(final)
+		if(final && !final2)
+		{
+			if(sagreBB <= 0 || sagreBM <= 0)
+			{
+				titulos2 = true;
+			}else
+			{
+				finpartida.SetActive(true);
+
+				if(!titulos)
+				{
+					titulos = true;
+					StartCoroutine(esperatitulos());
+				}
+			}
+		}
+		if(titulos2 && !final2)
+		{
+			arriba.SetActive(false);
+			iconos.SetActive(false);
+
+			finpartida.SetActive(false);
+			if(!titulos3)
+			{
+				titulos3 = true;
+				StartCoroutine(esperafinal());
+			}
+			fondo.SetActive(true);
+			banderaBuena.SetActive(true);
+
+			if(sagreBM <= 0)
+			{
+				Ganador.SetActive(true);
+			}else if(sagreBB <= 0)
+			{
+				Perdedor.SetActive(true);
+			}else if(CapturedFlagsB > CapturedFlagsM)
+			{
+				Ganador.SetActive(true);
+			}else if(CapturedFlagsB < CapturedFlagsM)
+			{
+				Perdedor.SetActive(true);
+			}else if(CapturedFlagsB == CapturedFlagsM)
+			{
+				Empate.SetActive(true);
+			}
+		}
+
+		if(final && final2)
 		{
 			Time.timeScale = 1;
 			Destroy(musica);
 			End.SetActive(true);
-			arriba.SetActive(false);
-			iconos.SetActive(false);
 
 			Player1.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
 
 			if(Player1.tag == "Player")
 			{
-				banderaBuena.SetActive(true);
 				Bueno.SetActive(true);
 
 				int siguiente = PlayerPrefs.GetInt("PlayerLevel")+1;
@@ -516,38 +575,6 @@ public class GameOffline : MonoBehaviour {
 			{
 				StartCoroutine(esperaSumar());
 				finalizado = true;
-			}
-
-			if(banderaBuena.activeSelf && banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops") //.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
-			{
-				StartCoroutine(EspBandera1());
-			}
-
-			if(banderaMala.activeSelf && banderaMala.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
-			{
-				StartCoroutine(EspBandera2());
-			}
-
-			if(Medalla1.activeSelf && Medalla1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspHabla1());
-			}
-			if(MedallaTorre.activeSelf && MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspHablaTorre());
-			}
-			if(Medalla2.activeSelf && Medalla2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspHabla2());
-			}
-
-			if(rango1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspRango1());
-			}
-			if(rango2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspRango2());
 			}
 		}
 
@@ -810,6 +837,21 @@ public class GameOffline : MonoBehaviour {
 			}
 		}
 	}
+	//SE ACABO EL TIEMPO
+	IEnumerator esperatitulos()
+	{
+		yield return new WaitForSeconds(5f);
+		titulos2 = true;
+	}
+
+	IEnumerator esperafinal()
+	{
+		yield return new WaitForSeconds(5f);
+		final2 = true;
+		Ganador.SetActive(false);
+		Perdedor.SetActive(false);
+		Empate.SetActive(false);
+	}
 	//--ORDEN DE LAS MEDALLAS
 	IEnumerator EspSale1()
 	{
@@ -868,42 +910,6 @@ public class GameOffline : MonoBehaviour {
 		finalizado = true;
 		sumatoria = true;
 		audio1.Play();
-	}
-
-	IEnumerator EspHabla1()
-	{
-		yield return new WaitForSpineAnimationComplete(Medalla1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspRango1()
-	{
-		yield return new WaitForSpineAnimationComplete(rango1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		rango1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspRango2()
-	{
-		yield return new WaitForSpineAnimationComplete(rango2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		rango2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspHabla2()
-	{
-		yield return new WaitForSpineAnimationComplete(Medalla2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspHablaTorre()
-	{
-		yield return new WaitForSpineAnimationComplete(MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspBandera1()
-	{
-			yield return new WaitForSpineAnimationComplete(banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-			banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loops", true);
-	}
-	IEnumerator EspBandera2()
-	{
-		yield return new WaitForSpineAnimationComplete(banderaMala.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		banderaMala.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loops", true);
 	}
 
 	IEnumerator AlphaBEntra()
