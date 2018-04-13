@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95513310043119358}
   - component: {fileID: 114022189034332664}
   - component: {fileID: 114210534251817596}
+  - component: {fileID: 114502084912490508}
   - component: {fileID: 82972310803620784}
   - component: {fileID: 65953458667550312}
   - component: {fileID: 54866199481472344}
@@ -258,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explo: {fileID: 1074551696712326, guid: 6d9b490351e489646802b7ee0132a472, type: 2}
   prefab: {fileID: 1990200636855684, guid: 98631222199492e4183c08dde9eac952, type: 2}
-  poder: 47
+  poder: 0
 --- !u!114 &114283742596824490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,6 +313,20 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114502084912490508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468475730498676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260331575b95dd941b8f39917903cadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explo1: {fileID: 8300000, guid: e9bb8b6907e0b8549a41593a10a8b503, type: 3}
+  explo2: {fileID: 8300000, guid: 9b4c25a77c5c14c4db7e12ab76e26163, type: 3}
+  poder: 0
 --- !u!114 &114878615773966446
 MonoBehaviour:
   m_ObjectHideFlags: 1

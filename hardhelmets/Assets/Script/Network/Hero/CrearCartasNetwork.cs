@@ -613,7 +613,6 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		GetComponent<Animator>().SetBool("crear", true);
 
 		martillar = true;
-		martillaTorreta2 = false;
 		martillaTorreta = true;
 		/*if(gameObject.tag == "Player")
 		{
@@ -628,14 +627,24 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdTorretaBueno()
 	{
-		var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdTorretaMalo()
 	{
-		var objeto = (GameObject)Instantiate(torretaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	//TORRETA MISIL
 	public void crearTorretaMisil ()
@@ -644,20 +653,29 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		GetComponent<Animator>().SetBool("crear", true);
 
 		martillar = true;
-		martillaTorreta = false;
 		martillaTorreta2 = true;
 	}
 	[Command]
 	public void CmdTorretaMisilBueno()
 	{
-		var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdTorretaMisilMalo()
 	{
-		var objeto = (GameObject)Instantiate(torretaMisilMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(torretaMisilMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	//MINA
 	public void crearMina ()
@@ -671,19 +689,29 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdcrearMinaBueno()
 	{
-		var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
-		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104;
-		print(GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104);
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
+			objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104;
+			print(GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104);
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
 	[Command]
 	public void CmdcrearMinaMalo()
 	{
-		var objeto = (GameObject)Instantiate(minaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
-		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax2*objeto.GetComponent<mina>().poder/104;
-		NetworkServer.Spawn(objeto);
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(minaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+			objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax2*objeto.GetComponent<mina>().poder/104;
+			NetworkServer.Spawn(objeto);
+
+			tirar = true;
+		}
 	}
-	public int hammer;
+	int hammer;
 	//OBJETOS CON MARTILLOS
 	public void HAMMER ()
 	{

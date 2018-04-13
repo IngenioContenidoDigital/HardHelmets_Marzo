@@ -448,7 +448,6 @@ public class GameOffline : MonoBehaviour {
 		}
 		if(titulos2 && !final2)
 		{
-			Destroy(musica);
 			arriba.SetActive(false);
 			iconos.SetActive(false);
 
@@ -482,6 +481,7 @@ public class GameOffline : MonoBehaviour {
 		if(final && final2)
 		{
 			Time.timeScale = 1;
+			Destroy(musica);
 			End.SetActive(true);
 
 			Player1.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
@@ -590,13 +590,17 @@ public class GameOffline : MonoBehaviour {
 
 		if(sagreBB <= 0)
 		{
+			//Time.timeScale = 0.3f;
 			posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
 			muerte = true;
+			//StartCoroutine(muereBase());
 		}
 		if(sagreBM <= 0)
 		{
+			//Time.timeScale = 0.3f;
 			posicion = new Vector3(BaseM.transform.position.x-7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
 			muerte = true;
+			//StartCoroutine(muereBase());
 		}
 
 		if(AlphaTomada == "Buena")
@@ -842,7 +846,7 @@ public class GameOffline : MonoBehaviour {
 
 	IEnumerator esperafinal()
 	{
-		yield return new WaitForSeconds(7f);
+		yield return new WaitForSeconds(5f);
 		final2 = true;
 		Ganador.SetActive(false);
 		Perdedor.SetActive(false);
@@ -957,6 +961,7 @@ public class GameOffline : MonoBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
+		Time.timeScale = 1;
 		destruccion.SetActive(true);
 		StartCoroutine(ultimo());
 	}

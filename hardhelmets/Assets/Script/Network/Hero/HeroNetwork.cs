@@ -1769,6 +1769,10 @@ public class HeroNetwork : NetworkBehaviour{
 			{
 				animator.SetBool("sniper", false);
 			}
+			if(Input.GetButtonDown("PAUSA"))
+			{
+				Pausa();
+			}
 		}else
 		{
 			SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
@@ -1813,11 +1817,6 @@ public class HeroNetwork : NetworkBehaviour{
 			Cmd_Ordenando(ordenLugar, orden, muneco);
 
 			orden = false;
-		}
-
-		if(Input.GetButtonDown("PAUSA"))
-		{
-			Pausa();
 		}
 	}
 
@@ -1913,37 +1912,18 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaLlamas()
 	{
-		if(_currentDirection == "right")
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}else
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * -15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}
-
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
+		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		NetworkServer.Spawn(bulletB);
+		Destroy(bulletB, 0.7f);
 	}
 	[Command]
 	void CmdBalaLlamasMalo()
 	{
-		if(_currentDirection == "right")
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}else
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * -15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
+		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		NetworkServer.Spawn(bulletB);
+		Destroy(bulletB, 0.7f);
 	}
 	public GameObject estela;
 	void disparoSniper()

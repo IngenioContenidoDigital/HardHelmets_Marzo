@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 82198957258098784}
   - component: {fileID: 65994031219296510}
   - component: {fileID: 54671978485862256}
+  - component: {fileID: 114636399464921932}
   - component: {fileID: 114458306357297626}
   m_Layer: 11
   m_Name: balaMortero
@@ -225,7 +226,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explo: {fileID: 1958424660531512, guid: 8177cacbb9c06eb4e9f04d9c00a53475, type: 2}
   prefab: {fileID: 1331003767936938, guid: 946bbe5cda6b87a4a9d9fd0a79aecfe6, type: 2}
-  poder: 47
+  poder: 0
+--- !u!114 &114636399464921932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1225508662381798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ea50f03beeed743bcb777897c72380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explo1: {fileID: 8300000, guid: e9bb8b6907e0b8549a41593a10a8b503, type: 3}
+  explo2: {fileID: 8300000, guid: 9b4c25a77c5c14c4db7e12ab76e26163, type: 3}
+  poder: 0
 --- !u!114 &114791611714824648
 MonoBehaviour:
   m_ObjectHideFlags: 1
