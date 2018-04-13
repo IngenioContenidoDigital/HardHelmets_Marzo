@@ -36,11 +36,9 @@ public class Game : NetworkBehaviour {
 	public UnityEngine.UI.Text Tiempo;
 
 	//NOMBRES
-	[SyncVar]
 	public string nombre1;
 	public UnityEngine.UI.Text nombres1;
 
-	[SyncVar]
 	public string nombre2;
 	public UnityEngine.UI.Text nombres2;
 
