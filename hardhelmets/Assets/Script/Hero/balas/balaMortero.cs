@@ -27,6 +27,8 @@ public class balaMortero : MonoBehaviour {
 		var explocion = (GameObject)Instantiate(explo, transform.position, Quaternion.identity);
 		var onda = (GameObject)Instantiate(prefab, transform.position, Quaternion.identity);
 
-		explo.GetComponent<Explo>().poder = poder;
+		explo.GetComponent<ExploOffline>().poder = poder;
+
+		Destroy(gameObject);
 	}
 }

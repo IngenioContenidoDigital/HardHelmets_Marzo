@@ -32,6 +32,6 @@ public class balaMorteroNetwork : NetworkBehaviour {
 		NetworkServer.Spawn(explocion);
 		explo.GetComponent<Explo>().poder = poder;
 		NetworkServer.Spawn(onda);
-		NetworkServer.Destroy(gameObject);
+		Destroy(gameObject);
 	}
 }

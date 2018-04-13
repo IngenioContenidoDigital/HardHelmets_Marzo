@@ -36,8 +36,11 @@ public class Game : NetworkBehaviour {
 	public UnityEngine.UI.Text Tiempo;
 
 	//NOMBRES
+	[SyncVar]
 	public string nombre1;
 	public UnityEngine.UI.Text nombres1;
+
+	[SyncVar]
 	public string nombre2;
 	public UnityEngine.UI.Text nombres2;
 
@@ -691,17 +694,13 @@ public class Game : NetworkBehaviour {
 
 		if(sagreBB <= 0)
 		{
-			//Time.timeScale = 0.3f;
 			posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
 			muerte = true;
-			//StartCoroutine(muereBase());
 		}
 		if(sagreBM <= 0)
 		{
-			//Time.timeScale = 0.3f;
 			posicion = new Vector3(BaseM.transform.position.x-7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
 			muerte = true;
-			//StartCoroutine(muereBase());
 		}
 
 		if(AlphaTomada == "Buena")
@@ -924,14 +923,7 @@ public class Game : NetworkBehaviour {
 				siguiente.SetActive(true);
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
-					Time.timeScale = 1;
-					Network.Disconnect();
-
-					//NetworkManager.singleton.StopHost();
-					//NetworkManager.singleton.StopClient();
-
-					Application.LoadLevel("Load");
-					loading.nombre = "menu";
+					CmdEndGame("Lobby");
 				}
 			}
 		}else//PLAYER 2 "CLIENTE"
@@ -1087,17 +1079,15 @@ public class Game : NetworkBehaviour {
 				siguiente.SetActive(true);
 				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 				{
-					Time.timeScale = 1;
-					Network.Disconnect();
-
-					//NetworkManager.singleton.StopHost();
-					//NetworkManager.singleton.StopClient();
-
-					Application.LoadLevel("Load");
-					loading.nombre = "menu";
+					CmdEndGame("Lobby");
 				}
 			}
 		}
+	}
+	[Command]
+	public void CmdEndGame(string level)
+	{
+		NetworkManager.singleton.ServerChangeScene(level);
 	}
 	//--ORDEN DE LAS MEDALLAS BUENAS
 	IEnumerator EspSale1()
@@ -1281,7 +1271,6 @@ public class Game : NetworkBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
-		Time.timeScale = 1;
 		destruccion.SetActive(true);
 		StartCoroutine(ultimo());
 	}
