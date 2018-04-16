@@ -480,6 +480,11 @@ public class Game : NetworkBehaviour {
 	[SyncVar]
 	public float sleccionFinal;
 
+	public GameObject RematchImageServer;
+	public GameObject RematchImageCliente;
+	public GameObject LobbyImageServer;
+	public GameObject LobbyImageCliente;
+
 	public Sprite seleccionadoRematch;
 	public Sprite desseleccionadoRematch;
 
@@ -487,6 +492,8 @@ public class Game : NetworkBehaviour {
 	public Sprite desseleccionadoLobby;
 
 	public UnityEngine.UI.Text TiempoSleccion;
+
+	bool cargar;
 
 	//SERVIDOR Y CLIENTE
 	void FixedUpdate ()
@@ -1026,22 +1033,30 @@ public class Game : NetworkBehaviour {
 					sleccionFinal = 0;
 					if(rematchS+rematchC == 2)
 					{
-						CmdEndGame(Application.loadedLevelName);
+						if(!cargar)
+						{
+							CmdEndGame(Application.loadedLevelName);
+							cargar = true;
+						}
 					}else
 					{
-						CmdEndGame("Lobby");
+						if(!cargar)
+						{
+							CmdEndGame("Lobby");
+							cargar = true;
+						}
 					}
 				}
 				TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
 
 				if(rematchC == 1)
 				{
-					RematchCliente.GetComponent<Image>().sprite = seleccionadoRematch;
-					LobbyCliente.GetComponent<Image>().sprite = desseleccionadoLobby;
+					RematchImageCliente.GetComponent<Image>().sprite = seleccionadoRematch;
+					LobbyImageCliente.GetComponent<Image>().sprite = desseleccionadoLobby;
 				}else
 				{
-					RematchCliente.GetComponent<Image>().sprite = seleccionadoLobby;
-					LobbyCliente.GetComponent<Image>().sprite = desseleccionadoRematch;
+					RematchImageCliente.GetComponent<Image>().sprite = desseleccionadoRematch;
+					LobbyImageCliente.GetComponent<Image>().sprite = seleccionadoLobby;
 				}
 			}
 		}else//PLAYER 2 "CLIENTE"
@@ -1200,12 +1215,12 @@ public class Game : NetworkBehaviour {
 
 				if(rematchS == 1)
 				{
-					RematchServer.GetComponent<Image>().sprite = seleccionadoRematch;
-					LobbyServer.GetComponent<Image>().sprite = desseleccionadoLobby;
+					RematchImageServer.GetComponent<Image>().sprite = seleccionadoRematch;
+					LobbyImageServer.GetComponent<Image>().sprite = desseleccionadoLobby;
 				}else
 				{
-					LobbyServer.GetComponent<Image>().sprite = seleccionadoLobby;
-					RematchServer.GetComponent<Image>().sprite = desseleccionadoRematch;
+					RematchImageServer.GetComponent<Image>().sprite = desseleccionadoRematch;
+					LobbyImageServer.GetComponent<Image>().sprite = seleccionadoLobby;
 				}
 			}
 		}
