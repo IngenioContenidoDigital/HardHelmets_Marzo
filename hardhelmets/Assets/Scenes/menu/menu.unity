@@ -7357,7 +7357,7 @@ GameObject:
   - component: {fileID: 335928895}
   - component: {fileID: 335928899}
   m_Layer: 5
-  m_Name: Profile
+  m_Name: Profile----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7425,6 +7425,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: PracticeText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -7469,7 +7480,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2107614043}
-        m_MethodName: Perfil
+        m_MethodName: practica
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8657,7 +8668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &385639272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10384,6 +10395,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 450709881}
           m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: TutorialText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -12129,6 +12151,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 500989754}
           m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: MultiplayerText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -16195,6 +16228,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 717132137}
           m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: CardDeckText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -29996,7 +30040,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DO YOU REALLY WANT TO PLAY COMMUNITY MATCH?
+  m_Text: DO YOU REALLY WANT TO PLAY SINGLE PLAYER MATCH?
 --- !u!222 &1354430853
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37001,7 +37045,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 32.8, y: 364}
-  m_SizeDelta: {x: 95.11, y: 41.99}
+  m_SizeDelta: {x: 88.4, y: 41.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582828253
 MonoBehaviour:
@@ -37029,7 +37073,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b9d112a3283de7e4480bdb0b7ff875ff,
+    m_HighlightedSprite: {fileID: 21300000, guid: 7d6a150400b1ef94d93cc6b16104397d,
       type: 3}
     m_PressedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -37044,7 +37088,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2107614043}
-        m_MethodName: practica
+        m_MethodName: Perfil
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37086,7 +37130,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d69e515324297e14f9a0b1db4f6e9303, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef74ac5d70070c44c97c1508f3664010, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37117,7 +37161,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2107614043}
-          m_MethodName: PracticeText
+          m_MethodName: ProfileText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -37135,6 +37179,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1582828257}
           m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: ProfileText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -42689,8 +42744,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74.5, y: 454.5}
-  m_SizeDelta: {x: 159.16, y: 42.38}
+  m_AnchoredPosition: {x: 77.9, y: 454.5}
+  m_SizeDelta: {x: 159.16, y: 43.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832531256
 MonoBehaviour:
@@ -42698,7 +42753,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1832531254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -42718,7 +42773,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 93c6a215734a5d341b3d3a4e8be3ae83,
+    m_HighlightedSprite: {fileID: 21300000, guid: 56e01d1a8add7904188748e4ca7c9f45,
       type: 3}
     m_PressedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -42775,7 +42830,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 448783357167b0e4eaefb8feaecab990, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c738479dc32cc840a51f2220db6dfbe, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42824,6 +42879,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1832531260}
           m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: CommunityText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -45271,6 +45337,17 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1940584272}
           m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2107614043}
+          m_MethodName: CustomizationText
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

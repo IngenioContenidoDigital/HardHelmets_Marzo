@@ -1466,6 +1466,10 @@ public class Menu : MonoBehaviour {
 	{
 		descripcion.text = "Train to improve your skills and gain some ability to command your men.";
 	}
+	public void ProfileText ()
+	{
+		descripcion.text = "Customize your player id to show you personality in front of other players";
+	}
 	//REGRESAR
 	public GameObject mano;
 	//MENSAJE EN PANTALLA
