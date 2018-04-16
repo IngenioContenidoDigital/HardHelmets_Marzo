@@ -474,6 +474,8 @@ public class Game : NetworkBehaviour {
 	[SyncVar]
 	public float sleccionFinal;
 
+	public Text TiempoSleccion;
+
 	bool cargar;
 
 	//SERVIDOR Y CLIENTE
@@ -1004,6 +1006,7 @@ public class Game : NetworkBehaviour {
 			{
 				Player1.GetComponent<HeroNetwork>().continuar = true;
 				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
+				rematchC = Player2.GetComponent<HeroNetwork>().rematch;
 
 				if(sleccionFinal > 0)
 				{
