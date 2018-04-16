@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Spine.Unity;
 using UnityEngine.Networking;
 using UnityStandardAssets.ImageEffects;
@@ -28,6 +29,8 @@ public class Game : NetworkBehaviour {
 
 	[SyncVar]
 	public bool final;
+
+	public bool final2;
 
 	//TIEMPO DE PARTIDA
 	[SyncVar]
@@ -204,6 +207,18 @@ public class Game : NetworkBehaviour {
 
 	public GameObject musica;
 
+	public GameObject fondo;
+
+	public GameObject finpartida;
+
+	public GameObject Ganador;
+	public GameObject Perdedor;
+	public GameObject Empate;
+
+	bool titulos;
+	bool titulos2;
+	bool titulos3;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -268,9 +283,27 @@ public class Game : NetworkBehaviour {
 	// SOLO EL SERVIDOR
 	void Update ()
 	{
+		if(Application.loadedLevelName == "Looby")
+		{
+			Destroy(gameObject);
+		}
+
 		if(!isServer)
 		{
+			nombre1 = Player1.GetComponent<HeroNetwork>().nombre;
+			nombres1.text = nombre1;
+
+			nombre2 = PlayerPrefs.GetString("SteamName");
+			nombres2.text = nombre2;
+
 			return;
+		}else
+		{
+			nombre1 = PlayerPrefs.GetString("SteamName");
+			nombres1.text = nombre1;
+
+			nombre2 = Player2.GetComponent<HeroNetwork>().nombre;
+			nombres2.text = nombre2;
 		}
 
 		if(Player1 == null)
@@ -330,9 +363,10 @@ public class Game : NetworkBehaviour {
 			{
 				Falta -= Time.deltaTime;
 			}
-
-			if(Falta <= 0 && !muerte)
+			if(Falta <= 0 && !final && !muerte)
 			{
+				Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
+				Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
 				final = true;
 			}
 
@@ -416,6 +450,7 @@ public class Game : NetworkBehaviour {
 	public bool sumatoria6;
 	public bool sumatoria7;
 	public bool sumatoria8;
+
 	public AudioSource audio1;
 	public AudioSource audio2;
 
@@ -426,9 +461,40 @@ public class Game : NetworkBehaviour {
 
 	public GameObject Baul;
 
-	public bool sumar1;
-	public bool sumar2;
-	public bool sumar3;
+	public bool sumar1Server;
+	public bool sumar2Server;
+	public bool sumar3Server;
+	public bool sumar1Cliente;
+	public bool sumar2Cliente;
+	public bool sumar3Cliente;
+
+	public GameObject RematchServer;
+	public GameObject LobbyServer;
+
+	public GameObject RematchCliente;
+	public GameObject LobbyCliente;
+
+	public int rematchS;
+	public int rematchC;
+
+	[SyncVar]
+	public float sleccionFinal;
+
+	public GameObject RematchImageServer;
+	public GameObject RematchImageCliente;
+	public GameObject LobbyImageServer;
+	public GameObject LobbyImageCliente;
+
+	public Sprite seleccionadoRematch;
+	public Sprite desseleccionadoRematch;
+
+	public Sprite seleccionadoLobby;
+	public Sprite desseleccionadoLobby;
+
+	public UnityEngine.UI.Text TiempoSleccion;
+
+	bool cargar;
+
 	//SERVIDOR Y CLIENTE
 	void FixedUpdate ()
 	{
@@ -493,14 +559,83 @@ public class Game : NetworkBehaviour {
 		nivel1.text = "L V "+level1;
 		nivel2.text = "L V "+level2;
 
-		if(final)
+		if(final && !final2)
+		{
+			if(sagreBB <= 0 || sagreBM <= 0)
+			{
+				titulos2 = true;
+			}else
+			{
+				finpartida.SetActive(true);
+
+				if(!titulos)
+				{
+					titulos = true;
+					StartCoroutine(esperatitulos());
+				}
+			}
+		}
+		if(titulos2 && !final2)
 		{
 			Destroy(musica);
-
-			Time.timeScale = 1;
-			End.SetActive(true);
 			arriba.SetActive(false);
 			iconos.SetActive(false);
+
+			finpartida.SetActive(false);
+			if(!titulos3)
+			{
+				titulos3 = true;
+				StartCoroutine(esperafinal());
+			}
+			fondo.SetActive(true);
+
+			if(isServer)
+			{
+				banderaBuena.SetActive(true);
+
+				if(sagreBM <= 0)
+				{
+					Ganador.SetActive(true);
+				}else if(sagreBB <= 0)
+				{
+					Perdedor.SetActive(true);
+				}else if(CapturedFlagsB > CapturedFlagsM)
+				{
+					Ganador.SetActive(true);
+				}else if(CapturedFlagsB < CapturedFlagsM)
+				{
+					Perdedor.SetActive(true);
+				}else if(CapturedFlagsB == CapturedFlagsM)
+				{
+					Empate.SetActive(true);
+				}
+			}else
+			{
+				banderaMala.SetActive(true);
+
+				if(sagreBB <= 0)
+				{
+					Ganador.SetActive(true);
+				}else if(sagreBM <= 0)
+				{
+					Perdedor.SetActive(true);
+				}else if(CapturedFlagsM > CapturedFlagsB)
+				{
+					Ganador.SetActive(true);
+				}else if(CapturedFlagsM < CapturedFlagsB)
+				{
+					Perdedor.SetActive(true);
+				}else if(CapturedFlagsM == CapturedFlagsB)
+				{
+					Empate.SetActive(true);
+				}
+			}
+		}
+
+		if(final && final2)
+		{
+			Time.timeScale = 1;
+			End.SetActive(true);
 
 			Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
 			Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
@@ -516,7 +651,7 @@ public class Game : NetworkBehaviour {
 
 				if(AlphaTomada == "Buena")
 				{
-					if(!sumar1)
+					if(!sumar1Server)
 					{
 						int sumarBase = PlayerPrefs.GetInt("Banderas")+1;
 						PlayerPrefs.SetInt("Banderas", sumarBase);
@@ -525,13 +660,13 @@ public class Game : NetworkBehaviour {
 
 						banderasCofre = PlayerPrefs.GetInt("banderasCofre");
 
-						sumar1 = true;
+						sumar1Server = true;
 					}
 					StartCoroutine(EspSale1());
 				}
 				if(BetaTomada == "Buena")
 				{
-					if(!sumar2)
+					if(!sumar2Server)
 					{
 						int sumarBase = PlayerPrefs.GetInt("Banderas")+1;
 						PlayerPrefs.SetInt("Banderas", sumarBase);
@@ -540,7 +675,7 @@ public class Game : NetworkBehaviour {
 
 						banderasCofre = PlayerPrefs.GetInt("banderasCofre");
 
-						sumar2 = true;
+						sumar2Server = true;
 					}
 					if(AlphaTomada == "Buena")
 					{
@@ -563,12 +698,12 @@ public class Game : NetworkBehaviour {
 					{
 						StartCoroutine(EspSale3());
 					}
-					if(!sumar3)
+					if(!sumar3Server)
 					{
 						int sumarBandera = PlayerPrefs.GetInt("Bases")+1;
 						PlayerPrefs.SetInt("Bases", sumarBandera);
 
-						sumar3 = true;
+						sumar3Server = true;
 					}
 					BaseDestroyedB = 1;
 				}
@@ -583,7 +718,7 @@ public class Game : NetworkBehaviour {
 
 				if(AlphaTomada == "Mala")
 				{
-					if(!sumar1)
+					if(!sumar1Cliente)
 					{
 						int sumarBase = PlayerPrefs.GetInt("Banderas")+1;
 						PlayerPrefs.SetInt("Banderas", sumarBase);
@@ -592,13 +727,13 @@ public class Game : NetworkBehaviour {
 
 						banderasCofre = PlayerPrefs.GetInt("banderasCofre");
 
-						sumar1 = true;
+						sumar1Cliente = true;
 					}
 					StartCoroutine(EspSale1M());
 				}
 				if(BetaTomada == "Mala")
 				{
-					if(!sumar2)
+					if(!sumar2Cliente)
 					{
 						int sumarBase = PlayerPrefs.GetInt("Banderas")+1;
 						PlayerPrefs.SetInt("Banderas", sumarBase);
@@ -607,7 +742,7 @@ public class Game : NetworkBehaviour {
 
 						banderasCofre = PlayerPrefs.GetInt("banderasCofre");
 
-						sumar2 = true;
+						sumar2Cliente = true;
 					}
 					if(AlphaTomada == "Mala")
 					{
@@ -630,12 +765,12 @@ public class Game : NetworkBehaviour {
 					{
 						StartCoroutine(EspSale3M());
 					}
-					if(!sumar3)
+					if(!sumar3Cliente)
 					{
 						int sumarBandera = PlayerPrefs.GetInt("Bases")+1;
 						PlayerPrefs.SetInt("Bases", sumarBandera);
 
-						sumar3 = true;
+						sumar3Cliente = true;
 					}
 					BaseDestroyedB = 1;
 				}
@@ -645,38 +780,6 @@ public class Game : NetworkBehaviour {
 			{
 				StartCoroutine(esperaSumar());
 				finalizado = true;
-			}
-
-			if(banderaBuena.activeSelf && banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
-			{
-				StartCoroutine(EspBandera1());
-			}
-
-			if(banderaMala.activeSelf && banderaMala.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loops")
-			{
-				StartCoroutine(EspBandera2());
-			}
-
-			if(Medalla1.activeSelf && Medalla1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspHabla1());
-			}
-			if(MedallaTorre.activeSelf && MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspHablaTorre());
-			}
-			if(Medalla2.activeSelf && Medalla2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspHabla2());
-			}
-
-			if(rango1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspRango1());
-			}
-			if(rango2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
-			{
-				StartCoroutine(EspRango2());
 			}
 		}
 
@@ -919,9 +1022,41 @@ public class Game : NetworkBehaviour {
 			if(continuar)
 			{
 				siguiente.SetActive(true);
-				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
+				RematchServer.GetComponent<Button>().enabled = true;
+				LobbyServer.GetComponent<Button>().enabled = true;
+
+				if(sleccionFinal > 0)
 				{
-					CmdEndGame("Lobby");
+					sleccionFinal -= Time.deltaTime;
+				}else
+				{
+					sleccionFinal = 0;
+					if(rematchS+rematchC == 2)
+					{
+						if(!cargar)
+						{
+							CmdEndGame(Application.loadedLevelName);
+							cargar = true;
+						}
+					}else
+					{
+						if(!cargar)
+						{
+							CmdEndGame("Lobby");
+							cargar = true;
+						}
+					}
+				}
+				TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
+
+				if(rematchC == 1)
+				{
+					RematchImageCliente.GetComponent<Image>().sprite = seleccionadoRematch;
+					LobbyImageCliente.GetComponent<Image>().sprite = desseleccionadoLobby;
+				}else
+				{
+					RematchImageCliente.GetComponent<Image>().sprite = desseleccionadoRematch;
+					LobbyImageCliente.GetComponent<Image>().sprite = seleccionadoLobby;
 				}
 			}
 		}else//PLAYER 2 "CLIENTE"
@@ -1075,13 +1210,37 @@ public class Game : NetworkBehaviour {
 			if(continuar)
 			{
 				siguiente.SetActive(true);
-				if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
+				RematchCliente.GetComponent<Button>().enabled = true;
+				LobbyCliente.GetComponent<Button>().enabled = true;
+
+				if(rematchS == 1)
 				{
-					CmdEndGame("Lobby");
+					RematchImageServer.GetComponent<Image>().sprite = seleccionadoRematch;
+					LobbyImageServer.GetComponent<Image>().sprite = desseleccionadoLobby;
+				}else
+				{
+					RematchImageServer.GetComponent<Image>().sprite = desseleccionadoRematch;
+					LobbyImageServer.GetComponent<Image>().sprite = seleccionadoLobby;
 				}
 			}
 		}
 	}
+	//SE ACABO EL TIEMPO
+	IEnumerator esperatitulos()
+	{
+		yield return new WaitForSeconds(5f);
+		titulos2 = true;
+	}
+
+	IEnumerator esperafinal()
+	{
+		yield return new WaitForSeconds(7f);
+		final2 = true;
+		Ganador.SetActive(false);
+		Perdedor.SetActive(false);
+		Empate.SetActive(false);
+	}
+
 	[Command]
 	public void CmdEndGame(string level)
 	{
@@ -1184,42 +1343,6 @@ public class Game : NetworkBehaviour {
 		audio1.Play();
 	}
 
-	IEnumerator EspHabla1()
-	{
-		yield return new WaitForSpineAnimationComplete(Medalla1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspRango1()
-	{
-		yield return new WaitForSpineAnimationComplete(rango1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		rango1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspRango2()
-	{
-		yield return new WaitForSpineAnimationComplete(rango2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		rango2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspHabla2()
-	{
-		yield return new WaitForSpineAnimationComplete(Medalla2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspHablaTorre()
-	{
-		yield return new WaitForSpineAnimationComplete(MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator EspBandera1()
-	{
-		yield return new WaitForSpineAnimationComplete(banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		banderaBuena.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loops", true);
-	}
-	IEnumerator EspBandera2()
-	{
-		yield return new WaitForSpineAnimationComplete(banderaMala.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		banderaMala.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loops", true);
-	}
-
 	IEnumerator AlphaBEntra()
 	{
 		yield return new WaitForSpineAnimationComplete(AlphaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
@@ -1282,5 +1405,30 @@ public class Game : NetworkBehaviour {
 	public void menu()
 	{
 		Application.LoadLevel("Lobby");
+	}
+
+	public void ServerRematch()
+	{
+		rematchS = 1;
+	}
+	public void ServerLobby()
+	{
+		rematchS = 0;
+	}
+	public void ClienteRematch()
+	{
+		rematchC = 1;
+		CmdSendSelecction(rematchC);
+	}
+	public void ClienteLobby()
+	{
+		rematchC = 0;
+		CmdSendSelecction(rematchC);
+	}
+
+	[Command]
+	public void CmdSendSelecction(int newRematchC)
+	{
+		rematchC = newRematchC;
 	}
 }
