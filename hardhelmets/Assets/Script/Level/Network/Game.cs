@@ -1422,11 +1422,13 @@ public class Game : NetworkBehaviour {
 	public void ClienteRematch()
 	{
 		rematchC = 1;
+		this.GetComponent<NetworkIdentity>().AssignClientAuthority(Player2.GetComponent<NetworkIdentity>().connectionToClient);
 		CmdSendSelecctionCliente(rematchC);
 	}
 	public void ClienteLobby()
 	{
 		rematchC = 0;
+		this.GetComponent<NetworkIdentity>().AssignClientAuthority(Player2.GetComponent<NetworkIdentity>().connectionToClient);
 		CmdSendSelecctionCliente(rematchC);
 	}
 	[Command]
