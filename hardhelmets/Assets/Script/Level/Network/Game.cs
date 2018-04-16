@@ -1448,6 +1448,6 @@ public class Game : NetworkBehaviour {
 	[ClientRpc]
 	public void RpcSetSelecctionCliente(int newRematchC)
 	{
-		rematchS = newRematchC;
+		rematchC = newRematchC;
 	}
 }
