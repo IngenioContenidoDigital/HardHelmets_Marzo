@@ -1443,6 +1443,7 @@ public class Game : NetworkBehaviour {
 	[Command]
 	public void CmdSendSelecctionCliente(int newRematchC)
 	{
+		print("LLAMADO DESDE EL CLIENTE"+ newRematchC);
 		rematchC = newRematchC;
 		//RpcSetSelecctionCliente(newRematchC);
 	}
