@@ -1213,6 +1213,8 @@ public class Game : NetworkBehaviour {
 				RematchCliente.GetComponent<Button>().enabled = true;
 				LobbyCliente.GetComponent<Button>().enabled = true;
 
+				TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
+
 				if(rematchS == 1)
 				{
 					RematchImageServer.GetComponent<Image>().sprite = seleccionadoRematch;
@@ -1410,25 +1412,42 @@ public class Game : NetworkBehaviour {
 	public void ServerRematch()
 	{
 		rematchS = 1;
+		CmdSendSelecctionServer(rematchS);
 	}
 	public void ServerLobby()
 	{
 		rematchS = 0;
+		CmdSendSelecctionServer(rematchS);
 	}
 	public void ClienteRematch()
 	{
 		rematchC = 1;
-		CmdSendSelecction(rematchC);
+		CmdSendSelecctionCliente(rematchC);
 	}
 	public void ClienteLobby()
 	{
 		rematchC = 0;
-		CmdSendSelecction(rematchC);
+		CmdSendSelecctionCliente(rematchC);
+	}
+	[Command]
+	public void CmdSendSelecctionServer(int newrematchS)
+	{
+		RpcSetSelecctionServer(newrematchS);
+	}
+	[ClientRpc]
+	public void RpcSetSelecctionServer(int newrematchS)
+	{
+		rematchS = newrematchS;
 	}
 
 	[Command]
-	public void CmdSendSelecction(int newRematchC)
+	public void CmdSendSelecctionCliente(int newRematchC)
 	{
-		rematchC = newRematchC;
+		RpcSetSelecctionCliente(newRematchC);
+	}
+	[ClientRpc]
+	public void RpcSetSelecctionCliente(int newRematchC)
+	{
+		rematchS = newRematchC;
 	}
 }
