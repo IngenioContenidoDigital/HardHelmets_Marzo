@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Spine.Unity;
 using UnityStandardAssets.CinematicEffects;
 using UnityEngine.Networking;
@@ -1819,6 +1820,19 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			Pausa();
 		}
+		if(continuar)
+		{
+			ventanaRematch.SetActive(true);
+			if(isServer)
+			{
+				RematchServer.GetComponent<Button>().enabled = true;
+				LobbyServer.GetComponent<Button>().enabled = true;
+			}else
+			{
+				RematchCliente.GetComponent<Button>().enabled = true;
+				LobbyCliente.GetComponent<Button>().enabled = true;
+			}
+		}
 	}
 
 	public GameObject MenuPause;
@@ -3396,4 +3410,60 @@ public class HeroNetwork : NetworkBehaviour{
 		sombrero.GetComponent<Rigidbody>().AddTorque(transform.forward * 500 * 500);
 		Destroy(sombrero, 2f);
 	}
+	public bool continuar;
+	public GameObject ventanaRematch;
+
+	public int rematch;
+
+	public GameObject RematchServer;
+	public GameObject LobbyServer;
+
+	public GameObject RematchCliente;
+	public GameObject LobbyCliente;
+
+
+	public void ServerRematch()
+	{
+		rematch = 1;
+		CmdSendSelecctionServer(rematch);
+	}
+	public void ServerLobby()
+	{
+		rematch = 0;
+		CmdSendSelecctionServer(rematch);
+	}
+	public void ClienteRematch()
+	{
+		rematch = 1;
+		CmdSendSelecctionCliente(rematch);
+	}
+	public void ClienteLobby()
+	{
+		rematch = 0;
+		CmdSendSelecctionCliente(rematch);
+	}
+
+	[Command]
+	public void CmdSendSelecctionServer(int newrematch)
+	{
+		RpcSetSelecctionServer(newrematch);
+	}
+	[ClientRpc]
+	public void RpcSetSelecctionServer(int newrematch)
+	{
+		rematch = newrematch;
+	}
+
+	[Command]
+	public void CmdSendSelecctionCliente(int newRematchC)
+	{
+		print("LLAMADO DESDE EL CLIENTE"+ newRematchC);
+		rematch = newRematchC;
+		//RpcSetSelecctionCliente(newRematchC);
+	}
+	/*[ClientRpc]
+	public void RpcSetSelecctionCliente(int newRematchC)
+	{
+		rematchC = newRematchC;
+	}*/
 }

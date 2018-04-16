@@ -468,30 +468,11 @@ public class Game : NetworkBehaviour {
 	public bool sumar2Cliente;
 	public bool sumar3Cliente;
 
-	public GameObject RematchServer;
-	public GameObject LobbyServer;
-
-	public GameObject RematchCliente;
-	public GameObject LobbyCliente;
-
 	public int rematchS;
 	public int rematchC;
 
 	[SyncVar]
 	public float sleccionFinal;
-
-	public GameObject RematchImageServer;
-	public GameObject RematchImageCliente;
-	public GameObject LobbyImageServer;
-	public GameObject LobbyImageCliente;
-
-	public Sprite seleccionadoRematch;
-	public Sprite desseleccionadoRematch;
-
-	public Sprite seleccionadoLobby;
-	public Sprite desseleccionadoLobby;
-
-	public UnityEngine.UI.Text TiempoSleccion;
 
 	bool cargar;
 
@@ -1021,9 +1002,8 @@ public class Game : NetworkBehaviour {
 
 			if(continuar)
 			{
-				siguiente.SetActive(true);
-				RematchServer.GetComponent<Button>().enabled = true;
-				LobbyServer.GetComponent<Button>().enabled = true;
+				Player1.GetComponent<HeroNetwork>().continuar = true;
+				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
 
 				if(sleccionFinal > 0)
 				{
@@ -1047,17 +1027,7 @@ public class Game : NetworkBehaviour {
 						}
 					}
 				}
-				TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
-
-				if(rematchC == 1)
-				{
-					RematchImageCliente.GetComponent<Image>().sprite = seleccionadoRematch;
-					LobbyImageCliente.GetComponent<Image>().sprite = desseleccionadoLobby;
-				}else
-				{
-					RematchImageCliente.GetComponent<Image>().sprite = desseleccionadoRematch;
-					LobbyImageCliente.GetComponent<Image>().sprite = seleccionadoLobby;
-				}
+				//TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
 			}
 		}else//PLAYER 2 "CLIENTE"
 		{
@@ -1209,21 +1179,10 @@ public class Game : NetworkBehaviour {
 
 			if(continuar)
 			{
-				siguiente.SetActive(true);
-				RematchCliente.GetComponent<Button>().enabled = true;
-				LobbyCliente.GetComponent<Button>().enabled = true;
+				Player2.GetComponent<HeroNetwork>().continuar = true;
+				rematchC = Player1.GetComponent<HeroNetwork>().rematch;
 
-				TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
-
-				if(rematchS == 1)
-				{
-					RematchImageServer.GetComponent<Image>().sprite = seleccionadoRematch;
-					LobbyImageServer.GetComponent<Image>().sprite = desseleccionadoLobby;
-				}else
-				{
-					RematchImageServer.GetComponent<Image>().sprite = desseleccionadoRematch;
-					LobbyImageServer.GetComponent<Image>().sprite = seleccionadoLobby;
-				}
+				//TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
 			}
 		}
 	}
@@ -1408,50 +1367,4 @@ public class Game : NetworkBehaviour {
 	{
 		Application.LoadLevel("Lobby");
 	}
-
-	public void ServerRematch()
-	{
-		rematchS = 1;
-		CmdSendSelecctionServer(rematchS);
-	}
-	public void ServerLobby()
-	{
-		rematchS = 0;
-		CmdSendSelecctionServer(rematchS);
-	}
-	public void ClienteRematch()
-	{
-		rematchC = 1;
-		this.GetComponent<NetworkIdentity>().AssignClientAuthority(Player2.GetComponent<NetworkIdentity>().connectionToClient);
-		CmdSendSelecctionCliente(rematchC);
-	}
-	public void ClienteLobby()
-	{
-		rematchC = 0;
-		this.GetComponent<NetworkIdentity>().AssignClientAuthority(Player2.GetComponent<NetworkIdentity>().connectionToClient);
-		CmdSendSelecctionCliente(rematchC);
-	}
-	[Command]
-	public void CmdSendSelecctionServer(int newrematchS)
-	{
-		RpcSetSelecctionServer(newrematchS);
-	}
-	[ClientRpc]
-	public void RpcSetSelecctionServer(int newrematchS)
-	{
-		rematchS = newrematchS;
-	}
-
-	[Command]
-	public void CmdSendSelecctionCliente(int newRematchC)
-	{
-		print("LLAMADO DESDE EL CLIENTE"+ newRematchC);
-		rematchC = newRematchC;
-		//RpcSetSelecctionCliente(newRematchC);
-	}
-	/*[ClientRpc]
-	public void RpcSetSelecctionCliente(int newRematchC)
-	{
-		rematchC = newRematchC;
-	}*/
 }
