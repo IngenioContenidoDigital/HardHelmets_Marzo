@@ -1838,6 +1838,17 @@ public class HeroNetwork : NetworkBehaviour{
 					victoria1.SetActive(false);
 					victoria2.SetActive(false);
 				}
+				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaC == 1)
+				{
+					victoria3.SetActive(true);
+				}else if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaC == 2)
+				{
+					victoria4.SetActive(true);
+				}else
+				{
+					victoria3.SetActive(false);
+					victoria4.SetActive(false);
+				}
 
 				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().rematchC == 1)
 				{
@@ -1863,6 +1874,18 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					victoria3.SetActive(false);
 					victoria4.SetActive(false);
+				}
+
+				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 1)
+				{
+					victoria1.SetActive(true);
+				}else if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 2)
+				{
+					victoria2.SetActive(true);
+				}else
+				{
+					victoria1.SetActive(false);
+					victoria2.SetActive(false);
 				}
 
 				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().rematchS == 1)

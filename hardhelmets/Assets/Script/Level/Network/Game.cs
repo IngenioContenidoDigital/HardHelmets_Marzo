@@ -478,6 +478,8 @@ public class Game : NetworkBehaviour {
 	[SyncVar]
 	public float sleccionFinal;
 
+	public bool bajartiempo;
+
 	public Text TiempoSleccion;
 
 	bool cargar;
@@ -1043,6 +1045,14 @@ public class Game : NetworkBehaviour {
 				if(sleccionFinal > 0)
 				{
 					sleccionFinal -= Time.deltaTime;
+					if(rematchS != -1 && rematchC != -1 && !bajartiempo)
+					{
+						if(sleccionFinal > 5)
+						{
+							sleccionFinal = 5;
+						}
+						bajartiempo = true;
+					}
 				}else
 				{
 					sleccionFinal = 0;
