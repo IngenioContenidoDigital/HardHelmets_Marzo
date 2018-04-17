@@ -232,7 +232,6 @@ public class Game : NetworkBehaviour {
 	void Start ()
 	{
 		gameObject.name = "GAME";
-		Time.timeScale = 1;
 
 		if(isServer)
 		{
@@ -525,6 +524,13 @@ public class Game : NetworkBehaviour {
 			}
 		}
 
+		if(Falta <= 0 && !final && !muerte)
+		{
+			Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
+			Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
+			final = true;
+		}
+
 		if(listoTodos)
 		{
 			esperando.SetActive(false);
@@ -665,7 +671,6 @@ public class Game : NetworkBehaviour {
 			ponerVictoria = false;
 			ponerVictoria2 = false;
 
-			Time.timeScale = 1;
 			End.SetActive(true);
 
 			Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
@@ -812,11 +817,20 @@ public class Game : NetworkBehaviour {
 				StartCoroutine(esperaSumar());
 				finalizado = true;
 			}
+		}else
+		{
+			Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+			Medalla1.SetActive(false);
+
+			MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+			MedallaTorre.SetActive(false);
+
+			Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+			Medalla2.SetActive(false);
 		}
 
 		if(explotar)
 		{
-			Time.timeScale = 0.3f;
 			StartCoroutine(muereBase());
 			explotar = false;
 		}
@@ -864,8 +878,14 @@ public class Game : NetworkBehaviour {
 			}
 		}else
 		{
-			AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
-			AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			if(AlphaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			{
+				AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			}
+			if(AlphaM.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			{
+				AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			}
 		}
 
 		if(BetaTomada== "Buena")
@@ -894,8 +914,14 @@ public class Game : NetworkBehaviour {
 			}
 		}else
 		{
-			BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
-			BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			if(BetaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			{
+				BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			}
+			if(BetaM.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			{
+				BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			}
 		}
 			
 		CapturedFlagsB = CapturedFlagsAB + CapturedFlagsBB;
@@ -1061,10 +1087,18 @@ public class Game : NetworkBehaviour {
 					sleccionFinal -= Time.deltaTime;
 					if(rematchS > -1 && rematchC > -1 && !bajartiempo)
 					{
-						print("BAJAR TIEMPO A 5");
 						if(sleccionFinal > 5)
 						{
 							sleccionFinal = 5;
+						}
+						bajartiempo = true;
+					}
+
+					if(victoriaS == 2 && !bajartiempo || victoriaC == 2 && !bajartiempo )
+					{
+						if(sleccionFinal > 10)
+						{
+							sleccionFinal = 10;
 						}
 						bajartiempo = true;
 					}
@@ -1075,6 +1109,7 @@ public class Game : NetworkBehaviour {
 					{
 						if(!cargar)
 						{
+							print("RESET");
 							//CmdEndGame(Application.loadedLevelName);
 
 							Player1.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
@@ -1086,11 +1121,11 @@ public class Game : NetworkBehaviour {
 
 							Player2.GetComponent<HeroNetwork>().rematch = -1;
 
-							ResetValues();
-
 							//Destroy(gameObject);
 
 							cargar = true;
+
+							ResetValues();
 						}
 					}else
 					{
@@ -1458,7 +1493,6 @@ public class Game : NetworkBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
-		Time.timeScale = 1;
 		destruccion.SetActive(true);
 		StartCoroutine(ultimo());
 	}
@@ -1510,13 +1544,10 @@ public class Game : NetworkBehaviour {
 		sleccionFinal = 30;
 		rematchS = -1;
 		rematchC = -1;
+		cargar = false;
 
 		banderaBuena.SetActive(false);
 		banderaMala.SetActive(false);
-
-		Medalla1.SetActive(false);
-		MedallaTorre.SetActive(false);
-		Medalla2.SetActive(false);
 
 		rangoUP.SetActive(false);
 
@@ -1538,25 +1569,6 @@ public class Game : NetworkBehaviour {
 		BaseM.GetComponent<Base>().fuego3.SetActive(false);
 		BaseM.GetComponent<Base>().fuego4.SetActive(false);
 		BaseM.GetComponent<Base>().destruida.SetActive(false);
-
-		//BASE ALPHA
-		Alpha.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
-
-		AlphaTomada = "";
-
-		vecesTomadaAlphaB = 0;
-		vecesTomadaAlphaM = 0;
-
-		//BASE BETA
-		if(Beta != null)
-		{
-			Beta.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
-		}
-
-		BetaTomada = "";
-
-		vecesTomadaBetaB = 0;
-		vecesTomadaBetaM = 0;
 
 		//ESTADISTICAS JUGADOR 1
 		KillsB = 0;
@@ -1622,8 +1634,6 @@ public class Game : NetworkBehaviour {
 		sumar2Cliente = false;
 		sumar3Cliente = false;
 
-		cargar = false;
-
 		Ganador.SetActive(false);
 		Perdedor.SetActive(false);
 		Empate.SetActive(false);
@@ -1637,6 +1647,52 @@ public class Game : NetworkBehaviour {
 
 		final = false;
 		final2 = false;
+
+		//BASE ALPHA
+		Alpha.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
+		Alpha.GetComponent<BaseNeutraNetwork>().veces = 0;
+		Alpha.GetComponent<BaseNeutraNetwork>().vecesmala = 0;
+		Alpha.GetComponent<BaseNeutraNetwork>().tomada = "newtra";
+		Alpha.tag = "newtra";
+
+		Alpha.GetComponent<BaseNeutraNetwork>().ajuste = 0;
+
+		AlphaTomada = "";
+
+		AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+		AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+
+		vecesTomadaAlphaB = 0;
+		vecesTomadaAlphaM = 0;
+
+		//BASE BETA
+		if(Beta != null)
+		{
+			Beta.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
+			Beta.GetComponent<BaseNeutraNetwork>().veces = 0;
+			Beta.GetComponent<BaseNeutraNetwork>().vecesmala = 0;
+			Beta.GetComponent<BaseNeutraNetwork>().tomada = "newtra";
+			Beta.tag = "newtra";
+
+			Beta.GetComponent<BaseNeutraNetwork>().ajuste = 0;
+		}
+
+		BetaTomada = "";
+
+		BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+		BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+
+		vecesTomadaBetaB = 0;
+		vecesTomadaBetaM = 0;
+
+		Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		Medalla1.SetActive(false);
+
+		MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		MedallaTorre.SetActive(false);
+
+		Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		Medalla2.SetActive(false);
 
 		End.SetActive(false);
 		fondo.SetActive(false);

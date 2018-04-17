@@ -71,6 +71,9 @@ public class AnimacionesNetwork : NetworkBehaviour {
 				GetComponent<HeroNetwork>().vivo = false;
 				GetComponent<HeroNetwork>().menu.SetActive(false);
 				barra.SetActive(false);
+			}else
+			{
+				barra.SetActive(true);
 			}
 		}
 

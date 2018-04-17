@@ -1822,11 +1822,16 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 		if(continuar)
 		{
-			ventanaRematch.SetActive(true);
 			TiempoSleccion.text = "Waiting... "+GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().sleccionFinal.ToString("F0");
 
 			if(isServer)
 			{
+				if(!selectbuttonrematch)
+				{
+					ventanaRematch.SetActive(true);
+					eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(RematchServer);
+					selectbuttonrematch = true;
+				}
 				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 1)
 				{
 					victoria1.SetActive(true);
@@ -1864,6 +1869,12 @@ public class HeroNetwork : NetworkBehaviour{
 				LobbyServer.GetComponent<Button>().enabled = true;
 			}else
 			{
+				if(!selectbuttonrematch)
+				{
+					ventanaRematch.SetActive(true);
+					eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(RematchCliente);
+					selectbuttonrematch = true;
+				}
 				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaC == 1)
 				{
 					victoria3.SetActive(true);
@@ -1901,6 +1912,16 @@ public class HeroNetwork : NetworkBehaviour{
 				RematchCliente.GetComponent<Button>().enabled = true;
 				LobbyCliente.GetComponent<Button>().enabled = true;
 			}
+
+			if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 2 || GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaC == 2)
+			{
+				RematchServer.SetActive(false);
+
+				RematchCliente.SetActive(false);
+			}
+		}else
+		{
+			selectbuttonrematch = false;
 		}
 	}
 
@@ -3481,6 +3502,7 @@ public class HeroNetwork : NetworkBehaviour{
 	}
 	public bool continuar;
 	public GameObject ventanaRematch;
+	public bool selectbuttonrematch;
 
 	public int rematch;
 

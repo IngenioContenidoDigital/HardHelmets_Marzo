@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Spine.Unity;
 using UnityEngine.Networking;
-using Steamworks;
+//using Steamworks;
 
 public class Menu : MonoBehaviour {
 
@@ -114,17 +114,21 @@ public class Menu : MonoBehaviour {
 
 	void Start ()
 	{
-		if(SteamManager.Initialized)
+		/*if(SteamManager.Initialized)
 		{
 			//Display User Name
 			SteamName = SteamFriends.GetPersonaName();
 			PlayerPrefs.SetString("SteamName", SteamName);
-		}
+		}*/
 
 		//Cursor.visible = true;
 
 		if(PlayerPrefs.GetInt("FirstTime") == 0)
 		{
+			PlayerPrefs.SetInt("Victorias", 0);
+			PlayerPrefs.SetInt("Derrotas", 0);
+			PlayerPrefs.SetInt("Empates", 0);
+
 			PlayerPrefs.SetInt("PlayerLevel", 1);
 			PlayerPrefs.SetFloat("PlayerEX", 0);
 			PlayerPrefs.SetInt("Bases", 0);
