@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Spine.Unity;
 using UnityEngine.Networking;
 using UnityStandardAssets.ImageEffects;
+using Prototype.NetworkLobby;
 
 public class Game : NetworkBehaviour {
 	
@@ -220,8 +221,11 @@ public class Game : NetworkBehaviour {
 	bool titulos3;
 
 	bool ponerVictoria;
+	bool ponerVictoria2;
 	public int victoriaS;
 	public int victoriaC;
+
+	public GameObject RegresaLobby;
 
 	// Use this for initialization
 	void Start ()
@@ -287,6 +291,11 @@ public class Game : NetworkBehaviour {
 	// SOLO EL SERVIDOR
 	void Update ()
 	{
+		if(RegresaLobby == null)
+		{
+			RegresaLobby = GameObject.Find("Canvas - Mensajes");
+		}
+
 		if(Application.loadedLevelName == "Looby")
 		{
 			Destroy(gameObject);
@@ -595,6 +604,12 @@ public class Game : NetworkBehaviour {
 				}else if(sagreBB <= 0)
 				{
 					Perdedor.SetActive(true);
+					if(!ponerVictoria2)
+					{
+						victoriaC += 1;
+						CmdSendVictoria2Cliente(victoriaC);
+						ponerVictoria2 = true;
+					}
 				}else if(CapturedFlagsB > CapturedFlagsM)
 				{
 					Ganador.SetActive(true);
@@ -607,6 +622,12 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB < CapturedFlagsM)
 				{
 					Perdedor.SetActive(true);
+					if(!ponerVictoria2)
+					{
+						victoriaC += 1;
+						CmdSendVictoria2Cliente(victoriaC);
+						ponerVictoria2 = true;
+					}
 				}else if(CapturedFlagsB == CapturedFlagsM)
 				{
 					Empate.SetActive(true);
@@ -618,24 +639,12 @@ public class Game : NetworkBehaviour {
 				if(sagreBB <= 0)
 				{
 					Ganador.SetActive(true);
-					if(!ponerVictoria)
-					{
-						victoriaC += 1;
-						CmdSendVictoriaServer(victoriaC);
-						ponerVictoria = true;
-					}
 				}else if(sagreBM <= 0)
 				{
 					Perdedor.SetActive(true);
 				}else if(CapturedFlagsM > CapturedFlagsB)
 				{
 					Ganador.SetActive(true);
-					if(!ponerVictoria)
-					{
-						victoriaC += 1;
-						CmdSendVictoriaServer(victoriaC);
-						ponerVictoria = true;
-					}
 				}else if(CapturedFlagsM < CapturedFlagsB)
 				{
 					Perdedor.SetActive(true);
@@ -650,6 +659,7 @@ public class Game : NetworkBehaviour {
 		{
 			titulos = false;
 			ponerVictoria = false;
+			ponerVictoria2 = false;
 
 			Time.timeScale = 1;
 			End.SetActive(true);
@@ -1045,8 +1055,9 @@ public class Game : NetworkBehaviour {
 				if(sleccionFinal > 0)
 				{
 					sleccionFinal -= Time.deltaTime;
-					if(rematchS != -1 && rematchC != -1 && !bajartiempo)
+					if(rematchS > -1 && rematchC > -1 && !bajartiempo)
 					{
+						print("BAJAR TIEMPO A 5");
 						if(sleccionFinal > 5)
 						{
 							sleccionFinal = 5;
@@ -1067,7 +1078,12 @@ public class Game : NetworkBehaviour {
 					{
 						if(!cargar)
 						{
-							CmdEndGame("Lobby");
+							RegresaLobby.GetComponent<regresaLobby>().retirada = true;
+							NetworkManager.singleton.StopHost();
+							NetworkManager.singleton.StopClient();
+
+							Application.LoadLevel("Load");
+							loading.nombre = "Lobby";
 							cargar = true;
 						}
 					}
@@ -1225,12 +1241,9 @@ public class Game : NetworkBehaviour {
 			if(continuar)
 			{
 				Player2.GetComponent<HeroNetwork>().continuar = true;
-				//rematchC = Player1.GetComponent<HeroNetwork>().rematch;
 
 				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
 				rematchC = Player2.GetComponent<HeroNetwork>().rematch;
-
-				//TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
 			}
 		}
 	}
@@ -1399,6 +1412,7 @@ public class Game : NetworkBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
+		Time.timeScale = 1;
 		destruccion.SetActive(true);
 		StartCoroutine(ultimo());
 	}
@@ -1423,6 +1437,17 @@ public class Game : NetworkBehaviour {
 	public void RpcSetVictoria(int newVictoriaS)
 	{
 		victoriaS = newVictoriaS;
+	}
+
+	[Command]
+	public void CmdSendVictoria2Cliente(int newVictoriaC)
+	{
+		RpcSetVictoria2(newVictoriaC);
+	}
+	[ClientRpc]
+	public void RpcSetVictoria2(int newVictoriaC)
+	{
+		victoriaC = newVictoriaC;
 	}
 
 	[Command]

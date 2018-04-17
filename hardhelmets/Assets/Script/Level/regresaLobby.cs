@@ -37,6 +37,8 @@ namespace Prototype.NetworkLobby {
 		public bool jugado;
 		public bool jugado2;
 
+		public bool retirada;
+
 		public void Update()
 		{
 			Player1 = GameObject.Find("PlayerInfo1");
@@ -44,7 +46,10 @@ namespace Prototype.NetworkLobby {
 
 			if(Player1 != null && Player2 != null)
 			{
-				jugado2 = true;
+				if(!retirada)
+				{
+					jugado2 = true;
+				}
 			}else if(Application.loadedLevelName == "Lobby" && jugado2)
 			{
 				StartCoroutine(desconectar());
@@ -118,7 +123,10 @@ namespace Prototype.NetworkLobby {
 				perfilLista.SetActive(false);
 				versus.SetActive(false);
 
-				jugado = true;
+				if(!retirada)
+				{
+					jugado = true;
+				}
 			}
 			if(Application.loadedLevelName == "Lobby" && jugado)
 			{
@@ -134,6 +142,15 @@ namespace Prototype.NetworkLobby {
 				NetworkManager.singleton.StopClient();
 
 				jugado = false;
+			}
+			if(Application.loadedLevelName == "Lobby")
+			{
+				retirada = false;
+			}
+			if(retirada)
+			{
+				jugado = false;
+				jugado2 = false;
 			}
 			if(Application.loadedLevelName == "menu" || Application.loadedLevelName == "Community")
 			{

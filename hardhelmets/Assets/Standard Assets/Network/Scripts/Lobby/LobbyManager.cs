@@ -490,6 +490,7 @@ namespace Prototype.NetworkLobby
 		public GameObject eventsystem;
 
 		public GameObject selectedObj;
+
 		void Update ()
 		{
 			//RESELECCIONAR ELEMENTO DE MENU
