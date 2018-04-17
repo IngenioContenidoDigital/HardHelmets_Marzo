@@ -1123,6 +1123,8 @@ public class Game : NetworkBehaviour {
 
 							//Destroy(gameObject);
 
+							ResetValues();
+
 							cargar = true;
 
 							ResetValues();
@@ -1316,6 +1318,10 @@ public class Game : NetworkBehaviour {
 							ResetValues();
 
 							cargar = true;
+
+							ResetValues();
+
+							//Destroy(gameObject);
 						}
 					}else
 					{
