@@ -1215,7 +1215,10 @@ public class Game : NetworkBehaviour {
 			if(continuar)
 			{
 				Player2.GetComponent<HeroNetwork>().continuar = true;
-				rematchC = Player1.GetComponent<HeroNetwork>().rematch;
+				//rematchC = Player1.GetComponent<HeroNetwork>().rematch;
+
+				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
+				rematchC = Player2.GetComponent<HeroNetwork>().rematch;
 
 				//TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
 			}

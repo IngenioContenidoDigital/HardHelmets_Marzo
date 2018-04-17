@@ -1823,6 +1823,8 @@ public class HeroNetwork : NetworkBehaviour{
 		if(continuar)
 		{
 			ventanaRematch.SetActive(true);
+			TiempoSleccion.text = "Waiting... "+GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().sleccionFinal.ToString("F0");
+
 			if(isServer)
 			{
 				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 1)
@@ -3482,6 +3484,8 @@ public class HeroNetwork : NetworkBehaviour{
 	public Sprite LobbySelected;
 	public Sprite LobbyDeselected;
 
+	public Text TiempoSleccion;
+
 
 	public void ServerRematch()
 	{
@@ -3512,6 +3516,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[ClientRpc]
 	public void RpcSetSelecctionServer(int newrematch)
 	{
+		//GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().rematchS = newrematch;
 		rematch = newrematch;
 	}
 
