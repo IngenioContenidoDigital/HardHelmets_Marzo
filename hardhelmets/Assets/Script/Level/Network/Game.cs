@@ -1244,6 +1244,25 @@ public class Game : NetworkBehaviour {
 
 				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
 				rematchC = Player2.GetComponent<HeroNetwork>().rematch;
+
+				if(sleccionFinal <= 0)
+				{
+					if(rematchS+rematchC == 2)
+					{
+						if(!cargar)
+						{
+							//CmdEndGame(Application.loadedLevelName);
+							cargar = true;
+						}
+					}else
+					{
+						if(!cargar)
+						{
+							RegresaLobby.GetComponent<regresaLobby>().retirada = true;
+							cargar = true;
+						}
+					}
+				}
 			}
 		}
 	}

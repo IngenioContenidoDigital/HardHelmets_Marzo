@@ -149,6 +149,7 @@ namespace Prototype.NetworkLobby {
 			}
 			if(retirada)
 			{
+				actual = "";
 				jugado = false;
 				jugado2 = false;
 			}
