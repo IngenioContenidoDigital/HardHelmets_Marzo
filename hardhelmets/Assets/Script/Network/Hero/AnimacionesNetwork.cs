@@ -43,7 +43,7 @@ public class AnimacionesNetwork : NetworkBehaviour {
 	public bool hacer;
 
 	//PANEL PARTIDA
-	GameObject Panel;
+	public GameObject Panel;
 
 	public GameObject barra;
 

@@ -1825,10 +1825,54 @@ public class HeroNetwork : NetworkBehaviour{
 			ventanaRematch.SetActive(true);
 			if(isServer)
 			{
+				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 1)
+				{
+					victoria1.SetActive(true);
+				}else if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaS == 2)
+				{
+					victoria2.SetActive(true);
+				}else
+				{
+					victoria1.SetActive(false);
+					victoria2.SetActive(false);
+				}
+
+				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().rematchC == 1)
+				{
+					ButtonRematchCliente.sprite = RematchSelected;
+					ButtonLobbyCliente.sprite = LobbyDeselected;
+				}else
+				{
+					ButtonLobbyCliente.sprite = LobbySelected;
+					ButtonRematchCliente.sprite = RematchDeselected;
+				}
+
 				RematchServer.GetComponent<Button>().enabled = true;
 				LobbyServer.GetComponent<Button>().enabled = true;
 			}else
 			{
+				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaC == 1)
+				{
+					victoria3.SetActive(true);
+				}else if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().victoriaC == 2)
+				{
+					victoria4.SetActive(true);
+				}else
+				{
+					victoria3.SetActive(false);
+					victoria4.SetActive(false);
+				}
+
+				if(GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().rematchS == 1)
+				{
+					ButtonRematchServer.sprite = RematchSelected;
+					ButtonLobbyServer.sprite = LobbyDeselected;
+				}else
+				{
+					ButtonLobbyServer.sprite = LobbySelected;
+					ButtonRematchServer.sprite = RematchDeselected;
+				}
+
 				RematchCliente.GetComponent<Button>().enabled = true;
 				LobbyCliente.GetComponent<Button>().enabled = true;
 			}
@@ -3421,6 +3465,23 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject RematchCliente;
 	public GameObject LobbyCliente;
 
+	public GameObject victoria1;
+	public GameObject victoria2;
+	public GameObject victoria3;
+	public GameObject victoria4;
+
+	public Image ButtonRematchServer;
+	public Image ButtonLobbyServer;
+
+	public Image ButtonRematchCliente;
+	public Image ButtonLobbyCliente;
+
+	public Sprite RematchSelected;
+	public Sprite RematchDeselected;
+
+	public Sprite LobbySelected;
+	public Sprite LobbyDeselected;
+
 
 	public void ServerRematch()
 	{
@@ -3457,13 +3518,6 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSendSelecctionCliente(int newRematchC)
 	{
-		print("LLAMADO DESDE EL CLIENTE"+ newRematchC);
 		rematch = newRematchC;
-		//RpcSetSelecctionCliente(newRematchC);
 	}
-	/*[ClientRpc]
-	public void RpcSetSelecctionCliente(int newRematchC)
-	{
-		rematchC = newRematchC;
-	}*/
 }

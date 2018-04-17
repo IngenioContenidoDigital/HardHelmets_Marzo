@@ -219,6 +219,10 @@ public class Game : NetworkBehaviour {
 	bool titulos2;
 	bool titulos3;
 
+	bool ponerVictoria;
+	public int victoriaS;
+	public int victoriaC;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -579,12 +583,25 @@ public class Game : NetworkBehaviour {
 				if(sagreBM <= 0)
 				{
 					Ganador.SetActive(true);
+					if(!ponerVictoria)
+					{
+						victoriaS += 1;
+						CmdSendVictoriaCliente(victoriaS);
+						ponerVictoria = true;
+					}
+
 				}else if(sagreBB <= 0)
 				{
 					Perdedor.SetActive(true);
 				}else if(CapturedFlagsB > CapturedFlagsM)
 				{
 					Ganador.SetActive(true);
+					if(!ponerVictoria)
+					{
+						victoriaS += 1;
+						CmdSendVictoriaCliente(victoriaS);
+						ponerVictoria = true;
+					}
 				}else if(CapturedFlagsB < CapturedFlagsM)
 				{
 					Perdedor.SetActive(true);
@@ -599,12 +616,24 @@ public class Game : NetworkBehaviour {
 				if(sagreBB <= 0)
 				{
 					Ganador.SetActive(true);
+					if(!ponerVictoria)
+					{
+						victoriaC += 1;
+						CmdSendVictoriaServer(victoriaC);
+						ponerVictoria = true;
+					}
 				}else if(sagreBM <= 0)
 				{
 					Perdedor.SetActive(true);
 				}else if(CapturedFlagsM > CapturedFlagsB)
 				{
 					Ganador.SetActive(true);
+					if(!ponerVictoria)
+					{
+						victoriaC += 1;
+						CmdSendVictoriaServer(victoriaC);
+						ponerVictoria = true;
+					}
 				}else if(CapturedFlagsM < CapturedFlagsB)
 				{
 					Perdedor.SetActive(true);
@@ -617,6 +646,9 @@ public class Game : NetworkBehaviour {
 
 		if(final && final2)
 		{
+			titulos = false;
+			ponerVictoria = false;
+
 			Time.timeScale = 1;
 			End.SetActive(true);
 
@@ -1351,8 +1383,6 @@ public class Game : NetworkBehaviour {
 		BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
 	}
 
-
-
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
@@ -1369,5 +1399,22 @@ public class Game : NetworkBehaviour {
 	public void menu()
 	{
 		Application.LoadLevel("Lobby");
+	}
+
+	[Command]
+	public void CmdSendVictoriaCliente(int newVictoriaS)
+	{
+		RpcSetVictoria(newVictoriaS);
+	}
+	[ClientRpc]
+	public void RpcSetVictoria(int newVictoriaS)
+	{
+		victoriaS = newVictoriaS;
+	}
+
+	[Command]
+	public void CmdSendVictoriaServer(int newVictoriaC)
+	{
+		victoriaC = newVictoriaC;
 	}
 }
