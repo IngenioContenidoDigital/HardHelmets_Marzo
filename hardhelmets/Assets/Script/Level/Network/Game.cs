@@ -6,6 +6,7 @@ using Spine.Unity;
 using UnityEngine.Networking;
 using UnityStandardAssets.ImageEffects;
 using Prototype.NetworkLobby;
+using UnityEngine.EventSystems;
 
 public class Game : NetworkBehaviour {
 	
@@ -296,6 +297,11 @@ public class Game : NetworkBehaviour {
 			RegresaLobby = GameObject.Find("Canvas - Mensajes");
 		}
 
+		if(musica == null)
+		{
+			musica = GameObject.Find("MUSICA BATALLA");
+		}
+
 		if(Application.loadedLevelName == "Looby")
 		{
 			Destroy(gameObject);
@@ -489,8 +495,6 @@ public class Game : NetworkBehaviour {
 
 	public bool bajartiempo;
 
-	public Text TiempoSleccion;
-
 	bool cargar;
 
 	//SERVIDOR Y CLIENTE
@@ -575,7 +579,7 @@ public class Game : NetworkBehaviour {
 		}
 		if(titulos2 && !final2)
 		{
-			Destroy(musica);
+			musica.GetComponent<AudioSource>().Stop();
 			arriba.SetActive(false);
 			iconos.SetActive(false);
 
@@ -1071,7 +1075,21 @@ public class Game : NetworkBehaviour {
 					{
 						if(!cargar)
 						{
-							CmdEndGame(Application.loadedLevelName);
+							//CmdEndGame(Application.loadedLevelName);
+
+							Player1.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
+							Player1.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
+
+							Player1.GetComponent<HeroNetwork>().rematch = -1;
+							Player1.GetComponent<HeroNetwork>().continuar = false;
+							Player1.GetComponent<HeroNetwork>().ventanaRematch.SetActive(false);
+
+							Player2.GetComponent<HeroNetwork>().rematch = -1;
+
+							ResetValues();
+
+							//Destroy(gameObject);
+
 							cargar = true;
 						}
 					}else
@@ -1088,7 +1106,6 @@ public class Game : NetworkBehaviour {
 						}
 					}
 				}
-				//TiempoSleccion.text = "Waiting... "+sleccionFinal.ToString("F0");
 			}
 		}else//PLAYER 2 "CLIENTE"
 		{
@@ -1252,6 +1269,17 @@ public class Game : NetworkBehaviour {
 						if(!cargar)
 						{
 							//CmdEndGame(Application.loadedLevelName);
+							Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
+							Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
+
+							Player2.GetComponent<HeroNetwork>().rematch = -1;
+							Player2.GetComponent<HeroNetwork>().continuar = false;
+							Player2.GetComponent<HeroNetwork>().ventanaRematch.SetActive(false);
+
+							Player1.GetComponent<HeroNetwork>().rematch = -1;
+
+							ResetValues();
+
 							cargar = true;
 						}
 					}else
@@ -1368,7 +1396,6 @@ public class Game : NetworkBehaviour {
 	public bool experiencia;
 	public bool LevelUpNext;
 	public bool continuar;
-	public GameObject siguiente;
 
 	IEnumerator espContinuar()
 	{
@@ -1473,5 +1500,148 @@ public class Game : NetworkBehaviour {
 	public void CmdSendVictoriaServer(int newVictoriaC)
 	{
 		victoriaC = newVictoriaC;
+	}
+
+	public void ResetValues()
+	{
+		Falta = 420;
+		continuar = false;
+		bajartiempo = false;
+		sleccionFinal = 30;
+		rematchS = -1;
+		rematchC = -1;
+
+		banderaBuena.SetActive(false);
+		banderaMala.SetActive(false);
+
+		Medalla1.SetActive(false);
+		MedallaTorre.SetActive(false);
+		Medalla2.SetActive(false);
+
+		rangoUP.SetActive(false);
+
+		//SANGRE BASE BUENA
+		BaseB.GetComponent<Base>().sangre = BaseB.GetComponent<Base>().saludMax;
+		BaseB.GetComponent<Animator>().SetBool("muere", false);
+		BaseB.GetComponent<Base>().fuego1.SetActive(false);
+		BaseB.GetComponent<Base>().fuego2.SetActive(false);
+		BaseB.GetComponent<Base>().fuego3.SetActive(false);
+		BaseB.GetComponent<Base>().fuego4.SetActive(false);
+		BaseB.GetComponent<Base>().destruida.SetActive(false);
+
+
+		//SANGRE BASE MALA
+		BaseM.GetComponent<Base>().sangre = BaseM.GetComponent<Base>().saludMax;
+		BaseM.GetComponent<Animator>().SetBool("muere", false);
+		BaseM.GetComponent<Base>().fuego1.SetActive(false);
+		BaseM.GetComponent<Base>().fuego2.SetActive(false);
+		BaseM.GetComponent<Base>().fuego3.SetActive(false);
+		BaseM.GetComponent<Base>().fuego4.SetActive(false);
+		BaseM.GetComponent<Base>().destruida.SetActive(false);
+
+		//BASE ALPHA
+		Alpha.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
+
+		AlphaTomada = "";
+
+		vecesTomadaAlphaB = 0;
+		vecesTomadaAlphaM = 0;
+
+		//BASE BETA
+		if(Beta != null)
+		{
+			Beta.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
+		}
+
+		BetaTomada = "";
+
+		vecesTomadaBetaB = 0;
+		vecesTomadaBetaM = 0;
+
+		//ESTADISTICAS JUGADOR 1
+		KillsB = 0;
+		DeadsB = 0;
+		VechicleDestroyedB = 0;
+		StolenCardsB = 0;
+		CapturedFlagsAB = 0;
+		CapturedFlagsBB = 0;
+		CapturedFlagsB = 0;
+		BaseDestroyedB = 0;
+		TotalB = 0;
+		TotalBFinal = 0;
+		KillsB2 = 0;
+		VechicleDestroyedB2 = 0;
+		StolenCardsB2 = 0;
+		CapturedFlagsB2 = 0;
+		vecesTomadaAlphaB2 = 0;
+		vecesTomadaBetaB2 = 0;
+		BaseDestroyedB2 = 0;
+		DeadsB2 = 0;
+
+		//ESTADISTICAS JUGADOR 2
+		KillsM = 0;
+		DeadsM = 0;
+		VechicleDestroyedM = 0;
+		StolenCardsM = 0;
+		CapturedFlagsAM = 0;
+		CapturedFlagsBM = 0;
+		CapturedFlagsM = 0;
+		BaseDestroyedM = 0;
+		TotalM = 0;
+		TotalMFinal = 0;
+		KillsM2 = 0;
+		VechicleDestroyedM2 = 0;
+		StolenCardsM2 = 0;
+		vecesTomadaAlphaM2 = 0;
+		vecesTomadaBetaM2 = 0;
+		CapturedFlagsM2 = 0;
+		BaseDestroyedM2 = 0;
+		DeadsM2 = 0;
+
+		explotar = false;
+
+		iconos.SetActive(true);
+
+		sumatoria = false;
+		sumatoria2 = false;
+		sumatoria3 = false;
+		sumatoria4 = false;
+		sumatoria5 = false;
+		sumatoria6 = false;
+		sumatoria7 = false;
+		sumatoria8 = false;
+
+		finalizado = false;
+
+		Baul.SetActive(false);
+
+		sumar1Server = false;
+		sumar2Server = false;
+		sumar3Server = false;
+		sumar1Cliente = false;
+		sumar2Cliente = false;
+		sumar3Cliente = false;
+
+		cargar = false;
+
+		Ganador.SetActive(false);
+		Perdedor.SetActive(false);
+		Empate.SetActive(false);
+
+		ponerVictoria = false;
+		ponerVictoria2 = false;
+
+		titulos = false;
+		titulos2 = false;
+		titulos3 = false;
+
+		final = false;
+		final2 = false;
+
+		End.SetActive(false);
+		fondo.SetActive(false);
+		arriba.SetActive(true);
+
+		musica.GetComponent<AudioSource>().Play();
 	}
 }

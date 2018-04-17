@@ -1677,7 +1677,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 66841444}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12601acaf9af72343b85bace4eb57570, type: 3}
   m_Name: 
@@ -1750,10 +1750,10 @@ MonoBehaviour:
   MapToLDR: 0
   RemoveColorBanding: 1
   MatrixVP:
-    e00: 2.0985518
+    e00: 2.1002228
     e01: 0
     e02: 0
-    e03: -355.11694
+    e03: -355.39972
     e10: -0
     e11: -3.7309682
     e12: 0.08988025
@@ -1767,10 +1767,10 @@ MonoBehaviour:
     e32: 0.99970996
     e33: -131.94772
   LastMatrixVP:
-    e00: 2.0985518
+    e00: 2.1002228
     e01: 0
     e02: 0
-    e03: -355.11694
+    e03: -355.39972
     e10: 0
     e11: 3.7309682
     e12: -0.08988025
@@ -10822,10 +10822,10 @@ RectTransform:
   m_Father: {fileID: 1314721809}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1814.1, y: -668.6}
-  m_SizeDelta: {x: 320.8, y: 104.7}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 103.3999, y: -128.59998}
+  m_SizeDelta: {x: 320.80005, y: 104.70001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &557237806
 MonoBehaviour:
@@ -18139,7 +18139,7 @@ MonoBehaviour:
   - {fileID: 1866254847140396, guid: 25beeaaa378927a4e8f4389f2132bb16, type: 2}
   - {fileID: 1896131041990660, guid: b7202abc744cfd94498482e90319b097, type: 2}
   - {fileID: 1041893320712146, guid: 9436c00b0d39b17478385fda751de658, type: 2}
-  - {fileID: 0}
+  - {fileID: 1093738917021344, guid: 72fa67f2db5f5e94b849afcca6029b2f, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -34098,6 +34098,7 @@ MonoBehaviour:
   Player2: {fileID: 0}
   jugado: 0
   jugado2: 0
+  retirada: 0
   cancelButton: {fileID: 1091799956}
   escenarios: {fileID: 0}
   perfilServer: {fileID: 715123300}
