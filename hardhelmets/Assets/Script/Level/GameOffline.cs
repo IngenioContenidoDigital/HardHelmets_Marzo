@@ -209,7 +209,6 @@ public class GameOffline : MonoBehaviour {
 		Exp.fillAmount = XPActual/XPNext;
 
 		gameObject.name = "GAME";
-		Time.timeScale = 1;
 
 		nombre1 = PlayerPrefs.GetString("SteamName");
 		nombres1.text = nombre1;
@@ -481,7 +480,6 @@ public class GameOffline : MonoBehaviour {
 
 		if(final && final2)
 		{
-			Time.timeScale = 1;
 			End.SetActive(true);
 
 			Player1.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
@@ -580,7 +578,6 @@ public class GameOffline : MonoBehaviour {
 
 		if(explotar)
 		{
-			Time.timeScale = 0.3f;
 			StartCoroutine(muereBase());
 			explotar = false;
 		}
@@ -827,9 +824,8 @@ public class GameOffline : MonoBehaviour {
 			siguiente.SetActive(true);
 			if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 			{
-				Time.timeScale = 1;
 				Application.LoadLevel("Load");
-				loading.nombre = "Comunity";
+				loading.nombre = "menu";
 			}
 		}
 	}
