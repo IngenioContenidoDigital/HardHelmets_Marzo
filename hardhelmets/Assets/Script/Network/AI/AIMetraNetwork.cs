@@ -133,6 +133,11 @@ public class AIMetraNetwork : NetworkBehaviour {
 			animator.SetBool("grounded", true);
 			caminar = false;
 			animator.SetBool("caminar", false);
+			if(Panel.GetComponent<Game>().continuar)
+			{
+				print("DESTRUIR OBJETOS");
+				CmdDestruir();
+			}
 		}
 		if(salud >= saludMax)
 		{
@@ -748,5 +753,18 @@ public class AIMetraNetwork : NetworkBehaviour {
 
 		NetworkServer.Spawn(arma);
 		Destroy(arma, 2.0f);
+	}
+
+	[Command]
+	public void CmdDestruir()
+	{
+		RpcDestruirCliente();
+		Destroy(gameObject);
+	}
+
+	[ClientRpc]
+	public void RpcDestruirCliente()
+	{
+		Destroy(gameObject);
 	}
 }

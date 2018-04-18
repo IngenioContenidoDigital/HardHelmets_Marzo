@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114769705076410348}
   - component: {fileID: 114498851923305604}
   - component: {fileID: 114814181651359116}
+  - component: {fileID: 148117498190499658}
   m_Layer: 13
   m_Name: Mina Malo
   m_TagString: mina
@@ -268,3 +269,15 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!148 &148117498190499658
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1866254847140396}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0

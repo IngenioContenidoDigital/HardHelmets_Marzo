@@ -1373,6 +1373,7 @@ GameObject:
   - component: {fileID: 114823225921883180}
   - component: {fileID: 114345836228530110}
   - component: {fileID: 114009380338271460}
+  - component: {fileID: 148150921021220986}
   m_Layer: 19
   m_Name: MGBueno
   m_TagString: Player
@@ -3200,8 +3201,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5883,6 +5884,18 @@ CapsuleCollider:
   m_Height: 4.07
   m_Direction: 1
   m_Center: {x: 0.24, y: 1.61, z: 0}
+--- !u!148 &148150921021220986
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860293914563366}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198048495830060074
 ParticleSystem:
   m_ObjectHideFlags: 1

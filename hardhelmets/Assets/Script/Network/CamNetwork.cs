@@ -70,7 +70,7 @@ public class CamNetwork : NetworkBehaviour {
 
 	//PANEL PARTIDA
 	GameObject Panel;
-	bool ver;
+	public bool ver;
 
 	public bool mouse;
 

@@ -956,6 +956,7 @@ GameObject:
   - component: {fileID: 114150381255363086}
   - component: {fileID: 114239359957075802}
   - component: {fileID: 114338395537787544}
+  - component: {fileID: 148889443822723470}
   m_Layer: 10
   m_Name: Metralleto Malo
   m_TagString: enemy
@@ -3481,6 +3482,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6304,6 +6306,18 @@ CapsuleCollider:
   m_Height: 5.23
   m_Direction: 1
   m_Center: {x: -0.45, y: 2.1, z: 0}
+--- !u!148 &148889443822723470
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498345696189204}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198263653150019748
 ParticleSystem:
   m_ObjectHideFlags: 1

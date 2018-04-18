@@ -86,6 +86,11 @@ public class Torreta : NetworkBehaviour {
 		{
 			objetivo = null;
 			disparo = false;
+			if(Panel.GetComponent<Game>().continuar)
+			{
+				print("DESTRUIR OBJETOS");
+				CmdDestruir();
+			}
 		}
 
 		if(salud <= 0)
@@ -293,5 +298,18 @@ public class Torreta : NetworkBehaviour {
 		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
 		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(3,7);
 		NetworkServer.Spawn(casquillo);
+	}
+
+	[Command]
+	public void CmdDestruir()
+	{
+		RpcDestruirCliente();
+		Destroy(gameObject);
+	}
+
+	[ClientRpc]
+	public void RpcDestruirCliente()
+	{
+		Destroy(gameObject);
 	}
 }

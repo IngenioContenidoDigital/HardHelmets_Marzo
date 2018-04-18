@@ -138,6 +138,11 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			animator.SetBool("atras", false);
 			animator.SetBool("walk", false);
 			animator.SetBool("grounded", true);
+			if(Panel.GetComponent<Game>().continuar)
+			{
+				print("DESTRUIR OBJETOS");
+				CmdDestruir();
+			}
 		}
 		if(salud >= saludMax)
 		{
@@ -939,5 +944,18 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		card.GetComponent<Rigidbody>().velocity = card.transform.up * 30;
 		//carta.GetComponent<Rigidbody>().AddForce(transform.right * -30);
 		NetworkServer.Spawn(card);
+	}
+
+	[Command]
+	public void CmdDestruir()
+	{
+		RpcDestruirCliente();
+		Destroy(gameObject);
+	}
+
+	[ClientRpc]
+	public void RpcDestruirCliente()
+	{
+		Destroy(gameObject);
 	}
 }

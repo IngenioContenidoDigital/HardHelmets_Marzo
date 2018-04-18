@@ -27,7 +27,7 @@ public class barra : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if(Player.GetComponent<HeroNetwork>().ready && Player.GetComponent<HeroNetwork>().vivo)
+		if(Player.GetComponent<HeroNetwork>().ready && Player.GetComponent<HeroNetwork>().salud > 0)
 		{
 			fill += carga;
 			GetComponent<Image>().fillAmount = fill;
