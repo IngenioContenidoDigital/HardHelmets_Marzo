@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 114987772247165786}
   - component: {fileID: 114946710890633938}
   - component: {fileID: 114064801058381824}
+  - component: {fileID: 148243262683349740}
   m_Layer: 19
   m_Name: Medico Bueno
   m_TagString: Player
@@ -3412,6 +3413,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6273,6 +6275,18 @@ CapsuleCollider:
   m_Height: 5.23
   m_Direction: 1
   m_Center: {x: -0.45, y: 2.1, z: 0}
+--- !u!148 &148243262683349740
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147726848574840}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198269975635766040
 ParticleSystem:
   m_ObjectHideFlags: 1

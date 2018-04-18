@@ -207,6 +207,8 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject casco5M;
 	public GameObject casco6M;
 
+	public GameObject barra;
+
 	public bool ready;
 
 	// Use this for initialization

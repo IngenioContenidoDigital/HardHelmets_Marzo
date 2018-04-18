@@ -89,6 +89,11 @@ public class TorretaMisil : NetworkBehaviour {
 		{
 			objetivo = null;
 			disparo = false;
+			if(Panel.GetComponent<Game>().continuar)
+			{
+				print("DESTRUIR OBJETOS");
+				CmdDestruir();
+			}
 		}
 
 		if(salud <= 0)
@@ -266,5 +271,18 @@ public class TorretaMisil : NetworkBehaviour {
 		bullet2.GetComponent<Rigidbody>().velocity = bullet2.transform.forward * 100;
 		NetworkServer.Spawn(bullet2);
 		bullet2.GetComponent<balaPanzerNetwork>().poder = saludMax*bullet2.GetComponent<balaPanzerNetwork>().poder/200;
+	}
+
+	[Command]
+	public void CmdDestruir()
+	{
+		RpcDestruirCliente();
+		Destroy(gameObject);
+	}
+
+	[ClientRpc]
+	public void RpcDestruirCliente()
+	{
+		Destroy(gameObject);
 	}
 }

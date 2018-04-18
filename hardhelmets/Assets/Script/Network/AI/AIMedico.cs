@@ -186,6 +186,11 @@ public class AIMedico : NetworkBehaviour {
 			animator.SetInteger("disparo", 0);
 			animator.SetBool("walk", false);
 			animator.SetBool("grounded", true);
+			if(Panel.GetComponent<Game>().continuar)
+			{
+				print("DESTRUIR OBJETOS");
+				CmdDestruir();
+			}
 		}
 		//CHECA SI ESTA EN EL PISO
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
@@ -1076,6 +1081,19 @@ public class AIMedico : NetworkBehaviour {
 
 		NetworkServer.Spawn(arma);
 		Destroy(arma, 2.0f);
+	}
+
+	[Command]
+	public void CmdDestruir()
+	{
+		RpcDestruirCliente();
+		Destroy(gameObject);
+	}
+
+	[ClientRpc]
+	public void RpcDestruirCliente()
+	{
+		Destroy(gameObject);
 	}
 }
 

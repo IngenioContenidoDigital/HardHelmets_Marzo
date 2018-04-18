@@ -16,6 +16,9 @@ public class mina : NetworkBehaviour {
 
 	public bool muerte;
 
+	//PANEL PARTIDA
+	GameObject Panel;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +27,19 @@ public class mina : NetworkBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		if(Panel == null)
+		{
+			Panel = GameObject.Find("GAME");
+		}
+		if(Panel.GetComponent<Game>().final)
+		{
+			if(Panel.GetComponent<Game>().continuar)
+			{
+				print("DESTRUIR OBJETOS");
+				CmdDestruir();
+			}
+		}
+
 		if(muerte)
 		{
 			CmdExplo();
@@ -56,5 +72,18 @@ public class mina : NetworkBehaviour {
 		explo.GetComponent<Explo>().poder = poder;
 		NetworkServer.Spawn(onda);
 		NetworkServer.Destroy(gameObject);
+	}
+
+	[Command]
+	public void CmdDestruir()
+	{
+		RpcDestruirCliente();
+		Destroy(gameObject);
+	}
+
+	[ClientRpc]
+	public void RpcDestruirCliente()
+	{
+		Destroy(gameObject);
 	}
 }

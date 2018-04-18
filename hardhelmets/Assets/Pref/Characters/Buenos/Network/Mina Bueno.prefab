@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114977271261505436}
   - component: {fileID: 114256927438000572}
   - component: {fileID: 114556184065493896}
+  - component: {fileID: 148087086722127362}
   m_Layer: 12
   m_Name: Mina Bueno
   m_TagString: mina
@@ -268,3 +269,15 @@ MonoBehaviour:
   prefab: {fileID: 1990200636855684, guid: 98631222199492e4183c08dde9eac952, type: 2}
   tank: enemyTank
   muerte: 0
+--- !u!148 &148087086722127362
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1469381241267852}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
