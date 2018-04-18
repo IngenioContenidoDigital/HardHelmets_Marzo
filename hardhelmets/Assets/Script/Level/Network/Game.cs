@@ -1129,6 +1129,7 @@ public class Game : NetworkBehaviour {
 							cargar = true;
 
 							ResetValues();
+							CmdResetCliente();
 						}
 					}else
 					{
@@ -1300,6 +1301,8 @@ public class Game : NetworkBehaviour {
 				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
 				rematchC = Player2.GetComponent<HeroNetwork>().rematch;
 
+				print("CONTINUAR CLIENTE");
+
 				if(sleccionFinal <= 0)
 				{
 					print("FINAL TIEMPO CLIENTE");
@@ -1307,7 +1310,7 @@ public class Game : NetworkBehaviour {
 					{
 						print("RESET CLIENTE");
 
-						if(!cargar2)
+						if(!cargar)
 						{
 							print("RESET2 CLIENTE");
 							//CmdEndGame(Application.loadedLevelName);
@@ -1321,7 +1324,7 @@ public class Game : NetworkBehaviour {
 							Player1.GetComponent<HeroNetwork>().rematch = -1;
 
 
-							cargar2 = true;
+							cargar = true;
 
 							ResetValues();
 
@@ -1330,7 +1333,7 @@ public class Game : NetworkBehaviour {
 					}else
 					{
 						print("load lobby CLIENTE");
-						if(!cargar2)
+						if(!cargar)
 						{
 							RegresaLobby.GetComponent<regresaLobby>().retirada = true;
 							cargar2 = true;
@@ -1549,6 +1552,190 @@ public class Game : NetworkBehaviour {
 
 	public void ResetValues()
 	{
+		Falta = 420;
+		continuar = false;
+		bajartiempo = false;
+		//sleccionFinal = 30;
+		rematchS = -1;
+		rematchC = -1;
+		cargar = false;
+		cargar2 = false;
+
+		banderaBuena.SetActive(false);
+		banderaMala.SetActive(false);
+
+		rangoUP.SetActive(false);
+
+		//SANGRE BASE BUENA
+		BaseB.GetComponent<Base>().sangre = BaseB.GetComponent<Base>().saludMax;
+		BaseB.GetComponent<Animator>().SetBool("muere", false);
+		BaseB.GetComponent<Base>().fuego1.SetActive(false);
+		BaseB.GetComponent<Base>().fuego2.SetActive(false);
+		BaseB.GetComponent<Base>().fuego3.SetActive(false);
+		BaseB.GetComponent<Base>().fuego4.SetActive(false);
+		BaseB.GetComponent<Base>().destruida.SetActive(false);
+
+
+		//SANGRE BASE MALA
+		BaseM.GetComponent<Base>().sangre = BaseM.GetComponent<Base>().saludMax;
+		BaseM.GetComponent<Animator>().SetBool("muere", false);
+		BaseM.GetComponent<Base>().fuego1.SetActive(false);
+		BaseM.GetComponent<Base>().fuego2.SetActive(false);
+		BaseM.GetComponent<Base>().fuego3.SetActive(false);
+		BaseM.GetComponent<Base>().fuego4.SetActive(false);
+		BaseM.GetComponent<Base>().destruida.SetActive(false);
+
+		//ESTADISTICAS JUGADOR 1
+		KillsB = 0;
+		DeadsB = 0;
+		VechicleDestroyedB = 0;
+		StolenCardsB = 0;
+		CapturedFlagsAB = 0;
+		CapturedFlagsBB = 0;
+		CapturedFlagsB = 0;
+		BaseDestroyedB = 0;
+		TotalB = 0;
+		TotalBFinal = 0;
+		KillsB2 = 0;
+		VechicleDestroyedB2 = 0;
+		StolenCardsB2 = 0;
+		CapturedFlagsB2 = 0;
+		vecesTomadaAlphaB2 = 0;
+		vecesTomadaBetaB2 = 0;
+		BaseDestroyedB2 = 0;
+		DeadsB2 = 0;
+
+		//ESTADISTICAS JUGADOR 2
+		KillsM = 0;
+		DeadsM = 0;
+		VechicleDestroyedM = 0;
+		StolenCardsM = 0;
+		CapturedFlagsAM = 0;
+		CapturedFlagsBM = 0;
+		CapturedFlagsM = 0;
+		BaseDestroyedM = 0;
+		TotalM = 0;
+		TotalMFinal = 0;
+		KillsM2 = 0;
+		VechicleDestroyedM2 = 0;
+		StolenCardsM2 = 0;
+		vecesTomadaAlphaM2 = 0;
+		vecesTomadaBetaM2 = 0;
+		CapturedFlagsM2 = 0;
+		BaseDestroyedM2 = 0;
+		DeadsM2 = 0;
+
+		explotar = false;
+
+		iconos.SetActive(true);
+
+		sumatoria = false;
+		sumatoria2 = false;
+		sumatoria3 = false;
+		sumatoria4 = false;
+		sumatoria5 = false;
+		sumatoria6 = false;
+		sumatoria7 = false;
+		sumatoria8 = false;
+
+		finalizado = false;
+
+		Baul.SetActive(false);
+
+		sumar1Server = false;
+		sumar2Server = false;
+		sumar3Server = false;
+		sumar1Cliente = false;
+		sumar2Cliente = false;
+		sumar3Cliente = false;
+
+		Ganador.SetActive(false);
+		Perdedor.SetActive(false);
+		Empate.SetActive(false);
+
+		ponerVictoria = false;
+		ponerVictoria2 = false;
+
+		titulos = false;
+		titulos2 = false;
+		titulos3 = false;
+
+		final = false;
+		final2 = false;
+
+		//BASE ALPHA
+		Alpha.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
+		Alpha.GetComponent<BaseNeutraNetwork>().veces = 0;
+		Alpha.GetComponent<BaseNeutraNetwork>().vecesmala = 0;
+		Alpha.GetComponent<BaseNeutraNetwork>().tomada = "newtra";
+		Alpha.tag = "newtra";
+
+		Alpha.GetComponent<BaseNeutraNetwork>().ajuste = 0;
+
+		AlphaTomada = "";
+
+		AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+		AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+
+		vecesTomadaAlphaB = 0;
+		vecesTomadaAlphaM = 0;
+
+		//BASE BETA
+		if(Beta != null)
+		{
+			Beta.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
+			Beta.GetComponent<BaseNeutraNetwork>().veces = 0;
+			Beta.GetComponent<BaseNeutraNetwork>().vecesmala = 0;
+			Beta.GetComponent<BaseNeutraNetwork>().tomada = "newtra";
+			Beta.tag = "newtra";
+
+			Beta.GetComponent<BaseNeutraNetwork>().ajuste = 0;
+		}
+
+		BetaTomada = "";
+
+		BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+		BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+
+		vecesTomadaBetaB = 0;
+		vecesTomadaBetaM = 0;
+
+		Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		Medalla1.SetActive(false);
+
+		MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		MedallaTorre.SetActive(false);
+
+		Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		Medalla2.SetActive(false);
+
+		End.SetActive(false);
+		fondo.SetActive(false);
+		arriba.SetActive(true);
+
+		musica.GetComponent<AudioSource>().Play();
+		print("RESET");
+	}
+	[Command]
+	public void CmdResetCliente()
+	{
+		RpcResetValuesCliente();
+	}
+	[ClientRpc]
+	public void RpcResetValuesCliente()
+	{
+		print("RESET TODO EN CLIENTE");
+
+		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
+		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
+
+		Player2.GetComponent<HeroNetwork>().rematch = -1;
+		Player2.GetComponent<HeroNetwork>().continuar = false;
+		Player2.GetComponent<HeroNetwork>().ventanaRematch.SetActive(false);
+
+		Player1.GetComponent<HeroNetwork>().rematch = -1;
+
+
 		Falta = 420;
 		continuar = false;
 		bajartiempo = false;
