@@ -820,6 +820,8 @@ public class Game : NetworkBehaviour {
 			}
 		}else
 		{
+			End.SetActive(false);
+
 			Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			Medalla1.SetActive(false);
 
@@ -1135,6 +1137,8 @@ public class Game : NetworkBehaviour {
 					{
 						if(!cargar)
 						{
+							CmdLobbyCliente();
+
 							RegresaLobby.GetComponent<regresaLobby>().retirada = true;
 							NetworkManager.singleton.StopHost();
 							NetworkManager.singleton.StopClient();
@@ -1301,43 +1305,14 @@ public class Game : NetworkBehaviour {
 				rematchS = Player1.GetComponent<HeroNetwork>().rematch;
 				rematchC = Player2.GetComponent<HeroNetwork>().rematch;
 
-				print("CONTINUAR CLIENTE");
-
 				if(sleccionFinal <= 0)
 				{
-					print("FINAL TIEMPO CLIENTE");
 					if(rematchS+rematchC == 2)
 					{
-						print("RESET CLIENTE");
-
-						if(!cargar)
-						{
-							print("RESET2 CLIENTE");
-							//CmdEndGame(Application.loadedLevelName);
-							Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
-							Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
-
-							Player2.GetComponent<HeroNetwork>().rematch = -1;
-							Player2.GetComponent<HeroNetwork>().continuar = false;
-							Player2.GetComponent<HeroNetwork>().ventanaRematch.SetActive(false);
-
-							Player1.GetComponent<HeroNetwork>().rematch = -1;
-
-
-							cargar = true;
-
-							ResetValues();
-
-							//Destroy(gameObject);
-						}
+						//TODO SE RESETEA DESDE EL SERVIDOR
 					}else
 					{
-						print("load lobby CLIENTE");
-						if(!cargar)
-						{
-							RegresaLobby.GetComponent<regresaLobby>().retirada = true;
-							cargar2 = true;
-						}
+						//todo se hace desde el servidor
 					}
 				}
 			}
@@ -1552,6 +1527,13 @@ public class Game : NetworkBehaviour {
 
 	public void ResetValues()
 	{
+		Player1.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
+		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
+		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+
+		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
+		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+		
 		Falta = 420;
 		continuar = false;
 		bajartiempo = false;
@@ -1626,6 +1608,9 @@ public class Game : NetworkBehaviour {
 		DeadsM2 = 0;
 
 		explotar = false;
+		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
+		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().objetivo = false;
+		muerte = false;
 
 		iconos.SetActive(true);
 
@@ -1637,8 +1622,6 @@ public class Game : NetworkBehaviour {
 		sumatoria6 = false;
 		sumatoria7 = false;
 		sumatoria8 = false;
-
-		finalizado = false;
 
 		Baul.SetActive(false);
 
@@ -1663,12 +1646,13 @@ public class Game : NetworkBehaviour {
 		final = false;
 		final2 = false;
 
+		finalizado = false;
+
 		//BASE ALPHA
 		Alpha.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
 		Alpha.GetComponent<BaseNeutraNetwork>().veces = 0;
 		Alpha.GetComponent<BaseNeutraNetwork>().vecesmala = 0;
 		Alpha.GetComponent<BaseNeutraNetwork>().tomada = "newtra";
-		Alpha.tag = "newtra";
 
 		Alpha.GetComponent<BaseNeutraNetwork>().ajuste = 0;
 
@@ -1700,15 +1684,6 @@ public class Game : NetworkBehaviour {
 		vecesTomadaBetaB = 0;
 		vecesTomadaBetaM = 0;
 
-		Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-		Medalla1.SetActive(false);
-
-		MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-		MedallaTorre.SetActive(false);
-
-		Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-		Medalla2.SetActive(false);
-
 		End.SetActive(false);
 		fondo.SetActive(false);
 		arriba.SetActive(true);
@@ -1725,6 +1700,13 @@ public class Game : NetworkBehaviour {
 	public void RpcResetValuesCliente()
 	{
 		print("RESET TODO EN CLIENTE");
+
+		Player2.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
+		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
+		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+
+		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
+		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
 
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
@@ -1810,6 +1792,9 @@ public class Game : NetworkBehaviour {
 		DeadsM2 = 0;
 
 		explotar = false;
+		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
+		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().objetivo = false;
+		muerte = false;
 
 		iconos.SetActive(true);
 
@@ -1821,8 +1806,6 @@ public class Game : NetworkBehaviour {
 		sumatoria6 = false;
 		sumatoria7 = false;
 		sumatoria8 = false;
-
-		finalizado = false;
 
 		Baul.SetActive(false);
 
@@ -1847,12 +1830,13 @@ public class Game : NetworkBehaviour {
 		final = false;
 		final2 = false;
 
+		finalizado = false;
+
 		//BASE ALPHA
 		Alpha.GetComponent<BaseNeutraNetwork>().puntosTotales = 0;
 		Alpha.GetComponent<BaseNeutraNetwork>().veces = 0;
 		Alpha.GetComponent<BaseNeutraNetwork>().vecesmala = 0;
 		Alpha.GetComponent<BaseNeutraNetwork>().tomada = "newtra";
-		Alpha.tag = "newtra";
 
 		Alpha.GetComponent<BaseNeutraNetwork>().ajuste = 0;
 
@@ -1884,20 +1868,22 @@ public class Game : NetworkBehaviour {
 		vecesTomadaBetaB = 0;
 		vecesTomadaBetaM = 0;
 
-		Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-		Medalla1.SetActive(false);
-
-		MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-		MedallaTorre.SetActive(false);
-
-		Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-		Medalla2.SetActive(false);
-
 		End.SetActive(false);
 		fondo.SetActive(false);
 		arriba.SetActive(true);
 
 		musica.GetComponent<AudioSource>().Play();
-		print("RESET");
+	}
+
+	[Command]
+	public void CmdLobbyCliente()
+	{
+		RpcLobbyCliente();
+	}
+	[ClientRpc]
+	public void RpcLobbyCliente()
+	{
+		RegresaLobby.GetComponent<regresaLobby>().retirada = true;
+		cargar = true;
 	}
 }

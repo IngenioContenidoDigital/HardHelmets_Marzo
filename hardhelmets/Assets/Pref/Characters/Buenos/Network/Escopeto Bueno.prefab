@@ -1273,6 +1273,7 @@ GameObject:
   - component: {fileID: 114653988733527188}
   - component: {fileID: 114031987369572908}
   - component: {fileID: 114175603458903524}
+  - component: {fileID: 148065700278649168}
   m_Layer: 19
   m_Name: Escopeto Bueno
   m_TagString: Player
@@ -3514,6 +3515,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6290,6 +6292,18 @@ CapsuleCollider:
   m_Height: 5.23
   m_Direction: 1
   m_Center: {x: -0.45, y: 2.1, z: 0}
+--- !u!148 &148065700278649168
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634442861271446}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198490247297537124
 ParticleSystem:
   m_ObjectHideFlags: 1

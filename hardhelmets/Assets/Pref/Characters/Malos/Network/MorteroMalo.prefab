@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 114776531400809152}
   - component: {fileID: 114668187958776988}
   - component: {fileID: 114229369177793726}
+  - component: {fileID: 148917501365381222}
   m_Layer: 10
   m_Name: MorteroMalo
   m_TagString: enemy
@@ -5933,6 +5934,18 @@ CapsuleCollider:
   m_Height: 3.8
   m_Direction: 1
   m_Center: {x: -0.45, y: 1, z: 0}
+--- !u!148 &148917501365381222
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168111374380852}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198112673558718096
 ParticleSystem:
   m_ObjectHideFlags: 1

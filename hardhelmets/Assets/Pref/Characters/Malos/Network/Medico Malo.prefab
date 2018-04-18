@@ -840,6 +840,7 @@ GameObject:
   - component: {fileID: 114201876147925772}
   - component: {fileID: 114796700201282036}
   - component: {fileID: 114572583828628636}
+  - component: {fileID: 148179731890799794}
   m_Layer: 10
   m_Name: Medico Malo
   m_TagString: enemy
@@ -3446,6 +3447,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6273,6 +6275,18 @@ CapsuleCollider:
   m_Height: 5.23
   m_Direction: 1
   m_Center: {x: -0.45, y: 2.1, z: 0}
+--- !u!148 &148179731890799794
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448125461057878}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198129103143004274
 ParticleSystem:
   m_ObjectHideFlags: 1

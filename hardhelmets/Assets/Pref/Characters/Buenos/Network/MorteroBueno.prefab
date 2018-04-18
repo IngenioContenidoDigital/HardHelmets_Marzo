@@ -1146,6 +1146,7 @@ GameObject:
   - component: {fileID: 114176603985327660}
   - component: {fileID: 114247867209267044}
   - component: {fileID: 114046429031895526}
+  - component: {fileID: 148460904122382964}
   m_Layer: 19
   m_Name: MorteroBueno
   m_TagString: Player
@@ -5934,6 +5935,18 @@ CapsuleCollider:
   m_Height: 3.8
   m_Direction: 1
   m_Center: {x: -0.45, y: 1, z: 0}
+--- !u!148 &148460904122382964
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690488037900472}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4527660534067060, guid: ef2c77c0118e1a646bd88e0837624d41, type: 2}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!198 &198066648343761590
 ParticleSystem:
   m_ObjectHideFlags: 1
