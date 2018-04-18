@@ -495,6 +495,7 @@ public class Game : NetworkBehaviour {
 	public bool bajartiempo;
 
 	bool cargar;
+	bool cargar2;
 
 	//SERVIDOR Y CLIENTE
 	void FixedUpdate ()
@@ -827,6 +828,8 @@ public class Game : NetworkBehaviour {
 
 			Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			Medalla2.SetActive(false);
+
+			sleccionFinal = 30;
 		}
 
 		if(explotar)
@@ -1109,7 +1112,7 @@ public class Game : NetworkBehaviour {
 					{
 						if(!cargar)
 						{
-							print("RESET");
+							print("RESET HOSTING");
 							//CmdEndGame(Application.loadedLevelName);
 
 							Player1.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
@@ -1122,8 +1125,6 @@ public class Game : NetworkBehaviour {
 							Player2.GetComponent<HeroNetwork>().rematch = -1;
 
 							//Destroy(gameObject);
-
-							ResetValues();
 
 							cargar = true;
 
@@ -1301,10 +1302,14 @@ public class Game : NetworkBehaviour {
 
 				if(sleccionFinal <= 0)
 				{
+					print("FINAL TIEMPO CLIENTE");
 					if(rematchS+rematchC == 2)
 					{
-						if(!cargar)
+						print("RESET CLIENTE");
+
+						if(!cargar2)
 						{
+							print("RESET2 CLIENTE");
 							//CmdEndGame(Application.loadedLevelName);
 							Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
 							Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
@@ -1315,9 +1320,8 @@ public class Game : NetworkBehaviour {
 
 							Player1.GetComponent<HeroNetwork>().rematch = -1;
 
-							ResetValues();
 
-							cargar = true;
+							cargar2 = true;
 
 							ResetValues();
 
@@ -1325,10 +1329,11 @@ public class Game : NetworkBehaviour {
 						}
 					}else
 					{
-						if(!cargar)
+						print("load lobby CLIENTE");
+						if(!cargar2)
 						{
 							RegresaLobby.GetComponent<regresaLobby>().retirada = true;
-							cargar = true;
+							cargar2 = true;
 						}
 					}
 				}
@@ -1547,10 +1552,11 @@ public class Game : NetworkBehaviour {
 		Falta = 420;
 		continuar = false;
 		bajartiempo = false;
-		sleccionFinal = 30;
+		//sleccionFinal = 30;
 		rematchS = -1;
 		rematchC = -1;
 		cargar = false;
+		cargar2 = false;
 
 		banderaBuena.SetActive(false);
 		banderaMala.SetActive(false);
@@ -1705,5 +1711,6 @@ public class Game : NetworkBehaviour {
 		arriba.SetActive(true);
 
 		musica.GetComponent<AudioSource>().Play();
+		print("RESET");
 	}
 }
