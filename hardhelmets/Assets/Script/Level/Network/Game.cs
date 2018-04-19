@@ -1101,9 +1101,6 @@ public class Game : NetworkBehaviour {
 					{
 						if(!cargar)
 						{
-							print("RESET HOSTING");
-							//CmdEndGame(Application.loadedLevelName);
-
 							Player1.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
 							Player1.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
 
@@ -1112,8 +1109,6 @@ public class Game : NetworkBehaviour {
 							Player1.GetComponent<HeroNetwork>().ventanaRematch.SetActive(false);
 
 							Player2.GetComponent<HeroNetwork>().rematch = -1;
-
-							//Destroy(gameObject);
 
 							cargar = true;
 
@@ -1469,7 +1464,7 @@ public class Game : NetworkBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
-		destruccion.SetActive(true);
+		Instantiate(destruccion, transform.position, transform.rotation);
 		StartCoroutine(ultimo());
 	}
 
@@ -1601,7 +1596,6 @@ public class Game : NetworkBehaviour {
 		explotar = false;
 		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
 		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().objetivo = false;
-		muerte = false;
 
 		iconos.SetActive(true);
 
@@ -1678,6 +1672,14 @@ public class Game : NetworkBehaviour {
 		End.SetActive(false);
 		fondo.SetActive(false);
 		arriba.SetActive(true);
+
+		explotar = false;
+		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
+		muerte = false;
+		explotar = false;
+		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
+		Player1.GetComponent<HeroNetwork>().vivo = true;
+
 
 		reiniciar = true;
 
@@ -1866,9 +1868,11 @@ public class Game : NetworkBehaviour {
 		fondo.SetActive(false);
 		arriba.SetActive(true);
 
+		explotar = false;
 		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
-		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().objetivo = false;
 		muerte = false;
+		explotar = false;
+		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
 		Player2.GetComponent<HeroNetwork>().vivo = true;
 
 		reiniciar = true;
