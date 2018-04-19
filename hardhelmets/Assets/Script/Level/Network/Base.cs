@@ -44,18 +44,21 @@ public class Base : NetworkBehaviour {
 		if(sangre <= saludMax*70/100)
 		{
 			fuego1.SetActive(true);
-		}
-		if(sangre <= saludMax*50/100)
+		}else if(sangre <= saludMax*50/100)
 		{
 			fuego2.SetActive(true);
-		}
-		if(sangre <= saludMax*30/100)
+		}else if(sangre <= saludMax*30/100)
 		{
 			fuego3.SetActive(true);
-		}
-		if(sangre <= saludMax*10/100)
+		}else if(sangre <= saludMax*10/100)
 		{
 			fuego4.SetActive(true);
+		}else
+		{
+			fuego1.SetActive(false);
+			fuego2.SetActive(false);
+			fuego3.SetActive(false);
+			fuego4.SetActive(false);
 		}
 
 		if(sangre <= 0 && !matada)

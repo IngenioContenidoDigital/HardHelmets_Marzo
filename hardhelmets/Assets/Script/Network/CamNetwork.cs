@@ -102,6 +102,7 @@ public class CamNetwork : NetworkBehaviour {
 		intensidad = 0.1f;
 		GetComponent<Bloom>().bloomThreshold = 0.62f;
 	}
+	public bool unaVez;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -133,10 +134,15 @@ public class CamNetwork : NetworkBehaviour {
 		if(Panel != null && Panel.GetComponent<Game>().muerte)
 		{
 			ver = true;
-			if(transform.position.x-0.5f <= Panel.GetComponent<Game>().posicion.x)
+			if(transform.position.x-0.5f <= Panel.GetComponent<Game>().posicion.x && !unaVez)
 			{
+				unaVez = true;
 				StartCoroutine(finalizar());
 			}
+		}else
+		{
+			unaVez = false;
+			ver = false;
 		}
 
 		if(Player == null)
