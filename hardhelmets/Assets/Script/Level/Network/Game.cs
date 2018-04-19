@@ -278,15 +278,21 @@ public class Game : NetworkBehaviour {
 		{
 			Beta = GameObject.Find("BETA");
 		}
-	
+
 		if(BaseB == null)
 		{
 			BaseB = GameObject.Find("BASE");
+		}else
+		{
+			sagreBB = BaseB.GetComponent<Base>().sangre/2000;
 		}
 
 		if(BaseM == null)
 		{
 			BaseM = GameObject.Find("BASE MALA");
+		}else
+		{
+			sagreBM =  BaseM.GetComponent<Base>().sangre/2000;
 		}
 
 		if(RegresaLobby == null)

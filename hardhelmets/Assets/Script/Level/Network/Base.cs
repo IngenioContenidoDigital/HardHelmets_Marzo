@@ -70,6 +70,7 @@ public class Base : NetworkBehaviour {
 		if(sangre > 0)
 		{
 			matada = false;
+			GetComponent<Animator>().SetBool("muere", false);
 		}
 
 		if(!isServer)
