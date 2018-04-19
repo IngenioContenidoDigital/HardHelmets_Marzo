@@ -525,13 +525,6 @@ public class Game : NetworkBehaviour {
 			}
 		}
 
-		if(Falta <= 0 && !final && !muerte)
-		{
-			Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
-			Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
-			final = true;
-		}
-
 		if(listoTodos)
 		{
 			esperando.SetActive(false);
