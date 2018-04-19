@@ -235,7 +235,6 @@ public class Game : NetworkBehaviour {
 
 		if(isServer)
 		{
-			print("SOY EL SERVIDOR START");
 			XP = PlayerPrefs.GetFloat("PlayerEX");
 			XPActual = XP;
 			XPT.text = XP.ToString();
@@ -252,7 +251,6 @@ public class Game : NetworkBehaviour {
 
 		}else
 		{
-			print("SOY EL CLIENTE START");
 			XPM = PlayerPrefs.GetFloat("PlayerEX");
 			XPActualM = XPM;
 			XPMT.text = XPM.ToString();
@@ -293,20 +291,16 @@ public class Game : NetworkBehaviour {
 
 		if(RegresaLobby == null)
 		{
-			print("BUSCANDO MENSAJES LOBBY");
 			RegresaLobby = GameObject.Find("Canvas - Mensajes");
 		}
 
 		if(musica == null)
 		{
-			print("BUSCANDO MUSICA");
 			musica = GameObject.Find("MUSICA BATALLA");
 		}
 
 		if(!isServer)
 		{
-			print("SOY EL CLIENTE UPDATE");
-
 			if(Player1 != null)
 			{
 				nombre1 = Player1.GetComponent<HeroNetwork>().nombre;
@@ -316,8 +310,6 @@ public class Game : NetworkBehaviour {
 			return;
 		}else
 		{
-			print("SOY EL SERVIDOR UPDATE");
-
 			if(Player2 != null)
 			{
 				nombre2 = Player2.GetComponent<HeroNetwork>().nombre;
@@ -330,7 +322,6 @@ public class Game : NetworkBehaviour {
 			Player1 = GameObject.Find("Hero");
 		}else
 		{
-			print("PLAYER 1 ENCONTRADO");
 			if(Armas1 == "")
 			{
 				Armas1 = "pistola";
@@ -348,7 +339,6 @@ public class Game : NetworkBehaviour {
 
 		if(listoTodos)
 		{
-			print("DOS JUGADORES LISTOS UPDATE");
 			level1 = Player1.GetComponent<HeroNetwork>().level;
 			//level1Next = level1+1;
 
@@ -393,7 +383,6 @@ public class Game : NetworkBehaviour {
 
 			if(Alpha != null)
 			{
-				print("BASE ALPHA ENCONTRADA");
 				if(Alpha.tag == "BaseBuena")
 				{
 					AlphaTomada = "Buena";
@@ -416,7 +405,6 @@ public class Game : NetworkBehaviour {
 
 			if(Beta != null)
 			{
-				print("BASE BETA ENCONTRADA");
 				if(Beta.tag == "BaseBuena")
 				{
 					BetaTomada = "Buena";
@@ -437,75 +425,6 @@ public class Game : NetworkBehaviour {
 				vecesTomadaBetaM = Beta.GetComponent<BaseNeutraNetwork>().vecesmala;
 			}
 		}
-
-		if(Player1 != null)
-		{
-			print("Player1: "+Player1.name);
-		}
-
-		if(Player2 != null)
-		{
-			print("Player2: "+Player2.name);
-		}
-
-		print("arriba: "+arriba.name);
-		print("End: "+End.name);
-
-		print("banderaBuena: "+banderaBuena.name);
-		print("banderaMala: "+banderaMala.name);
-
-		print("Medalla1: "+Medalla1.name);
-		print("MedallaTorre: "+MedallaTorre.name);
-		print("Medalla2: "+Medalla2.name);
-
-		print("rango1: "+rango1.name);
-		print("rango2: "+rango2.name);
-		print("rangoUP: "+rangoUP.name);
-
-		print("ArmasM: "+ArmasM.name);
-
-		if(BaseB != null)
-		{
-			print("BaseB: "+BaseB.name);
-		}
-		if(BaseM != null)
-		{
-			print("BaseM: "+BaseM.name);
-		}
-		if(Alpha != null)
-		{
-			print("Alpha: "+Alpha.name);
-		}
-		print("AlphaB: "+AlphaB.name);
-		print("AlphaM: "+AlphaM.name);
-
-		if(Beta != null)
-		{
-			print("Beta: "+Beta.name);
-		}
-		print("BetaB: "+BetaB.name);
-		print("BetaM: "+BetaM.name);
-
-		print("Bueno: "+Bueno.name);
-		print("Malo: "+Malo.name);
-		if(musica != null)
-		{
-			print("musica: "+musica.name);
-		}
-
-		print("fondo: "+fondo.name);
-
-		print("finpartida: "+finpartida.name);
-
-		print("Ganador: "+Ganador.name);
-		print("Perdedor: "+Perdedor.name);
-		print("Empate: "+Empate.name);
-		if(RegresaLobby != null)
-		{
-			print("RegresaLobby: "+RegresaLobby.name);
-		}
-		print("iconos: "+iconos.name);
-		print("Baul: "+Baul.name);
 	}
 
 	public GameObject destruccion;
@@ -1598,9 +1517,11 @@ public class Game : NetworkBehaviour {
 		Player1.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
 		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
 		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+		Player1.GetComponent<HeroNetwork>().arma2 = true;
 
 		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
 		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+		Player2.GetComponent<HeroNetwork>().arma2 = true;
 		
 		Falta = 420;
 		continuar = false;
@@ -1761,7 +1682,6 @@ public class Game : NetworkBehaviour {
 		reiniciar = true;
 
 		musica.GetComponent<AudioSource>().Play();
-		print("RESET");
 	}
 	[Command]
 	public void CmdResetCliente()
@@ -1771,14 +1691,14 @@ public class Game : NetworkBehaviour {
 	[ClientRpc]
 	public void RpcResetValuesCliente()
 	{
-		print("RESET TODO EN CLIENTE");
-
 		Player2.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
 		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
 		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+		Player2.GetComponent<HeroNetwork>().arma2 = true;
 
 		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
 		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
+		Player1.GetComponent<HeroNetwork>().arma2 = true;
 
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
@@ -1945,6 +1865,11 @@ public class Game : NetworkBehaviour {
 		End.SetActive(false);
 		fondo.SetActive(false);
 		arriba.SetActive(true);
+
+		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
+		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().objetivo = false;
+		muerte = false;
+		Player2.GetComponent<HeroNetwork>().vivo = true;
 
 		reiniciar = true;
 
