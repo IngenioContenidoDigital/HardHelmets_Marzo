@@ -60,9 +60,6 @@ public class Base : NetworkBehaviour {
 		{
 			matada = true;
 			StartCoroutine(momentito());
-		}else
-		{
-			matada = false;
 		}
 	}
 
