@@ -63,7 +63,7 @@ public class Base : NetworkBehaviour {
 		}
 	}
 
-	bool matada;
+	public bool matada;
 
 	IEnumerator momentito()
 	{

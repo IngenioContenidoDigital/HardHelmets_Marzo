@@ -13514,6 +13514,7 @@ MonoBehaviour:
   amiga7: {fileID: 1367313259226546}
   amiga8: {fileID: 1581856114038986}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1093456319912956}
@@ -14164,6 +14165,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1555087138129066}
@@ -15027,6 +15029,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1958537077085362}
@@ -15311,6 +15314,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1493649040159196}
@@ -16215,6 +16219,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1142549341595972}
@@ -16461,6 +16466,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1415626899959786}
@@ -16615,10 +16621,32 @@ MonoBehaviour:
   casco4M: {fileID: 1307269208887746, guid: 306de854afdcea8498e2841e4a39bed1, type: 2}
   casco5M: {fileID: 1332724653904414, guid: 73cb1724b90dd7243a93bc8fc44e5553, type: 2}
   casco6M: {fileID: 1712610541847150, guid: 6ea94dc79875b864a911f51a3235c923, type: 2}
+  barra: {fileID: 0}
   ready: 0
   MenuPause: {fileID: 1645373264075534}
   estela: {fileID: 1509210970038384, guid: c6314845b82927040848a6ef61083cd6, type: 2}
   HumoPanzer: {fileID: 1414975633231474, guid: 69c1a99a79a35e747827e32e4bd8078b, type: 2}
+  continuar: 0
+  ventanaRematch: {fileID: 0}
+  selectbuttonrematch: 0
+  rematch: 0
+  RematchServer: {fileID: 0}
+  LobbyServer: {fileID: 0}
+  RematchCliente: {fileID: 0}
+  LobbyCliente: {fileID: 0}
+  victoria1: {fileID: 0}
+  victoria2: {fileID: 0}
+  victoria3: {fileID: 0}
+  victoria4: {fileID: 0}
+  ButtonRematchServer: {fileID: 0}
+  ButtonLobbyServer: {fileID: 0}
+  ButtonRematchCliente: {fileID: 0}
+  ButtonLobbyCliente: {fileID: 0}
+  RematchSelected: {fileID: 0}
+  RematchDeselected: {fileID: 0}
+  LobbySelected: {fileID: 0}
+  LobbyDeselected: {fileID: 0}
+  TiempoSleccion: {fileID: 0}
 --- !u!114 &114474617364365534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16700,6 +16728,7 @@ MonoBehaviour:
   strikeSpawnMetra: {fileID: 4530199820220938}
   inicial: {x: 0, y: 0, z: 0}
   hacer: 0
+  Panel: {fileID: 0}
   barra: {fileID: 1866367853236262}
 --- !u!114 &114480255211885784
 MonoBehaviour:
@@ -16905,6 +16934,7 @@ MonoBehaviour:
   amiga7: {fileID: 1367313259226546}
   amiga8: {fileID: 1581856114038986}
   amiga9: {fileID: 1095494087109768}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1797972546466564}
@@ -16982,6 +17012,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1485403322439866}
@@ -17574,7 +17605,10 @@ MonoBehaviour:
   Dos: {fileID: 21300000, guid: 1512e8cc8c4807147a769c09cf44104e, type: 3}
   Tres: {fileID: 21300000, guid: 6c403c544bc416f42b726c9e3a69ba7a, type: 3}
   PonerImagen: 0
+  ver: 0
   mouse: 0
+  limiteObjetivo: 0
+  limiteAleja: 0
 --- !u!114 &114556691237577774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19388,6 +19422,7 @@ MonoBehaviour:
   amiga7: {fileID: 1367313259226546}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1165383746717270}
@@ -20255,6 +20290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nace: {fileID: 1851617442756432}
   nace2: {fileID: 1024263465266354}
+  tirar: 0
   fusil: {fileID: 1592553804432386, guid: 57ee9d59efa61c348a67891372455a22, type: 2}
   escopeta: {fileID: 1189589807542996, guid: bbb8d18d4150c004f84d33fabdcae1f5, type: 2}
   submetra: {fileID: 1441597039517604, guid: e0ca3862aac035240a9d84e12dc60775, type: 2}
@@ -20279,6 +20315,7 @@ MonoBehaviour:
   torreta: {fileID: 1985223328450204, guid: 6f5b516e1b1592a4cbc19d5e103e33db, type: 2}
   torretaMisil: {fileID: 1804675324062838, guid: da6a6b21cc4327345b651e53239d5fd0,
     type: 2}
+  mina: {fileID: 1469381241267852, guid: 65555249272872f4abcbdcac3f64b92a, type: 2}
   fusileroMalo: {fileID: 1930713675427364, guid: 870a9c3a255cca44d90596c0f1fc792c,
     type: 2}
   escopetoMalo: {fileID: 1621078318580168, guid: b86e415bb34b1464d938e451fa7c80e7,
@@ -20302,13 +20339,13 @@ MonoBehaviour:
     type: 2}
   torretaMisilMalo: {fileID: 1834412736902200, guid: b2e415822d37ad947ada8bd23f5a9310,
     type: 2}
-  mina: {fileID: 1469381241267852, guid: 65555249272872f4abcbdcac3f64b92a, type: 2}
   minaMalo: {fileID: 1866254847140396, guid: 25beeaaa378927a4e8f4389f2132bb16, type: 2}
   martillar: 0
   crear: 0
   martillaTorreta: 0
   martillaTorreta2: 0
   martillaMina: 0
+  hammer: 0
 --- !u!114 &114755724298121252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -22566,6 +22603,7 @@ MonoBehaviour:
   amiga7: {fileID: 1581856114038986}
   amiga8: {fileID: 1095494087109768}
   amiga9: {fileID: 1148699649330192}
+  completa: 0
   Player: {fileID: 1968493899694166}
   piso: {fileID: 0}
   animacion: {fileID: 1666449714248244}

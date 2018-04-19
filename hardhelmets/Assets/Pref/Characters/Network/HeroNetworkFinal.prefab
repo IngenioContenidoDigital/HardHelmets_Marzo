@@ -2169,6 +2169,7 @@ GameObject:
   - component: {fileID: 82379851262585706}
   - component: {fileID: 82791353324188812}
   - component: {fileID: 81928406269077182}
+  - component: {fileID: 148097665412485854}
   - component: {fileID: 114852629008870854}
   - component: {fileID: 114354911310722476}
   - component: {fileID: 114853535466751158}
@@ -9072,7 +9073,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -24528,6 +24528,18 @@ NetworkView:
   m_Enabled: 1
   m_StateSynchronization: 1
   m_Observed: {fileID: 4492777532141572}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
+--- !u!148 &148097665412485854
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380778542673984}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 4315550916057292}
   m_ViewID:
     m_ID: 0
     m_Type: 0

@@ -272,6 +272,25 @@ public class Game : NetworkBehaviour {
 	// SOLO EL SERVIDOR
 	void Update ()
 	{
+		if(Alpha == null)
+		{
+			Alpha = GameObject.Find("ALPHA");
+		}
+		if(Beta == null)
+		{
+			Beta = GameObject.Find("BETA");
+		}
+	
+		if(BaseB == null)
+		{
+			BaseB = GameObject.Find("BASE");
+		}
+
+		if(BaseM == null)
+		{
+			BaseM = GameObject.Find("BASE MALA");
+		}
+
 		if(RegresaLobby == null)
 		{
 			print("BUSCANDO MENSAJES LOBBY");
@@ -863,14 +882,21 @@ public class Game : NetworkBehaviour {
 		{
 			End.SetActive(false);
 
-			Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-			Medalla1.SetActive(false);
-
-			MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-			MedallaTorre.SetActive(false);
-
-			Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-			Medalla2.SetActive(false);
+			if(Medalla1.activeSelf)
+			{
+				Medalla1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+				Medalla1.SetActive(false);
+			}
+			if(MedallaTorre.activeSelf)
+			{
+				MedallaTorre.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+				MedallaTorre.SetActive(false);
+			}
+			if(Medalla2.activeSelf)
+			{
+				Medalla2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+				Medalla2.SetActive(false);
+			}
 
 			sleccionFinal = 30;
 			reiniciar = false;
@@ -1593,6 +1619,7 @@ public class Game : NetworkBehaviour {
 		//SANGRE BASE BUENA
 		BaseB.GetComponent<Base>().sangre = BaseB.GetComponent<Base>().saludMax;
 		BaseB.GetComponent<Animator>().SetBool("muere", false);
+		BaseB.GetComponent<Base>().matada = false;
 		BaseB.GetComponent<Base>().fuego1.SetActive(false);
 		BaseB.GetComponent<Base>().fuego2.SetActive(false);
 		BaseB.GetComponent<Base>().fuego3.SetActive(false);
@@ -1603,6 +1630,7 @@ public class Game : NetworkBehaviour {
 		//SANGRE BASE MALA
 		BaseM.GetComponent<Base>().sangre = BaseM.GetComponent<Base>().saludMax;
 		BaseM.GetComponent<Animator>().SetBool("muere", false);
+		BaseM.GetComponent<Base>().matada = false;
 		BaseM.GetComponent<Base>().fuego1.SetActive(false);
 		BaseM.GetComponent<Base>().fuego2.SetActive(false);
 		BaseM.GetComponent<Base>().fuego3.SetActive(false);
@@ -1779,6 +1807,7 @@ public class Game : NetworkBehaviour {
 		//SANGRE BASE BUENA
 		BaseB.GetComponent<Base>().sangre = BaseB.GetComponent<Base>().saludMax;
 		BaseB.GetComponent<Animator>().SetBool("muere", false);
+		BaseB.GetComponent<Base>().matada = false;
 		BaseB.GetComponent<Base>().fuego1.SetActive(false);
 		BaseB.GetComponent<Base>().fuego2.SetActive(false);
 		BaseB.GetComponent<Base>().fuego3.SetActive(false);
@@ -1789,6 +1818,7 @@ public class Game : NetworkBehaviour {
 		//SANGRE BASE MALA
 		BaseM.GetComponent<Base>().sangre = BaseM.GetComponent<Base>().saludMax;
 		BaseM.GetComponent<Animator>().SetBool("muere", false);
+		BaseM.GetComponent<Base>().matada = false;
 		BaseM.GetComponent<Base>().fuego1.SetActive(false);
 		BaseM.GetComponent<Base>().fuego2.SetActive(false);
 		BaseM.GetComponent<Base>().fuego3.SetActive(false);
