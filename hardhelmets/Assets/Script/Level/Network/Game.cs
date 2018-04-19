@@ -1464,13 +1464,15 @@ public class Game : NetworkBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
-		Instantiate(destruccion, transform.position, transform.rotation);
+		destruccion.SetActive(true);
+		destruccion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "explocion", false);
 		StartCoroutine(ultimo());
 	}
 
 	IEnumerator ultimo ()
 	{
 		yield return new WaitForSpineAnimationComplete(destruccion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+		destruccion.SetActive(false);
 		final = true;
 	}
 
