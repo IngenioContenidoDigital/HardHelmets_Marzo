@@ -428,6 +428,9 @@ public class Game : NetworkBehaviour {
 	}
 
 	public GameObject destruccion;
+	public GameObject destruccion2;
+	public GameObject destruccion3;
+	public GameObject destruccion4;
 	public Vector3 posicion;
 	public bool muerte;
 
@@ -823,8 +826,8 @@ public class Game : NetworkBehaviour {
 
 		if(explotar)
 		{
-			StartCoroutine(muereBase());
 			explotar = false;
+			StartCoroutine(muereBase());
 		}
 
 		saludB.fillAmount = sagreBB;
@@ -1464,18 +1467,45 @@ public class Game : NetworkBehaviour {
 	IEnumerator muereBase ()
 	{
 		yield return new WaitForSeconds(1);
-		destruccion.SetActive(true);
-		if(destruccion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "explosion")
+		if(destruccion != null)
+		{
+			destruccion.SetActive(true);
+		}else if(destruccion2 != null)
+		{
+			destruccion2.SetActive(true);
+		}else if(destruccion3 != null)
+		{
+			destruccion3.SetActive(true);
+		}else if(destruccion4 != null)
+		{
+			destruccion4.SetActive(true);
+		}
+		/*if(destruccion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "explosion")
 		{
 			destruccion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "explosion", false);
-		}
+		}*/
 		StartCoroutine(ultimo());
 	}
 
 	IEnumerator ultimo ()
 	{
-		yield return new WaitForSpineAnimationComplete(destruccion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		destruccion.SetActive(false);
+		if(destruccion != null)
+		{
+			yield return new WaitForSpineAnimationComplete(destruccion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+			Destroy(destruccion);
+		}else if(destruccion2 != null)
+		{
+			yield return new WaitForSpineAnimationComplete(destruccion2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+			Destroy(destruccion2);
+		}else if(destruccion3 != null)
+		{
+			yield return new WaitForSpineAnimationComplete(destruccion3.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+			Destroy(destruccion3);
+		}else if(destruccion4 != null)
+		{
+			yield return new WaitForSpineAnimationComplete(destruccion4.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+			Destroy(destruccion4);
+		}
 		final = true;
 	}
 
