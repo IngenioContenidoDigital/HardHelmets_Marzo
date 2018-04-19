@@ -32,6 +32,8 @@ public class Base : NetworkBehaviour {
 		sangre = saludMax;
 	}
 
+	public GameObject Panel;
+
 	void Update ()
 	{
 		if(camara == null)
@@ -61,6 +63,31 @@ public class Base : NetworkBehaviour {
 			matada = true;
 			StartCoroutine(momentito());
 		}
+
+		if(sangre > 0)
+		{
+			matada = false;
+		}
+
+		if(!isServer)
+		{
+			if(Panel == null)
+			{
+				Panel = GameObject.Find("GAME");
+			}else
+			{
+				if(gameObject.name == "BASE")
+				{
+					sangre = Panel.GetComponent<Game>().sagreBB*saludMax;
+				}else
+				{
+					sangre = Panel.GetComponent<Game>().sagreBM*saludMax;
+				}
+			}
+
+			print("SOY LA BASE EN EL CLIENTE");
+		}
+
 	}
 
 	public bool matada;
@@ -75,20 +102,23 @@ public class Base : NetworkBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		if(col.gameObject.tag == "bala")
+		if(isServer)
 		{
-			sangre -= col.gameObject.GetComponent<bala>().poder;
+			if(col.gameObject.tag == "bala")
+			{
+				sangre -= col.gameObject.GetComponent<bala>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
-		}
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
+			}
 
-		if(col.gameObject.tag == "explo")
-		{
-			sangre -= col.gameObject.GetComponent<Explo>().poder;
+			if(col.gameObject.tag == "explo")
+			{
+				sangre -= col.gameObject.GetComponent<Explo>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
+			}
 		}
 	}
 
