@@ -497,8 +497,6 @@ public class Game : NetworkBehaviour {
 	bool cargar;
 	bool cargar2;
 
-	public bool reiniciar;
-
 	//SERVIDOR Y CLIENTE
 	public void FixedUpdate ()
 	{
@@ -526,6 +524,10 @@ public class Game : NetworkBehaviour {
 				Arma2B = Armas2;
 				CmdSendArma(Armas2);
 			}
+		}
+		if(sagreBB > 0 && sagreBM > 0)
+		{
+			muerte = false;
 		}
 
 		if(Player1 != null && Player2 != null && !listo)
@@ -806,7 +808,7 @@ public class Game : NetworkBehaviour {
 				StartCoroutine(esperaSumar());
 				finalizado = true;
 			}
-		}else if(reiniciar)
+		}else
 		{
 			End.SetActive(false);
 
@@ -827,7 +829,6 @@ public class Game : NetworkBehaviour {
 			}
 
 			sleccionFinal = 30;
-			reiniciar = false;
 		}
 
 		if(explotar)
@@ -1553,7 +1554,6 @@ public class Game : NetworkBehaviour {
 		Player1.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
 		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
 		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
-		Player1.GetComponent<HeroNetwork>().arma2 = true;
 
 		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
 		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
@@ -1720,9 +1720,7 @@ public class Game : NetworkBehaviour {
 		explotar = false;
 		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
 		Player1.GetComponent<HeroNetwork>().vivo = true;
-
-
-		reiniciar = true;
+		Player1.GetComponent<HeroNetwork>().arma2 = true;
 
 		musica.GetComponent<AudioSource>().Play();
 	}
@@ -1915,8 +1913,7 @@ public class Game : NetworkBehaviour {
 		explotar = false;
 		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
 		Player2.GetComponent<HeroNetwork>().vivo = true;
-
-		reiniciar = true;
+		Player2.GetComponent<HeroNetwork>().arma2 = true;
 
 		musica.GetComponent<AudioSource>().Play();
 	}

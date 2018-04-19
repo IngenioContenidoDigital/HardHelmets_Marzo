@@ -73,6 +73,10 @@ public class AnimacionesNetwork : NetworkBehaviour {
 				barra.SetActive(false);
 			}else
 			{
+				if(GetComponent<HeroNetwork>().salud > 0)
+				{
+					GetComponent<HeroNetwork>().vivo = true;
+				}
 				barra.SetActive(true);
 			}
 		}
