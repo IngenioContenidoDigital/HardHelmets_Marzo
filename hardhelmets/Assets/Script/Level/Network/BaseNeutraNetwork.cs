@@ -83,13 +83,19 @@ public class BaseNeutraNetwork : NetworkBehaviour {
 		{
 			return;
 		}
-			
-		if(puntosBueno > 0 && !Panel.GetComponent<Game>().final)
+
+		if(Panel == null)
 		{
-			sumarBueno = true;
+			Panel = GameObject.Find("GAME");
 		}else
 		{
-			sumarBueno = false;
+			if(puntosBueno > 0 && !Panel.GetComponent<Game>().final)
+			{
+				sumarBueno = true;
+			}else
+			{
+				sumarBueno = false;
+			}
 		}
 
 		altura = -0.58f+ajuste;
