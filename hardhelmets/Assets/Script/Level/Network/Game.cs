@@ -505,7 +505,6 @@ public class Game : NetworkBehaviour {
 			Player2 = GameObject.Find("Hero2");
 		}else
 		{
-			print("JUGADOR 2 ENCONTRADO FIXEDUPDATE");
 			if(Armas2 == "")
 			{
 				Armas2 = "pistola";
@@ -1552,12 +1551,6 @@ public class Game : NetworkBehaviour {
 	public void ResetValues()
 	{
 		Player1.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
-		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
-		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
-
-		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
-		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
-		Player2.GetComponent<HeroNetwork>().arma2 = true;
 		
 		Falta = 420;
 		continuar = false;
@@ -1720,7 +1713,6 @@ public class Game : NetworkBehaviour {
 		explotar = false;
 		Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
 		Player1.GetComponent<HeroNetwork>().vivo = true;
-		Player1.GetComponent<HeroNetwork>().arma2 = true;
 
 		musica.GetComponent<AudioSource>().Play();
 	}
@@ -1733,13 +1725,6 @@ public class Game : NetworkBehaviour {
 	public void RpcResetValuesCliente()
 	{
 		Player2.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
-		Player2.GetComponent<CustomFinalNetwork>().armaMano = "";
-		Player2.GetComponent<CustomFinalNetwork>().armaEspalda = "";
-		Player2.GetComponent<HeroNetwork>().arma2 = true;
-
-		Player1.GetComponent<CustomFinalNetwork>().armaMano = "";
-		Player1.GetComponent<CustomFinalNetwork>().armaEspalda = "";
-		Player1.GetComponent<HeroNetwork>().arma2 = true;
 
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();
@@ -1913,7 +1898,6 @@ public class Game : NetworkBehaviour {
 		explotar = false;
 		Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().ver = false;
 		Player2.GetComponent<HeroNetwork>().vivo = true;
-		Player2.GetComponent<HeroNetwork>().arma2 = true;
 
 		musica.GetComponent<AudioSource>().Play();
 	}
