@@ -1465,7 +1465,10 @@ public class Game : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(1);
 		destruccion.SetActive(true);
-		destruccion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "explocion", false);
+		if(destruccion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "explosion")
+		{
+			destruccion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "explosion", false);
+		}
 		StartCoroutine(ultimo());
 	}
 
