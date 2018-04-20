@@ -307,7 +307,7 @@ public class HeroNetwork : NetworkBehaviour{
 			nombre = newNombre;
 		}
 	}
-
+	bool enviarnombre;
 	void Update()
 	{
 		name.GetComponent<TextMesh>().text = nombre;
@@ -382,6 +382,11 @@ public class HeroNetwork : NetworkBehaviour{
 
 		if(vivo && ready)
 		{
+			if(!enviarnombre)
+			{
+				CmdSendNombre(nombre);
+				enviarnombre = true;
+			}
 			if(!isServer)
 			{
 				CmdSendArma(arma);

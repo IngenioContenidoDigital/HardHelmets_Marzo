@@ -16,10 +16,10 @@ public class miraCamara : MonoBehaviour {
 	{
 		if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")
 		{
-			transform.localScale = new Vector3(0.2f,0.2f,0.2f);
+			transform.localScale = new Vector3(0.1f,0.1f,0.1f);
 		}else
 		{
-			transform.localScale = new Vector3(-0.2f,0.2f,0.2f);
+			transform.localScale = new Vector3(-0.1f,0.1f,0.1f);
 		}
 	}
 }
