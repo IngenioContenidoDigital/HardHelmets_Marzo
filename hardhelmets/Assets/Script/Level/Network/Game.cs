@@ -350,11 +350,9 @@ public class Game : NetworkBehaviour {
 		if(listoTodos)
 		{
 			level1 = Player1.GetComponent<HeroNetwork>().level;
-			skinlevel1.GetComponent<combinedSkins>().skinsToCombine[0] = level1.ToString();
 			//level1Next = level1+1;
 
 			level2 = Player2.GetComponent<HeroNetwork>().level;
-			skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] = level2.ToString();
 
 			//level2Next = level2+1;
 
@@ -543,6 +541,11 @@ public class Game : NetworkBehaviour {
 				listoTodos = true;
 				Player1.GetComponent<HeroNetwork>().ready = true;
 				Player2.GetComponent<HeroNetwork>().ready = true;
+
+				skinlevel1.GetComponent<combinedSkins>().skinsToCombine[0] = level1.ToString();
+
+				skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] = level2.ToString();
+
 				listo = true;
 			}
 		}
