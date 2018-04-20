@@ -587,12 +587,18 @@ public class GameOffline : MonoBehaviour {
 
 		if(sagreBB <= 0)
 		{
-			posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+			if(Application.loadedLevelName == "ComunityMatch0")
+			{
+				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+			}else
+			{
+				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+8, BaseB.transform.position.z-68);
+			}
 			muerte = true;
 		}
 		if(sagreBM <= 0)
 		{
-			posicion = new Vector3(BaseM.transform.position.x-7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+			posicion = new Vector3(BaseM.transform.position.x-7, BaseM.transform.position.y+2, BaseM.transform.position.z-50);
 			muerte = true;
 		}
 
@@ -824,8 +830,15 @@ public class GameOffline : MonoBehaviour {
 			siguiente.SetActive(true);
 			if(Input.GetButtonDown("Submit") || Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.F))
 			{
-				Application.LoadLevel("Load");
-				loading.nombre = "menu";
+				if(Application.loadedLevelName == "Tutorial")
+				{
+					Application.LoadLevel("Load");
+					loading.nombre = "menu";
+				}else
+				{
+					Application.LoadLevel("Load");
+					loading.nombre = "Comunity";
+				}
 			}
 		}
 	}

@@ -231,21 +231,20 @@ namespace Prototype.NetworkLobby
 		{
 			ready = !ready;
 			set = true;
+			CmdSetBoton();
 		}
 
 		[Command]
-		public void CmdSetBoton (bool newSet)
+		public void CmdSetBoton ()
 		{
-			RpcSetBoton (newSet);
+			listo.SetActive(true);
+			RpcSetBoton ();
 		}
 
 		[ClientRpc]
-		public void RpcSetBoton (bool newSet)
+		public void RpcSetBoton ( )
 		{
-			if(!isLocalPlayer)
-			{
-				listo.SetActive(newSet);
-			}
+			listo.SetActive(true);
 		}
 
 		public void cambia ()

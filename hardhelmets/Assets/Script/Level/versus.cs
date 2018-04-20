@@ -58,6 +58,7 @@ public class versus : MonoBehaviour {
 			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[0] = Player1.GetComponent<PlayerIdSkinLobby>().avatar;
 			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[1] = Player1.GetComponent<PlayerIdSkinLobby>().borde;
 			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player1.GetComponent<PlayerIdSkinLobby>().fondo;
+			Player1Skin.GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+Player1.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
 		}
 
 		if(Player2 != null)
@@ -70,6 +71,7 @@ public class versus : MonoBehaviour {
 			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[0] = Player2.GetComponent<PlayerIdSkinLobby>().avatar;
 			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[1] = Player2.GetComponent<PlayerIdSkinLobby>().borde;
 			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player2.GetComponent<PlayerIdSkinLobby>().fondo;
+			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+Player2.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
 		}
 	}
 

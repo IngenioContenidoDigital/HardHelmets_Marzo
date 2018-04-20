@@ -58,17 +58,29 @@ public class CommunityListObject : MonoBehaviour {
 	public Text levela;
 	public Text levelb;
 
+	public Text banderast;
+	public Text torrest;
+
+	public int banderas;
+	public int torres;
+
 	// Use this for initialization
 	void Start ()
 	{
 		nombre = arrayName[Random.Range(0,arrayName.Length)];
 		level = Random.Range(1,51);
 
+		banderas = Random.Range(5,30)+level;
+		torres = Random.Range(1,20)+level;
+
 		nombrea.text = nombre;
 		nombreb.text = nombre;
 
 		levela.text = level.ToString();
 		levelb.text = level.ToString();
+
+		banderast.text = banderas.ToString();
+		torrest.text = torres.ToString();
 
 		rango.GetComponent<combinedSkins>().skinsToCombine[1] = "fondo"+Random.Range(1,11).ToString();
 		rango.GetComponent<combinedSkins>().skinsToCombine[2] = "borde"+Random.Range(1,6).ToString();
@@ -219,8 +231,8 @@ public class CommunityListObject : MonoBehaviour {
 
 		PlayerPrefs.SetInt("levelCommunity", level);
 
-		PlayerPrefs.SetInt("nameTorres", Random.Range(5,30));
-		PlayerPrefs.SetInt("nameBases", Random.Range(1,20));
+		PlayerPrefs.SetInt("nameTorres", banderas);
+		PlayerPrefs.SetInt("nameBases", torres);
 
 		PlayerPrefs.SetInt("ManoComunity1", carta1);
 		PlayerPrefs.SetInt("ManoComunity2", carta2);
@@ -235,6 +247,9 @@ public class CommunityListObject : MonoBehaviour {
 
 		content.GetComponent<CommunityList>().user = nombre;
 		content.GetComponent<CommunityList>().level = level.ToString();
+
+		content.GetComponent<CommunityList>().banderas = banderas.ToString();
+		content.GetComponent<CommunityList>().torres = torres.ToString();
 
 		content.GetComponent<CommunityList>().skinFondo = rango.GetComponent<combinedSkins>().skinsToCombine[1];
 		content.GetComponent<CommunityList>().skinBorde = rango.GetComponent<combinedSkins>().skinsToCombine[2];

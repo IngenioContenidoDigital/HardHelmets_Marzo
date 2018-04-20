@@ -18,8 +18,10 @@ public class CommunityVSPlayerId : MonoBehaviour {
 		torres.text = PlayerPrefs.GetInt("nameTorres").ToString();
 		bases.text = PlayerPrefs.GetInt("nameBases").ToString();
 
+		//skinsToCombine[0] = PlayerPrefs.GetString("avatar");
 		GetComponent<combinedSkins>().skinsToCombine[1] = PlayerPrefs.GetString("FondoCommunity");
 		GetComponent<combinedSkins>().skinsToCombine[2] = PlayerPrefs.GetString("BordeCommunity");
+		GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+PlayerPrefs.GetInt("levelCommunity").ToString();
 	}
 	
 	// Update is called once per frame
