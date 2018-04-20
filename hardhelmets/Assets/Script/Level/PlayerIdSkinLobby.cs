@@ -43,8 +43,6 @@ public class PlayerIdSkinLobby : NetworkBehaviour {
 		}
 		if(isLocalPlayer)
 		{
-			print("SOY EL JUGADOR LOCAL");
-
 			name = PlayerPrefs.GetString("SteamName");
 			nivel = PlayerPrefs.GetInt("PlayerLevel");
 			flags = PlayerPrefs.GetInt("Banderas");
@@ -63,6 +61,7 @@ public class PlayerIdSkinLobby : NetworkBehaviour {
 			Player.GetComponent<combinedSkins>().skinsToCombine[0] = avatar;
 			Player.GetComponent<combinedSkins>().skinsToCombine[1] = borde;
 			Player.GetComponent<combinedSkins>().skinsToCombine[2] = fondo;
+			Player.GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+nivel.ToString();
 
 			CmdSendName(avatar, borde, fondo, name, nivel, flags, bas);
 		}
@@ -95,6 +94,7 @@ public class PlayerIdSkinLobby : NetworkBehaviour {
 		Player.GetComponent<combinedSkins>().skinsToCombine[0] = newAvatar;
 		Player.GetComponent<combinedSkins>().skinsToCombine[1] = newBorde;
 		Player.GetComponent<combinedSkins>().skinsToCombine[2] = newFondo;
+		Player.GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+newNivel.ToString();
 
 		if(!isLocalPlayer)
 		{

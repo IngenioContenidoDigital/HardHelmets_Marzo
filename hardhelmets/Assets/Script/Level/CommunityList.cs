@@ -105,6 +105,9 @@ public class CommunityList : MonoBehaviour {
 
 			nombrea.text = user;
 			levela.text = level;
+			banderasa.text = banderas;
+			torresa.text = torres;
+
 			rango.GetComponent<combinedSkins>().skinsToCombine[1] = skinFondo;
 			rango.GetComponent<combinedSkins>().skinsToCombine[2] = skinBorde;
 			rango.GetComponent<combinedSkins>().skinsToCombine[3] = skinRango;
@@ -185,10 +188,14 @@ public class CommunityList : MonoBehaviour {
 
 	public Text nombrea;
 	public Text levela;
+	public Text banderasa;
+	public Text torresa;
 	public GameObject rango;
 
 	public string user;
 	public string level;
+	public string banderas;
+	public string torres;
 
 	public string skinFondo;
 	public string skinBorde;

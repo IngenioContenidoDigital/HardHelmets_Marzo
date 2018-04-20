@@ -26,6 +26,8 @@ public class HeroNetwork : NetworkBehaviour{
 	[SyncVar]
 	public string nombre;
 
+	public GameObject name;
+
 	[SyncVar(hook = "OnChangeHealth")]
 	public float salud;
 
@@ -308,6 +310,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	void Update()
 	{
+		name.GetComponent<TextMesh>().text = nombre;
 		if(!isLocalPlayer)
 		{
 			return;

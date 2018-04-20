@@ -52,11 +52,15 @@ public class Game : NetworkBehaviour {
 	[SyncVar]
 	public int level1;
 
+	public GameObject skinlevel1;
+
 	public int level1Next;
 
 	public UnityEngine.UI.Text nivel2;
 	[SyncVar]
 	public int level2;
+
+	public GameObject skinlevel2;
 
 	public int level2Next;
 
@@ -346,9 +350,12 @@ public class Game : NetworkBehaviour {
 		if(listoTodos)
 		{
 			level1 = Player1.GetComponent<HeroNetwork>().level;
+			skinlevel1.GetComponent<combinedSkins>().skinsToCombine[0] = level1.ToString();
 			//level1Next = level1+1;
 
 			level2 = Player2.GetComponent<HeroNetwork>().level;
+			skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] = level2.ToString();
+
 			//level2Next = level2+1;
 
 			if(Alpha == null)
@@ -554,8 +561,8 @@ public class Game : NetworkBehaviour {
 		{
 			Tiempo.text = ""+Falta.ToString("F0");
 		}
-		nivel1.text = "L V "+level1;
-		nivel2.text = "L V "+level2;
+		nivel1.text = level1.ToString();
+		nivel2.text = level2.ToString();
 
 		if(final && !final2)
 		{
@@ -841,7 +848,13 @@ public class Game : NetworkBehaviour {
 
 		if(sagreBB <= 0)
 		{
-			posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+			if(Application.loadedLevelName == "LevelNetwork0")
+			{
+				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+			}else
+			{
+				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+8, BaseB.transform.position.z-68);
+			}
 			muerte = true;
 		}
 		if(sagreBM <= 0)

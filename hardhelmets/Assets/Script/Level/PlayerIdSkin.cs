@@ -45,6 +45,7 @@ public class PlayerIdSkin : MonoBehaviour {
 		skinsToCombine[0] = PlayerPrefs.GetString("avatar");
 		skinsToCombine[1] = PlayerPrefs.GetString("borde");
 		skinsToCombine[2] = PlayerPrefs.GetString("fondo");
+		skinsToCombine[3] = "rango"+nivel.ToString();
 	}
 	
 	// Update is called once per frame
