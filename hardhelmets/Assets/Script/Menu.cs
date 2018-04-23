@@ -1350,7 +1350,18 @@ public class Menu : MonoBehaviour {
 	//MENU 2
 	public void MultiplayerText ()
 	{
-		descripcion.text = "Face other players in an online match";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Face other players in an online match";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Enfréntate a otros jugadores en una partida online";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "面对在线比赛中的其他球员";
+		}
 	}
 	public void Multiplayer ()
 	{
@@ -1751,27 +1762,93 @@ public class Menu : MonoBehaviour {
 	//TEXT
 	public void CommunityText ()
 	{
-		descripcion.text = "Play offline against AI generated players";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Play offline against AI generated players";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Juega una partida en solitario contra jugadores generados aleatoriamente";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "与AI生成的玩家离线玩";
+		}
 	}
 	public void CustomizationText ()
 	{
-		descripcion.text = "Customize player's appearance";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Customize player's appearance";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Personaliza la apariencia de tu jugador";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "自定义播放器的外观";
+		}
 	}
 	public void CardDeckText ()
 	{
-		descripcion.text = "Prepare the deck of war bonds you'll use in the field.";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Prepare the deck of war bonds you'll use in the field.";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Selecciona tus bonos de guerra";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "准备你将在现场使用的甲板战争债券";
+		}
 	}
 	public void TutorialText ()
 	{
-		descripcion.text = "Get to learn the basics.";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Get to learn the basics.";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Aprende lo básico para jugar ";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "学习基础知识";
+		}
 	}
 	public void PracticeText ()
 	{
-		descripcion.text = "Train to improve your skills and gain some ability to command your men.";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Train to improve your skills and gain some ability to command your men";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Mejora tus habilidades para comandar tu ejército";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "训练提高你的技能并获得一些指挥你的人的能力";
+		}
 	}
 	public void ProfileText ()
 	{
-		descripcion.text = "Customize your player id to show you personality in front of other players";
+		if(idioma == "ENGLISH")
+		{
+			descripcion.text = "Customize your player id to show you personality in front of other players";
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.text = "Personaliza tu identificación de jugador para mostrar tu personalidad a los demás jugadores";
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.text = "自定义您的播放器ID以在其他播放器前显示您的个性";
+		}
 	}
 	//REGRESAR
 	public GameObject mano;
