@@ -120,11 +120,11 @@ public class Menu : MonoBehaviour {
 			SteamName = SteamFriends.GetPersonaName();
 			PlayerPrefs.SetString("SteamName", SteamName);
 		}
-
 		//Cursor.visible = true;
-
 		if(PlayerPrefs.GetInt("FirstTime") == 0)
 		{
+			PlayerPrefs.SetString("idioma", "ENGLISH");
+
 			PlayerPrefs.SetInt("Victorias", 0);
 			PlayerPrefs.SetInt("Derrotas", 0);
 			PlayerPrefs.SetInt("Empates", 0);
@@ -282,6 +282,7 @@ public class Menu : MonoBehaviour {
 			//DEJA DE SER LA PRIMERA VEZ
 			PlayerPrefs.SetInt("FirstTime",1);
 		}
+		idioma = PlayerPrefs.GetString("idioma");
 
 		//OPCIONES
 		musica = Mathf.RoundToInt(PlayerPrefs.GetFloat("musica"));
@@ -665,82 +666,361 @@ public class Menu : MonoBehaviour {
 		//OPCIONES
 		if(musica == 0)
 		{
-			musicaT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				musicaT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				musicaT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				musicaT.text = "关闭";
+			}
 		}
 		if(musica == 1)
 		{
-			musicaT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				musicaT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				musicaT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				musicaT.text = "上";
+			}
 		}
 		PlayerPrefs.SetFloat("musica",musica);
 
 		if(violencia == 0)
 		{
-			violenciaT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				violenciaT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				violenciaT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				violenciaT.text = "关闭";
+			}
 		}
 		if(violencia == 1)
 		{
-			violenciaT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				violenciaT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				violenciaT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				violenciaT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("violencia",violencia);
+		//LENGUAJE
+		PlayerPrefs.SetString("idioma",idioma);
+		if(idioma == "ENGLISH")
+		{
+			idiomaT.text = PlayerPrefs.GetString("idioma");
+		}
+		if(idioma == "SPANISH")
+		{
+			idiomaT.text= "ESPAÑOL";
+		}
+		if(idioma == "CHINESE")
+		{
+			idiomaT.text = "中文";
+		}
 		//SETTINGS
-		antiAliasingT.text = PlayerPrefs.GetString("antiAliasing");
 		PlayerPrefs.SetString("antiAliasing",antiAliasing);
-
-		ambientOclusionT.text = PlayerPrefs.GetString("ambientOclusion");
+		if(idioma == "ENGLISH")
+		{
+			antiAliasingT.text = PlayerPrefs.GetString("antiAliasing");
+		}
+		if(idioma == "SPANISH")
+		{
+			if(antiAliasing == "LOWEST")
+			{
+				antiAliasingT.text = "MUY BAJO";
+			}else if(antiAliasing == "LOW")
+			{
+				antiAliasingT.text = "BAJO";
+			}else if(antiAliasing == "MEDIUM")
+			{
+				antiAliasingT.text = "MEDIO";
+			}else if(antiAliasing == "HIGH")
+			{
+				antiAliasingT.text = "ALTO";
+			}else if(antiAliasing == "ULTRA")
+			{
+				antiAliasingT.text = "ULTRA";
+			}
+		}
+		if(idioma == "CHINESE")
+		{
+			if(antiAliasing == "LOWEST")
+			{
+				antiAliasingT.text = "最低";
+			}else if(antiAliasing == "LOW")
+			{
+				antiAliasingT.text = "低";
+			}else if(antiAliasing == "MEDIUM")
+			{
+				antiAliasingT.text = "中";
+			}else if(antiAliasing == "HIGH")
+			{
+				antiAliasingT.text = "高";
+			}else if(antiAliasing == "ULTRA")
+			{
+				antiAliasingT.text = "超";
+			}
+		}
+			
 		PlayerPrefs.SetString("ambientOclusion",ambientOclusion);
+		if(idioma == "ENGLISH")
+		{
+			ambientOclusionT.text = PlayerPrefs.GetString("ambientOclusion");
+		}
+		if(idioma == "SPANISH")
+		{
+			if(ambientOclusion == "LOWEST")
+			{
+				ambientOclusionT.text = "MUY BAJO";
+			}else if(ambientOclusion == "LOW")
+			{
+				ambientOclusionT.text = "BAJO";
+			}else if(ambientOclusion == "MEDIUM")
+			{
+				ambientOclusionT.text = "MEDIO";
+			}else if(ambientOclusion == "HIGH")
+			{
+				ambientOclusionT.text = "ALTO";
+			}else if(ambientOclusion == "ULTRA")
+			{
+				ambientOclusionT.text = "ULTRA";
+			}
+		}
+		if(idioma == "CHINESE")
+		{
+			if(ambientOclusion == "LOWEST")
+			{
+				ambientOclusionT.text = "最低";
+			}else if(ambientOclusion == "LOW")
+			{
+				ambientOclusionT.text = "低";
+			}else if(ambientOclusion == "MEDIUM")
+			{
+				ambientOclusionT.text = "中";
+			}else if(ambientOclusion == "HIGH")
+			{
+				ambientOclusionT.text = "高";
+			}else if(ambientOclusion == "ULTRA")
+			{
+				ambientOclusionT.text = "超";
+			}
+		}
 
 		if(motionBlur == 0)
 		{
-			motionBlurT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				motionBlurT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				motionBlurT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				motionBlurT.text = "关闭";
+			}
 		}
 		if(motionBlur == 1)
 		{
-			motionBlurT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				motionBlurT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				motionBlurT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				motionBlurT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("motionBlur",motionBlur);
 
 		if(bloom == 0)
 		{
-			bloomT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				bloomT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				bloomT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				bloomT.text = "关闭";
+			}
 		}
 		if(bloom == 1)
 		{
-			bloomT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				bloomT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				bloomT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				bloomT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("bloom",bloom);
 
 		if(dephOfFlied == 0)
 		{
-			dephOfFliedT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				dephOfFliedT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				dephOfFliedT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				dephOfFliedT.text = "关闭";
+			}
 		}
 		if(dephOfFlied == 1)
 		{
-			dephOfFliedT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				dephOfFliedT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				dephOfFliedT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				dephOfFliedT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("dephOfFlied",dephOfFlied);
 
 		if(globalFog == 0)
 		{
-			globalFogT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				globalFogT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				globalFogT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				globalFogT.text = "关闭";
+			}
 		}
 		if(globalFog == 1)
 		{
-			globalFogT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				globalFogT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				globalFogT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				globalFogT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("globalFog",globalFog);
 
 		if(volumetricImage == 0)
 		{
-			volumetricImageT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				volumetricImageT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				volumetricImageT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				volumetricImageT.text = "关闭";
+			}
 		}
 		if(volumetricImage == 1)
 		{
-			volumetricImageT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				volumetricImageT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				volumetricImageT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				volumetricImageT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("volumetricImage",volumetricImage);
 
-		sunShaftT.text = PlayerPrefs.GetString("sunShaft");
 		PlayerPrefs.SetString("sunShaft",sunShaft);
+		if(idioma == "ENGLISH")
+		{
+			sunShaftT.text = PlayerPrefs.GetString("sunShaft");
+		}
+		if(idioma == "SPANISH")
+		{
+			if(sunShaft == "LOW")
+			{
+				sunShaftT.text = "BAJO";
+			}else if(sunShaft == "NORMAL")
+			{
+				sunShaftT.text = "NORMAL";
+			}else if(sunShaft == "HIGH")
+			{
+				sunShaftT.text = "ALTO";
+			}
+		}
+		if(idioma == "CHINESE")
+		{
+			if(sunShaft == "LOW")
+			{
+				sunShaftT.text = "低";
+			}else if(sunShaft == "NORMAL")
+			{
+				sunShaftT.text = "正常";
+			}else if(sunShaft == "HIGH")
+			{
+				sunShaftT.text = "高";
+			}
+		}
 
 		//FLECHAS CHARACTER CUSTOMIZATION
 		if(Icustom && !wait)
@@ -974,6 +1254,10 @@ public class Menu : MonoBehaviour {
 	}
 	public void options ()
 	{
+		if(idioma == "")
+		{
+			idioma = "ENGLISH";
+		}
 		pantalla = "options";
 		menu1.GetComponent<Animator>().SetBool("entra", false);
 		menu1.GetComponent<Animator>().SetBool("sale", true);
@@ -982,6 +1266,21 @@ public class Menu : MonoBehaviour {
 		opciones.SetActive(true);
 		opciones.GetComponent<Animator>().SetBool("sale", false);
 		opciones.GetComponent<Animator>().SetBool("entra", true);
+	}
+	public string idioma;
+	public Text idiomaT;
+	public void lenguaje()
+	{
+		if(idioma == "ENGLISH")
+		{
+			idioma = "SPANISH";
+		}else if(idioma == "SPANISH")
+		{
+			idioma = "CHINESE";
+		}else if(idioma == "CHINESE")
+		{
+			idioma = "ENGLISH";
+		}
 	}
 	public int violencia;
 	public Text violenciaT;
