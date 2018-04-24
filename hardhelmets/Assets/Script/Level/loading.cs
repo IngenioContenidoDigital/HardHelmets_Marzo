@@ -26,13 +26,18 @@ public class loading : MonoBehaviour {
 
 	//TEXTOS
 	public string[] Tips = {"Use mortars and explotions to shoot down heavy enemies like tank and turrets","Use action button over defender card to orden a new position","Use moves button to make especial moves","Use ricght click to see laser gun","If shoot crouch yo have less probabilities to been shooted","Increase your rank to have more healt and abilities"};
+	public string[] TipsEspañol = {};
+	public string[] TipsChino = {};
 	public UnityEngine.UI.Text Tip;
 
 	bool cambio;
 
+	public string idioma;
+
 	// Use this for initialization
 	void Start ()
 	{
+		idioma = PlayerPrefs.GetString("idioma");
 		StartCoroutine(espera());
 		inicio = anim[Random.Range(0,anim.Length)];
 
@@ -41,7 +46,19 @@ public class loading : MonoBehaviour {
 		skin = soldado[Random.Range(0,soldado.Length)];
 		personaje.GetComponent<skinCarta>().skinsToCombine[0] = skin;
 
-		Tip.text = Tips[Random.Range(0,Tips.Length)];
+		if(idioma == "ENGLISH")
+		{
+			Tip.text = Tips[Random.Range(0,Tips.Length)];
+		}
+		if(idioma == "SPANISH")
+		{
+			Tip.text = TipsEspañol[Random.Range(0,TipsEspañol.Length)];
+		}
+		if(idioma == "CHINESE")
+		{
+			Tip.text = TipsChino[Random.Range(0,TipsChino.Length)];
+		}
+
 		StartCoroutine(Change());
 	}
 
@@ -68,7 +85,18 @@ public class loading : MonoBehaviour {
 		}
 		if(cambio)
 		{
-			Tip.text = Tips[Random.Range(0,Tips.Length)];
+			if(idioma == "ENGLISH")
+			{
+				Tip.text = Tips[Random.Range(0,Tips.Length)];
+			}
+			if(idioma == "SPANISH")
+			{
+				Tip.text = TipsEspañol[Random.Range(0,TipsEspañol.Length)];
+			}
+			if(idioma == "CHINESE")
+			{
+				Tip.text = TipsChino[Random.Range(0,TipsChino.Length)];
+			}
 			StartCoroutine(Change());
 			cambio = false;
 		}
