@@ -20,7 +20,10 @@ public class mensajes : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+	public GameObject si1;
+	public GameObject si2;
+	public GameObject si3;
+	public GameObject si4;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -46,16 +49,19 @@ public class mensajes : MonoBehaviour {
 			{
 				GetComponent<Animator>().SetInteger("habla", 1);
 				mensajeSalir.SetActive(true);
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si4);
 			}
 			if(mostrar == "tutorial")
 			{
 				GetComponent<Animator>().SetInteger("habla", 1);
 				tutorial.SetActive(true);
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si3);
 			}
 			if(mostrar == "comunity")
 			{
 				GetComponent<Animator>().SetInteger("habla", 1);
 				comunity.SetActive(true);
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si2);
 			}
 			if(mostrar == "practica")
 			{
@@ -66,6 +72,7 @@ public class mensajes : MonoBehaviour {
 			{
 				GetComponent<Animator>().SetInteger("habla", 1);
 				online.SetActive(true);
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si1);
 			}
 			see = false;
 		}

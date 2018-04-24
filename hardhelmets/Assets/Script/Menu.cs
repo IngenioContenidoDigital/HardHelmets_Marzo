@@ -1981,6 +1981,7 @@ public class Menu : MonoBehaviour {
 			enfocarMaleta = false;
 
 			customCharacter.GetComponent<Animator>().SetBool("sale", true);
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m2);
 
 			menu2.GetComponent<Animator>().SetBool("sale", false);
 			menu2.GetComponent<Animator>().SetBool("entra", true);
