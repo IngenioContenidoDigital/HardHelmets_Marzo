@@ -42,9 +42,11 @@ public class Pausa : MonoBehaviour {
 	}
 
 	public GameObject selectedObj;
+	public string idioma;
 	// Update is called once per frame
 	void Update ()
 	{
+		idioma = PlayerPrefs.GetString("idioma");
 		//RESELECCIONAR ELEMENTO DE MENU
 		//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
 		if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
@@ -97,21 +99,65 @@ public class Pausa : MonoBehaviour {
 		//OPCIONES
 		if(musica == 0)
 		{
-			musicaT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				musicaT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				musicaT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				musicaT.text = "关闭";
+			}
 		}
 		if(musica == 1)
 		{
-			musicaT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				musicaT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				musicaT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				musicaT.text = "上";
+			}
 		}
 		PlayerPrefs.SetFloat("musica",musica);
 
 		if(violencia == 0)
 		{
-			violenciaT.text = "OFF";
+			if(idioma == "ENGLISH")
+			{
+				violenciaT.text = "OFF";
+			}
+			if(idioma == "SPANISH")
+			{
+				violenciaT.text = "APAGADO";
+			}
+			if(idioma == "CHINESE")
+			{
+				violenciaT.text = "关闭";
+			}
 		}
 		if(violencia == 1)
 		{
-			violenciaT.text = "ON";
+			if(idioma == "ENGLISH")
+			{
+				violenciaT.text = "ON";
+			}
+			if(idioma == "SPANISH")
+			{
+				violenciaT.text = "ENCENDIDO";
+			}
+			if(idioma == "CHINESE")
+			{
+				violenciaT.text = "上";
+			}
 		}
 		PlayerPrefs.SetInt("violencia",violencia);
 

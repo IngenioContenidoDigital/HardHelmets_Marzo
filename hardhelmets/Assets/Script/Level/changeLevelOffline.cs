@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class changeLevelOffline : MonoBehaviour {
 
@@ -29,6 +30,9 @@ public class changeLevelOffline : MonoBehaviour {
 	public bool azar;
 
 	int contar;
+
+	public EventSystem eventsystem;
+	public GameObject lvButton;
 
 	// Use this for initialization
 	void Start ()
@@ -96,6 +100,7 @@ public class changeLevelOffline : MonoBehaviour {
 	{
 		escenarios.SetActive(true);
 		escenarios.GetComponent<Animator>().SetBool("entra", true);
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(lvButton);
 	}
 
 	public void cerrar ()
