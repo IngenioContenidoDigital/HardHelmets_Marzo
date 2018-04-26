@@ -22,21 +22,48 @@ public class idiomaObjeto : MonoBehaviour {
 
 		if(idioma == "ENGLISH")
 		{
-			ingles.SetActive(true);
-			español.SetActive(false);
-			chino.SetActive(false);
+			if(ingles != null)
+			{
+				ingles.SetActive(true);
+			}
+			if(español != null)
+			{
+				español.SetActive(false);
+			}
+			if(chino != null)
+			{
+				chino.SetActive(false);
+			}
 		}
 		if(idioma == "SPANISH")
 		{
-			español.SetActive(true);
-			ingles.SetActive(false);
-			chino.SetActive(false);
+			if(español != null)
+			{
+				español.SetActive(true);
+			}
+			if(ingles != null)
+			{
+				ingles.SetActive(false);
+			}
+			if(chino != null)
+			{
+				chino.SetActive(false);
+			}
 		}
 		if(idioma == "CHINESE")
 		{
-			chino.SetActive(true);
-			español.SetActive(false);
-			ingles.SetActive(false);
+			if(chino != null)
+			{
+				chino.SetActive(true);
+			}
+			if(español != null)
+			{
+				español.SetActive(false);
+			}
+			if(ingles != null)
+			{
+				ingles.SetActive(false);
+			}
 		}
 	}
 }

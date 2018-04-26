@@ -23,7 +23,8 @@ public class holograma : MonoBehaviour {
 	{
 		if(col.gameObject.name == "Hero")
 		{
-			Instantiate(hologram, new Vector3(col.transform.position.x, ye, zeta), Quaternion.Euler(0,0,0));
+			var cosa = Instantiate(hologram, new Vector3(col.transform.position.x, col.transform.position.y+3, zeta), Quaternion.Euler(0,0,0));
+			Destroy(cosa, 1);
 		}
 	}
 }

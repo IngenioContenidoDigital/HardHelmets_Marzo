@@ -42,7 +42,7 @@ public class balaOffline : MonoBehaviour {
 			Destroy(explo, 2.0f);
 		}else
 		{
-			Shot();
+			//Shot();
 
 			var explo = (GameObject)Instantiate(efecto, transform.position, transform.rotation);
 			explo.GetComponent<Animator>().SetInteger("efect",efect);

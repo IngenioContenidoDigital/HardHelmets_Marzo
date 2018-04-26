@@ -44,7 +44,7 @@ public class bala : NetworkBehaviour {
 			Destroy(explo, 2.0f);
 		}else
 		{
-			CmdShot();
+			//CmdShot();
 
 			var explo = (GameObject)Instantiate(efecto, transform.position, transform.rotation);
 			explo.GetComponent<Animator>().SetInteger("efect",efect);

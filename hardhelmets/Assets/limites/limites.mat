@@ -87,7 +87,7 @@ Material:
     - _Emission: 1
     - _FresnelExp: 5
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _Glow: 2
     - _Gradient1: 1
@@ -110,7 +110,9 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 0
+    - _invert: 0
     m_Colors:
+    - _ClippingCentre: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color0: {r: 0.18771628, g: 0.9117647, b: 0.6421192, a: 1}
     - _Color1: {r: 0.18771628, g: 0.6421192, b: 0.9117647, a: 1}
@@ -118,6 +120,7 @@ Material:
     - _EmisColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 0.7205882, g: 0.907505, b: 1, a: 1}
+    - _Plane: {r: 1, g: 0.7, b: 0.7, a: 0}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
