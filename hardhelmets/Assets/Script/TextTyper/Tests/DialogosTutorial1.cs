@@ -35,8 +35,12 @@
         [Tooltip("The text typer element to test typing with")]
         private TextTyper testTextTyper;
 
+		public string idioma;
+
         public void Start()
         {
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			habla = 3;
@@ -47,11 +51,31 @@
             this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
             this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Welcome Soldier.");
-			dialogueLines.Enqueue("You look very <delay=0.25>strange</delay> If you don’t mind, I'm telling you.");
-			dialogueLines.Enqueue("I’m <b>CAPTAIN  <delay=0.25>MUSTACHE</delay></b>. and I will be in charge of guiding you and make sure you’ll learn all basic techniques to behave as a real warrior in the Field.");
-			dialogueLines.Enqueue("Less Talk, More Action. Let’s start with your training.");
-			dialogueLines.Enqueue("Move yourself to the next spot.");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("Welcome Soldier.");
+				dialogueLines.Enqueue("You look very <delay=0.25>strange</delay> If you don’t mind, I'm telling you.");
+				dialogueLines.Enqueue("I’m <b>CAPTAIN  <delay=0.25>MUSTACHE</delay></b>. and I will be in charge of guiding you and make sure you’ll learn all basic techniques to behave as a real warrior in the Field.");
+				dialogueLines.Enqueue("Less Talk, More Action. Let’s start with your training.");
+				dialogueLines.Enqueue("Move yourself to the next spot.");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Bienvenido Soldado.");
+				dialogueLines.Enqueue("Luce muy <delay=0.25>extraño </delay>Si no le importaque se lo diga");
+				dialogueLines.Enqueue("Soy el <b>CAPITAN <delay=0.25>MOSTACHO</delay></b>. y estaré a cargo de guiarlo y asegurarme de que aprenda todas las técnicas básicas para ser un verdadero guerrero en el campo de batalla.");
+				dialogueLines.Enqueue("Menos charla, y mas acción. Comencemos con el entrenamiento.");
+				dialogueLines.Enqueue("Muévase al siguiente punto.");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("欢迎士兵。");
+				dialogueLines.Enqueue("你看起来很 <delay=0.25>奇怪</delay> 如果你不介意，我告诉你。");
+				dialogueLines.Enqueue("我 <b>队长 <delay=0.25>胡子</delay></b>. 我将负责指导你，并确保你将学习所有基本技巧，以便在该领域扮演真正的战士角色。");
+				dialogueLines.Enqueue("少说话，多行动。让我们从你的训练开始。");
+				dialogueLines.Enqueue("把自己移到下一个地方。");
+			}
+
             /*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

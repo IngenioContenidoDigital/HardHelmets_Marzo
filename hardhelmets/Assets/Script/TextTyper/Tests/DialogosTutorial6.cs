@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,8 +53,21 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Select the grenade from your deck of war bonds,");
-			dialogueLines.Enqueue("<b>DEPLOY AND EQUIP SOLDIER</b>");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("Select the grenade from your deck of war bonds.");
+				dialogueLines.Enqueue("<b>DEPLOY AND EQUIP SOLDIER</b>");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Selecciona la granada de los bonos de guerra");
+				dialogueLines.Enqueue("<b>DESPLIEGUELO Y EQUIPELO SOLDADO</b>");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("从你的战争债券组合中选择手榴弹。");
+				dialogueLines.Enqueue("<b>部署和装备军人</b>");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

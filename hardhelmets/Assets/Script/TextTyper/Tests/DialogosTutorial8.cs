@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,7 +53,18 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Good Soldier. Go to the next spot.");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("Good Soldier. Go to the next spot.");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Muy bien soldado. Muévase al siguiente punto.");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("好战士。 去下一个地方。");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

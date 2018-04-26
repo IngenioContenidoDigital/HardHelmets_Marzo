@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,7 +53,18 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("To claim the victory in every battle you’ll have to claim some checkpoints first. Get yourself close to the Flag and wait there until you capture the checkpoint.");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("To claim the victory in every battle you’ll have to claim some checkpoints first. Get yourself close to the Flag and wait there until you capture the checkpoint.");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Para reclamar la victoria en cada batalla, primero tendrá que reclamar algunos puntos de control. Acérquece a la bandera y espera allí hasta que capture el punto de control.");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("为了在每场战斗中获得胜利，你必须首先要求检查点。 让自己靠近国旗并在那里等到捕获检查点。");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

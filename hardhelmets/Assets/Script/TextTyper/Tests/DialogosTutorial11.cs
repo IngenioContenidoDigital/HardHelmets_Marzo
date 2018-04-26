@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,8 +53,21 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("The fastest way to claim the victory is by destroying the enemy facilities.");
-			dialogueLines.Enqueue("It is a tough job for a man alone. Deploy some support bonds and proceed to destroy enemy’s base.");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("The fastest way to claim the victory is by destroying the enemy facilities.");
+				dialogueLines.Enqueue("It is a tough job for a man alone. Deploy some support bonds and proceed to destroy enemy’s base.");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("La manera más rápida de reclamar la victoria es destruyendo las instalaciones enemigas.");
+				dialogueLines.Enqueue("Es un trabajo difícil para un solo hombre. Despliegue algunos bonos de apoyo y proceda a destruir la base enemiga.");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("夺取胜利的最快方式是摧毁敌方的设施。");
+				dialogueLines.Enqueue("对于一个人来说，这是一项艰巨的工作。部署一些支持债券并继续摧毁敌方基地。");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

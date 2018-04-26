@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,8 +53,21 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Very well ... now you have a weapon of great power.");
-			dialogueLines.Enqueue("<b>DESTROY THOSE BLANKS SOLDIER</b>");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("Very well ... now you have a weapon of great power.");
+				dialogueLines.Enqueue("<b>DESTROY THOSE BLANKS SOLDIER</b>");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Muy bien ... ahora cuenta con un arma de gran poder");
+				dialogueLines.Enqueue("<b>DESTRUYA LOS BLANCO SOLDADO</b>");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("很好 ... 现在你拥有了一个强大的武器。");
+				dialogueLines.Enqueue("<破坏那些空军士兵</b>");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

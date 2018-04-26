@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,7 +53,18 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Alright!!, now, let’s focus on your aiming, move towards front and back to align with your objective until the aiming circle shows up.");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("Alright!!, now, let’s focus on your aiming, move towards front and back to align with your objective until the aiming circle shows up.");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Bien!!, ahora, centrémonos en su objetivo, muevase hacia arriba y hacia abajo para alinearse con su objetivo hasta que aparezca el círculo de mira.");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("好的!!, 现在, 让我们专注于你的瞄准，前后移动，以符合你的目标，直到瞄准圈出现。");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

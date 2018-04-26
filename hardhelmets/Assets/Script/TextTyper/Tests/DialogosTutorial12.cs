@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,7 +53,18 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("Well done soldier. Now you know all basics to be able to defend yourself and your men in the field.");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("Well done soldier. Now you know all basics to be able to defend yourself and your men in the field.");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Bien hecho soldado. ahora sabe todo lo básico para poder defenderse en el campo de batalla.");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("做得好的士兵。 现在你知道所有的基本知识，能够在野外为自己和你的男人辩护。");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");

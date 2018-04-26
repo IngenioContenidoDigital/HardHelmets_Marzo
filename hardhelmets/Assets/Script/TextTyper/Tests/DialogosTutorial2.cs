@@ -35,8 +35,12 @@
 		[Tooltip("The text typer element to test typing with")]
 		private TextTyper testTextTyper;
 
+		public string idioma;
+
 		public void Start()
 		{
+			idioma = PlayerPrefs.GetString("idioma");
+
 			sonido.GetComponent<AudioSource>().Play();
 			ventana.SetActive(true);
 
@@ -49,8 +53,21 @@
 			this.printNextButton.onClick.AddListener(this.HandlePrintNextClicked);
 			this.printNoSkipButton.onClick.AddListener(this.HandlePrintNoSkipClicked);
 
-			dialogueLines.Enqueue("During the combat you will have a deck of war bonds. you will be able to use those bonds to gain some advantage over you enemy.");
-			dialogueLines.Enqueue("Select the assault rifle from the deck of war bonds, <b>“DEPLOY AND EQUIP SOLDIER”</b>");
+			if(idioma == "ENGLISH")
+			{
+				dialogueLines.Enqueue("During the combat you will have a deck of war bonds. you will be able to use those bonds to gain some advantage over you enemy.");
+				dialogueLines.Enqueue("Select the assault rifle from the deck of war bonds, <b>“DEPLOY AND EQUIP SOLDIER”</b>");
+			}
+			if(idioma == "SPANISH")
+			{
+				dialogueLines.Enqueue("Durante el combate tendrá una baraja de bonos de guerra. podrá utilizar esos bonos para obtener alguna ventaja sobre su enemigo.");
+				dialogueLines.Enqueue("Seleccione el rifle de asalto de la baraja de bonos de guerra, <b>“DESPLIEGUELO Y EQUIPELO SOLDADO”</b>");
+			}
+			if(idioma == "CHINESE")
+			{
+				dialogueLines.Enqueue("在战斗中你将拥有一副战争债券。你将能够使用这些债券获得胜过敌人的优势。");
+				dialogueLines.Enqueue("从战争债券组合中选择突击步枪， <b>“部署和装备军人”</b>");
+			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");
             dialogueLines.Enqueue("bold <b>text</b> test <b>bold</b> text <b>test</b>");
