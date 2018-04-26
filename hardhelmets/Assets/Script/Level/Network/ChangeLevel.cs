@@ -55,7 +55,7 @@ namespace Prototype.NetworkLobby
 				boton.GetComponent<UnityEngine.UI.Button>().enabled = true;
 
 				master = GameObject.Find("Canvas - Mensajes");
-				eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+				eventSystem = GameObject.Find("EventSystem");//.GetComponent<EventSystem>();
 			}
 			if(ready)
 			{
@@ -154,7 +154,7 @@ namespace Prototype.NetworkLobby
 
 		bool primera;
 
-		public EventSystem eventSystem;
+		public GameObject eventSystem;
 		public GameObject boton1;
 		public GameObject boton2;
 

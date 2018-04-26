@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 224172885333578674}
   - component: {fileID: 222091174277005340}
   - component: {fileID: 114922148845610360}
+  - component: {fileID: 114078203705557840}
   m_Layer: 5
   m_Name: Deads
   m_TagString: Untagged
@@ -180,6 +181,7 @@ GameObject:
   - component: {fileID: 224796667469674704}
   - component: {fileID: 222827764321777766}
   - component: {fileID: 114883705547036622}
+  - component: {fileID: 114255342097938578}
   m_Layer: 5
   m_Name: Captured Flags
   m_TagString: Untagged
@@ -289,6 +291,7 @@ GameObject:
   - component: {fileID: 224275656496365692}
   - component: {fileID: 222227824318980146}
   - component: {fileID: 114918962744708658}
+  - component: {fileID: 114969539700050056}
   m_Layer: 5
   m_Name: Combat Score
   m_TagString: Untagged
@@ -554,6 +557,7 @@ GameObject:
   - component: {fileID: 224237951779120688}
   - component: {fileID: 222301950070920826}
   - component: {fileID: 114444015778914738}
+  - component: {fileID: 114097029340626400}
   m_Layer: 5
   m_Name: Kills
   m_TagString: Untagged
@@ -571,6 +575,7 @@ GameObject:
   - component: {fileID: 224387015239447762}
   - component: {fileID: 222180848966009514}
   - component: {fileID: 114012009619211848}
+  - component: {fileID: 114804957935460686}
   m_Layer: 5
   m_Name: Enemi Base
   m_TagString: Untagged
@@ -640,6 +645,7 @@ GameObject:
   - component: {fileID: 224155770355560914}
   - component: {fileID: 222131600584910268}
   - component: {fileID: 114581269069099218}
+  - component: {fileID: 114774489736844870}
   m_Layer: 5
   m_Name: Total Bueno
   m_TagString: Untagged
@@ -675,6 +681,7 @@ GameObject:
   - component: {fileID: 224515778234568348}
   - component: {fileID: 222444064554914022}
   - component: {fileID: 114702129677373064}
+  - component: {fileID: 114234099053940130}
   m_Layer: 5
   m_Name: Stolen Cards
   m_TagString: Untagged
@@ -761,6 +768,7 @@ GameObject:
   - component: {fileID: 224873698939671990}
   - component: {fileID: 222130448935531662}
   - component: {fileID: 114142699199539662}
+  - component: {fileID: 114280573701698212}
   m_Layer: 5
   m_Name: Combat Score
   m_TagString: Untagged
@@ -969,6 +977,7 @@ GameObject:
   - component: {fileID: 224184167729489176}
   - component: {fileID: 222069525560062554}
   - component: {fileID: 114109249222458838}
+  - component: {fileID: 114023788118517570}
   m_Layer: 5
   m_Name: Enemi Base
   m_TagString: Untagged
@@ -1001,6 +1010,7 @@ GameObject:
   - component: {fileID: 224627772576560712}
   - component: {fileID: 222868843797013674}
   - component: {fileID: 114119918197195928}
+  - component: {fileID: 114751824197174836}
   m_Layer: 5
   m_Name: Vechicle
   m_TagString: Untagged
@@ -1142,6 +1152,7 @@ GameObject:
   - component: {fileID: 224927809647157740}
   - component: {fileID: 222988238750129458}
   - component: {fileID: 114979932540748374}
+  - component: {fileID: 114294669610152152}
   m_Layer: 5
   m_Name: Total Bueno
   m_TagString: Untagged
@@ -1177,6 +1188,7 @@ GameObject:
   - component: {fileID: 224578250717088180}
   - component: {fileID: 222617649903336068}
   - component: {fileID: 114086148461004574}
+  - component: {fileID: 114019528868767434}
   m_Layer: 5
   m_Name: Stolen Cards
   m_TagString: Untagged
@@ -1282,6 +1294,7 @@ GameObject:
   - component: {fileID: 224919063549332284}
   - component: {fileID: 222174812631468812}
   - component: {fileID: 114005052012580232}
+  - component: {fileID: 114337271666328184}
   m_Layer: 5
   m_Name: Deads
   m_TagString: Untagged
@@ -1403,6 +1416,7 @@ GameObject:
   - component: {fileID: 224539481548691468}
   - component: {fileID: 222720591050888090}
   - component: {fileID: 114513330496894194}
+  - component: {fileID: 114981880118581712}
   m_Layer: 5
   m_Name: Captured Flags
   m_TagString: Untagged
@@ -1507,6 +1521,7 @@ GameObject:
   - component: {fileID: 224765246958773618}
   - component: {fileID: 222109450402282372}
   - component: {fileID: 114759369015370516}
+  - component: {fileID: 114358079660809230}
   m_Layer: 5
   m_Name: Vechicle
   m_TagString: Untagged
@@ -1592,6 +1607,7 @@ GameObject:
   - component: {fileID: 224080155569361528}
   - component: {fileID: 222533084358790020}
   - component: {fileID: 114736804314118960}
+  - component: {fileID: 114151051559982252}
   m_Layer: 5
   m_Name: Kills
   m_TagString: Untagged
@@ -3002,7 +3018,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: DEATHS
@@ -3062,10 +3078,25 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ENEMY BASE DESTROYED
+--- !u!114 &114019528868767434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760376403300830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: STOLEN CARDS
+  "espa\xF1ol": CARTAS ROBADAS
+  chino: "\u88AB\u76D7\u7684\u5361\u7247"
 --- !u!114 &114022720933207046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3140,6 +3171,21 @@ MonoBehaviour:
       calculateTangents: 0
       addNormals: 0
       immutableTriangles: 0
+--- !u!114 &114023788118517570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617051238049502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: ENEMY BASE DESTROYED
+  "espa\xF1ol": BASE ENEMIGA DESTRUIDA
+  chino: "\u654C\u4EBA\u57FA\u5730\u88AB\u6BC1\u574F"
 --- !u!114 &114025801301610358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3273,6 +3319,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114078203705557840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077205254783232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: DEATHS
+  "espa\xF1ol": BAJAS
+  chino: "\u6B7B\u4EA1"
 --- !u!114 &114086148461004574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3302,7 +3363,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: STOLEN CARDS
@@ -3357,6 +3418,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114097029340626400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357917438307244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: DEFEATED
+  "espa\xF1ol": DERROTADOS
+  chino: "\u6253\u8D25"
 --- !u!114 &114097303362515822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3552,7 +3628,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ENEMY BASE DESTROYED
@@ -3612,7 +3688,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: VEHICLES DESTROYED
@@ -3783,6 +3859,21 @@ MonoBehaviour:
   m_Text: '0
 
 '
+--- !u!114 &114151051559982252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979419074115324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: DEFEATED
+  "espa\xF1ol": DERROTADOS
+  chino: "\u6253\u8D25"
 --- !u!114 &114152683519639696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4087,6 +4178,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dato: Empates
+--- !u!114 &114234099053940130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419406942165172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: STOLEN CARDS
+  "espa\xF1ol": CARTAS ROBADAS
+  chino: "\u88AB\u76D7\u7684\u5361\u7247"
 --- !u!114 &114238865632190236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4173,6 +4279,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114255342097938578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081668032259970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: CAPTURED FLAGS
+  "espa\xF1ol": BANDERAS CAPTURADAS
+  chino: "\u88AB\u6355\u7684\u65D7\u5E1C"
 --- !u!114 &114268326425126096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4227,6 +4348,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114280573701698212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1469362226584128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: COMBAT SCORE
+  "espa\xF1ol": "PUNTUACI\xD3N DE COMBATE"
+  chino: "\u6218\u6597\u5206\u6570"
 --- !u!114 &114291476926573362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4260,6 +4396,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 20
+--- !u!114 &114294669610152152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756428176528088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: SCORE
+  "espa\xF1ol": "PUNTUACI\xD3N"
+  chino: "\u5F97\u5206\u4E86"
 --- !u!114 &114324576882722364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4330,6 +4481,21 @@ MonoBehaviour:
       calculateTangents: 0
       addNormals: 0
       immutableTriangles: 0
+--- !u!114 &114337271666328184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831580857096308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: DEATHS
+  "espa\xF1ol": BAJAS
+  chino: "\u6B7B\u4EA1"
 --- !u!114 &114345803322999158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4365,6 +4531,21 @@ MonoBehaviour:
   m_Text: '0
 
 '
+--- !u!114 &114358079660809230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1937000126639162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: VEHICLES DESTROYED
+  "espa\xF1ol": "VEH\xCDCULOS DESTRUIDOS"
+  chino: "\u88AB\u6BC1\u574F\u7684\u8F66\u8F86"
 --- !u!114 &114364763556510082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4622,7 +4803,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: DEFEATED
@@ -4845,7 +5026,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: CAPTURED FLAGS
@@ -5598,7 +5779,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: STOLEN CARDS
@@ -5740,7 +5921,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: DEFEATED
@@ -5779,6 +5960,21 @@ MonoBehaviour:
   m_Text: '0
 
 '
+--- !u!114 &114751824197174836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670193433229988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: VEHICLES DESTROYED
+  "espa\xF1ol": "VEH\xCDCULOS DESTRUIDOS"
+  chino: "\u88AB\u6BC1\u574F\u7684\u8F66\u8F86"
 --- !u!114 &114759369015370516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5808,10 +6004,25 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: VEHICLES DESTROYED
+--- !u!114 &114774489736844870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403113060434042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: SCORE
+  "espa\xF1ol": "PUNTUACI\xD3N"
+  chino: "\u5F97\u5206\u4E86"
 --- !u!114 &114786026495600380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5857,6 +6068,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinsToCombine:
   - 
+--- !u!114 &114804957935460686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380427959003602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: ENEMY BASE DESTROYED
+  "espa\xF1ol": BASE ENEMIGA DESTRUIDA
+  chino: "\u654C\u4EBA\u57FA\u5730\u88AB\u6BC1\u574F"
 --- !u!114 &114815908571390156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6090,7 +6316,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: CAPTURED FLAGS
@@ -6255,7 +6481,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: COMBAT SCORE
@@ -6325,7 +6551,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: DEATHS
@@ -6437,6 +6663,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinsToCombine:
   - 
+--- !u!114 &114969539700050056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141078038045854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: COMBAT SCORE
+  "espa\xF1ol": "PUNTUACI\xD3N DE COMBATE"
+  chino: "\u6218\u6597\u5206\u6570"
 --- !u!114 &114970980983145240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6540,7 +6781,7 @@ MonoBehaviour:
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: SCORE
@@ -6571,6 +6812,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114981880118581712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1904000973675546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: CAPTURED FLAGS
+  "espa\xF1ol": BANDERAS CAPTURADAS
+  chino: "\u88AB\u6355\u7684\u65D7\u5E1C"
 --- !u!114 &114985268510942236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7206,9 +7462,9 @@ RectTransform:
   m_Father: {fileID: 224275656496365692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.7, y: -24.2}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -93.28, y: -24.2}
   m_SizeDelta: {x: 170, y: 28.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224022103300001798
@@ -7759,8 +8015,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1.934021, y: 7.6665726}
-  m_SizeDelta: {x: 170, y: 28.5}
+  m_AnchoredPosition: {x: -10.4, y: 7.6665726}
+  m_SizeDelta: {x: 213.7, y: 28.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224285336487800172
 RectTransform:
@@ -8628,9 +8884,9 @@ RectTransform:
   m_Father: {fileID: 224873698939671990}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.7, y: -24.2}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -93.28, y: -24.2}
   m_SizeDelta: {x: 170, y: 28.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224859522602661750
@@ -8667,8 +8923,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1.934021, y: 7.6665726}
-  m_SizeDelta: {x: 170, y: 28.5}
+  m_AnchoredPosition: {x: -10.4, y: 7.6665726}
+  m_SizeDelta: {x: 213.7, y: 28.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224874439134345572
 RectTransform:
