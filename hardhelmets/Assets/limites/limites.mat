@@ -9,7 +9,8 @@ Material:
   m_Name: limites
   m_Shader: {fileID: 4800000, guid: 748944cb1fe5a7c4d902e55e6cca5677, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _DISSOLVEALPHASOURCE_CUSTOM_MAP _DISSOLVEALPHATEXTUREBLEND_MULTIPLY
-    _DISSOLVEGLOBALCONTROL_NONE _DISSOLVEMASK_BOX _EMISSION _MAINTEXCUTOFF_ON
+    _DISSOLVEGLOBALCONTROL_NONE _DISSOLVEMASK_BOX _EMISSION _GLOSSYREFLECTIONS_OFF
+    _MAINTEXCUTOFF_ON _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -48,8 +49,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveMap1:
-        m_Texture: {fileID: 2800000, guid: df303cbe705cca4459f6c55aac512f60, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 40559274c9273fd4db21b44d7da8d955, type: 3}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _DissolveMap2:
         m_Texture: {fileID: 2800000, guid: a568c5f633b5c0d45b119924ee34506c, type: 3}
@@ -60,8 +61,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 5b1e1df2201ff4d4b8b0343c7ced53cf, type: 3}
-        m_Scale: {x: 0.15, y: 0.15}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 0.2, y: 0.2}
         m_Offset: {x: 0, y: 0}
     - _Illum:
         m_Texture: {fileID: 0}
@@ -69,7 +70,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: dea428d90d1c3d2458faaeb436c1339e, type: 3}
-        m_Scale: {x: 0.15, y: 0.15}
+        m_Scale: {x: 0.2, y: 0.2}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -106,7 +107,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cull: 0
-    - _Cutoff: 0.22
+    - _Cutoff: 0.118
     - _DetailNormalMapScale: 1
     - _DissolveAlphaSource: 1
     - _DissolveAlphaTextureBlend: 0
@@ -114,13 +115,13 @@ Material:
     - _DissolveBlendMode: 0
     - _DissolveCutoff: 0.5
     - _DissolveCutoffAxis: 0
-    - _DissolveEdgeSize: 0.251
+    - _DissolveEdgeSize: 0.6
     - _DissolveGIStrength: 1
     - _DissolveGlobalControl: 0
     - _DissolveMask: 5
     - _DissolveMaskOffset: 0
     - _DissolveMaskSphereRadius: 1
-    - _DissolveNoiseStrength: -0.23
+    - _DissolveNoiseStrength: 3.5
     - _DissolveTriplanar: 0
     - _DissolveTriplanarMainMapTiling: 1
     - _DissolveTriplanarMappingSpace: 0
@@ -128,9 +129,9 @@ Material:
     - _DstBlend: 10
     - _Emission: 1
     - _FresnelExp: 5
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.459
     - _Glossiness: 0
-    - _GlossyReflections: 1
+    - _GlossyReflections: 0
     - _Glow: 2
     - _Gradient1: 1
     - _Gradient2: 2
@@ -148,22 +149,22 @@ Material:
     - _SecondaryFoamOpacity: 1
     - _SecondaryFoamScale: 1
     - _Shininess: 0.078125
-    - _SmoothnessTextureChannel: 0
+    - _SmoothnessTextureChannel: 1
     - _SoftClip: 0.3504274
     - _Specular: 0
     - _SpecularAlpha: 0
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 0
     - _invert: 0
     m_Colors:
     - _ClippingCentre: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.222}
     - _Color0: {r: 0.18771628, g: 0.9117647, b: 0.6421192, a: 1}
     - _Color1: {r: 0.18771628, g: 0.6421192, b: 0.9117647, a: 1}
     - _Color2: {r: 0.17128026, g: 0.23841417, b: 0.48529404, a: 1}
-    - _DissolveEdgeColor: {r: 0, g: 4.988647, b: 23.334003, a: 1}
+    - _DissolveEdgeColor: {r: 0, g: 5.7920885, b: 15.270051, a: 1}
     - _DissolveMap1_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _DissolveMap2_Scroll: {r: 0, g: 0, b: 0, a: 0}
     - _DissolveMap3_Scroll: {r: 0, g: 0, b: 0, a: 0}
@@ -171,7 +172,7 @@ Material:
     - _DissolveMaskPosition: {r: 0, g: 0, b: 0, a: 0}
     - _Dissolve_ObjectWorldPos: {r: 0, g: 0, b: 0, a: 0}
     - _EmisColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.7932526, g: 0.9632353, b: 0.9632353, a: 1}
     - _FresnelColor: {r: 0.7205882, g: 0.907505, b: 1, a: 1}
     - _Plane: {r: 1, g: 0.7, b: 0.7, a: 0}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
