@@ -115,6 +115,7 @@ namespace Prototype.NetworkLobby {
 			{
 				actual = "jugando";
 
+				titulo.SetActive(false);
 				crear.SetActive(false);
 				lista.SetActive(false);
 				jugadores.SetActive(false);
