@@ -104,6 +104,7 @@ public class CamNetwork : NetworkBehaviour {
 	}
 	public bool unaVez;
 	// Update is called once per frame
+
 	void Update ()
 	{
 		if(Application.loadedLevelName == "LevelNetwork0")
@@ -285,10 +286,10 @@ public class CamNetwork : NetworkBehaviour {
 				velocidad = limiteObjetivo;
 				if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")
 				{
-					nextPosition = new Vector3(Player.transform.position.x+20, Player.transform.position.y+10, velocidad);
+					nextPosition = new Vector3(Player.transform.position.x+20, Player.transform.position.y+7, velocidad);
 				}else
 				{
-					nextPosition = new Vector3(Player.transform.position.x-20, Player.transform.position.y+10, velocidad);
+					nextPosition = new Vector3(Player.transform.position.x-20, Player.transform.position.y+7, velocidad);
 				}
 
 				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
@@ -337,18 +338,30 @@ public class CamNetwork : NetworkBehaviour {
 			{
 				velocidad = Player.transform.position.z-70;
 			}
+
+			GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane += 0.3f;
+			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane >= 49.3f)
+			{
+				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 49.3f;
+			}
 		}else
 		{
 			equis -= 0.2f;
-			if(equis <= 10)
+			if(equis <= 6)
 			{
-				equis = 10;
+				equis = 6;
 			}
 
 			velocidad += 0.2f;
-			if(velocidad >= Player.transform.position.z-55)
+			if(velocidad >= Player.transform.position.z-40)//55
 			{
-				velocidad = Player.transform.position.z-55;
+				velocidad = Player.transform.position.z-40;//55
+			}
+
+			GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane -= 0.3f;
+			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane <= 34.5f)
+			{
+				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 34.5f;
 			}
 		}
 

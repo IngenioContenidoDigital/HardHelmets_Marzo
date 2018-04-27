@@ -230,10 +230,10 @@ public class Cam : MonoBehaviour {
 				velocidad = limiteObjetivo;
 				if(Player.GetComponent<Hero>()._currentDirection == "right")
 				{
-					nextPosition = new Vector3(Player.transform.position.x+15, Player.transform.position.y+10, velocidad);
+					nextPosition = new Vector3(Player.transform.position.x+15, Player.transform.position.y+7, velocidad);
 				}else
 				{
-					nextPosition = new Vector3(Player.transform.position.x-15, Player.transform.position.y+10, velocidad);
+					nextPosition = new Vector3(Player.transform.position.x-15, Player.transform.position.y+7, velocidad);
 				}
 
 				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
@@ -257,14 +257,15 @@ public class Cam : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
 		}
 
-		if(transform.position.z+50 >= Player.transform.position.z)
+		/*if(transform.position.z+50 >= Player.transform.position.z)
 		{
 			equis -= 0.3f;
-			if(equis <= 12)
+			if(equis <= 12)//12
 			{
-				equis = 12;
+				print("CERCA");
+				equis = 12;//12
 			}
-		}
+		}*/
 
 		//POSICION DE LA CAMARA EN Z
 		if(alejar)
@@ -283,18 +284,29 @@ public class Cam : MonoBehaviour {
 			{
 				velocidad = Player.transform.position.z-70;
 			}
+			GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane += 0.3f;
+			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane >= 49.3f)
+			{
+				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 49.3f;
+			}
 		}else
 		{
 			equis -= 0.2f;
-			if(equis <= 10)
+			if(equis <= 6)//10
 			{
-				equis = 10;
+				equis = 6;//10
 			}
 
 			velocidad += 0.2f;
-			if(velocidad >= Player.transform.position.z-55)
+			if(velocidad >= Player.transform.position.z-40)
 			{
-				velocidad = Player.transform.position.z-55;
+				velocidad = Player.transform.position.z-40;
+			}
+
+			GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane -= 0.3f;
+			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane <= 34.5f)
+			{
+				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 34.5f;
 			}
 		}
 

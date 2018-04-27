@@ -17,6 +17,7 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 	public GameObject Mira;
 	public GameObject Apuntar;
 	public GameObject Canvas;
+	public GameObject mask;
 	public GameObject Base;
 	public GameObject eventos;
 
@@ -29,6 +30,7 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 			gameObject.name = "Hero";
 			GetComponent<AudioListener>().enabled = true;
 			Canvas.SetActive(true);
+			mask.SetActive(true);
 			//Sniper.SetActive(true);
 			Mira.SetActive(true);
 			CAMARA.transform.parent = null;
