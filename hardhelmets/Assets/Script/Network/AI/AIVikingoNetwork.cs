@@ -512,12 +512,21 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 			animator.SetBool("cascado", true);
 
+			if(col.gameObject.GetComponent<bala>())
+			{
+				salud -= col.gameObject.GetComponent<bala>().poder;
+
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
+			}else
+			{
+				salud -= col.gameObject.GetComponent<balaSniper>().poder;
+
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaSniper>().poder.ToString("F0");
+			}
+
 			Destroy(col.gameObject);
-
-			salud -= col.gameObject.GetComponent<bala>().poder;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{

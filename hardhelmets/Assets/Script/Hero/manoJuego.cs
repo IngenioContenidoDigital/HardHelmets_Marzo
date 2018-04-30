@@ -265,6 +265,10 @@ public class manoJuego : MonoBehaviour {
 			}
 			completa = false;
 			selected = false;
+		}else
+		{
+			GetComponent<Button>().enabled = true;
+			GetComponent<Image>().color = new Color32(255,255,255,255);
 		}
 		if(costo <= 0)
 		{
