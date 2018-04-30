@@ -196,7 +196,7 @@ public class Hero : MonoBehaviour{
 		//transform.rotation = Quaternion.Euler(0,0,0);
 	}
 	//public GameObject selectedObj;
-	void FixedUpdate()
+	void Update()
 	{
 		//RESELECCIONAR ELEMENTO DE MENU
 		/*if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null && Input.GetAxis("Horizontal") != 0)
@@ -298,7 +298,7 @@ public class Hero : MonoBehaviour{
 					animator.SetInteger("muerte", 4);
 				}
 
-				StartCoroutine(sumar());
+				//StartCoroutine(sumar());
 				efectodisparo = true;
 
 				disparoCabeza = true;
@@ -2041,16 +2041,24 @@ public class Hero : MonoBehaviour{
 				animator.SetInteger("cascado", 1);
 			}
 
-			salud -= col.gameObject.GetComponent<balaOffline>().poder; //15
+			if(col.gameObject.GetComponent<balaOffline>())
+			{
+				salud -= col.gameObject.GetComponent<balaOffline>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
-			//letras.GetComponent<TextMesh>().text = "15";
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
+			}else
+			{
+				salud -= col.gameObject.GetComponent<balaSniperOffline>().poder;
+
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaSniperOffline>().poder.ToString("F0");
+			}
 
 			animacion.SetActive(true);
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
 
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 			efectodisparo = true;
 		}
 		if(col.gameObject.tag == "explo")
@@ -2079,7 +2087,7 @@ public class Hero : MonoBehaviour{
 			animacion.SetActive(true);
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
 
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 			efectodisparo = true;
 		}
 		if(col.gameObject.tag == "cuchillo" && vivo)
@@ -2106,7 +2114,7 @@ public class Hero : MonoBehaviour{
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "50";
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 			efectodisparo = true;
 		}
 		if(col.gameObject.tag == "granade")
@@ -2152,7 +2160,7 @@ public class Hero : MonoBehaviour{
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "2";
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 		}
 		if(col.gameObject.tag == medic)
 		{

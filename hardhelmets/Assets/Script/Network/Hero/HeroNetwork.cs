@@ -419,7 +419,7 @@ public class HeroNetwork : NetworkBehaviour{
 					animator.SetInteger("muerte", 4);
 				}
 
-				StartCoroutine(sumar());
+				//StartCoroutine(sumar());
 				efectodisparo = true;
 
 				disparoCabeza = true;
@@ -2412,146 +2412,24 @@ public class HeroNetwork : NetworkBehaviour{
 				animator.SetInteger("cascado", 1);
 			}
 
-			salud -= col.gameObject.GetComponent<bala>().poder; //15
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
-			//letras.GetComponent<TextMesh>().text = "15";
-			StartCoroutine(sumar());
-			efectodisparo = true;
-		}
-		/*if(col.gameObject.tag == "balaFusil" && vivo)
-		{
-			saludSumar = false;
-			animator.SetBool("walk",false);
-			caminarA = false;
-			caminarD = false;
-			caminarI = false;
-			caminarU = false;
-			velocidad = 0;
-			v3 = Vector3.zero;
-			if(grounded)
+			if(col.gameObject.GetComponent<bala>())
 			{
-				animator.SetInteger("cascado", 1);
-			}
-			salud -= 40;
+				salud -= col.gameObject.GetComponent<bala>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "40";
-			StartCoroutine(sumar());
-			efectodisparo = true;
-			print("TIRO EN LA CABEZA CON FUSIL CUERPO");
-		}
-		if(col.gameObject.tag == "balaEscopeta" && vivo)
-		{
-			saludSumar = false;
-			animator.SetBool("walk",false);
-			caminarA = false;
-			caminarD = false;
-			caminarI = false;
-			caminarU = false;
-			velocidad = 0;
-			v3 = Vector3.zero;
-			if(grounded)
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
+			}else
 			{
-				animator.SetInteger("cascado", 1);
-			}
-			salud -= 15;
+				salud -= col.gameObject.GetComponent<balaSniper>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "15";
-			StartCoroutine(sumar());
-			efectodisparo = true;
-		}
-		if(col.gameObject.tag == "balaSubmetra" && vivo)
-		{
-			saludSumar = false;
-			animator.SetBool("walk",false);
-			caminarA = false;
-			caminarD = false;
-			caminarI = false;
-			caminarU = false;
-			velocidad = 0;
-			v3 = Vector3.zero;
-			if(grounded)
-			{
-				animator.SetInteger("cascado", 1);
-			}
-			salud -= 20;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "20";
-			StartCoroutine(sumar());
-			efectodisparo = true;
-		}
-		if(col.gameObject.tag == "balaMetra" && vivo)
-		{
-			saludSumar = false;
-			animator.SetBool("walk",false);
-			caminarA = false;
-			caminarD = false;
-			caminarI = false;
-			caminarU = false;
-			velocidad = 0;
-			v3 = Vector3.zero;
-			if(grounded)
-			{
-				animator.SetInteger("cascado", 1);
-			}
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-			StartCoroutine(sumar());
-			efectodisparo = true;
-		}
-		if(col.gameObject.tag == "balaMG" && vivo)
-		{
-			saludSumar = false;
-			rafaga = true;
-			animator.SetBool("walk", false);
-			caminarA = false;
-			caminarD = false;
-			caminarI = false;
-			caminarU = false;
-			velocidad = 0;
-			v3 = Vector3.zero;
-			//salud -= 25;
-			if(grounded)
-			{
-				animator.SetInteger("cascado", 1);
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaSniper>().poder.ToString("F0");
 			}
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			//letras.GetComponent<TextMesh>().text = "25";
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString();//"25";
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 			efectodisparo = true;
 		}
-		if(col.gameObject.tag == "balaSniper" && vivo)
-		{
-			saludSumar = false;
-			rafaga = true;
-			animator.SetBool("walk", false);
-			caminarA = false;
-			caminarD = false;
-			caminarI = false;
-			caminarU = false;
-			velocidad = 0;
-			v3 = Vector3.zero;
-			salud -= 50;
-			if(grounded)
-			{
-				animator.SetInteger("cascado", 1);
-			}
-			Destroy(col.gameObject);
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "50";
-
-			StartCoroutine(sumar());
-			efectodisparo = true;
-		}*/
 		if(col.gameObject.tag == "explo")
 		{
 			saludSumar = false;
@@ -2575,7 +2453,7 @@ public class HeroNetwork : NetworkBehaviour{
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
 
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 			efectodisparo = true;
 		}
 		if(col.gameObject.tag == "cuchillo" && vivo)
@@ -2599,7 +2477,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "50";
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 			efectodisparo = true;
 		}
 		if(col.gameObject.tag == "granade")
@@ -2648,7 +2526,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "2";
-			StartCoroutine(sumar());
+			//StartCoroutine(sumar());
 		}
 		if(col.gameObject.tag == medic)
 		{

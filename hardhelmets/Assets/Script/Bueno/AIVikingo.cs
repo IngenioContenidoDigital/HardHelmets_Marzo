@@ -498,12 +498,21 @@ public class AIVikingo : MonoBehaviour {
 
 			animator.SetBool("cascado", true);
 
+			if(col.gameObject.GetComponent<balaOffline>())
+			{
+				salud -= col.gameObject.GetComponent<balaOffline>().poder;
+
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
+			}else
+			{
+				salud -= col.gameObject.GetComponent<balaSniperOffline>().poder;
+
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaSniperOffline>().poder.ToString("F0");
+			}
+
 			Destroy(col.gameObject);
-
-			salud -= col.gameObject.GetComponent<balaOffline>().poder;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{

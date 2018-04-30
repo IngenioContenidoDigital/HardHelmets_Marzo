@@ -195,7 +195,7 @@ public class CabezaNetwork : NetworkBehaviour {
 		}
 		if(col.gameObject.tag == "bala")
 		{
-			if( col.gameObject.GetComponent<balaSniper>())
+			if(col.gameObject.GetComponent<balaSniper>())
 			{
 				poder = col.gameObject.GetComponent<balaSniper>().poder;
 			}else
