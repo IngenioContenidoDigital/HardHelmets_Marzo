@@ -1629,6 +1629,7 @@ public class HeroNetwork : NetworkBehaviour{
 			}
 			if(balaLlamas < 0)
 			{
+				animator.SetBool("llamas", false);
 				balaLlamas = 0;
 			}
 			if(balaSniper < 0)

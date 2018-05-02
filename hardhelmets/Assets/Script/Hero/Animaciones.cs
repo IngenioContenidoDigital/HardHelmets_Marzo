@@ -138,7 +138,7 @@ public class Animaciones : MonoBehaviour {
 			animator.GetCurrentAnimatorStateInfo(0).IsName("Granada") || animator.GetCurrentAnimatorStateInfo(0).IsName("GunShot") || animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot2") || animator.GetCurrentAnimatorStateInfo(0).IsName("MetraShot"))
 		{
 			animator.SetInteger("disparo", 0);
-			animator.SetBool("cubierto", false);
+			//animator.SetBool("cubierto", false);
 		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("sniper"))
 		{
@@ -157,14 +157,24 @@ public class Animaciones : MonoBehaviour {
 		{
 			animator.SetInteger("disparo", 0);
 		}
-
+		//MEZCLA---------
+		if(animator.GetCurrentAnimatorStateInfo(1).IsName("GunShot") || animator.GetCurrentAnimatorStateInfo(1).IsName("ShotgunShotMescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("FusilgunShotMescla")
+			|| animator.GetCurrentAnimatorStateInfo(1).IsName("panzerShot2Mescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("SubmetraShotMescla")
+			|| animator.GetCurrentAnimatorStateInfo(1).IsName("GranadaMescla"))
+		{
+			animator.SetInteger("disparo", 0);
+		}
+		if(animator.GetCurrentAnimatorStateInfo(1).IsName("MetraShotMescla") && GetComponent<Hero>().balaMetra <= 0)
+		{
+			animator.SetInteger("disparo", 0);
+		}
 		//RECARGA
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("FusilRecarga") || animator.GetCurrentAnimatorStateInfo(0).IsName("GunRecarga") ||
 			animator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunRecarga") || animator.GetCurrentAnimatorStateInfo(0).IsName("RecargaMetraySub") ||
 			animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasrecarga") || animator.GetCurrentAnimatorStateInfo(0).IsName("panzerRecarga"))
 		{
 			animator.SetBool("recargando", true);
-			animator.SetBool("cubierto", false);
+			//animator.SetBool("cubierto", false);
 			//GetComponent<Hero>().rafaga = true;
 			animator.SetInteger("recarga", 0);
 			animator.SetInteger("disparo", 0);
@@ -174,13 +184,19 @@ public class Animaciones : MonoBehaviour {
 		{
 			animator.SetBool("recargando", false);
 		}
-		if(animator.GetCurrentAnimatorStateInfo(0).IsName("FusilRecargaWalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("GunRecargaWalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunRecargaWalk") ||
-			animator.GetCurrentAnimatorStateInfo(0).IsName("RecargaMetraySubWalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("panzerRecargaWalk"))
+		//MEZCLA------------
+		if(animator.GetCurrentAnimatorStateInfo(1).IsName("GunRecarga") || animator.GetCurrentAnimatorStateInfo(1).IsName("ShotgunRecargaMescla")
+			|| animator.GetCurrentAnimatorStateInfo(1).IsName("FusilRecargaMescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("RecargaMetraySubMescla")
+			|| animator.GetCurrentAnimatorStateInfo(1).IsName("panzerRecargaMescla"))
 		{
 			animator.SetBool("recargando", true);
 			animator.SetInteger("recarga", 0);
-			animator.SetBool("cubierto", false);
+			animator.SetInteger("disparo", 0);
+		}else
+		{
+			animator.SetBool("recargando", false);
 		}
+
 		//DISPAROS AGACHADO
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("FusilShotAgachado") || animator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunShotAgachado") || animator.GetCurrentAnimatorStateInfo(0).IsName("SubmetraShotAgachado") ||
 			animator.GetCurrentAnimatorStateInfo(0).IsName("GunShotAgachado") || animator.GetCurrentAnimatorStateInfo(0).IsName("GranadaAgachado") || animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot2Agachado") || animator.GetCurrentAnimatorStateInfo(0).IsName("MetraShotAgachado"))

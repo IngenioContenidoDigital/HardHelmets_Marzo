@@ -18,11 +18,11 @@ public class Girar : MonoBehaviour {
 	{
 		if(Player.GetComponent<Hero>()._currentDirection == "right" && voltear)
 		{
-			gameObject.transform.Rotate (0, 180, 0);
+			gameObject.transform.Rotate (0, 180, gameObject.transform.eulerAngles.z);
 			voltear = false;
 		}else if(voltear)
 		{
-			gameObject.transform.Rotate (0, -180, 0);
+			gameObject.transform.Rotate (0, -180, gameObject.transform.eulerAngles.z);
 			voltear = false;
 		}
 	}
