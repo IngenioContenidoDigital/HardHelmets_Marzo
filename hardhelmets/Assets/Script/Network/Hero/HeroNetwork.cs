@@ -2589,7 +2589,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdPistolaDisparoPisoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
+		var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2)));
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -2605,7 +2605,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdPistolaDisparoPisoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefMalo, bulletSpawn.position, bulletSpawn.rotation);
+		var bullet = (GameObject)Instantiate(bulletPrefMalo, bulletSpawn.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2)));
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;
@@ -2650,7 +2650,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdFusilDisparoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefFusil, bulletSpawnFusil.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefFusil, bulletSpawnFusil.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -2665,7 +2665,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdFusilDisparoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefFusilMalo, bulletSpawnFusil.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefFusilMalo, bulletSpawnFusil.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;
@@ -2716,62 +2716,62 @@ public class HeroNetwork : NetworkBehaviour{
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax*bulletB.GetComponent<bala>().poder/104;
-			Destroy(bulletB, 0.5f);
+			Destroy(bulletB, 1.0f);
 
 			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+5)
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax*bulletB2.GetComponent<bala>().poder/104;
-			Destroy(bulletB2, 0.5f);
+			Destroy(bulletB2, 1.0f);
 
 			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, bulletSpawn.rotation);//Quaternion.Euler(0,0,0)
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax*bulletB3.GetComponent<bala>().poder/104;
-			Destroy(bulletB3, 0.5f);
+			Destroy(bulletB3, 1.0f);
 
 			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));//Quaternion.Euler(0,0,-5)
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax*bulletB4.GetComponent<bala>().poder/104;
-			Destroy(bulletB4, 0.5f);
+			Destroy(bulletB4, 1.0f);
 
 			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax*bulletB5.GetComponent<bala>().poder/104;
-			Destroy(bulletB5, 0.5f);
+			Destroy(bulletB5, 1.0f);
 		}else
 		{
 			var bulletB = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax*bulletB.GetComponent<bala>().poder/104;
-			Destroy(bulletB, 0.5f);
+			Destroy(bulletB, 1.0f);
 
 			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax*bulletB2.GetComponent<bala>().poder/104;
-			Destroy(bulletB2, 0.5f);
+			Destroy(bulletB2, 1.0f);
 
 			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, bulletSpawn.rotation); 
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax*bulletB3.GetComponent<bala>().poder/104;
-			Destroy(bulletB3, 0.5f);
+			Destroy(bulletB3, 1.0f);
 
 			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax*bulletB4.GetComponent<bala>().poder/104;
-			Destroy(bulletB4, 0.5f);
+			Destroy(bulletB4, 1.0f);
 
 			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax*bulletB5.GetComponent<bala>().poder/104;
-			Destroy(bulletB5, 0.5f);
+			Destroy(bulletB5, 1.0f);
 		}
 		//CASQUILLOS}
 		var casquillo = (GameObject)Instantiate(casquilloPrefB, casquilloSpawn.position, casquilloSpawn.rotation); 
@@ -2789,62 +2789,62 @@ public class HeroNetwork : NetworkBehaviour{
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax2*bulletB.GetComponent<bala>().poder/104;
-			Destroy(bulletB, 0.5f);
+			Destroy(bulletB, 1.0f);
 
 			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+5)
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax2*bulletB2.GetComponent<bala>().poder/104;
-			Destroy(bulletB2, 0.5f);
+			Destroy(bulletB2, 1.0f);
 
 			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, bulletSpawn.rotation);//Quaternion.Euler(0,0,0)
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax2*bulletB3.GetComponent<bala>().poder/104;
-			Destroy(bulletB3, 0.5f);
+			Destroy(bulletB3, 1.0f);
 
 			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));//Quaternion.Euler(0,0,-5)
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax2*bulletB4.GetComponent<bala>().poder/104;
-			Destroy(bulletB4, 0.5f);
+			Destroy(bulletB4, 1.0f);
 
 			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax2*bulletB5.GetComponent<bala>().poder/104;
-			Destroy(bulletB5, 0.5f);
+			Destroy(bulletB5, 1.0f);
 		}else
 		{
 			var bulletB = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax2*bulletB.GetComponent<bala>().poder/104;
-			Destroy(bulletB, 0.5f);
+			Destroy(bulletB, 1.0f);
 
 			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax2*bulletB2.GetComponent<bala>().poder/104;
-			Destroy(bulletB2, 0.5f);
+			Destroy(bulletB2, 1.0f);
 
 			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, bulletSpawn.rotation); 
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax2*bulletB3.GetComponent<bala>().poder/104;
-			Destroy(bulletB3, 0.5f);
+			Destroy(bulletB3, 1.0f);
 
 			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax2*bulletB4.GetComponent<bala>().poder/104;
-			Destroy(bulletB4, 0.5f);
+			Destroy(bulletB4, 1.0f);
 
 			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax2*bulletB5.GetComponent<bala>().poder/104;
-			Destroy(bulletB5, 0.5f);
+			Destroy(bulletB5, 1.0f);
 		}
 		//CASQUILLOS}
 		var casquillo = (GameObject)Instantiate(casquilloPrefB, casquilloSpawn.position, casquilloSpawn.rotation); 
@@ -2878,7 +2878,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSubmetraDisparoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSubmetra, bulletSpawnSubmetra.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefSubmetra, bulletSpawnSubmetra.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -2893,7 +2893,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSubmetraDisparoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSubmetraMalo, bulletSpawnSubmetra.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefSubmetraMalo, bulletSpawnSubmetra.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;
@@ -2934,7 +2934,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdMetraDisparoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefMetra, bulletSpawnMetra.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefMetra, bulletSpawnMetra.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -2949,7 +2949,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdMetraDisparoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefMetraMalo, bulletSpawnMetra.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefMetraMalo, bulletSpawnMetra.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;

@@ -409,6 +409,15 @@ public class AnimacionesNetwork : NetworkBehaviour {
 				Panel.GetComponent<Game>().KillsB += 1;
 				Panel.GetComponent<Game>().DeadsM -= 1;
 			}
+		}else
+		{
+			if(gameObject.tag == "Player")
+			{
+				//nada
+			}else
+			{
+				Panel.GetComponent<Game>().DeadsM -= 1;
+			}
 		}
 
 		if(!isLocalPlayer)
@@ -450,30 +459,30 @@ public class AnimacionesNetwork : NetworkBehaviour {
 	{
 		if(GetComponent<HeroNetwork>()._currentDirection == "right")
 		{
-			var efect = (GameObject)Instantiate(strikearma, strikeSpawnFusil.transform.position, strikeSpawnFusil.rotation);//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
+			var efect = (GameObject)Instantiate(strikearma, strikeSpawnFusil.transform.position, strikeSpawnPistola.rotation);//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
 		}else
 		{
-			var efect = (GameObject)Instantiate(strikearma, strikeSpawnFusil.transform.position, Quaternion.Euler(0,180,strikeSpawnFusil.rotation.z));//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
+			var efect = (GameObject)Instantiate(strikearma, strikeSpawnFusil.transform.position, Quaternion.Euler(0,180,strikeSpawnPistola.rotation.z));//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
 		}
 	}
 	void rafagasubmetra ()
 	{
 		if(GetComponent<HeroNetwork>()._currentDirection == "right")
 		{
-			var efect = (GameObject)Instantiate(strikearma, strikeSpawnSubmetra.transform.position, strikeSpawnSubmetra.rotation);//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
+			var efect = (GameObject)Instantiate(strikearma, strikeSpawnSubmetra.transform.position, strikeSpawnPistola.rotation);//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
 		}else
 		{
-			var efect = (GameObject)Instantiate(strikearma, strikeSpawnSubmetra.transform.position, Quaternion.Euler(0,180,strikeSpawnSubmetra.rotation.z));//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
+			var efect = (GameObject)Instantiate(strikearma, strikeSpawnSubmetra.transform.position, Quaternion.Euler(0,180,strikeSpawnPistola.rotation.z));//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
 		}
 	}
 	void rafagaarmametra ()
 	{
 		if(GetComponent<HeroNetwork>()._currentDirection == "right")
 		{
-			var efect = (GameObject)Instantiate(strikearma, strikeSpawnMetra.transform.position, strikeSpawnMetra.rotation);//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
+			var efect = (GameObject)Instantiate(strikearma, strikeSpawnMetra.transform.position, strikeSpawnPistola.rotation);//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
 		}else
 		{
-			var efect = (GameObject)Instantiate(strikearma, strikeSpawnMetra.transform.position, Quaternion.Euler(0,180,strikeSpawnMetra.rotation.z));//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
+			var efect = (GameObject)Instantiate(strikearma, strikeSpawnMetra.transform.position, Quaternion.Euler(0,180,strikeSpawnPistola.rotation.z));//Quaternion.Euler(0,0,strikeSpawn.rotation.z));
 		}
 	}
 	void rafagagun ()
