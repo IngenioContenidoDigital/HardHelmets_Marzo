@@ -56,7 +56,7 @@ public class CampNetwork : NetworkBehaviour {
 		if(col.gameObject.tag == "bala")
 		{
 			animator.SetBool("hit", true);
-			vida -= col.gameObject.GetComponent<balaOffline>().poder;
+			vida -= col.gameObject.GetComponent<bala>().poder;
 
 			var letras = (GameObject)Instantiate(textos, new Vector3(transform.position.x, transform.position.y+9,transform.position.z), Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
@@ -64,7 +64,7 @@ public class CampNetwork : NetworkBehaviour {
 		if(col.gameObject.tag == "explo")
 		{
 			animator.SetBool("hit", true);
-			vida -= col.gameObject.GetComponent<ExploOffline>().poder;
+			vida -= col.gameObject.GetComponent<Explo>().poder;
 
 			var letras = (GameObject)Instantiate(textos, new Vector3(transform.position.x, transform.position.y+9,transform.position.z), Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<ExploOffline>().poder.ToString("F0");

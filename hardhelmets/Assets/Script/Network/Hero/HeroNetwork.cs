@@ -105,6 +105,10 @@ public class HeroNetwork : NetworkBehaviour{
 
 	//DONDE APARECEN
 	public Transform bulletSpawn;
+	public Transform bulletSpawnFusil;
+	public Transform bulletSpawnEscopeta;
+	public Transform bulletSpawnSubmetra;
+	public Transform bulletSpawnMetra;
 	public Transform bulletSpawnFuego;
 	public Transform bulletSniperSpawn;
 	public Transform FlameSpawn;
@@ -909,145 +913,37 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					rafaga = false;
 					//ARRIBA
-					if(caminarU)
+					if(arma2 && balaPistola >= 1)
 					{
-						if(arma2 && balaPistola >= 1)
-						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 9);
-							StartCoroutine(esperaPistolaAire());
-						}else if(!arma2)
-						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaPanzer());
-							}
-						}
-					}else if(caminarA)
-					{
-						if(arma2 && balaPistola >= 1)
-						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 10);
-							StartCoroutine(esperaPistolaAire());
-						}else if(!arma2)
-						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaPanzer());
-							}
-						}
-					}else if(!animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
-					{
-						if(arma2 && balaPistola >= 1)
-						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 8);
-							StartCoroutine(esperaPistolaAire());
-						}else
-						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaPanzer());
-							}
-						}
+						StartCoroutine(resetArma());
+						animator.SetInteger("disparo", 11);
+						StartCoroutine(esperaPistolaAire());
 					}else
 					{
-						if(arma2 && balaPistola >= 1)
+						if(arma == "escopeta" && balaEscopeta >= 1)
 						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 11);
-							StartCoroutine(esperaPistolaAire());
-						}else
+							animator.SetInteger("disparo", 21);
+							StartCoroutine(esperaEscopeta());
+						}
+						if(arma == "fusil" && balaFusil >= 1)
 						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaPanzer());
-							}
+							animator.SetInteger("disparo", 22);
+							StartCoroutine(esperaFusil());
+						}
+						if(arma == "submetra" && balaSubmetra >= 1)
+						{
+							animator.SetInteger("disparo", 23);
+							StartCoroutine(esperaSubmetra());
+						}
+						if(arma == "metra" && balaMetra >= 1)
+						{
+							animator.SetInteger("disparo", 24);
+							StartCoroutine(esperaMetra());
+						}
+						if(arma == "panzer" && balaPanzer >= 1)
+						{
+							animator.SetInteger("disparo", 25);
+							StartCoroutine(esperaPanzer());
 						}
 					}
 					pressDisparo = false;
@@ -1057,145 +953,37 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					rafaga = false;
 					//ARRIBA
-					if(caminarU)
+					if(arma2 && balaPistola >= 1)
 					{
-						if(arma2 && balaPistola >= 1)
-						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 9);
-							StartCoroutine(esperaPistolaAire());
-						}else if(!arma2)
-						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 9);
-								StartCoroutine(esperaPanzer());
-							}
-						}
-					}else if(caminarA)
-					{
-						if(arma2 && balaPistola >= 1)
-						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 10);
-							StartCoroutine(esperaPistolaAire());
-						}else if(!arma2)
-						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 10);
-								StartCoroutine(esperaPanzer());
-							}
-						}
-					}else if(!animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
-					{
-						if(arma2 && balaPistola >= 1)
-						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 8);
-							StartCoroutine(esperaPistolaAire());
-						}else
-						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 8);
-								StartCoroutine(esperaPanzer());
-							}
-						}
+						StartCoroutine(resetArma());
+						animator.SetInteger("disparo", 11);
+						StartCoroutine(esperaPistolaAire());
 					}else
 					{
-						if(arma2 && balaPistola >= 1)
+						if(arma == "escopeta" && balaEscopeta >= 1)
 						{
-							StartCoroutine(resetArma());
-							animator.SetInteger("disparo", 11);
-							StartCoroutine(esperaPistolaAire());
-						}else
+							animator.SetInteger("disparo", 21);
+							StartCoroutine(esperaEscopeta());
+						}
+						if(arma == "fusil" && balaFusil >= 1)
 						{
-							if(arma == "escopeta" && balaEscopeta >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaEscopeta());
-							}
-							if(arma == "fusil" && balaFusil >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaFusil());
-							}
-							if(arma == "submetra" && balaSubmetra >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaSubmetra());
-							}
-							if(arma == "metra" && balaMetra >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaMetra());
-							}
-							if(arma == "panzer" && balaPanzer >= 1)
-							{
-								animator.SetInteger("disparo", 11);
-								StartCoroutine(esperaPanzer());
-							}
+							animator.SetInteger("disparo", 22);
+							StartCoroutine(esperaFusil());
+						}
+						if(arma == "submetra" && balaSubmetra >= 1)
+						{
+							animator.SetInteger("disparo", 23);
+							StartCoroutine(esperaSubmetra());
+						}
+						if(arma == "metra" && balaMetra >= 1)
+						{
+							animator.SetInteger("disparo", 24);
+							StartCoroutine(esperaMetra());
+						}
+						if(arma == "panzer" && balaPanzer >= 1)
+						{
+							animator.SetInteger("disparo", 25);
+							StartCoroutine(esperaPanzer());
 						}
 					}
 				}
@@ -2308,6 +2096,13 @@ public class HeroNetwork : NetworkBehaviour{
 				transform.localScale = new Vector3(1,1,1);
 				//Girar2.transform.Rotate (0, 180, 0);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
 				_currentDirection = "right";
 			} 
 			else if (direction == "left") 
@@ -2317,6 +2112,13 @@ public class HeroNetwork : NetworkBehaviour{
 				transform.localScale = new Vector3(-1,1,1);
 				//Girar2.transform.Rotate (0, -180, 0);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
 				_currentDirection = "left";
 			}
 		}
@@ -2343,6 +2145,13 @@ public class HeroNetwork : NetworkBehaviour{
 				transform.localScale = new Vector3(1,1,1);
 				//Girar2.transform.Rotate (0, 180, 0);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
 				_currentDirection = "right";
 			} 
 			else if (direction == "left") 
@@ -2352,6 +2161,13 @@ public class HeroNetwork : NetworkBehaviour{
 				transform.localScale = new Vector3(-1,1,1);
 				//Girar2.transform.Rotate (0, -180, 0);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
 				_currentDirection = "left";
 			}
 		}
@@ -2834,7 +2650,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdFusilDisparoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefFusil, bulletSpawn.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefFusil, bulletSpawnFusil.position, bulletSpawn.rotation); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -2849,7 +2665,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdFusilDisparoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefFusilMalo, bulletSpawn.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefFusilMalo, bulletSpawnFusil.position, bulletSpawn.rotation); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;
@@ -2896,62 +2712,62 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		if(_currentDirection == "right")
 		{
-			var bulletB = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+10)
+			var bulletB = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+10)
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax*bulletB.GetComponent<bala>().poder/104;
 			Destroy(bulletB, 0.5f);
 
-			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+5)
+			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+5)
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax*bulletB2.GetComponent<bala>().poder/104;
 			Destroy(bulletB2, 0.5f);
 
-			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, bulletSpawn.rotation);//Quaternion.Euler(0,0,0)
+			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, bulletSpawn.rotation);//Quaternion.Euler(0,0,0)
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax*bulletB3.GetComponent<bala>().poder/104;
 			Destroy(bulletB3, 0.5f);
 
-			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));//Quaternion.Euler(0,0,-5)
+			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));//Quaternion.Euler(0,0,-5)
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax*bulletB4.GetComponent<bala>().poder/104;
 			Destroy(bulletB4, 0.5f);
 
-			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));
+			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax*bulletB5.GetComponent<bala>().poder/104;
 			Destroy(bulletB5, 0.5f);
 		}else
 		{
-			var bulletB = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
+			var bulletB = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax*bulletB.GetComponent<bala>().poder/104;
 			Destroy(bulletB, 0.5f);
 
-			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
+			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax*bulletB2.GetComponent<bala>().poder/104;
 			Destroy(bulletB2, 0.5f);
 
-			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, bulletSpawn.rotation); 
+			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, bulletSpawn.rotation); 
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax*bulletB3.GetComponent<bala>().poder/104;
 			Destroy(bulletB3, 0.5f);
 
-			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
+			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax*bulletB4.GetComponent<bala>().poder/104;
 			Destroy(bulletB4, 0.5f);
 
-			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
+			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopeta, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax*bulletB5.GetComponent<bala>().poder/104;
@@ -2969,62 +2785,62 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		if(_currentDirection == "right")
 		{
-			var bulletB = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+10)
+			var bulletB = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+10)
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax2*bulletB.GetComponent<bala>().poder/104;
 			Destroy(bulletB, 0.5f);
 
-			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+5)
+			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16)));//Quaternion.Euler(0,0,bulletSpawn.rotation.z+5)
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax2*bulletB2.GetComponent<bala>().poder/104;
 			Destroy(bulletB2, 0.5f);
 
-			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, bulletSpawn.rotation);//Quaternion.Euler(0,0,0)
+			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, bulletSpawn.rotation);//Quaternion.Euler(0,0,0)
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax2*bulletB3.GetComponent<bala>().poder/104;
 			Destroy(bulletB3, 0.5f);
 
-			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));//Quaternion.Euler(0,0,-5)
+			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));//Quaternion.Euler(0,0,-5)
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax2*bulletB4.GetComponent<bala>().poder/104;
 			Destroy(bulletB4, 0.5f);
 
-			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));
+			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z-Random.Range(-5,-16)));
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax2*bulletB5.GetComponent<bala>().poder/104;
 			Destroy(bulletB5, 0.5f);
 		}else
 		{
-			var bulletB = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
+			var bulletB = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 100;
 			NetworkServer.Spawn(bulletB);
 			bulletB.GetComponent<bala>().poder = saludMax2*bulletB.GetComponent<bala>().poder/104;
 			Destroy(bulletB, 0.5f);
 
-			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
+			var bulletB2 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(5,16))); 
 			bulletB2.GetComponent<Rigidbody>().velocity = bulletB2.transform.right * 100;
 			NetworkServer.Spawn(bulletB2);
 			bulletB2.GetComponent<bala>().poder = saludMax2*bulletB2.GetComponent<bala>().poder/104;
 			Destroy(bulletB2, 0.5f);
 
-			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, bulletSpawn.rotation); 
+			var bulletB3 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, bulletSpawn.rotation); 
 			bulletB3.GetComponent<Rigidbody>().velocity = bulletB3.transform.right * 100;
 			NetworkServer.Spawn(bulletB3);
 			bulletB3.GetComponent<bala>().poder = saludMax2*bulletB3.GetComponent<bala>().poder/104;
 			Destroy(bulletB3, 0.5f);
 
-			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
+			var bulletB4 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB4.GetComponent<Rigidbody>().velocity = bulletB4.transform.right * 100;
 			NetworkServer.Spawn(bulletB4);
 			bulletB4.GetComponent<bala>().poder = saludMax2*bulletB4.GetComponent<bala>().poder/104;
 			Destroy(bulletB4, 0.5f);
 
-			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawn.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
+			var bulletB5 = (GameObject)Instantiate(bulletPrefEscopetaMalo, bulletSpawnEscopeta.position, Quaternion.Euler(0,180+Random.Range(-15,16),bulletSpawn.rotation.eulerAngles.z+Random.Range(-5,-16))); 
 			bulletB5.GetComponent<Rigidbody>().velocity = bulletB5.transform.right * 100;
 			NetworkServer.Spawn(bulletB5);
 			bulletB5.GetComponent<bala>().poder = saludMax2*bulletB5.GetComponent<bala>().poder/104;
@@ -3062,7 +2878,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSubmetraDisparoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSubmetra, bulletSpawn.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefSubmetra, bulletSpawnSubmetra.position, bulletSpawn.rotation); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -3077,7 +2893,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSubmetraDisparoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSubmetraMalo, bulletSpawn.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefSubmetraMalo, bulletSpawnSubmetra.position, bulletSpawn.rotation); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;
@@ -3118,7 +2934,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdMetraDisparoBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefMetra, bulletSpawn.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefMetra, bulletSpawnMetra.position, bulletSpawn.rotation); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax*bullet.GetComponent<bala>().poder/104;
@@ -3133,7 +2949,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdMetraDisparoMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefMetraMalo, bulletSpawn.position, bulletSpawn.rotation); 
+		var bullet = (GameObject)Instantiate(bulletPrefMetraMalo, bulletSpawnMetra.position, bulletSpawn.rotation); 
 		bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 100;
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<bala>().poder = saludMax2*bullet.GetComponent<bala>().poder/104;
