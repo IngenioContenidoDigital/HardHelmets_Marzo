@@ -115,6 +115,9 @@ public class Menu : MonoBehaviour {
 	public GameObject arriF;
 	public GameObject pro1;
 
+	public GameObject mensajecartasCapitan;
+	public bool capitan;
+
 	void Start ()
 	{
 		if(SteamManager.Initialized)
@@ -283,6 +286,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("caja2", 2);
 			PlayerPrefs.SetInt("caja3", 2);*/
 			//DEJA DE SER LA PRIMERA VEZ
+			//PlayerPrefs.SetInt("FirstTimeCartas",1);
 			PlayerPrefs.SetInt("FirstTime",1);
 		}
 		idioma = PlayerPrefs.GetString("idioma");
@@ -355,8 +359,7 @@ public class Menu : MonoBehaviour {
 		if(pantalla == "menu2")
 		{
 			global.SetActive(true);
-		}
-		if(pantalla == "menu1")
+		}else
 		{
 			global.SetActive(false);
 		}
@@ -405,7 +408,6 @@ public class Menu : MonoBehaviour {
 		{
 			menu1.SetActive(true);
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
-
 			StartCoroutine(esperaAnim());
 			mover = false;
 			iniciar = true;
@@ -451,14 +453,28 @@ public class Menu : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 1);
 			if(transform.position.x > 174f)
 			{
-				pantalla = "menu2";
+				//pantalla = "menu2";
 				limites = transform.position;
 				mover = true;
 				menu2.SetActive(true);
 				menu2.GetComponent<Animator>().SetBool("entra", true);
-				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m2);
-				StartCoroutine(esperaAnim());
-				MenuA = false;
+				if(PlayerPrefs.GetInt("FirstTimeCartas") == 0)//FirstTimeCartas
+				{
+					pantalla = "capitanaso";
+					PlayerPrefs.SetInt("FirstTimeCartas",1);
+					mensajecartasCapitan.SetActive(true);
+					iniciar = false;
+				}else
+				{
+					capitan = true;
+				}
+				if(capitan)
+				{
+					pantalla = "menu2";
+					eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m2);
+					StartCoroutine(esperaAnim());
+					MenuA = false;
+				}
 			}
 		}
 
@@ -1088,8 +1104,6 @@ public class Menu : MonoBehaviour {
 		yield return new WaitForSeconds(0.2f);
 		wait = false;
 	}
-
-	public GameObject baulregalo;
 	//ESPERAR
 	IEnumerator esperaAnim ()
 	{
@@ -1098,15 +1112,6 @@ public class Menu : MonoBehaviour {
 		menu2.GetComponent<Animator>().SetBool("entra", false);
 		menu1.GetComponent<Animator>().SetBool("sale", false);
 		menu2.GetComponent<Animator>().SetBool("sale", false);
-
-		if(PlayerPrefs.GetInt("regaloBaul") == 0)
-		{
-			baulregalo.SetActive(true);
-
-			PlayerPrefs.SetInt("caja1", 3);
-
-			PlayerPrefs.SetInt("regaloBaul", 1);
-		}
 	}
 	//FUNCIONES BOTONES
 	public GameObject global;
@@ -1126,7 +1131,6 @@ public class Menu : MonoBehaviour {
 	public void StartGame ()
 	{
 		pantalla = "";
-		global.SetActive(true);
 		menu1.GetComponent<Animator>().SetBool("entra", false);
 		menu1.GetComponent<Animator>().SetBool("sale", true);
 		mover = false;
@@ -1394,7 +1398,6 @@ public class Menu : MonoBehaviour {
 		menu2.GetComponent<Animator>().SetBool("sale", true);
 
 		baraja = true;
-		global.SetActive(false);
 	}
 	//JUGAR COMMUNITY MATCH
 	public void comunity ()
@@ -1460,7 +1463,6 @@ public class Menu : MonoBehaviour {
 	public void Perfil()
 	{
 		pantalla = "profile";
-		global.SetActive(false);
 
 		Profile.SetActive(true);
 
@@ -1530,7 +1532,6 @@ public class Menu : MonoBehaviour {
 	public void CharacterCustomization ()
 	{
 		pantalla = "";
-		global.SetActive(false);
 
 		mover = false;
 
@@ -1552,8 +1553,6 @@ public class Menu : MonoBehaviour {
 		pantalla = "helmet";
 		skincustom = "casco";
 
-		global.SetActive(false);
-
 		mover = false;
 
 		enfocarCara = false;
@@ -1568,8 +1567,6 @@ public class Menu : MonoBehaviour {
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(atras1);
 		pantalla = "head";
 		skincustom = "cara";
-
-		global.SetActive(false);
 
 		mover = false;
 
@@ -1586,8 +1583,6 @@ public class Menu : MonoBehaviour {
 		pantalla = "masck";
 		skincustom = "mascara";
 
-		global.SetActive(false);
-
 		mover = false;
 
 		enfocarCafeza = false;
@@ -1602,8 +1597,6 @@ public class Menu : MonoBehaviour {
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(atras1);
 		pantalla = "neck";
 		skincustom = "shemag";
-
-		global.SetActive(false);
 
 		mover = false;
 
@@ -1620,8 +1613,6 @@ public class Menu : MonoBehaviour {
 		pantalla = "vest";
 		skincustom = "chaleco";
 
-		global.SetActive(false);
-
 		mover = false;
 
 		enfocarCafeza = false;
@@ -1637,8 +1628,6 @@ public class Menu : MonoBehaviour {
 		pantalla = "bag";
 		skincustom = "maleta";
 
-		global.SetActive(false);
-
 		mover = false;
 
 		enfocarCafeza = false;
@@ -1653,8 +1642,6 @@ public class Menu : MonoBehaviour {
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(atras1);
 		pantalla = "overcoat";
 		skincustom = "abrigo";
-
-		global.SetActive(false);
 
 		mover = false;
 
@@ -1913,7 +1900,6 @@ public class Menu : MonoBehaviour {
 		if(pantalla == "menu2")
 		{
 			pantalla = "";
-			global.SetActive(false);
 
 			baul2.GetComponent<Animator>().SetBool("cerrar", true);
 			menu2.GetComponent<Animator>().SetBool("entra", false);

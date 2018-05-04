@@ -130,6 +130,7 @@ public class Game : NetworkBehaviour {
 
 	public int TotalB;
 	public int TotalBFinal;
+	public int TotalBFinalFINAL;
 	public UnityEngine.UI.Text TotalBT;
 
 	public float XP;
@@ -181,6 +182,7 @@ public class Game : NetworkBehaviour {
 	[SyncVar]
 	public int TotalM;
 	public int TotalMFinal;
+	public int TotalMFinalFINAL;
 	public UnityEngine.UI.Text TotalMT;
 
 	public float XPM;
@@ -1048,9 +1050,10 @@ public class Game : NetworkBehaviour {
 				if(DeadsB2 <= 0-DeadsB*80)
 				{
 					DeadsB2 = 0-DeadsB*80;
-					experiencia = true;
 					audio1.Stop();
 					audio2.Play();
+					TotalBFinalFINAL = TotalBFinal;
+					experiencia = true;
 					sumatoria8 = false;
 				}
 				DeadsBT.text = "-"+DeadsB2.ToString();
@@ -1058,9 +1061,10 @@ public class Game : NetworkBehaviour {
 			if(experiencia)
 			{
 				XPActual += 30;
-				if(XPActual >= XP+TotalBFinal)
+				TotalBFinalFINAL -= 30;
+				if(TotalBFinalFINAL <= 0)//if(XPActual >= XP+TotalBFinal)
 				{
-					XPActual = XP+TotalBFinal;
+					//XPActual = XP+TotalBFinal;
 					audio2.Stop();
 					PlayerPrefs.SetFloat("PlayerEX",XPActual);
 
@@ -1075,6 +1079,8 @@ public class Game : NetworkBehaviour {
 			if(XPActual >= XPNext)
 			{
 				LevelUpNext = true;
+				PlayerPrefs.SetFloat("PlayerEX",0);//RESET EXPERIENCIA EN CADA NIVEL
+				XPActual = 0;
 			}
 
 			if(LevelUpNext)
@@ -1085,6 +1091,8 @@ public class Game : NetworkBehaviour {
 				level1Next = level1+1;
 
 				rangoUP.SetActive(true);
+				rangoUP.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "levelUp", false);
+				rangoUP.GetComponent<AudioSource>().Play();
 				rangoUP.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();
 
 				rango1.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();
@@ -1260,19 +1268,21 @@ public class Game : NetworkBehaviour {
 				if(DeadsM2 <= 0-DeadsM*80)
 				{
 					DeadsM2 = 0-DeadsM*80;
-					experiencia = true;
 					audio1.Stop();
 					audio2.Play();
+					TotalMFinalFINAL = TotalMFinal;
 					sumatoria8 = false;
+					experiencia = true;
 				}
 				DeadsMT.text = "-"+DeadsM2.ToString();
 			}
 			if(experiencia)
 			{
 				XPActualM += 30;
-				if(XPActualM >= XPM+TotalMFinal)
+				TotalMFinalFINAL -= 30;
+				if(TotalMFinalFINAL <= 0)//if(XPActualM >= XPM+TotalMFinal)
 				{
-					XPActualM = XPM+TotalMFinal;
+					//XPActualM = XPM+TotalMFinal;
 					audio2.Stop();
 					PlayerPrefs.SetFloat("PlayerEX",XPActualM);
 
@@ -1287,6 +1297,8 @@ public class Game : NetworkBehaviour {
 			if(XPActualM >= XPNextM)
 			{
 				LevelUpNext = true;
+				PlayerPrefs.SetFloat("PlayerEX",0);//RESET EXPERIENCIA EN CADA NIVEL
+				XPActualM = 0;
 			}
 
 			if(LevelUpNext)
@@ -1297,6 +1309,8 @@ public class Game : NetworkBehaviour {
 				level1Next = level1+1;
 
 				rangoUP.SetActive(true);
+				rangoUP.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "levelUp", false);
+				rangoUP.GetComponent<AudioSource>().Play();
 				rangoUP.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();
 
 				rango1.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();

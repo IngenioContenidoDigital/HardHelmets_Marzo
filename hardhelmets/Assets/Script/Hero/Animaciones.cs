@@ -159,7 +159,7 @@ public class Animaciones : MonoBehaviour {
 		}
 		//MEZCLA---------
 		if(animator.GetCurrentAnimatorStateInfo(1).IsName("GunShot") || animator.GetCurrentAnimatorStateInfo(1).IsName("ShotgunShotMescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("FusilgunShotMescla")
-			|| animator.GetCurrentAnimatorStateInfo(1).IsName("panzerShot2Mescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("SubmetraShotMescla")
+			|| animator.GetCurrentAnimatorStateInfo(1).IsName("panzerShot2Mescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("SubmetraShotMescla") || animator.GetCurrentAnimatorStateInfo(1).IsName("MetraShotMescla") 
 			|| animator.GetCurrentAnimatorStateInfo(1).IsName("GranadaMescla"))
 		{
 			animator.SetInteger("disparo", 0);

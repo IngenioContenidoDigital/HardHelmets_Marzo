@@ -671,6 +671,8 @@ public class Hero : MonoBehaviour{
 						caminarI = false;
 						caminarU = false;
 
+						v3 = Vector3.zero;
+
 						rafaga = true;
 						cuchillo = false;
 						sniperListo = true;
@@ -696,6 +698,8 @@ public class Hero : MonoBehaviour{
 						caminarD = false;
 						caminarI = false;
 						caminarU = false;
+
+						v3 = Vector3.zero;
 
 						rafaga = true;
 						cuchillo = false;

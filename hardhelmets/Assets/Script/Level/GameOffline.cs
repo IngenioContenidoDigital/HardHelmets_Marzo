@@ -120,6 +120,7 @@ public class GameOffline : MonoBehaviour {
 
 	public int TotalB;
 	public int TotalBFinal;
+	public int TotalBFinalFINAL;
 	public UnityEngine.UI.Text TotalBT;
 
 	public float XP;
@@ -770,19 +771,21 @@ public class GameOffline : MonoBehaviour {
 			if(DeadsB2 <= 0-DeadsB*80)
 			{
 				DeadsB2 = 0-DeadsB*80;
-				experiencia = true;
 				audio1.Stop();
 				audio2.Play();
+				TotalBFinalFINAL = TotalBFinal;
 				sumatoria8 = false;
+				experiencia = true;
 			}
 			DeadsBT.text = "-"+DeadsB2.ToString();
 		}
 		if(experiencia)
 		{
 			XPActual += 30;
-			if(XPActual >= XP+TotalBFinal)
+			TotalBFinalFINAL -= 30;
+			if(TotalBFinalFINAL <= 0)//(XPActual >= XP+TotalBFinal)
 			{
-				XPActual = XP+TotalBFinal;
+				//XPActual = XP+TotalBFinal;//XP+TotalBFinal
 				audio2.Stop();
 
 				if(Application.loadedLevelName != "Tutorial")
@@ -803,6 +806,8 @@ public class GameOffline : MonoBehaviour {
 			if(Application.loadedLevelName != "Tutorial")
 			{
 				LevelUpNext = true;
+				PlayerPrefs.SetFloat("PlayerEX",0);//RESET EXPERIENCIA EN CADA NIVEL
+				XPActual = 0;
 			}
 		}
 
@@ -817,6 +822,8 @@ public class GameOffline : MonoBehaviour {
 			level1Next = level1+1;
 
 			rangoUP.SetActive(true);
+			rangoUP.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "levelUp", false);
+			rangoUP.GetComponent<AudioSource>().Play();
 			rangoUP.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();
 
 			rango1.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();

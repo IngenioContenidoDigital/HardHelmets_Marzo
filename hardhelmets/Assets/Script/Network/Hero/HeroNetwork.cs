@@ -314,7 +314,7 @@ public class HeroNetwork : NetworkBehaviour{
 	bool enviarnombre;
 	void Update()
 	{
-		name.GetComponent<TextMesh>().text = nombre;
+		name.GetComponent<TextMesh>().text = PlayerPrefs.GetString("SteamName");//nombre;
 		if(!isLocalPlayer)
 		{
 			return;
@@ -789,6 +789,8 @@ public class HeroNetwork : NetworkBehaviour{
 						caminarI = false;
 						caminarU = false;
 
+						v3 = Vector3.zero;
+
 						rafaga = true;
 						cuchillo = false;
 						sniperListo = true;
@@ -814,6 +816,8 @@ public class HeroNetwork : NetworkBehaviour{
 						caminarD = false;
 						caminarI = false;
 						caminarU = false;
+
+						v3 = Vector3.zero;
 
 						rafaga = true;
 						cuchillo = false;

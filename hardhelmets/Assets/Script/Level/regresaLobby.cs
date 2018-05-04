@@ -212,7 +212,7 @@ namespace Prototype.NetworkLobby {
 		}
 		public void baraja2()
 		{
-			actual2 = "cartas2";
+			actual2 = "cartas";
 
 			crear.SetActive(false);
 			lista.SetActive(false);
@@ -234,18 +234,6 @@ namespace Prototype.NetworkLobby {
 						actual2 = "";
 						cartas.GetComponent<Animator>().SetBool("sale", true);
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaServer);
-					}else
-					{
-						mensaje.SetActive(true);
-						StartCoroutine(esconder());
-					}
-				}else if(actual2 == "cartas2")
-				{
-					if(mano.GetComponent<Mano>().guardar)
-					{
-						actual2 = "";
-						cartas.GetComponent<Animator>().SetBool("sale", true);
-						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
 					}else
 					{
 						mensaje.SetActive(true);

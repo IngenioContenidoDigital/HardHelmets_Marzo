@@ -53,7 +53,7 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 		{
 			if(isLocalPlayer)
 			{
-				name.GetComponent<TextMesh>().text = "Player 1";
+				//name.GetComponent<TextMesh>().text = "Player 1";
 				GetComponent<HeroNetwork>().mascara = "Player";
 				GetComponent<HeroNetwork>().medic = "medicoBueno";
 				Destroy(this);
@@ -61,7 +61,7 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 			{
 				gameObject.name = "Hero2";
 
-				name.GetComponent<TextMesh>().text = "Player 2";
+				//name.GetComponent<TextMesh>().text = "Player 2";
 
 				GetComponent<NetworkView>().tag = "enemy";
 				GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -81,7 +81,7 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 		{
 			if(isLocalPlayer)
 			{
-				name.GetComponent<TextMesh>().text = "Player 2";
+				//name.GetComponent<TextMesh>().text = "Player 2";
 
 				GetComponent<NetworkView>().tag = "enemy";
 				GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -101,7 +101,7 @@ public class SetUpLocalPlayer : NetworkBehaviour {
 			{
 				gameObject.name = "Hero2";
 
-				name.GetComponent<TextMesh>().text = "Player 1";
+				//name.GetComponent<TextMesh>().text = "Player 1";
 				GetComponent<HeroNetwork>().mascara = "Player";
 				Destroy(this);
 			}
