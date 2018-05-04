@@ -276,8 +276,8 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetString("borde", "borde1");
 			PlayerPrefs.SetString("fondo", "fondo1");
 			//SELECCIONA EL SKIN BASICO
-			PlayerPrefs.SetString("casco","Casco1");
-			PlayerPrefs.SetString("cara","Cara1");
+			PlayerPrefs.SetString("casco","casco1");
+			PlayerPrefs.SetString("cara","cara1");
 			//BAULES
 			/*PlayerPrefs.SetInt("caja1", 3);
 			PlayerPrefs.SetInt("caja2", 2);
