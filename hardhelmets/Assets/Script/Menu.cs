@@ -311,13 +311,8 @@ public class Menu : MonoBehaviour {
 		limites = transform.position;
 
 		pantalla = "inicio";
-		skinactualcara = hero.GetComponent<customTow>().carab;
-		skinactualcasco = hero.GetComponent<customTow>().cascob;
-		skinactualmascara = hero.GetComponent<customTow>().mascarab;
-		skinactualshemag = hero.GetComponent<customTow>().cuellob;
-		skinactualabrigo = hero.GetComponent<customTow>().uniformeb;
-		skinactualchaleco = hero.GetComponent<customTow>().chalecob;
-		skinactualmaleta = hero.GetComponent<customTow>().maletab;
+
+		hero.SetActive(true);
 	}
 	public GameObject selectedObj;
 	void Update ()
@@ -461,7 +456,6 @@ public class Menu : MonoBehaviour {
 				if(PlayerPrefs.GetInt("FirstTimeCartas") == 0)//FirstTimeCartas
 				{
 					pantalla = "capitanaso";
-					PlayerPrefs.SetInt("FirstTimeCartas",1);
 					mensajecartasCapitan.SetActive(true);
 					iniciar = false;
 				}else
@@ -1532,6 +1526,14 @@ public class Menu : MonoBehaviour {
 	public void CharacterCustomization ()
 	{
 		pantalla = "";
+
+		skinactualcara = hero.GetComponent<customTow>().carab;
+		skinactualcasco = hero.GetComponent<customTow>().cascob;
+		skinactualmascara = hero.GetComponent<customTow>().mascarab;
+		skinactualshemag = hero.GetComponent<customTow>().cuellob;
+		skinactualabrigo = hero.GetComponent<customTow>().uniformeb;
+		skinactualchaleco = hero.GetComponent<customTow>().chalecob;
+		skinactualmaleta = hero.GetComponent<customTow>().maletab;
 
 		mover = false;
 

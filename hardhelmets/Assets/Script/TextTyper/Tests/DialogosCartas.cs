@@ -130,6 +130,7 @@
 					animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 					ventana.SetActive(false);
 					master.GetComponent<Menu>().capitan = true;
+					PlayerPrefs.SetInt("FirstTimeCartas",1);
 					Destroy(gameObject);
 				}else if(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "idle")
 				{
