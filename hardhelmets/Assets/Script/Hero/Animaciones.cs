@@ -110,9 +110,9 @@ public class Animaciones : MonoBehaviour {
 		{
 			animator.SetBool("rolling", false);
 		}
-		if(animator.GetCurrentAnimatorStateInfo(0).IsName("hammer"))
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("hammer") || animator.GetCurrentAnimatorStateInfo(0).IsName("mina"))
 		{
-			animator.SetBool("crear", false);
+			animator.SetInteger("crear", 0);
 		}
 		//CALLENDO
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("jump2"))

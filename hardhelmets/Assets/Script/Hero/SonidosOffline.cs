@@ -110,10 +110,10 @@ public class SonidosOffline : MonoBehaviour {
 
 		if(destruir)
 		{
-			if(!temp.isPlaying)
+			/*if(!temp.isPlaying)
 			{
 				Destroy(temp);
-			}
+			}*/
 			destruir = false;
 		}
 	}

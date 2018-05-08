@@ -78,27 +78,6 @@ public class ManoJuegoNetwork : NetworkBehaviour {
 		nombre = PlayerPrefs.GetInt("Mano"+nombre).ToString();
 		costo = PlayerPrefs.GetInt(""+nombre+"costo");
 
-		/*PlayerPrefs.SetInt("1costo",20);
-		PlayerPrefs.SetInt("2costo",25);
-		PlayerPrefs.SetInt("3costo",25);
-		PlayerPrefs.SetInt("4costo",30);
-		PlayerPrefs.SetInt("5costo",50);
-		PlayerPrefs.SetInt("6costo",50);
-		PlayerPrefs.SetInt("7costo",20);
-		PlayerPrefs.SetInt("8costo",20);
-		PlayerPrefs.SetInt("9costo",30);
-		PlayerPrefs.SetInt("10costo",50);
-		PlayerPrefs.SetInt("11costo",50);
-		PlayerPrefs.SetInt("12costo",90);
-		PlayerPrefs.SetInt("13costo",40);
-		PlayerPrefs.SetInt("14costo",40);
-		PlayerPrefs.SetInt("15costo",40);
-		PlayerPrefs.SetInt("16costo",80);
-		PlayerPrefs.SetInt("17costo",80);
-		PlayerPrefs.SetInt("18costo",100);
-		PlayerPrefs.SetInt("19costo",95);
-		PlayerPrefs.SetInt("20costo",100);*/
-
 		animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "inactiva", false);
 
 		//UNO
@@ -488,7 +467,7 @@ public class ManoJuegoNetwork : NetworkBehaviour {
 					Player.GetComponent<CrearCartasNetwork>().crearMetralleto();
 				}else if(nombre == "17")
 				{
-					//VIEJO DEL LANZA LLAMAS
+					Player.GetComponent<CrearCartasNetwork>().crearMinaPersona();
 				}else if(nombre == "18")
 				{
 					Player.GetComponent<CrearCartasNetwork>().crearPanzer();
@@ -580,7 +559,7 @@ public class ManoJuegoNetwork : NetworkBehaviour {
 			Player.GetComponent<CrearCartasNetwork>().crearMetralleto();
 		}else if(nombre == "17")
 		{
-			//VIEJO DEL LANZA LLAMAS
+			Player.GetComponent<CrearCartasNetwork>().crearMinaPersona();
 		}else if(nombre == "18")
 		{
 			Player.GetComponent<CrearCartasNetwork>().crearPanzer();

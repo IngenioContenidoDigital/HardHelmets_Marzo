@@ -18414,6 +18414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nace: {fileID: 1421093306186392}
   nace2: {fileID: 1629333199160592}
+  nace3: {fileID: 1215522131110268}
   tirar: 0
   fusil: {fileID: 1592553804432386, guid: 57ee9d59efa61c348a67891372455a22, type: 2}
   escopeta: {fileID: 1189589807542996, guid: bbb8d18d4150c004f84d33fabdcae1f5, type: 2}
@@ -18439,7 +18440,10 @@ MonoBehaviour:
   torreta: {fileID: 1985223328450204, guid: 6f5b516e1b1592a4cbc19d5e103e33db, type: 2}
   torretaMisil: {fileID: 1804675324062838, guid: da6a6b21cc4327345b651e53239d5fd0,
     type: 2}
-  mina: {fileID: 1469381241267852, guid: 65555249272872f4abcbdcac3f64b92a, type: 2}
+  minaAntiTanque: {fileID: 1469381241267852, guid: 65555249272872f4abcbdcac3f64b92a,
+    type: 2}
+  minaAntiPersona: {fileID: 1620603342167552, guid: 29c756c5567811541bc0d3cb706874a3,
+    type: 2}
   fusileroMalo: {fileID: 1930713675427364, guid: 870a9c3a255cca44d90596c0f1fc792c,
     type: 2}
   escopetoMalo: {fileID: 1621078318580168, guid: b86e415bb34b1464d938e451fa7c80e7,
@@ -18463,12 +18467,15 @@ MonoBehaviour:
     type: 2}
   torretaMisilMalo: {fileID: 1834412736902200, guid: b2e415822d37ad947ada8bd23f5a9310,
     type: 2}
-  minaMalo: {fileID: 1866254847140396, guid: 25beeaaa378927a4e8f4389f2132bb16, type: 2}
+  minaAntiTanqueMalo: {fileID: 1866254847140396, guid: 25beeaaa378927a4e8f4389f2132bb16,
+    type: 2}
+  minaAntiPersonaMalo: {fileID: 1596149917997286, guid: c209895dd2a61524187f2abcc655076b,
+    type: 2}
   martillar: 0
   crear: 0
   martillaTorreta: 0
   martillaTorreta2: 0
-  martillaMina: 0
+  minas: 0
   hammer: 0
 --- !u!114 &114403303572029702
 MonoBehaviour:
@@ -24125,10 +24132,10 @@ MonoBehaviour:
   MapToLDR: 0
   RemoveColorBanding: 1
   MatrixVP:
-    e00: 2.3815007
+    e00: 2.3806486
     e01: 0
     e02: 0
-    e03: -423.66898
+    e03: -423.51736
     e10: -0
     e11: -4.219993
     e12: -0.2950906
@@ -24142,10 +24149,10 @@ MonoBehaviour:
     e32: 0.9975641
     e33: -134.55661
   LastMatrixVP:
-    e00: 2.3815007
+    e00: 2.3806486
     e01: 0
     e02: 0
-    e03: -423.66898
+    e03: -423.51736
     e10: 0
     e11: 4.219993
     e12: 0.2950906
