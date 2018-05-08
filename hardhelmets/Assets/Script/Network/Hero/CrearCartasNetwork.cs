@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityStandardAssets.ImageEffects;
 
 public class CrearCartasNetwork : NetworkBehaviour {
 
@@ -726,5 +727,27 @@ public class CrearCartasNetwork : NetworkBehaviour {
 			crear = true;
 			hammer = 0;
 		}
+	}
+	//BOMBARDEO
+	public void bombardeo()
+	{
+		GetComponent<HeroNetwork>().ready = false;
+
+		GetComponent<HeroNetwork>().caminarA = false;
+		GetComponent<HeroNetwork>().caminarD = false;
+		GetComponent<HeroNetwork>().caminarI = false;
+		GetComponent<HeroNetwork>().caminarU = false;
+
+		GetComponent<HeroNetwork>().v3 = Vector3.zero;
+
+		GetComponent<HeroNetwork>().rafaga = true;
+		GetComponent<HeroNetwork>().cuchillo = false;
+
+		GetComponent<HeroNetwork>().SniperCam.GetComponent<Cam>().bombardeo = true;
+
+		GetComponent<HeroNetwork>().esconderBarra.SetActive(false);
+		GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
+		//GetComponent<Hero>().SniperCam.GetComponent<LensAberrations>().distortion.enabled = true;
+		//animator.SetInteger("disparo",20);
 	}
 }

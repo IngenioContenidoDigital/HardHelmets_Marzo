@@ -273,6 +273,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y, Bases[1].transform.position.z-3);
 		}
 
+		Player.GetComponent<Hero>().animacion.SetActive(false);
 		Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
 		Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
 
