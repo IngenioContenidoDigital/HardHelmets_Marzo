@@ -8,6 +8,8 @@ public class CrearCartas : MonoBehaviour {
 
 	public GameObject nace2;
 
+	public GameObject nace3;
+
 	public bool tirar;
 
 	//[SyncVar(hook = "OnChange")]
@@ -43,13 +45,13 @@ public class CrearCartas : MonoBehaviour {
 	public GameObject campamento;
 	public GameObject torreta;
 	public GameObject torretaMisil;
-	public GameObject mina;
+	public GameObject minaAntiTanque;
+	public GameObject minaAntiPersona;
 
 	public bool martillar;
 	public bool crear;
 	public bool martillaTorreta;
 	public bool martillaTorreta2;
-	public bool martillaMina;
 
 	// Use this for initialization
 	void Start () {
@@ -73,14 +75,6 @@ public class CrearCartas : MonoBehaviour {
 				TorretaMisilBueno();
 
 				martillaTorreta2 = false;
-				martillar = false;
-				crear = false;
-			}
-			if(martillaMina)
-			{
-				crearMinaBueno();
-
-				martillaMina = false;
 				martillar = false;
 				crear = false;
 			}
@@ -414,7 +408,7 @@ public class CrearCartas : MonoBehaviour {
 	public void crearTorreta ()
 	{
 		hammer = 0;
-		GetComponent<Animator>().SetBool("crear", true);
+		GetComponent<Animator>().SetInteger("crear", 1);
 
 		martillar = true;
 		martillaTorreta = true;
@@ -433,7 +427,7 @@ public class CrearCartas : MonoBehaviour {
 	public void crearTorretaMisil ()
 	{
 		hammer = 0;
-		GetComponent<Animator>().SetBool("crear", true);
+		GetComponent<Animator>().SetInteger("crear", 1);
 
 		martillar = true;
 		martillaTorreta2 = true;
@@ -449,26 +443,35 @@ public class CrearCartas : MonoBehaviour {
 		}
 	}
 	//MINA
+	public int minas;
 	public void crearMina ()
 	{
-		hammer = 0;
-		GetComponent<Animator>().SetBool("crear", true);
-
-		martillar = true;
-		martillaMina = true;
+		minas = 1;
+		GetComponent<Animator>().SetInteger("crear", 2);
 	}
-	
-	public void crearMinaBueno()
+	public void crearMinaPersona ()
 	{
-		if(!tirar)
+		minas = 2;
+		GetComponent<Animator>().SetInteger("crear", 2);
+	}
+	public void mina()
+	{
+		if(minas == 1)
 		{
-			var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(minaAntiTanque, nace3.transform.position, Quaternion.Euler(0,0,0));
 			objeto.GetComponent<MinaOffline>().poder = GetComponent<Hero>().saludMax*objeto.GetComponent<MinaOffline>().poder/104;
-			print(GetComponent<Hero>().saludMax*objeto.GetComponent<MinaOffline>().poder/104);
 
-			tirar = true;
+			minas = 0;
+		}
+		if(minas == 2)
+		{
+			var objeto = (GameObject)Instantiate(minaAntiPersona, nace3.transform.position, Quaternion.Euler(0,Random.Range(0,360),0));
+			objeto.GetComponent<minaAntipersona>().poder = GetComponent<Hero>().saludMax*objeto.GetComponent<minaAntipersona>().poder/104;
+
+			minas = 0;
 		}
 	}
+
 	int hammer;
 	//OBJETOS CON MARTILLOS
 	public void HAMMER ()

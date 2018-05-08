@@ -195,7 +195,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("14costo", 30);//MG
 			PlayerPrefs.SetInt("15costo", 40);//MORTERO
 			PlayerPrefs.SetInt("16costo", 30);//METRALLETO
-			PlayerPrefs.SetInt("17costo", 90);//LLAMERO
+			PlayerPrefs.SetInt("17costo", 40);//MINA ANTIPERSONA -- ANTES LLAMERO
 			PlayerPrefs.SetInt("18costo", 60);//BAZOOKERO
 			PlayerPrefs.SetInt("19costo", 80);//VIKINGO
 			PlayerPrefs.SetInt("20costo", 90);//TANK
@@ -289,6 +289,12 @@ public class Menu : MonoBehaviour {
 			//PlayerPrefs.SetInt("FirstTimeCartas",1);
 			PlayerPrefs.SetInt("FirstTime",1);
 		}
+
+		if(PlayerPrefs.GetInt("17costo") != 40)
+		{
+			PlayerPrefs.SetInt("17costo", 40);//ACTUASLIZAR EL COSTO DE LA CARTA
+		}
+
 		idioma = PlayerPrefs.GetString("idioma");
 
 		//OPCIONES

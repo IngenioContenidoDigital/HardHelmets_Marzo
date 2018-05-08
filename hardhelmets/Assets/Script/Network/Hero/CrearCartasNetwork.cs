@@ -9,6 +9,8 @@ public class CrearCartasNetwork : NetworkBehaviour {
 
 	public GameObject nace2;
 
+	public GameObject nace3;
+
 	public bool tirar;
 
 	//[SyncVar(hook = "OnChange")]
@@ -44,7 +46,8 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public GameObject campamento;
 	public GameObject torreta;
 	public GameObject torretaMisil;
-	public GameObject mina;
+	public GameObject minaAntiTanque;
+	public GameObject minaAntiPersona;
 	//------MALOS
 
 	//PERSONAJES NORMALES 
@@ -65,13 +68,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public GameObject campamentoMalo;
 	public GameObject torretaMalo;
 	public GameObject torretaMisilMalo;
-	public GameObject minaMalo;
+	public GameObject minaAntiTanqueMalo;
+	public GameObject minaAntiPersonaMalo;
 
 	public bool martillar;
 	public bool crear;
 	public bool martillaTorreta;
 	public bool martillaTorreta2;
-	public bool martillaMina;
 
 	// Use this for initialization
 	void Start () {
@@ -112,20 +115,6 @@ public class CrearCartasNetwork : NetworkBehaviour {
 				}
 
 				martillaTorreta2 = false;
-				martillar = false;
-				crear = false;
-			}
-			if(martillaMina)
-			{
-				if(gameObject.tag == "Player")
-				{
-					CmdcrearMinaBueno();
-				}else
-				{
-					CmdcrearMinaMalo();
-				}
-
-				martillaMina = false;
 				martillar = false;
 				crear = false;
 			}
@@ -610,7 +599,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public void crearTorreta ()
 	{
 		hammer = 0;
-		GetComponent<Animator>().SetBool("crear", true);
+		GetComponent<Animator>().SetInteger("crear", 1);
 
 		martillar = true;
 		martillaTorreta2 = false;
@@ -641,7 +630,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public void crearTorretaMisil ()
 	{
 		hammer = 0;
-		GetComponent<Animator>().SetBool("crear", true);
+		GetComponent<Animator>().SetInteger("crear", 1);
 
 		martillar = true;
 		martillaTorreta = false;
@@ -660,29 +649,73 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		NetworkServer.Spawn(objeto);
 	}
 	//MINA
+	public int minas;
 	public void crearMina ()
 	{
-		hammer = 0;
-		GetComponent<Animator>().SetBool("crear", true);
-
-		martillar = true;
-		martillaMina = true;
+		minas = 1;
+		GetComponent<Animator>().SetInteger("crear", 2);
+	}
+	public void crearMinaPersona ()
+	{
+		minas = 2;
+		GetComponent<Animator>().SetInteger("crear", 2);
+	}
+	public void mina()
+	{
+		if(minas == 1)
+		{
+			if(gameObject.tag == "Player")
+			{
+				CmdcrearMinaBueno();
+			}else
+			{
+				CmdcrearMinaMalo();
+			}
+			minas = 0;
+		}
+		if(minas == 2)
+		{
+			if(gameObject.tag == "Player")
+			{
+				CmdcrearMinaPersonaBueno();
+			}else
+			{
+				CmdcrearMinaPersonaMalo();
+			}
+			minas = 0;
+		}
 	}
 	[Command]
 	public void CmdcrearMinaBueno()
 	{
-		var objeto = (GameObject)Instantiate(mina, nace2.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(minaAntiTanque, nace3.transform.position, Quaternion.Euler(0,0,0));
 		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104;
-		print(GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<mina>().poder/104);
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdcrearMinaMalo()
 	{
-		var objeto = (GameObject)Instantiate(minaMalo, nace2.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(minaAntiTanqueMalo, nace3.transform.position, Quaternion.Euler(0,0,0));
 		objeto.GetComponent<mina>().poder = GetComponent<HeroNetwork>().saludMax2*objeto.GetComponent<mina>().poder/104;
 		NetworkServer.Spawn(objeto);
 	}
+	//ANTIPERSONA
+	[Command]
+	public void CmdcrearMinaPersonaBueno()
+	{
+		var objeto = (GameObject)Instantiate(minaAntiPersona, nace3.transform.position, Quaternion.Euler(0,Random.Range(0,360),0));
+		objeto.GetComponent<minaAnipersonaNetwork>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<minaAnipersonaNetwork>().poder/104;
+		NetworkServer.Spawn(objeto);
+	}
+	[Command]
+	public void CmdcrearMinaPersonaMalo()
+	{
+		var objeto = (GameObject)Instantiate(minaAntiPersonaMalo, nace3.transform.position, Quaternion.Euler(0,Random.Range(0,360),0));
+		objeto.GetComponent<minaAnipersonaNetwork>().poder = GetComponent<HeroNetwork>().saludMax*objeto.GetComponent<minaAnipersonaNetwork>().poder/104;
+		NetworkServer.Spawn(objeto);
+	}
+
+
 	public int hammer;
 	//OBJETOS CON MARTILLOS
 	public void HAMMER ()
