@@ -15,6 +15,8 @@ public class minaAntipersona : MonoBehaviour {
 	//ONDA
 	public GameObject prefab;
 
+	public AudioSource audio1;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -30,18 +32,25 @@ public class minaAntipersona : MonoBehaviour {
 		if(col.gameObject.tag == "Player")
 		{
 			animator.GetComponent<Animator>().SetBool("explo", true);
-			GetComponent<AudioSource>().Play();
+			audio1.Play();
 		}
 
 		if(col.gameObject.tag == "enemy")
 		{
 			animator.GetComponent<Animator>().SetBool("explo", true);
-			GetComponent<AudioSource>().Play();
+			audio1.Play();
 		}
 
 		if(col.gameObject.tag == "explo")
 		{
-			Explo2();
+			animator.GetComponent<Animator>().SetBool("explo", true);
+			audio1.Play();
+			//Explo2();
+		}
+		if(col.gameObject.tag == "bala")
+		{
+			animator.GetComponent<Animator>().SetBool("explo", true);
+			audio1.Play();
 		}
 	}
 
@@ -51,13 +60,7 @@ public class minaAntipersona : MonoBehaviour {
 		explocion.transform.parent = null;
 		var onda = (GameObject)Instantiate(prefab, mina.transform.position, Quaternion.identity);
 
-		/*if(explo.GetComponent<Explo>())
-		{
-			explo.GetComponent<Explo>().poder = poder;
-		}else
-		{
-			explo.GetComponent<ExploOffline>().poder = poder;
-		}*/
+		explocion.GetComponent<ExploOffline>().poder = poder;
 
 		Destroy(gameObject);
 	}
@@ -67,13 +70,7 @@ public class minaAntipersona : MonoBehaviour {
 		var explo = (GameObject)Instantiate(explocion2, transform.position, Quaternion.identity);
 		var onda = (GameObject)Instantiate(prefab, transform.position, Quaternion.identity);
 
-		if(explo.GetComponent<Explo>())
-		{
-			explo.GetComponent<Explo>().poder = poder;
-		}else
-		{
-			explo.GetComponent<ExploOffline>().poder = poder;
-		}
+		explo.GetComponent<ExploOffline>().poder = poder;
 
 		Destroy(gameObject);
 	}

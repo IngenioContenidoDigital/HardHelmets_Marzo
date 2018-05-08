@@ -61,6 +61,11 @@ public class mina : NetworkBehaviour {
 			CmdExplo();
 			Destroy(gameObject);
 		}
+		if(col.gameObject.tag == "bala")
+		{
+			CmdExplo();
+			Destroy(gameObject);
+		}
 	}
 
 	[Command]

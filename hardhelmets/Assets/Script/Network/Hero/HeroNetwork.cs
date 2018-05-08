@@ -431,7 +431,7 @@ public class HeroNetwork : NetworkBehaviour{
 				tirocabeza = false;
 			}
 
-			if(grounded && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasShot") && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasrecarga") && !animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasSCae") && !animator.GetCurrentAnimatorStateInfo(0).IsName("hammer"))
+			if(grounded && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasShot") && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasrecarga") && !animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasSCae") && !animator.GetCurrentAnimatorStateInfo(0).IsName("hammer") && !animator.GetCurrentAnimatorStateInfo(0).IsName("mina"))
 			{
 				//SALTO
 				if(Input.GetButtonDown("Jump") && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !cubierto && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))

@@ -43,6 +43,11 @@ public class MinaOffline : MonoBehaviour {
 			Explo();
 			Destroy(gameObject);
 		}
+		if(col.gameObject.tag == "bala")
+		{
+			Explo();
+			Destroy(gameObject);
+		}
 	}
 		
 	public void Explo()

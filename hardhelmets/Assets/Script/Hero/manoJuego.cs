@@ -428,7 +428,7 @@ public class manoJuego : MonoBehaviour {
 					Player.GetComponent<CrearCartas>().crearMetralleto();
 				}else if(nombre == "17")
 				{
-					//VIEJO DEL LANZA LLAMAS
+					Player.GetComponent<CrearCartas>().crearMinaPersona();
 				}else if(nombre == "18")
 				{
 					Player.GetComponent<CrearCartas>().crearPanzer();
@@ -522,7 +522,7 @@ public class manoJuego : MonoBehaviour {
 			Player.GetComponent<CrearCartas>().crearMetralleto();
 		}else if(nombre == "17")
 		{
-			//VIEJO DEL LANZA LLAMAS
+			Player.GetComponent<CrearCartas>().crearMinaPersona();
 		}else if(nombre == "18")
 		{
 			Player.GetComponent<CrearCartas>().crearPanzer();

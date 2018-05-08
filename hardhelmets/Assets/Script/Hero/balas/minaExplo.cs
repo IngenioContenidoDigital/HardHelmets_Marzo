@@ -11,7 +11,13 @@ public class minaExplo : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		poder = padre.GetComponent<minaAntipersona>().poder;
+		if(padre.GetComponent<minaAnipersonaNetwork>())
+		{
+			poder = padre.GetComponent<minaAnipersonaNetwork>().poder;
+		}else
+		{
+			poder = padre.GetComponent<minaAntipersona>().poder;
+		}
 	}
 	
 	// Update is called once per frame
@@ -21,6 +27,12 @@ public class minaExplo : MonoBehaviour {
 
 	public void Explo()
 	{
-		padre.GetComponent<minaAntipersona>().Explo();
+		if(padre.GetComponent<minaAnipersonaNetwork>())
+		{
+			padre.GetComponent<minaAnipersonaNetwork>().Explo();
+		}else
+		{
+			padre.GetComponent<minaAntipersona>().Explo();
+		}
 	}
 }
