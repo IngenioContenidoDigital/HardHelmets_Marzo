@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 
 public class CrearCartas : MonoBehaviour {
 
@@ -57,7 +58,7 @@ public class CrearCartas : MonoBehaviour {
 	void Start () {
 
 	}
-
+	public bool probando;//BORRAR TODO LO QUE DIGA ESTA VARIABLE
 	void Update ()
 	{
 		if(martillar && crear)
@@ -83,6 +84,11 @@ public class CrearCartas : MonoBehaviour {
 		if(tirar)
 		{
 			StartCoroutine(reactivar());
+		}
+		if(probando)
+		{
+			bombardeo();
+			probando = false;
 		}
 		//nace.transform.position = new Vector3(valorNace, -20, transform.position.z);
 	}
@@ -482,5 +488,27 @@ public class CrearCartas : MonoBehaviour {
 			crear = true;
 			hammer = 0;
 		}
+	}
+	//BOMBARDEO
+	public void bombardeo()
+	{
+		GetComponent<Hero>().ready = false;
+
+		GetComponent<Hero>().caminarA = false;
+		GetComponent<Hero>().caminarD = false;
+		GetComponent<Hero>().caminarI = false;
+		GetComponent<Hero>().caminarU = false;
+
+		GetComponent<Hero>().v3 = Vector3.zero;
+
+		GetComponent<Hero>().rafaga = true;
+		GetComponent<Hero>().cuchillo = false;
+
+		GetComponent<Hero>().SniperCam.GetComponent<Cam>().bombardeo = true;
+
+		GetComponent<Hero>().esconderBarra.SetActive(false);
+		GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
+		//GetComponent<Hero>().SniperCam.GetComponent<LensAberrations>().distortion.enabled = true;
+		//animator.SetInteger("disparo",20);
 	}
 }

@@ -372,6 +372,8 @@ public class campamentos : MonoBehaviour {
 			}
 		}
 
+		//Player.GetComponent<HeroNetwork>().animacion.SetActive(false);
+
 		Player.GetComponent<CustomFinalNetwork>().CmdSetCasco(Player.GetComponent<CustomFinalNetwork>().casco);
 		Cabeza.GetComponent<CabezaNetwork>().tirosCabeza = 0;
 

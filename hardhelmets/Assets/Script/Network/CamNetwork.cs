@@ -16,6 +16,15 @@ public class CamNetwork : NetworkBehaviour {
 
 	//SNIPER
 	public bool sniper;
+	//BOMBARDEO
+	public bool bombardeo;
+	public GameObject imagenBomba;
+	public GameObject TexturaBombardeo;
+	public bool bombardeocarga;
+	public bool bombardeocarga2;
+	public bool tirarbomba;
+	public bool tirarbomba2;
+	public bool tirarbomba3;
 	//public GameObject balaSniper;
 	Ray ray;
 	RaycastHit hit;
@@ -250,6 +259,155 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}
 			if(Player.GetComponent<HeroNetwork>()._currentDirection == "left")//LIMITES HACIA ATRAS
+			{
+				if(transform.position.x <= Player.transform.position.x-180)
+				{
+					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//zeta);
+				}else if(transform.position.x >= Player.transform.position.x-9)
+				{
+					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//zeta);
+				}else
+				{
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
+				}
+			}
+			//LIMITES HACIA ARRIBA Y ABAJO
+			if(transform.position.y <= Player.transform.position.y+1)
+			{
+				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
+			}else if(transform.position.y >= Player.transform.position.y+20)
+			{
+				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
+			}
+
+			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
+		}else if(bombardeo && !ver)
+		{
+			TexturaBombardeo.SetActive(true);
+
+			GetComponent<DirtyLensFlare>().enabled = true;
+
+			GetComponent<Camera>().fieldOfView = 20.5f;
+
+			if(Input.GetAxis("MIRA") != 0 || Input.GetAxis("MIRA H") != 0)
+			{
+				mouse = false;
+			}
+
+			if(Input.GetAxis("Mouse Y") != 0 || Input.GetAxis("Mouse X") != 0)
+			{
+				mouse = true;
+			}
+
+			if(Input.GetAxis("DISPARO") > 0)
+			{
+				bombardeocarga2 = false;
+				bombardeocarga = true;
+			}
+			if(Input.GetButtonDown("DISPARO 2"))
+			{
+				bombardeocarga = false;
+				bombardeocarga2 = true;
+			}
+
+			if(bombardeocarga && Input.GetAxis("DISPARO") == 0)
+			{
+				bombardeocarga = false;
+			}
+			if(Input.GetButtonUp("DISPARO 2"))
+			{
+				bombardeocarga2 = false;
+			}
+
+			if(bombardeocarga && !tirarbomba2 || bombardeocarga2 && !tirarbomba2)
+			{
+				if(!GetComponent<AudioSource>().isPlaying)
+				{
+					GetComponent<AudioSource>().Play();
+				}
+				h = 0;
+				v = 0;
+				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount += 0.01f;
+			}else
+			{
+				GetComponent<AudioSource>().Stop();
+				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount = 0;
+			}
+
+			if(imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount >= 1)
+			{
+				tirarbomba = true;
+			}
+
+			if(tirarbomba && !tirarbomba2)
+			{
+				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount = 0;
+				print("TIRAR LAS BOMBAS");
+				tirarbomba2 = true;
+			}
+
+			if(tirarbomba2)
+			{
+				if(Input.GetAxis("DISPARO") == 0)
+				{
+					tirarbomba3 = true;
+				}
+				if(Input.GetAxis("DISPARO") > 0 && tirarbomba3)
+				{
+					bombardeo = false;
+					bombardeocarga2 = false;
+					tirarbomba = false;
+					tirarbomba2 = false;
+					tirarbomba3 = false;
+					TexturaBombardeo.SetActive(false);
+					GetComponent<Grayscale>().enabled = false;
+
+					Player.GetComponent<Hero>().ready = true;
+					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+				}
+				if(Input.GetButtonDown("DISPARO 2"))
+				{
+					bombardeo = false;
+					bombardeocarga2 = false;
+					tirarbomba = false;
+					tirarbomba2 = false;
+					tirarbomba3 = false;
+					TexturaBombardeo.SetActive(false);
+					GetComponent<Grayscale>().enabled = false;
+
+					Player.GetComponent<Hero>().ready = true;
+					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+				}
+			}
+
+			if(!bombardeocarga && !bombardeocarga2)
+			{
+				if(mouse)
+				{
+					h = horizontal * Input.GetAxis("Mouse X");
+					v = vertical * Input.GetAxis("Mouse Y");
+				}else
+				{
+					h = horizontal * Input.GetAxis("MIRA H");
+					v = vertical * Input.GetAxis("MIRA");
+				}
+			}
+
+
+			if(Player.GetComponent<Hero>()._currentDirection == "right")//LIMITES HACIA ADELANTE
+			{
+				if(transform.position.x >= Player.transform.position.x+180)
+				{
+					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//zeta);
+				}else if(transform.position.x <= Player.transform.position.x+9)
+				{
+					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//zeta);
+				}else
+				{
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
+				}
+			}
+			if(Player.GetComponent<Hero>()._currentDirection == "left")//LIMITES HACIA ATRAS
 			{
 				if(transform.position.x <= Player.transform.position.x-180)
 				{
