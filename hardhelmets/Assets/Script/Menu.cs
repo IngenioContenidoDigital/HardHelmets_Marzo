@@ -178,6 +178,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("card22", 0);
 			PlayerPrefs.SetInt("card23", 0);
 			PlayerPrefs.SetInt("card24", 0);
+			PlayerPrefs.SetInt("card25", 0);
 			//VALOR DE USO DE CARTAS
 			PlayerPrefs.SetInt("1costo", 20);//RIFLE
 			PlayerPrefs.SetInt("2costo", 30);//SUBMETRA
@@ -203,6 +204,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("22costo", 100);//TORRETA MISIL
 			PlayerPrefs.SetInt("23costo", 70);//CAMPAMENTO
 			PlayerPrefs.SetInt("24costo", 70);//MINA
+			PlayerPrefs.SetInt("25costo", 100);//BOMBARDEO
 			//CANTIDAD DE CAJAS de cartas
 			PlayerPrefs.SetInt("caja1",0);
 			PlayerPrefs.SetInt("caja2",0);
@@ -289,10 +291,14 @@ public class Menu : MonoBehaviour {
 			//PlayerPrefs.SetInt("FirstTimeCartas",1);
 			PlayerPrefs.SetInt("FirstTime",1);
 		}
-
+		//ACTUALIZACIONES
 		if(PlayerPrefs.GetInt("17costo") != 40)
 		{
 			PlayerPrefs.SetInt("17costo", 40);//ACTUASLIZAR EL COSTO DE LA CARTA
+		}
+		if(PlayerPrefs.GetInt("25costo") != 100)
+		{
+			PlayerPrefs.SetInt("25costo", 100);//BOMBARDEO
 		}
 
 		idioma = PlayerPrefs.GetString("idioma");

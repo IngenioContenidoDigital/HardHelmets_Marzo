@@ -18,7 +18,7 @@ public class detectaSeleccion : MonoBehaviour {
 
 	IEnumerator momento()
 	{
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.25f);
 		entrer = false;
 	}
 

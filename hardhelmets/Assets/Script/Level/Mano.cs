@@ -73,6 +73,17 @@ public class Mano : MonoBehaviour {
 
 	void Update ()
 	{
+		if(nombreCarta == first)
+		{
+			moverAtras = false;
+			I = false;
+		}
+		if(nombreCarta == last)
+		{
+			moverAdelante = false;
+			D = false;
+		}
+
 		if(I && !cuadro.GetComponent<detectaSeleccion>().entrer)
 		{
 			if(Input.GetButtonDown("left"))

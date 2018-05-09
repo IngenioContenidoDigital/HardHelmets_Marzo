@@ -1061,6 +1061,7 @@ public class CustomFinalNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdVotaLansaLlamas()
 	{
+		GetComponent<HeroNetwork>().balaLlamas = 0;
 		var arma = (GameObject)Instantiate(lansallamas2, bulletSpawn.position, Quaternion.Euler(0,0,-90)); 
 		arma.GetComponent<Rigidbody>().velocity = arma.transform.up * 20;
 		arma.GetComponent<Rigidbody>().velocity = arma.transform.right * 3;
