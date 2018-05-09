@@ -1820,37 +1820,19 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaLlamas()
 	{
-		if(_currentDirection == "right")
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}else
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * -15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
+		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		NetworkServer.Spawn(bulletB);
+		Destroy(bulletB, 0.7f);
 
 	}
 	[Command]
 	void CmdBalaLlamasMalo()
 	{
-		if(_currentDirection == "right")
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}else
-		{
-			var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
-			bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * -15;
-			NetworkServer.Spawn(bulletB);
-			Destroy(bulletB, 0.7f);
-		}
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
+		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		NetworkServer.Spawn(bulletB);
+		Destroy(bulletB, 0.7f);
 	}
 	public GameObject estela;
 	void disparoSniper()

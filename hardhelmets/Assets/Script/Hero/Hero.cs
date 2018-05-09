@@ -1526,7 +1526,7 @@ public class Hero : MonoBehaviour{
 		
 	void BalaLlamas()
 	{
-		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		Destroy(bulletB, 0.7f);
 	}
