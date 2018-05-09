@@ -52,20 +52,27 @@ public class mina : NetworkBehaviour {
 	{
 		if(col.gameObject.tag == tank)
 		{
-			CmdExplo();
-			Destroy(gameObject);
+			GetComponent<Animator>().SetBool("explotar", true);
 		}
 
 		if(col.gameObject.tag == "explo")
 		{
-			CmdExplo();
-			Destroy(gameObject);
+			GetComponent<Animator>().SetBool("explotar", true);
 		}
 		if(col.gameObject.tag == "bala")
 		{
-			CmdExplo();
-			Destroy(gameObject);
+			GetComponent<Animator>().SetBool("explotar", true);
 		}
+	}
+
+	public void sonar()
+	{
+		GetComponent<AudioSource>().Play();
+	}
+
+	public void Explotar()
+	{
+		CmdExplo();
 	}
 
 	[Command]
