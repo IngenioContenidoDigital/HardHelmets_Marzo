@@ -34,20 +34,27 @@ public class MinaOffline : MonoBehaviour {
 	{
 		if(col.gameObject.tag == tank)
 		{
-			Explo();
-			Destroy(gameObject);
+			GetComponent<Animator>().SetBool("explotar", true);
 		}
 
 		if(col.gameObject.tag == "explo")
 		{
-			Explo();
-			Destroy(gameObject);
+			GetComponent<Animator>().SetBool("explotar", true);
 		}
 		if(col.gameObject.tag == "bala")
 		{
-			Explo();
-			Destroy(gameObject);
+			GetComponent<Animator>().SetBool("explotar", true);
 		}
+	}
+
+	public void sonar()
+	{
+		GetComponent<AudioSource>().Play();
+	}
+
+	public void Explotar()
+	{
+		Explo();
 	}
 		
 	public void Explo()

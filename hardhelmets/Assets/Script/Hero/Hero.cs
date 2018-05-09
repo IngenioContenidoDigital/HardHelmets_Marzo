@@ -49,7 +49,7 @@ public class Hero : MonoBehaviour{
 	public GameObject Girar2;
 
 	//ACCIONES DE PERSONAJE
-	Vector3 v3;
+	public Vector3 v3;
 	public bool caminarI = false;
 	public bool caminarD = false;
 	public bool caminarU = false;
@@ -1461,7 +1461,7 @@ public class Hero : MonoBehaviour{
 			{
 				Pausa();
 			}
-		}else
+		}else if(!vivo)
 		{
 			v3 = Vector3.zero;
 			SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
