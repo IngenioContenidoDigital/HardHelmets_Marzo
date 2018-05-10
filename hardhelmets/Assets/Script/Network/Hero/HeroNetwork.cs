@@ -3023,7 +3023,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void Cmd_Fuego()
 	{
-		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawn.position.x, bulletSpawn.position.y+2, bulletSpawn.position.z), bulletSpawn.rotation); 
+		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawnFuego.position.x, bulletSpawnFuego.position.y+2, bulletSpawnFuego.position.z), bulletSpawn.rotation); 
 		NetworkServer.Spawn(fire);
 	}
 	IEnumerator apaga ()

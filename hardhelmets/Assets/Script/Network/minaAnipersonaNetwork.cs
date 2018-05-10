@@ -57,12 +57,26 @@ public class minaAnipersonaNetwork : NetworkBehaviour {
 
 	public void Explo()
 	{
+		Cmd_Explo();
+	}
+
+	[Command]
+	public void Cmd_Explo()
+	{
 		explocion.SetActive(true);//var explo = (GameObject)Instantiate(explocion, mina.transform.position, Quaternion.identity);
 		explocion.transform.parent = null;
 		var onda = (GameObject)Instantiate(prefab, mina.transform.position, Quaternion.identity);
 
 		explocion.GetComponent<Explo>().poder = poder;
 
+		Destroy(gameObject);
+		RpcExplo();
+	}
+	[ClientRpc]
+	public void RpcExplo ()
+	{
+		explocion.SetActive(true);//var explo = (GameObject)Instantiate(explocion, mina.transform.position, Quaternion.identity);
+		explocion.transform.parent = null;
 		Destroy(gameObject);
 	}
 

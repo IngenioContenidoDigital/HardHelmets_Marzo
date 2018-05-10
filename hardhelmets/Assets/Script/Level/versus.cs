@@ -13,11 +13,6 @@ public class versus : MonoBehaviour {
 
 	public GameObject Lobby;
 
-	public GameObject Fondo;
-	public GameObject Estrella;
-	public GameObject P1;
-	public GameObject P2;
-
 	public GameObject Player1;
 	public GameObject Player2;
 
@@ -36,11 +31,7 @@ public class versus : MonoBehaviour {
 
 	void Start ()
 	{
-		//gameObject.transform.parent = Lobby.transform;
-		StartCoroutine(momentoFondo());
-		StartCoroutine(momentoEstrella());
-		StartCoroutine(momentoP1());
-		StartCoroutine(momentoP2());
+		
 	}
 
 	public void Update ()
@@ -73,26 +64,5 @@ public class versus : MonoBehaviour {
 			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[2] = Player2.GetComponent<PlayerIdSkinLobby>().fondo;
 			Player2Skin.GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+Player2.GetComponent<PlayerIdSkinLobby>().nivel.ToString();
 		}
-	}
-
-	IEnumerator momentoFondo()
-	{
-		yield return new WaitForSpineAnimationComplete(Fondo.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		Fondo.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator momentoEstrella()
-	{
-		yield return new WaitForSpineAnimationComplete(Estrella.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		Estrella.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator momentoP1()
-	{
-		yield return new WaitForSpineAnimationComplete(P1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		P1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
-	}
-	IEnumerator momentoP2()
-	{
-		yield return new WaitForSpineAnimationComplete(P2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
-		P2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 	}
 }

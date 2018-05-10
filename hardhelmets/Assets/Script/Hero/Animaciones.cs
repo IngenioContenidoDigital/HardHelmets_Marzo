@@ -113,6 +113,10 @@ public class Animaciones : MonoBehaviour {
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("hammer") || animator.GetCurrentAnimatorStateInfo(0).IsName("mina"))
 		{
 			animator.SetInteger("crear", 0);
+			animator.SetBool("creando", true);
+		}else
+		{
+			animator.SetBool("creando", false);
 		}
 		//CALLENDO
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("jump2"))

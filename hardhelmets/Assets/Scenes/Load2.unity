@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 176349330}
   - component: {fileID: 176349332}
   - component: {fileID: 176349331}
+  - component: {fileID: 176349333}
   m_Layer: 0
   m_Name: SkeletonGraphic (fondo)
   m_TagString: Untagged
@@ -341,6 +342,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176349329}
+--- !u!114 &176349333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176349329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00095336bea6534b9a3894f894ad4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: loop
 --- !u!1 &199090654
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +590,7 @@ GameObject:
   - component: {fileID: 295958556}
   - component: {fileID: 295958558}
   - component: {fileID: 295958557}
+  - component: {fileID: 295958559}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -648,6 +662,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 295958555}
+--- !u!114 &295958559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 295958555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00095336bea6534b9a3894f894ad4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: loop
 --- !u!1 &311817433
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +708,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 221.80078, y: -98}
+  m_AnchoredPosition: {x: 221.80075, y: -98}
   m_SizeDelta: {x: 682.8, y: 84.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311817435
@@ -1193,6 +1219,7 @@ GameObject:
   - component: {fileID: 749593196}
   - component: {fileID: 749593198}
   - component: {fileID: 749593197}
+  - component: {fileID: 749593199}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -1264,6 +1291,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 749593195}
+--- !u!114 &749593199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749593195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00095336bea6534b9a3894f894ad4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: loop
 --- !u!1 &779054428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,6 +1625,7 @@ GameObject:
   - component: {fileID: 866617030}
   - component: {fileID: 866617032}
   - component: {fileID: 866617031}
+  - component: {fileID: 866617033}
   m_Layer: 0
   m_Name: SkeletonGraphic (capa2)
   m_TagString: Untagged
@@ -1657,6 +1697,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 866617029}
+--- !u!114 &866617033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866617029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00095336bea6534b9a3894f894ad4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: loop
 --- !u!1 &946791706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 299, y: -71}
+  m_AnchoredPosition: {x: 298.99997, y: -71}
   m_SizeDelta: {x: 160, y: 43.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533579199

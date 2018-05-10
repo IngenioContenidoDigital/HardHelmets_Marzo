@@ -100,6 +100,8 @@ public class CustomFinal : MonoBehaviour {
 
 	bool esperar;
 	bool esperarPanzer;
+
+	bool poner;
 	void FixedUpdate ()
 	{
 		if(!listo)
@@ -138,6 +140,18 @@ public class CustomFinal : MonoBehaviour {
 			skinsToCombine[9] = cuerpo;
 
 			StartCoroutine(momento());
+		}
+		if(GetComponent<Hero>().salud <= GetComponent<Hero>().saludMax*40/100)
+		{
+			if(!poner)
+			{
+				skinsToCombine[12] = "cascado";
+				poner = true;
+			}
+		}else if(poner)
+		{
+			skinsToCombine[12] = "";
+			poner = false;
 		}
 
 		//pone skin granada
