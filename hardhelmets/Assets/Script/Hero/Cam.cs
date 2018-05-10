@@ -25,6 +25,8 @@ public class Cam : MonoBehaviour {
 	public bool tirarbomba2;
 	public bool tirarbomba3;
 
+	public bool cancelar;
+
 	public GameObject misiles;
 	//public GameObject balaSniper;
 	Ray ray;
@@ -94,6 +96,22 @@ public class Cam : MonoBehaviour {
 		}else
 		{
 			Cursor.visible = true;
+		}
+		if(cancelar)
+		{
+			bombardeo = false;
+			bombardeocarga2 = false;
+			tirarbomba = false;
+			tirarbomba2 = false;
+			tirarbomba3 = false;
+			TexturaBombardeo.SetActive(false);
+			GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<Hero>().ready = true;
+			Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+			alejar = false;
+
+			cancelar = false;
 		}
 		if(Panel == null)
 		{
@@ -236,6 +254,7 @@ public class Cam : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
 		}else if(bombardeo && !ver)
 		{
+			alejar = true;
 			TexturaBombardeo.SetActive(true);
 
 			GetComponent<DirtyLensFlare>().enabled = true;
@@ -280,7 +299,7 @@ public class Cam : MonoBehaviour {
 				}
 				h = 0;
 				v = 0;
-				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount += 0.01f;
+				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount += 0.006f;
 			}else
 			{
 				GetComponent<AudioSource>().Stop();
@@ -297,8 +316,7 @@ public class Cam : MonoBehaviour {
 				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount = 0;
 
 				var bullet = (GameObject)Instantiate(misiles, new Vector3(transform.position.x, Player.transform.position.y+10, Player.transform.position.z), Quaternion.Euler(0,0,0)); 
-
-				//bullet.GetComponent<ExploOffline>().poder = Player.GetComponent<Hero>().saludMax*bullet.GetComponent<ExploOffline>().poder/104;
+				bullet.GetComponent<Poder>().poder = Player.GetComponent<Hero>().saludMax*bullet.GetComponent<Poder>().poder/104;
 
 				tirarbomba2 = true;
 			}
@@ -321,6 +339,7 @@ public class Cam : MonoBehaviour {
 
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+					alejar = false;
 				}
 				if(Input.GetButtonDown("DISPARO 2"))
 				{
@@ -334,6 +353,7 @@ public class Cam : MonoBehaviour {
 
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+					alejar = false;
 				}
 			}
 
@@ -355,35 +375,35 @@ public class Cam : MonoBehaviour {
 			{
 				if(transform.position.x >= Player.transform.position.x+180)
 				{
-					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, velocidad);//zeta);
 				}else if(transform.position.x <= Player.transform.position.x+9)
 				{
-					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, velocidad);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
 				}
 			}
 			if(Player.GetComponent<Hero>()._currentDirection == "left")//LIMITES HACIA ATRAS
 			{
 				if(transform.position.x <= Player.transform.position.x-180)
 				{
-					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, velocidad);//zeta);
 				}else if(transform.position.x >= Player.transform.position.x-9)
 				{
-					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, velocidad);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
 			if(transform.position.y <= Player.transform.position.y+1)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
+				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, velocidad);
 			}else if(transform.position.y >= Player.transform.position.y+20)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
+				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, velocidad);
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);

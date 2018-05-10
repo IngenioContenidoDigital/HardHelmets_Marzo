@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class ExploOffline : MonoBehaviour {
 
-	int random;
-	public AudioClip explo1;
-	public AudioClip explo2;
+	public AudioClip[] explo;
 
-	int explo;
+	//int explo;
 
 	float efectos;
 
@@ -19,22 +17,12 @@ public class ExploOffline : MonoBehaviour {
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
 
-		explo = Random.Range(1,3);
-		GetComponent<Animator>().SetInteger("explo",explo);
+		//explo = Random.Range(1,3);
+		//GetComponent<Animator>().SetInteger("explo",explo);
 
-		random = Random.Range(1,3);
-		if(random == 1)
-		{
-			GetComponent<AudioSource>().volume = efectos;
-			GetComponent<AudioSource>().clip = explo1;
-			GetComponent<AudioSource>().Play();
-		}
-		if(random == 2)
-		{
-			GetComponent<AudioSource>().volume = efectos;
-			GetComponent<AudioSource>().clip = explo2;
-			GetComponent<AudioSource>().Play();
-		}
+		GetComponent<AudioSource>().clip = explo[Random.Range(0,explo.Length)];
+		GetComponent<AudioSource>().Play();
+
 		Cam.visible = true;
 		StartCoroutine(tiempo());
 	}

@@ -1879,6 +1879,8 @@ public class Hero : MonoBehaviour{
 
 			//StartCoroutine(sumar());
 			efectodisparo = true;
+
+			SniperCam.GetComponent<Cam>().cancelar = true;
 		}
 		if(col.gameObject.tag == "explo")
 		{
@@ -1908,6 +1910,8 @@ public class Hero : MonoBehaviour{
 
 			//StartCoroutine(sumar());
 			efectodisparo = true;
+
+			SniperCam.GetComponent<Cam>().cancelar = true;
 		}
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
@@ -1935,6 +1939,8 @@ public class Hero : MonoBehaviour{
 			letras.GetComponent<TextMesh>().text = "50";
 			//StartCoroutine(sumar());
 			efectodisparo = true;
+
+			SniperCam.GetComponent<Cam>().cancelar = true;
 		}
 		if(col.gameObject.tag == "granade")
 		{
@@ -1980,6 +1986,8 @@ public class Hero : MonoBehaviour{
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "2";
 			//StartCoroutine(sumar());
+
+			SniperCam.GetComponent<Cam>().cancelar = true;
 		}
 		if(col.gameObject.tag == medic)
 		{
