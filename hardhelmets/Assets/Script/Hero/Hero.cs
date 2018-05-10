@@ -1526,7 +1526,7 @@ public class Hero : MonoBehaviour{
 		
 	void BalaLlamas()
 	{
-		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		Destroy(bulletB, 0.7f);
 	}
@@ -2393,8 +2393,7 @@ public class Hero : MonoBehaviour{
 		
 	public void Fuego()
 	{
-		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawn.position.x, bulletSpawn.position.y+2, bulletSpawn.position.z), bulletSpawn.rotation); 
-
+		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawnFuego.position.x, bulletSpawnFuego.position.y+2, bulletSpawnFuego.position.z), bulletSpawn.rotation); 
 	}
 	IEnumerator apaga ()
 	{

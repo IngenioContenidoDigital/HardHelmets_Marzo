@@ -311,8 +311,22 @@ public class CustomFinalNetwork : NetworkBehaviour {
 
 	bool esperar;
 	bool esperarPanzer;
+	bool poner;
 	void FixedUpdate ()
 	{
+		if(GetComponent<HeroNetwork>().salud <= GetComponent<HeroNetwork>().saludMax*40/100)
+		{
+			if(!poner)
+			{
+				skinsToCombine[12] = "cascado";
+				poner = true;
+			}
+		}else if(poner)
+		{
+			skinsToCombine[12] = "";
+			poner = false;
+		}
+
 		if(!isLocalPlayer)
 		{
 			return;

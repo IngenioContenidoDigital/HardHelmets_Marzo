@@ -125,6 +125,10 @@ public class AnimacionesNetwork : NetworkBehaviour {
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("hammer") || animator.GetCurrentAnimatorStateInfo(0).IsName("mina"))
 		{
 			animator.SetInteger("crear", 0);
+			animator.SetBool("creando", true);
+		}else
+		{
+			animator.SetBool("creando", false);
 		}
 		//CALLENDO
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("jump2"))
@@ -176,7 +180,7 @@ public class AnimacionesNetwork : NetworkBehaviour {
 		{
 			animator.SetInteger("disparo", 0);
 		}
-		if(animator.GetCurrentAnimatorStateInfo(1).IsName("MetraShotMescla") && GetComponent<Hero>().balaMetra <= 0)
+		if(animator.GetCurrentAnimatorStateInfo(1).IsName("MetraShotMescla") && GetComponent<HeroNetwork>().balaMetra <= 0)
 		{
 			animator.SetInteger("disparo", 0);
 		}

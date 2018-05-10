@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33764442136010528}
   - component: {fileID: 23355417845351982}
   - component: {fileID: 65642136397129460}
+  - component: {fileID: 54012946674195132}
   m_Layer: 11
   m_Name: misilesss
   m_TagString: Untagged
@@ -83,6 +84,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1275440456108654}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54012946674195132
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275440456108654}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
 --- !u!65 &65642136397129460
 BoxCollider:
   m_ObjectHideFlags: 1

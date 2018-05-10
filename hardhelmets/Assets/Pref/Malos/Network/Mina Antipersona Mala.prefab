@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 54264680678719630}
   - component: {fileID: 82882781692340738}
   - component: {fileID: 114115981052070958}
-  - component: {fileID: 95100858234099346}
   - component: {fileID: 114958249111072262}
   m_Layer: 0
   m_Name: ExplosionMina
@@ -1018,23 +1017,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!95 &95100858234099346
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1837936237610576}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2b28a2d924535a942bbf93834a20ad4d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95265723106879242
 Animator:
   serializedVersion: 3
