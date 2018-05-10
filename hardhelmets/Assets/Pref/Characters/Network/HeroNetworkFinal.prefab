@@ -10972,7 +10972,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!54 &54131882183522758
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -12850,6 +12850,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -12945,6 +12946,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -14016,6 +14018,7 @@ MonoBehaviour:
   - cuerpo1
   - 
   - 
+  - 
   armaMano: 
   armaEspalda: 
   arma: {fileID: 1264905689823704}
@@ -14205,6 +14208,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -14503,6 +14507,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -19555,6 +19560,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -21668,6 +21674,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -22622,6 +22629,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -24379,6 +24387,10 @@ MonoBehaviour:
   tirarbomba: 0
   tirarbomba2: 0
   tirarbomba3: 0
+  cancelar: 0
+  misiles: {fileID: 1439082452805014, guid: a1a45dd04bb159e4192062922e796e85, type: 2}
+  misilesMalo: {fileID: 1555651008758254, guid: dfe42a920f7de9d44a095861855fa537,
+    type: 2}
   h: 0
   v: 0
   Explo: []
@@ -24606,6 +24618,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -26718,6 +26731,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -26856,6 +26870,7 @@ MonoBehaviour:
   a22: {fileID: 21300028, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a23: {fileID: 21300030, guid: 45704ccc58e4f3d4a96809d8565d4f9a, type: 3}
   a24: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  a25: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
   nace: {fileID: 8300000, guid: 1e71e16f0b4bdf4459d2ec6d07cd6284, type: 3}
   usa: {fileID: 8300000, guid: c2b2caef4dfb92840b22de5a9921458c, type: 3}
   selected: 0
@@ -28191,7 +28206,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820384384206140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12601acaf9af72343b85bace4eb57570, type: 3}
   m_Name: 

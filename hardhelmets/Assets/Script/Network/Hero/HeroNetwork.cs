@@ -2231,6 +2231,8 @@ public class HeroNetwork : NetworkBehaviour{
 
 			//StartCoroutine(sumar());
 			efectodisparo = true;
+
+			SniperCam.GetComponent<CamNetwork>().cancelar = true;
 		}
 
 		if(col.gameObject.tag == "explo")
@@ -2258,6 +2260,8 @@ public class HeroNetwork : NetworkBehaviour{
 
 			//StartCoroutine(sumar());
 			efectodisparo = true;
+
+			SniperCam.GetComponent<CamNetwork>().cancelar = true;
 		}
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
@@ -2282,6 +2286,8 @@ public class HeroNetwork : NetworkBehaviour{
 			letras.GetComponent<TextMesh>().text = "50";
 			//StartCoroutine(sumar());
 			efectodisparo = true;
+
+			SniperCam.GetComponent<CamNetwork>().cancelar = true;
 		}
 		if(col.gameObject.tag == "granade")
 		{
@@ -2330,6 +2336,8 @@ public class HeroNetwork : NetworkBehaviour{
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "2";
 			//StartCoroutine(sumar());
+
+			SniperCam.GetComponent<CamNetwork>().cancelar = true;
 		}
 		if(col.gameObject.tag == medic)
 		{
