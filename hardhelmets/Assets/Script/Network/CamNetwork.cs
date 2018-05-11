@@ -354,7 +354,7 @@ public class CamNetwork : NetworkBehaviour {
 				}
 				h = 0;
 				v = 0;
-				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount += 0.01f;
+				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount += 0.006f;
 			}else
 			{
 				GetComponent<AudioSource>().Stop();

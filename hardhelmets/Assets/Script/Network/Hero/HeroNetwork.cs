@@ -320,11 +320,6 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 		name.GetComponent<TextMesh>().text = PlayerPrefs.GetString("SteamName");//nombre;
 
-		if(transform.position.y <= -50)
-		{
-			salud = 0;
-		}
-
 		nacerZ = bulletSpawn.rotation.z;
 
 		if(!apuntar.GetComponent<apuntarNetwork>().apuntar)
@@ -2203,6 +2198,10 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			water = false;
 			maxspeed = 13;
+		}
+		if(col.gameObject.tag == "Matar")
+		{
+			salud -= 5000;
 		}
 		if(col.gameObject.tag == "bala")
 		{

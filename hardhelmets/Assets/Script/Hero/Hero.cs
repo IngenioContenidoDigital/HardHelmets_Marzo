@@ -274,11 +274,6 @@ public class Hero : MonoBehaviour{
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
-		if(transform.position.y <= -50)
-		{
-			salud = 0;
-		}
-
 		if(vivo && ready)
 		{
 			menu.SetActive(false);
@@ -1848,6 +1843,10 @@ public class Hero : MonoBehaviour{
 		{
 			water = false;
 			maxspeed = 13;
+		}
+		if(col.gameObject.tag == "Matar")
+		{
+			salud -= 5000;
 		}
 		if(col.gameObject.tag == "bala")
 		{
