@@ -9,7 +9,7 @@ public class Explo : NetworkBehaviour {
 	public AudioClip explo1;
 	public AudioClip explo2;
 
-	int explo;
+	//int explo;
 
 	float efectos;
 
@@ -21,8 +21,8 @@ public class Explo : NetworkBehaviour {
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
 
-		explo = Random.Range(1,3);
-		GetComponent<Animator>().SetInteger("explo",explo);
+		/*explo = Random.Range(1,3);
+		GetComponent<Animator>().SetInteger("explo",explo);*/
 
 		random = Random.Range(1,3);
 		if(random == 1)
