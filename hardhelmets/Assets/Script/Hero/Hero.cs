@@ -274,6 +274,11 @@ public class Hero : MonoBehaviour{
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
+		if(transform.position.y <= -50)
+		{
+			salud = 0;
+		}
+
 		if(vivo && ready)
 		{
 			menu.SetActive(false);
