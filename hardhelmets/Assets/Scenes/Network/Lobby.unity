@@ -1824,10 +1824,10 @@ MonoBehaviour:
   MapToLDR: 0
   RemoveColorBanding: 1
   MatrixVP:
-    e00: 2.0982294
+    e00: 2.0992785
     e01: 0
     e02: 0
-    e03: -355.06238
+    e03: -355.2399
     e10: -0
     e11: -3.7309682
     e12: 0.08988025
@@ -1841,10 +1841,10 @@ MonoBehaviour:
     e32: 0.99970996
     e33: -131.94772
   LastMatrixVP:
-    e00: 2.0982294
+    e00: 2.0992785
     e01: 0
     e02: 0
-    e03: -355.06238
+    e03: -355.2399
     e10: 0
     e11: 3.7309682
     e12: -0.08988025
@@ -6569,7 +6569,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 627544559}
   m_HandleRect: {fileID: 627544557}
   m_Direction: 0
-  m_Value: 0.5
+  m_Value: 0.49999997
   m_Size: 0.22133109
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -19175,7 +19175,7 @@ MonoBehaviour:
   - {fileID: 1009485615099048, guid: 6b3c7dee97a0f2a4a8c907ad535bcd1b, type: 2}
   - {fileID: 1210096222275928, guid: 52bf670f27090254d9c2621a01cfd83c, type: 2}
   - {fileID: 1268936720291558, guid: da2159fe6d2b1f9479326b8d3e27aad6, type: 2}
-  - {fileID: 0}
+  - {fileID: 1439082452805014, guid: a1a45dd04bb159e4192062922e796e85, type: 2}
   - {fileID: 1592553804432386, guid: 57ee9d59efa61c348a67891372455a22, type: 2}
   - {fileID: 1189589807542996, guid: bbb8d18d4150c004f84d33fabdcae1f5, type: 2}
   - {fileID: 1441597039517604, guid: e0ca3862aac035240a9d84e12dc60775, type: 2}
@@ -24633,7 +24633,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 409357238}
   m_HandleRect: {fileID: 409357236}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -37151,8 +37151,8 @@ MonoBehaviour:
   audio1: {fileID: 933003059}
   eventsystem: {fileID: 1676669230}
   flecha: {fileID: 1894363925}
-  atras: {fileID: 21300000, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
-  normal: {fileID: 21300000, guid: 4ea7e3971a965e647ab31083f9f6e66b, type: 3}
+  atras: {fileID: 21300002, guid: 1f4a06a8cfe0afa4590115448ce9e85f, type: 3}
+  normal: {fileID: 21300002, guid: 4ea7e3971a965e647ab31083f9f6e66b, type: 3}
   volteada: {fileID: 21300046, guid: d5659623e1ea43248ad8eef5fb9c0f8e, type: 3}
   boton: {fileID: 115668657}
   selec:
@@ -37234,7 +37234,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4ea7e3971a965e647ab31083f9f6e66b, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 4ea7e3971a965e647ab31083f9f6e66b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

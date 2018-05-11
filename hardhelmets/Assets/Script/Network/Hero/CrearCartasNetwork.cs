@@ -743,7 +743,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		GetComponent<HeroNetwork>().rafaga = true;
 		GetComponent<HeroNetwork>().cuchillo = false;
 
-		GetComponent<HeroNetwork>().SniperCam.GetComponent<Cam>().bombardeo = true;
+		GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().bombardeo = true;
 
 		GetComponent<HeroNetwork>().esconderBarra.SetActive(false);
 		GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;

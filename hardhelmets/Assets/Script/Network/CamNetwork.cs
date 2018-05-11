@@ -25,6 +25,11 @@ public class CamNetwork : NetworkBehaviour {
 	public bool tirarbomba;
 	public bool tirarbomba2;
 	public bool tirarbomba3;
+
+	public bool cancelar;
+
+	public GameObject misiles;
+	public GameObject misilesMalo;
 	//public GameObject balaSniper;
 	Ray ray;
 	RaycastHit hit;
@@ -135,6 +140,21 @@ public class CamNetwork : NetworkBehaviour {
 		if(!Player.GetComponent<NetworkIdentity>().isLocalPlayer)
 		{
 			return;
+		}
+
+		if(cancelar)
+		{
+			bombardeo = false;
+			bombardeocarga2 = false;
+			tirarbomba = false;
+			tirarbomba2 = false;
+			tirarbomba3 = false;
+			TexturaBombardeo.SetActive(false);
+			GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<HeroNetwork>().ready = true;
+			Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+			alejar = false;
 		}
 
 		if(Panel == null)
@@ -283,6 +303,7 @@ public class CamNetwork : NetworkBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
 		}else if(bombardeo && !ver)
 		{
+			alejar = true;
 			TexturaBombardeo.SetActive(true);
 
 			GetComponent<DirtyLensFlare>().enabled = true;
@@ -342,7 +363,15 @@ public class CamNetwork : NetworkBehaviour {
 			if(tirarbomba && !tirarbomba2)
 			{
 				imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount = 0;
-				print("TIRAR LAS BOMBAS");
+
+				if(Player.tag == "Player")
+				{
+					Cmd_misiles();
+				}else
+				{
+					Cmd_misilesMalo();
+				}
+
 				tirarbomba2 = true;
 			}
 
@@ -362,8 +391,9 @@ public class CamNetwork : NetworkBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
-					Player.GetComponent<Hero>().ready = true;
-					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+					Player.GetComponent<HeroNetwork>().ready = true;
+					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+					alejar = false;
 				}
 				if(Input.GetButtonDown("DISPARO 2"))
 				{
@@ -375,8 +405,9 @@ public class CamNetwork : NetworkBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
-					Player.GetComponent<Hero>().ready = true;
-					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+					Player.GetComponent<HeroNetwork>().ready = true;
+					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+					alejar = false;
 				}
 			}
 
@@ -394,39 +425,39 @@ public class CamNetwork : NetworkBehaviour {
 			}
 
 
-			if(Player.GetComponent<Hero>()._currentDirection == "right")//LIMITES HACIA ADELANTE
+			if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")//LIMITES HACIA ADELANTE
 			{
 				if(transform.position.x >= Player.transform.position.x+180)
 				{
-					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, velocidad);//zeta);
 				}else if(transform.position.x <= Player.transform.position.x+9)
 				{
-					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, velocidad);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
 				}
 			}
-			if(Player.GetComponent<Hero>()._currentDirection == "left")//LIMITES HACIA ATRAS
+			if(Player.GetComponent<HeroNetwork>()._currentDirection == "left")//LIMITES HACIA ATRAS
 			{
 				if(transform.position.x <= Player.transform.position.x-180)
 				{
-					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, velocidad);//zeta);
 				}else if(transform.position.x >= Player.transform.position.x-9)
 				{
-					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, velocidad);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
 			if(transform.position.y <= Player.transform.position.y+1)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
+				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, velocidad);
 			}else if(transform.position.y >= Player.transform.position.y+20)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
+				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, velocidad);
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
@@ -539,6 +570,21 @@ public class CamNetwork : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(0.1f);
 		shake = false;
+	}
+
+	[Command]
+	public void Cmd_misiles()
+	{
+		var bullet = (GameObject)Instantiate(misiles, new Vector3(transform.position.x, Player.transform.position.y+10, Player.transform.position.z), Quaternion.Euler(0,0,0)); 
+		NetworkServer.Spawn(bullet);
+		bullet.GetComponent<Poder>().poder = Player.GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<Poder>().poder/104;
+	}
+	[Command]
+	public void Cmd_misilesMalo()
+	{
+		var bullet = (GameObject)Instantiate(misilesMalo, new Vector3(transform.position.x, Player.transform.position.y+10, Player.transform.position.z), Quaternion.Euler(0,0,0)); 
+		NetworkServer.Spawn(bullet);
+		bullet.GetComponent<Poder>().poder = Player.GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<Poder>().poder/104;
 	}
 }
 
