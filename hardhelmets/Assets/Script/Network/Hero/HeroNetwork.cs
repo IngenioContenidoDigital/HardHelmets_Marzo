@@ -314,10 +314,15 @@ public class HeroNetwork : NetworkBehaviour{
 	bool enviarnombre;
 	void Update()
 	{
-		name.GetComponent<TextMesh>().text = PlayerPrefs.GetString("SteamName");//nombre;
 		if(!isLocalPlayer)
 		{
 			return;
+		}
+		name.GetComponent<TextMesh>().text = PlayerPrefs.GetString("SteamName");//nombre;
+
+		if(transform.position.y <= -50)
+		{
+			salud = 0;
 		}
 
 		nacerZ = bulletSpawn.rotation.z;

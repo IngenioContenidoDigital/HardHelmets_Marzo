@@ -110,4 +110,8 @@ public class Poder : MonoBehaviour {
 			bomba11.GetComponent<bombaOffline>().Explo();
 		}
 	}
+	public void destruirTodo()
+	{
+		Destroy(gameObject);
+	}
 }

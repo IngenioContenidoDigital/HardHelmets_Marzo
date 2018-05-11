@@ -53,6 +53,19 @@ public class PoderNetwork : NetworkBehaviour {
 		Destroy(destruir);
 	}
 
+	[Command]
+	public void Cmd_Destruir()
+	{
+		RpcDestruirObjeto();
+
+		Destroy(gameObject);
+	}
+	[ClientRpc]
+	public void RpcDestruirObjeto ()
+	{
+		Destroy(destruir);
+	}
+
 	public void destruirUno()
 	{
 		if(bomba1 != null)
@@ -140,5 +153,9 @@ public class PoderNetwork : NetworkBehaviour {
 			destruir = bomba11;
 			Cmd_Explo();
 		}
+	}
+	public void destruirTodo()
+	{
+		Cmd_Destruir();
 	}
 }
