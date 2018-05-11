@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: M4A4_Sherman_Firefly
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _COLOR_ADJUST _DIRTADD_ON _EMISSION _NORMALMAP
+  m_ShaderKeywords: _COLOR_ADJUST _DIRTADD_ON _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 19b79e02b111d0b44b43d1c1b9fbeddd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseRamp:
@@ -53,23 +53,31 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 2945aad5f3ab8ab4fbeb1ab98581af14, type: 3}
+        m_Texture: {fileID: 2800000, guid: 19b79e02b111d0b44b43d1c1b9fbeddd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2945aad5f3ab8ab4fbeb1ab98581af14, type: 3}
+        m_Texture: {fileID: 2800000, guid: 19b79e02b111d0b44b43d1c1b9fbeddd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: a3d6a103997541c4e8eb3c4c652dc9e4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normals:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: f37faedf7fb8af3448525a6e763f6fa0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 07243d26b2d7dbd4180b274064efd03c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Reflection:
+        m_Texture: {fileID: 8900000, guid: 66887de9b6c459046aa11c3ac1c852b8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SRM:
@@ -78,6 +86,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Specular:
+        m_Texture: {fileID: 2800000, guid: a3d6a103997541c4e8eb3c4c652dc9e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonShade:
@@ -92,7 +104,7 @@ Material:
     - PixelSnap: 0
     - _BlendAmount: 0
     - _Brightness: 1.369
-    - _BumpScale: 0.5
+    - _BumpScale: 0.18
     - _Cull: 0
     - _CustomRenderQueue: 0
     - _Cutoff: 0.514
@@ -100,8 +112,10 @@ Material:
     - _DstBlend: 0
     - _EmissionPower: 2
     - _EnableExternalAlpha: 0
-    - _Gloss: 1
-    - _GlossMapScale: 1
+    - _Fresnel: 1
+    - _FresnelStrength: 0.5
+    - _Gloss: 0.115
+    - _GlossMapScale: 0.046
     - _Glossiness: 0.405
     - _GlossyReflections: 1
     - _HeightFogEnd: 0
@@ -111,6 +125,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ReflectionStrength: 1
     - _RenderQueue: 0
     - _RimPower: 2.24
     - _Saturation: 1
@@ -131,11 +146,14 @@ Material:
     - _normalstr: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Colour: {r: 0.5895522, g: 0.5895522, b: 0.5895522, a: 1}
     - _DiffuseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.2205882, g: 0.2205882, b: 0.2205882, a: 1}
+    - _EmissionColor: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
     - _FixedNormal: {r: 0, g: 0, b: 1, a: 1}
+    - _FresnelTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _HeightFogColor: {r: 0, g: 0, b: 0, a: 0}
     - _OverlayColor: {r: 1, g: 0, b: 0, a: 0.047}
     - _RimColor: {r: 0.28676468, g: 0.28676468, b: 0.28676468, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColour: {r: 0.5895522, g: 0.5895522, b: 0.5895522, a: 1}
     - _dirtcolor: {r: 0, g: 0, b: 0, a: 1}
