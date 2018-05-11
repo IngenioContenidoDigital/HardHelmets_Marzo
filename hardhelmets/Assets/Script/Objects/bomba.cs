@@ -9,32 +9,28 @@ public class bomba : NetworkBehaviour {
 
 	public float poder;
 
-	public GameObject explocion;
-
 	// Use this for initialization
 	void Start ()
 	{
-		poder = padre.GetComponent<Poder>().poder;
+		poder = padre.GetComponent<PoderNetwork>().poder;
 	}
 
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+	{
+		
 	}
 
 	void OnCollisionEnter (Collision col)
 	{
+		if(!padre.GetComponent<NetworkIdentity>().isServer)
+		{
+			return;
+		}
 		if(col.gameObject.tag == "Piso")
 		{
-			Cmd_Explo();
+			padre.GetComponent<PoderNetwork>().Cmd_Explo();
+			padre.GetComponent<PoderNetwork>().destruir = gameObject;
 		}
-	}
-	[Command]
-	public void Cmd_Explo()
-	{
-		var explo = (GameObject)Instantiate(explocion, transform.position, Quaternion.identity);
-		NetworkServer.Spawn(explo);
-		explo.GetComponent<Explo>().poder = poder;
-		Destroy(gameObject);
 	}
 }

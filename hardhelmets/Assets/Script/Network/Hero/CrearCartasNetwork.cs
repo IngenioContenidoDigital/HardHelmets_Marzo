@@ -49,6 +49,8 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public GameObject torretaMisil;
 	public GameObject minaAntiTanque;
 	public GameObject minaAntiPersona;
+	//ESPECIALES
+	public GameObject misiles;
 	//------MALOS
 
 	//PERSONAJES NORMALES 
@@ -71,6 +73,8 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public GameObject torretaMisilMalo;
 	public GameObject minaAntiTanqueMalo;
 	public GameObject minaAntiPersonaMalo;
+	//ESPECIALES
+	public GameObject misilesMalo;
 
 	public bool martillar;
 	public bool crear;
@@ -749,5 +753,20 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
 		//GetComponent<Hero>().SniperCam.GetComponent<LensAberrations>().distortion.enabled = true;
 		//animator.SetInteger("disparo",20);
+	}
+
+	[Command]
+	public void Cmd_misiles()
+	{
+		var bullet = (GameObject)Instantiate(misiles, new Vector3(GetComponent<HeroNetwork>().SniperCam.transform.position.x, transform.position.y+10, transform.position.z), Quaternion.Euler(0,0,0)); 
+		NetworkServer.Spawn(bullet);
+		bullet.GetComponent<PoderNetwork>().poder = GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<PoderNetwork>().poder/104;
+	}
+	[Command]
+	public void Cmd_misilesMalo()
+	{
+		var bullet = (GameObject)Instantiate(misilesMalo, new Vector3(GetComponent<HeroNetwork>().transform.position.x, transform.position.y+10, transform.position.z), Quaternion.Euler(0,0,0)); 
+		NetworkServer.Spawn(bullet);
+		bullet.GetComponent<PoderNetwork>().poder = GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<PoderNetwork>().poder/104;
 	}
 }

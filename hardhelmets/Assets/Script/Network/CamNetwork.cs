@@ -27,9 +27,6 @@ public class CamNetwork : NetworkBehaviour {
 	public bool tirarbomba3;
 
 	public bool cancelar;
-
-	public GameObject misiles;
-	public GameObject misilesMalo;
 	//public GameObject balaSniper;
 	Ray ray;
 	RaycastHit hit;
@@ -142,6 +139,13 @@ public class CamNetwork : NetworkBehaviour {
 			return;
 		}
 
+		if(sniper || bombardeo)
+		{
+			Cursor.visible = false;
+		}else
+		{
+			Cursor.visible = true;
+		}
 		if(cancelar)
 		{
 			bombardeo = false;
@@ -155,6 +159,8 @@ public class CamNetwork : NetworkBehaviour {
 			Player.GetComponent<HeroNetwork>().ready = true;
 			Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
 			alejar = false;
+
+			cancelar = false;
 		}
 
 		if(Panel == null)
@@ -366,10 +372,10 @@ public class CamNetwork : NetworkBehaviour {
 
 				if(Player.tag == "Player")
 				{
-					Cmd_misiles();
+					Player.GetComponent<CrearCartasNetwork>().Cmd_misiles();//Cmd_misiles();
 				}else
 				{
-					Cmd_misilesMalo();
+					Player.GetComponent<CrearCartasNetwork>().Cmd_misilesMalo();//Cmd_misilesMalo();
 				}
 
 				tirarbomba2 = true;
@@ -570,21 +576,6 @@ public class CamNetwork : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(0.1f);
 		shake = false;
-	}
-
-	[Command]
-	public void Cmd_misiles()
-	{
-		var bullet = (GameObject)Instantiate(misiles, new Vector3(transform.position.x, Player.transform.position.y+10, Player.transform.position.z), Quaternion.Euler(0,0,0)); 
-		NetworkServer.Spawn(bullet);
-		bullet.GetComponent<Poder>().poder = Player.GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<Poder>().poder/104;
-	}
-	[Command]
-	public void Cmd_misilesMalo()
-	{
-		var bullet = (GameObject)Instantiate(misilesMalo, new Vector3(transform.position.x, Player.transform.position.y+10, Player.transform.position.z), Quaternion.Euler(0,0,0)); 
-		NetworkServer.Spawn(bullet);
-		bullet.GetComponent<Poder>().poder = Player.GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<Poder>().poder/104;
 	}
 }
 

@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 95729101044848326}
   - component: {fileID: 54422204344319498}
   - component: {fileID: 65019336201378102}
-  - component: {fileID: 114345541233242372}
+  - component: {fileID: 114745576165690708}
   - component: {fileID: 148998620128858816}
   - component: {fileID: 114004475740819756}
   - component: {fileID: 114538113318943248}
@@ -1828,7 +1828,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 0.02, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82025831160228736
 AudioSource:
@@ -3721,7 +3721,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114014022783107622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3735,7 +3735,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114031999785827362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3767,7 +3766,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114053737752766296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3781,7 +3780,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114187160331981502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3813,7 +3811,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114223024872183250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3827,7 +3825,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114240416338784524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3841,30 +3838,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
---- !u!114 &114345541233242372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439082452805014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f66f4563dd19824bad1ec6242038aef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poder: 47
-  bomba1: {fileID: 1156333783655788}
-  bomba2: {fileID: 1941493378474298}
-  bomba3: {fileID: 1516237432699170}
-  bomba4: {fileID: 1593157277619526}
-  bomba5: {fileID: 1719688004175750}
-  bomba6: {fileID: 1280075612582932}
-  bomba7: {fileID: 1107157250104424}
-  bomba8: {fileID: 1426751101500852}
-  bomba9: {fileID: 1817842940662652}
-  bomba10: {fileID: 1931171115129038}
-  bomba11: {fileID: 1395913687011646}
 --- !u!114 &114369294934631128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3896,7 +3869,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114404802805797400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3928,7 +3901,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114425413024515532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3942,7 +3915,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114538113318943248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3977,7 +3949,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114576197289111984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4010,7 +3981,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114588046199737672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4042,7 +4012,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114603064502787048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4056,7 +4026,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114615530851639336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4070,7 +4039,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114714819942692138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4102,7 +4070,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114732545276539712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4134,7 +4102,32 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114745576165690708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439082452805014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dfcd3b053196ca4d9930270123d7f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poder: 47
+  bomba1: {fileID: 1156333783655788}
+  bomba2: {fileID: 1941493378474298}
+  bomba3: {fileID: 1516237432699170}
+  bomba4: {fileID: 1593157277619526}
+  bomba5: {fileID: 1719688004175750}
+  bomba6: {fileID: 1280075612582932}
+  bomba7: {fileID: 1107157250104424}
+  bomba8: {fileID: 1426751101500852}
+  bomba9: {fileID: 1817842940662652}
+  bomba10: {fileID: 1931171115129038}
+  bomba11: {fileID: 1395913687011646}
+  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
+  destruir: {fileID: 0}
 --- !u!114 &114761552045414246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4148,7 +4141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114823618940569774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4180,7 +4172,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114867430785634416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4212,7 +4204,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114879385741352216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4226,7 +4218,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1439082452805014}
   poder: 47
-  explocion: {fileID: 1479242569219898, guid: 706486520fccc174495cdb5a6c9cba8c, type: 2}
 --- !u!114 &114888985515917318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4258,7 +4249,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114967200040266652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4290,7 +4281,7 @@ MonoBehaviour:
     i14: 110
     i15: 133
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!135 &135104535539062710
 SphereCollider:
   m_ObjectHideFlags: 1
