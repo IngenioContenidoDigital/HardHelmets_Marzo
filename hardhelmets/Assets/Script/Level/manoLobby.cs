@@ -30,6 +30,7 @@ public class manoLobby : MonoBehaviour {
 	public Sprite v;
 	public Sprite w;
 	public Sprite x;
+	public Sprite y;
 	public Sprite nada;
 
 	public string nombre;
@@ -133,6 +134,9 @@ public class manoLobby : MonoBehaviour {
 		}else if(carta == 24)
 		{
 			imagen.sprite = x;
+		}else if(carta == 25)
+		{
+			imagen.sprite = y;
 		}
 	}
 }
