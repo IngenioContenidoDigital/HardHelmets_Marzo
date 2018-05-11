@@ -38,14 +38,14 @@ public class balaOffline : MonoBehaviour {
 		if(col.gameObject.tag == "Player" || col.gameObject.tag == "enemy" || col.gameObject.tag == "CABEZA")
 		{
 			var explo = (GameObject)Instantiate(efecto, col.gameObject.transform.position, transform.rotation);
-			explo.GetComponent<Animator>().SetInteger("efect",efect);
+			//explo.GetComponent<Animator>().SetInteger("efect",efect);
 			Destroy(explo, 2.0f);
 		}else
 		{
 			//Shot();
 
 			var explo = (GameObject)Instantiate(efecto, transform.position, transform.rotation);
-			explo.GetComponent<Animator>().SetInteger("efect",efect);
+			//explo.GetComponent<Animator>().SetInteger("efect",efect);
 			Destroy(explo, 2.0f);
 		}
 		humo.transform.parent = null;
