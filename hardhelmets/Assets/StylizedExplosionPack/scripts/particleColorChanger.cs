@@ -10,24 +10,28 @@ public class particleColorChanger : MonoBehaviour {
     {
         public string Name;
         public ParticleSystem[] colored_ParticleSystem;
-        public Gradient customer_Gradient;
+        public Gradient Gradient_custom;
         
     }
     public colorChange[] colorChangeList;
 
+    public bool applyChanges = false;
+    public bool Keep_applyChanges = false;
 
     void Update()
      {
-         for (int i = 0; i < colorChangeList.Length; i++)
-         {
-            
-            for(int a = 0; a < colorChangeList[i].colored_ParticleSystem.Length; a++)
+        if (applyChanges || Keep_applyChanges)
+        {
+            for (int i = 0; i < colorChangeList.Length; i++)
             {
-                var col = colorChangeList[i].colored_ParticleSystem[a].colorOverLifetime;
-                col.color = colorChangeList[i].customer_Gradient;
-
-            }        
-         }
-     }
+                for (int a = 0; a < colorChangeList[i].colored_ParticleSystem.Length; a++)
+                {
+                    var col = colorChangeList[i].colored_ParticleSystem[a].colorOverLifetime;
+                    col.color = colorChangeList[i].Gradient_custom;
+                }
+            }
+            applyChanges = false;
+        }
+    }
   
 }
