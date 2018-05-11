@@ -32,4 +32,82 @@ public class Poder : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+	public void destruirUno()
+	{
+		if(bomba1 != null)
+		{
+			bomba1.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirDos()
+	{
+		if(bomba2 != null)
+		{
+			bomba2.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirTres()
+	{
+		if(bomba3 != null)
+		{
+			bomba3.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirCuatro()
+	{
+		if(bomba4 != null)
+		{
+			bomba4.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirCinco()
+	{
+		if(bomba5 != null)
+		{
+			bomba5.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirSeis()
+	{
+		if(bomba6 != null)
+		{
+			bomba6.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirSiete()
+	{
+		if(bomba7 != null)
+		{
+			bomba7.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirOcho()
+	{
+		if(bomba8 != null)
+		{
+			bomba8.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirNueve()
+	{
+		if(bomba9 != null)
+		{
+			bomba9.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirDiez()
+	{
+		if(bomba10 != null)
+		{
+			bomba10.GetComponent<bombaOffline>().Explo();
+		}
+	}
+	public void destruirOnce()
+	{
+		if(bomba11 != null)
+		{
+			bomba11.GetComponent<bombaOffline>().Explo();
+		}
+	}
 }
