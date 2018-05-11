@@ -14,8 +14,14 @@ ModelImporter:
     3300002: //RootNode
     4300000: p47_thunderbolt01
     4300002: p47 prop01
+    7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #121'
+    second: {fileID: 2100000, guid: 667c52bec44ef10418c81a3423693c73, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
