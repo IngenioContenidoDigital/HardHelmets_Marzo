@@ -372,10 +372,11 @@ public class CamNetwork : NetworkBehaviour {
 
 				if(Player.tag == "Player")
 				{
-					Player.GetComponent<CrearCartasNetwork>().Cmd_misiles();//Cmd_misiles();
+					Player.GetComponent<CrearCartasNetwork>().Cmd_misiles();
 				}else
 				{
-					Player.GetComponent<CrearCartasNetwork>().Cmd_misilesMalo();//Cmd_misilesMalo();
+					Vector3 nacer = new Vector3(transform.position.x, Player.transform.position.y+10, Player.transform.position.z);
+					Player.GetComponent<CrearCartasNetwork>().Cmd_misilesMalo(nacer);
 				}
 
 				tirarbomba2 = true;

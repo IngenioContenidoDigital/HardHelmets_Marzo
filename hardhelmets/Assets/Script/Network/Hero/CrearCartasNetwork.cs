@@ -763,9 +763,9 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		bullet.GetComponent<PoderNetwork>().poder = GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<PoderNetwork>().poder/104;
 	}
 	[Command]
-	public void Cmd_misilesMalo()
+	public void Cmd_misilesMalo(Vector3 newNacer)
 	{
-		var bullet = (GameObject)Instantiate(misilesMalo, new Vector3(GetComponent<HeroNetwork>().transform.position.x, transform.position.y+10, transform.position.z), Quaternion.Euler(0,0,0)); 
+		var bullet = (GameObject)Instantiate(misilesMalo, newNacer, Quaternion.Euler(0,0,0)); 
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<PoderNetwork>().poder = GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<PoderNetwork>().poder/104;
 	}
