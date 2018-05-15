@@ -99,7 +99,6 @@ public class AINetwork : NetworkBehaviour {
 
 	public GameObject textos;
 	public GameObject textos2;
-	public GameObject particulasCurar;
 
 	public GameObject mira;
 
@@ -1218,16 +1217,13 @@ public class AINetwork : NetworkBehaviour {
 	[Command]
 	public void CmdSaludSumar()
 	{
-		suma = saludMax*5/80;
-		salud += saludMax*5/80;
+		suma = saludMax*2/80;
+		salud += saludMax*2/80;
 		//salud += 6;
 
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = suma.ToString("F0");
 		NetworkServer.Spawn(letras);
-
-		var part = (GameObject)Instantiate(particulasCurar, transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(part);
 	}
 
 	//APAGA LA LUZ

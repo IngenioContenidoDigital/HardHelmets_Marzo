@@ -122,7 +122,7 @@ public class AIMedico : NetworkBehaviour {
 	public int level;
 	public GameObject Jugador;
 
-	public GameObject particulas;
+	public ParticleSystem particulas;
 	public string amigo;
 	public bool curar;
 
@@ -918,7 +918,8 @@ public class AIMedico : NetworkBehaviour {
 		}
 		if(col.gameObject.tag == amigo && vivo)
 		{
-			curar = true;
+			//curar = true;
+			particulas.Play();
 		}
 	}
 	void OnTriggerStay (Collider col)
@@ -961,6 +962,11 @@ public class AIMedico : NetworkBehaviour {
 		{
 			pelea = false;
 		}
+		if(col.gameObject.tag == amigo)
+		{
+			//curar = false;
+			particulas.Stop();
+		}
 	}
 
 	//APAGA LA LUZ
@@ -973,8 +979,7 @@ public class AIMedico : NetworkBehaviour {
 	[Command]
 	public void CmdCura ()
 	{
-		var cura = (GameObject)Instantiate(particulas,transform.position, Quaternion.Euler(0,0,0));
-		NetworkServer.Spawn(cura);
+		particulas.Play();
 	}
 	//EVENTOS SPINE
 	void ShotA ()//FUSIL

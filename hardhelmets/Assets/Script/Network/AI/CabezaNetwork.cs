@@ -36,7 +36,6 @@ public class CabezaNetwork : NetworkBehaviour {
 
 		if(disparoCabeza)
 		{
-			Player.GetComponent<HeroNetwork>().saludSumar = false;
 			if(tirosCabeza >= 1)
 			{
 				Player.GetComponent<HeroNetwork>().tirocabeza = true;

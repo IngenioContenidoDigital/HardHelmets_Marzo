@@ -119,7 +119,7 @@ public class AIMedicoOffline : MonoBehaviour {
 	public int level;
 	public GameObject Jugador;
 
-	public GameObject particulas;
+	public ParticleSystem particulas;
 	public string amigo;
 	public bool curar;
 
@@ -236,8 +236,8 @@ public class AIMedicoOffline : MonoBehaviour {
 			if(curar && amigo != null)
 			{
 				Cura();
-				StartCoroutine(esperaCura());
 				curar = false;
+				StartCoroutine(esperaCura());
 			}
 
 			if(pelea)
@@ -786,7 +786,8 @@ public class AIMedicoOffline : MonoBehaviour {
 		}
 		if(col.gameObject.tag == amigo && vivo)
 		{
-			curar = true;
+			//curar = true;
+			particulas.Play();
 		}
 	}
 	void OnTriggerStay (Collider col)
@@ -829,6 +830,11 @@ public class AIMedicoOffline : MonoBehaviour {
 		{
 			pelea = false;
 		}
+		if(col.gameObject.tag == amigo)
+		{
+			//curar = false;
+			particulas.Stop();
+		}
 	}
 
 	//APAGA LA LUZ
@@ -841,7 +847,7 @@ public class AIMedicoOffline : MonoBehaviour {
 	
 	public void Cura ()
 	{
-		var cura = (GameObject)Instantiate(particulas,transform.position, Quaternion.Euler(0,0,0));
+		particulas.Play();
 	}
 	//EVENTOS SPINE
 	void ShotA ()//FUSIL

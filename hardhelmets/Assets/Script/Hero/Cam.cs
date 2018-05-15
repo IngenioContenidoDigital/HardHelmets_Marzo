@@ -109,6 +109,7 @@ public class Cam : MonoBehaviour {
 
 			Player.GetComponent<Hero>().ready = true;
 			Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+			GetComponent<AudioSource>().Stop();
 			alejar = false;
 
 			cancelar = false;
@@ -339,6 +340,7 @@ public class Cam : MonoBehaviour {
 
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+					GetComponent<AudioSource>().Stop();
 					alejar = false;
 				}
 				if(Input.GetButtonDown("DISPARO 2"))
@@ -353,6 +355,7 @@ public class Cam : MonoBehaviour {
 
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+					GetComponent<AudioSource>().Stop();
 					alejar = false;
 				}
 			}

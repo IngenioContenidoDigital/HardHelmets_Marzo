@@ -46,7 +46,6 @@ public class AIVikingo : MonoBehaviour {
 
 	public GameObject textos;
 	public GameObject textos2;
-	public GameObject particulasCurar;
 	public GameObject mira;
 
 
@@ -831,15 +830,12 @@ public class AIVikingo : MonoBehaviour {
 	
 	public void SaludSumar()
 	{
-		suma = saludMax*5/80;
-		salud += saludMax*5/80;
+		suma = saludMax*2/80;
+		salud += saludMax*2/80;
 		//salud += 6;
 
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = suma.ToString("F0");
-
-
-		var part = (GameObject)Instantiate(particulasCurar, transform.position, Quaternion.Euler(0,0,0));
 	}
 
 	//EVENTO SPINE

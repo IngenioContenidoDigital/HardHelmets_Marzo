@@ -19,15 +19,12 @@ public class Hero : MonoBehaviour{
 
 	public GameObject textos;
 	public GameObject textos2;
-	public GameObject particulasCurar;
 
 	public float salud;
 
 	public float saludMax;
 
 	public int level;
-
-	public bool saludSumar;
 
 	public string medic;
 
@@ -222,7 +219,6 @@ public class Hero : MonoBehaviour{
 		if(salud >= saludMax)
 		{
 			salud = saludMax;
-			saludSumar = false;
 		}
 
 		//BUSCA OBJETOS
@@ -277,11 +273,6 @@ public class Hero : MonoBehaviour{
 		if(vivo && ready)
 		{
 			menu.SetActive(false);
-			if(saludSumar)
-			{
-				salud += 0.1f;
-				disparoCabeza = false;
-			}
 
 			if(tirocabeza)
 			{
@@ -1398,7 +1389,6 @@ public class Hero : MonoBehaviour{
 			//SI SE MUERE
 			if(salud <= 0)
 			{
-				saludSumar = false;
 				int muerteg = Random.Range(11,14);
 				if(explocion)
 				{
@@ -1850,7 +1840,6 @@ public class Hero : MonoBehaviour{
 		}
 		if(col.gameObject.tag == "bala")
 		{
-			saludSumar = false;
 			rafaga = true;
 			animator.SetBool("walk", false);
 			caminarA = false;
@@ -1888,7 +1877,6 @@ public class Hero : MonoBehaviour{
 		}
 		if(col.gameObject.tag == "explo")
 		{
-			saludSumar = false;
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
 				explocion = true;
@@ -1919,7 +1907,6 @@ public class Hero : MonoBehaviour{
 		}
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
-			saludSumar = false;
 			GetComponent<Rigidbody>().velocity = Vector3.zero;
 			animator.SetBool("walk",false);
 			caminarA = false;
@@ -1993,27 +1980,8 @@ public class Hero : MonoBehaviour{
 
 			SniperCam.GetComponent<Cam>().cancelar = true;
 		}
-		if(col.gameObject.tag == medic)
-		{
-			if(salud < saludMax)
-			{
-				//saludSumar = true;
-				disparoCabeza = false;
-				SaludSumar();
-			}
-		}
 	}
 
-	/*void OnTriggerStay (Collider col)
-	{
-		if(col.gameObject.tag == medic)
-		{
-			//saludSumar = true;
-			salud += 0.1f;
-			disparoCabeza = false;
-			CmdSendSalud(salud);
-		}
-	}*/
 	void OnTriggerExit (Collider col)
 	{
 		if(col.gameObject.tag == "mira" && vivo)
@@ -2029,17 +1997,6 @@ public class Hero : MonoBehaviour{
 		{
 			quemado = false;
 		}
-		if(col.gameObject.tag == medic)
-		{
-			print("YA NO SUMA LA SANGRE");
-			saludSumar = false;
-		}
-	}
-
-	IEnumerator sumar()
-	{
-		yield return new WaitForSeconds(5);
-		saludSumar = true;
 	}
 
 	//EVENTOS SPINE
@@ -2169,14 +2126,14 @@ public class Hero : MonoBehaviour{
 
 	public void SaludSumar()
 	{
-		suma = saludMax*6/104;
-		salud += saludMax*6/104;
+		disparoCabeza = false;
+
+		suma = saludMax*2/104;
+		salud += saludMax*2/104;
 		//salud += 6;
 
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = suma.ToString("F0");
-
-		var part = (GameObject)Instantiate(particulasCurar, transform.position, Quaternion.Euler(0,0,0));
 	}
 		
 	public void PistolaDisparoPisoBueno()

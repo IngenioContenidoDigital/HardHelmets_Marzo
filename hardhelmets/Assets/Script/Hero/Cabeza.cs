@@ -30,7 +30,6 @@ public class Cabeza : MonoBehaviour {
 	{
 		if(disparoCabeza)
 		{
-			Player.GetComponent<Hero>().saludSumar = false;
 			if(tirosCabeza >= 1)
 			{
 				Player.GetComponent<Hero>().tirocabeza = true;

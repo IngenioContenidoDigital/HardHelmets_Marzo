@@ -158,6 +158,7 @@ public class CamNetwork : NetworkBehaviour {
 
 			Player.GetComponent<HeroNetwork>().ready = true;
 			Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+			GetComponent<AudioSource>().Stop();
 			alejar = false;
 
 			cancelar = false;
@@ -400,6 +401,7 @@ public class CamNetwork : NetworkBehaviour {
 
 					Player.GetComponent<HeroNetwork>().ready = true;
 					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+					GetComponent<AudioSource>().Stop();
 					alejar = false;
 				}
 				if(Input.GetButtonDown("DISPARO 2"))
@@ -414,6 +416,7 @@ public class CamNetwork : NetworkBehaviour {
 
 					Player.GetComponent<HeroNetwork>().ready = true;
 					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+					GetComponent<AudioSource>().Stop();
 					alejar = false;
 				}
 			}
