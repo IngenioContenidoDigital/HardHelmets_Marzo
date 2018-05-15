@@ -90,6 +90,7 @@ public class Hero : MonoBehaviour{
 	public GameObject casquilloPrefB;
 	public Transform casquilloSpawn;
 	public GameObject granadePref;
+	public GameObject granadePrefHumo;
 	public GameObject luz;
 	//BALAS POR PISTOLA
 	public bool rafaga = true;
@@ -2379,12 +2380,18 @@ public class Hero : MonoBehaviour{
 		Granada();
 
 	}
-
+	public bool avion;
 	public void Granada()
 	{
-		var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
-
-		granade.GetComponent<granade>().poder = saludMax*granade.GetComponent<granade>().poder/104;
+		if(avion)
+		{
+			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			avion = false;
+		}else
+		{
+			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<granade>().poder = saludMax*granade.GetComponent<granade>().poder/104;
+		}
 	}
 
 	//CASCOS

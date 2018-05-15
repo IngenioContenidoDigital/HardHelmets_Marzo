@@ -47,6 +47,7 @@ public class manoJuego : MonoBehaviour {
 	public Sprite a23;
 	public Sprite a24;
 	public Sprite a25;
+	public Sprite a26;
 
 	float efectos;
 	public AudioClip nace;
@@ -184,6 +185,10 @@ public class manoJuego : MonoBehaviour {
 		{
 			animacion.GetComponent<skinCarta>().skinsToCombine[0] = "25";
 			Load.sprite = a25;
+		}else if(nombre == "26")
+		{
+			animacion.GetComponent<skinCarta>().skinsToCombine[0] = "26";
+			Load.sprite = a26;
 		}
 		//cantidadTotal = PlayerPrefs.GetInt("card"+nombre+"cantidad");
 	}
@@ -458,6 +463,9 @@ public class manoJuego : MonoBehaviour {
 				}else if(nombre == "25")
 				{
 					Player.GetComponent<CrearCartas>().bombardeo();
+				}else if(nombre == "26")
+				{
+					Player.GetComponent<CrearCartas>().aereo();
 				}
 				//print("Carta: "+nombre);
 			}
@@ -555,6 +563,9 @@ public class manoJuego : MonoBehaviour {
 		}else if(nombre == "25")
 		{
 			Player.GetComponent<CrearCartas>().bombardeo();
+		}else if(nombre == "26")
+		{
+			Player.GetComponent<CrearCartas>().aereo();
 		}
 		//print("Carta: "+nombre);
 		animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
