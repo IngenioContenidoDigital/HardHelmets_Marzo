@@ -115,6 +115,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject casquilloPrefB;
 	public Transform casquilloSpawn;
 	public GameObject granadePref;
+	public GameObject granadePrefHumo;
 	public GameObject luz;
 	//BALAS POR PISTOLA
 	public bool rafaga = true;
@@ -3014,19 +3015,36 @@ public class HeroNetwork : NetworkBehaviour{
 			CmdGranadaMalo();
 		}
 	}
+	public bool avion;
 	[Command]
 	public void CmdGranada()
 	{
-		var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
-		NetworkServer.Spawn(granade);
-		granade.GetComponent<granadeNetwork>().poder = saludMax*granade.GetComponent<granadeNetwork>().poder/104;
+		if(avion)
+		{
+			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			NetworkServer.Spawn(granade);
+			avion = false;
+		}else
+		{
+			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
+			NetworkServer.Spawn(granade);
+			granade.GetComponent<granadeNetwork>().poder = saludMax*granade.GetComponent<granadeNetwork>().poder/104;
+		}
 	}
 	[Command]
 	public void CmdGranadaMalo()
 	{
-		var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
-		NetworkServer.Spawn(granade);
-		granade.GetComponent<granadeNetwork>().poder = saludMax2*granade.GetComponent<granadeNetwork>().poder/104;
+		if(avion)
+		{
+			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			NetworkServer.Spawn(granade);
+			avion = false;
+		}else
+		{
+			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
+			NetworkServer.Spawn(granade);
+			granade.GetComponent<granadeNetwork>().poder = saludMax2*granade.GetComponent<granadeNetwork>().poder/104;
+		}
 	}
 	//CASCOS
 	[Command]

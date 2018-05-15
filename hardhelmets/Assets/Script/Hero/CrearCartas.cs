@@ -55,8 +55,9 @@ public class CrearCartas : MonoBehaviour {
 	public bool martillaTorreta2;
 
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+	{
+		
 	}
 	public bool probando;//BORRAR TODO LO QUE DIGA ESTA VARIABLE
 	void Update ()
@@ -510,5 +511,11 @@ public class CrearCartas : MonoBehaviour {
 		GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
 		//GetComponent<Hero>().SniperCam.GetComponent<LensAberrations>().distortion.enabled = true;
 		//animator.SetInteger("disparo",20);
+	}
+	//ATAQUE AEREO
+	public void aereo()
+	{
+		GetComponent<Hero>().avion = true;
+		GetComponent<Animator>().SetInteger("disparo", 6);
 	}
 }

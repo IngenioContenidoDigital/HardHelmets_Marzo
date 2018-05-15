@@ -769,4 +769,10 @@ public class CrearCartasNetwork : NetworkBehaviour {
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<PoderNetwork>().poder = GetComponent<HeroNetwork>().saludMax*bullet.GetComponent<PoderNetwork>().poder/104;
 	}
+	//ATAQUE AEREO
+	public void aereo()
+	{
+		GetComponent<HeroNetwork>().avion = true;
+		GetComponent<Animator>().SetInteger("disparo", 6);
+	}
 }

@@ -153,32 +153,33 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("globalFog", 1);
 			PlayerPrefs.SetInt("volumetricImage", 1);
 			PlayerPrefs.SetString("sunShaft", "HIGH");
-			//DESBLOQUEA TODAS LAS CARTAS
+			//DESBLOQUEA ALGUNAS CARTAS
 			PlayerPrefs.SetInt("card1", 1);
-			PlayerPrefs.SetInt("card2", 0);
-			PlayerPrefs.SetInt("card3", 0);
-			PlayerPrefs.SetInt("card4", 0);
-			PlayerPrefs.SetInt("card5", 0);
-			PlayerPrefs.SetInt("card6", 0);
-			PlayerPrefs.SetInt("card7", 0);
-			PlayerPrefs.SetInt("card8", 0);
-			PlayerPrefs.SetInt("card9", 0);
+			//PlayerPrefs.SetInt("card2", 0);
+			//PlayerPrefs.SetInt("card3", 0);
+			//PlayerPrefs.SetInt("card4", 0);
+			//PlayerPrefs.SetInt("card5", 0);
+			//PlayerPrefs.SetInt("card6", 0);
+			//PlayerPrefs.SetInt("card7", 0);
+			//PlayerPrefs.SetInt("card8", 0);
+			//PlayerPrefs.SetInt("card9", 0);
 			PlayerPrefs.SetInt("card10", 1);
-			PlayerPrefs.SetInt("card11", 0);
-			PlayerPrefs.SetInt("card12", 0);
-			PlayerPrefs.SetInt("card13", 0);
-			PlayerPrefs.SetInt("card14", 0);
-			PlayerPrefs.SetInt("card15", 0);
-			PlayerPrefs.SetInt("card16", 0);
-			PlayerPrefs.SetInt("card17", 0);
-			PlayerPrefs.SetInt("card18", 0);
-			PlayerPrefs.SetInt("card19", 0);
-			PlayerPrefs.SetInt("card20", 0);
-			PlayerPrefs.SetInt("card21", 0);
-			PlayerPrefs.SetInt("card22", 0);
-			PlayerPrefs.SetInt("card23", 0);
-			PlayerPrefs.SetInt("card24", 0);
-			PlayerPrefs.SetInt("card25", 0);
+			//PlayerPrefs.SetInt("card11", 0);
+			//PlayerPrefs.SetInt("card12", 0);
+			//PlayerPrefs.SetInt("card13", 0);
+			//PlayerPrefs.SetInt("card14", 0);
+			//PlayerPrefs.SetInt("card15", 0);
+			//PlayerPrefs.SetInt("card16", 0);
+			//PlayerPrefs.SetInt("card17", 0);
+			//PlayerPrefs.SetInt("card18", 0);
+			//PlayerPrefs.SetInt("card19", 0);
+			//PlayerPrefs.SetInt("card20", 0);
+			//PlayerPrefs.SetInt("card21", 0);
+			//PlayerPrefs.SetInt("card22", 0);
+			//PlayerPrefs.SetInt("card23", 0);
+			//PlayerPrefs.SetInt("card24", 0);
+			//PlayerPrefs.SetInt("card25", 0);
+			//PlayerPrefs.SetInt("card26", 0);
 			//VALOR DE USO DE CARTAS
 			PlayerPrefs.SetInt("1costo", 20);//RIFLE
 			PlayerPrefs.SetInt("2costo", 30);//SUBMETRA
@@ -205,6 +206,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("23costo", 70);//CAMPAMENTO
 			PlayerPrefs.SetInt("24costo", 70);//MINA
 			PlayerPrefs.SetInt("25costo", 100);//BOMBARDEO
+			PlayerPrefs.SetInt("26costo", 80);//AEREO
 			//CANTIDAD DE CAJAS de cartas
 			PlayerPrefs.SetInt("caja1",0);
 			PlayerPrefs.SetInt("caja2",0);
@@ -250,6 +252,8 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("card22valor", 150);
 			PlayerPrefs.SetInt("card23valor", 150);
 			PlayerPrefs.SetInt("card24valor", 150);
+			PlayerPrefs.SetInt("card25valor", 150);
+			PlayerPrefs.SetInt("card26valor", 150);
 			/*//CANTIDAD DE CADA CARTA
 			PlayerPrefs.SetInt("card1cantidad", 2);
 			PlayerPrefs.SetInt("card2cantidad", 1);
@@ -299,6 +303,10 @@ public class Menu : MonoBehaviour {
 		if(PlayerPrefs.GetInt("25costo") != 100)
 		{
 			PlayerPrefs.SetInt("25costo", 100);//BOMBARDEO
+		}
+		if(PlayerPrefs.GetInt("26costo") != 80)
+		{
+			PlayerPrefs.SetInt("26costo", 80);//AVION
 		}
 
 		idioma = PlayerPrefs.GetString("idioma");
