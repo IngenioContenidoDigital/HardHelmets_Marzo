@@ -53,6 +53,26 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AIMortero>().salud -= poder;
 			}
+			if(body.GetComponent<AIMedicoOffline>())
+			{
+				body.GetComponent<AIMedicoOffline>().salud -= poder;
+			}
+			if(body.GetComponent<AIVehicle>())
+			{
+				body.GetComponent<AIVehicle>().salud -= poder;
+			}
+			if(body.GetComponent<TorretaOffline>())
+			{
+				body.GetComponent<TorretaOffline>().salud -= poder;
+			}
+			if(body.GetComponent<TorretaMisilOffline>())
+			{
+				body.GetComponent<TorretaMisilOffline>().salud -= poder;
+			}
+			if(body.GetComponent<AIVikingo>())
+			{
+				body.GetComponent<AIVikingo>().salud -= poder;
+			}
 			//ONLINE
 			if(body.GetComponent<HeroNetwork>())
 			{
@@ -81,6 +101,22 @@ public class balaAvion : MonoBehaviour {
 			if(body.GetComponent<AIMorteroMaloNetwork>())
 			{
 				body.GetComponent<AIMorteroMaloNetwork>().salud -= poder;
+			}
+			if(body.GetComponent<AIMedico>())
+			{
+				body.GetComponent<AIMedico>().salud -= poder;
+			}
+			if(body.GetComponent<Torreta>())
+			{
+				body.GetComponent<Torreta>().salud -= poder;
+			}
+			if(body.GetComponent<TorretaMisil>())
+			{
+				body.GetComponent<TorretaMisil>().salud -= poder;
+			}
+			if(body.GetComponent<AIVikingoNetwork>())
+			{
+				body.GetComponent<AIVikingoNetwork>().salud -= poder;
 			}
 		}
 	}
