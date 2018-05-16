@@ -2380,11 +2380,13 @@ public class Hero : MonoBehaviour{
 	void granada ()
 	{
 		granadahumo = false;
+		animator.SetBool("granada", false);
+		animator.SetInteger("disparo", 0);
+
 		if(!avion)
 		{
 			granadas -= 1;
 		}
-		animator.SetBool("granada", false);
 
 		Granada();
 

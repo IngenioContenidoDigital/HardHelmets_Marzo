@@ -116,6 +116,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public Transform casquilloSpawn;
 	public GameObject granadePref;
 	public GameObject granadePrefHumo;
+	public GameObject granadePrefHumoMalo;
 	public GameObject luz;
 	//BALAS POR PISTOLA
 	public bool rafaga = true;
@@ -835,6 +836,11 @@ public class HeroNetwork : NetworkBehaviour{
 					agachado = false;
 					animator.SetInteger("disparo", 6);
 					StartCoroutine(esperaG());
+				}
+				if(granadahumo)
+				{
+					animator.SetBool("granada", true);
+					animator.SetInteger("disparo", 6);
 				}
 
 				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
@@ -3004,8 +3010,14 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
-		granadas -= 1;
+		granadahumo = false;
 		animator.SetBool("granada", false);
+		animator.SetInteger("disparo", 0);
+
+		if(!avion)
+		{
+			granadas -= 1;
+		}
 
 		if(gameObject.tag == "Player")
 		{
@@ -3015,6 +3027,7 @@ public class HeroNetwork : NetworkBehaviour{
 			CmdGranadaMalo();
 		}
 	}
+	public bool granadahumo;
 	public bool avion;
 	[Command]
 	public void CmdGranada()
@@ -3036,7 +3049,7 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		if(avion)
 		{
-			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			var granade = (GameObject)Instantiate(granadePrefHumoMalo, granadaSpawn.position, granadaSpawn.rotation);
 			NetworkServer.Spawn(granade);
 			avion = false;
 		}else
