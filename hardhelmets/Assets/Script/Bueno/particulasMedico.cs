@@ -45,6 +45,10 @@ public class particulasMedico : MonoBehaviour {
 			{
 				body.GetComponent<AIMortero>().SaludSumar();
 			}
+			if(body.GetComponent<AIVikingo>())
+			{
+				body.GetComponent<AIVikingo>().SaludSumar();
+			}
 			//ONLINE
 			if(body.GetComponent<HeroNetwork>())
 			{
@@ -73,6 +77,10 @@ public class particulasMedico : MonoBehaviour {
 			if(body.GetComponent<AIMorteroMaloNetwork>())
 			{
 				body.GetComponent<AIMorteroMaloNetwork>().CmdSaludSumar();
+			}
+			if(body.GetComponent<AIVikingoNetwork>())
+			{
+				body.GetComponent<AIVikingoNetwork>().CmdSaludSumar();
 			}
 		}
 	}

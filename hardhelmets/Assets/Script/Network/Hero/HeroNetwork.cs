@@ -3024,7 +3024,8 @@ public class HeroNetwork : NetworkBehaviour{
 			CmdGranada();
 		}else
 		{
-			CmdGranadaMalo();
+			CmdGranadaMalo(avion);
+			avion = false;
 		}
 	}
 	public bool granadahumo;
@@ -3046,14 +3047,13 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 	}
 	[Command]
-	public void CmdGranadaMalo()
+	public void CmdGranadaMalo(bool newAvion)
 	{
-		if(avion)
+		if(newAvion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumoMalo, granadaSpawn.position, granadaSpawn.rotation);
 			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
 			NetworkServer.Spawn(granade);
-			avion = false;
 		}else
 		{
 			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
