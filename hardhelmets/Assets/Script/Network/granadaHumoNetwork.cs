@@ -9,13 +9,15 @@ public class granadaHumoNetwork : NetworkBehaviour {
 
 	public ParticleSystem humo;
 
+	public GameObject Player;
+
 	bool destruir;
 
 	// Use this for initialization
 	void Start ()
 	{
 		GetComponent<Rigidbody>().velocity = transform.up * 20;
-		GetComponent<Rigidbody>().AddForce(transform.right * 50);
+		GetComponent<Rigidbody>().AddForce(transform.right * 60);
 
 		StartCoroutine(llamar());
 	}
@@ -46,6 +48,13 @@ public class granadaHumoNetwork : NetworkBehaviour {
 	public void Cmd_crearAvion()
 	{
 		var ataque = (GameObject)Instantiate(avion, transform.position, Quaternion.Euler(0,0,0));
+		if(gameObject.tag == "Player")
+		{
+			ataque.GetComponent<avionNetwork>().poder = Player.GetComponent<HeroNetwork>().saludMax*ataque.GetComponent<avionNetwork>().poder/104;
+		}else
+		{
+			ataque.GetComponent<avionNetwork>().poder = Player.GetComponent<HeroNetwork>().saludMax2*ataque.GetComponent<avionNetwork>().poder/104;
+		}
 		NetworkServer.Spawn(ataque);
 	}
 }
