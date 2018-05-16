@@ -16,6 +16,11 @@ public class granadaHumoNetwork : NetworkBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		if(!isServer)
+		{
+			return;
+		}
+		
 		GetComponent<Rigidbody>().velocity = transform.up * 20;
 		GetComponent<Rigidbody>().AddForce(transform.right * 60);
 

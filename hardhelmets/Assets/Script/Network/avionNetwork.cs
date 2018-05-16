@@ -5,7 +5,7 @@ using UnityEngine;
 public class avionNetwork : MonoBehaviour {
 
 	public GameObject hero;
-	public GameObject hero2;
+	//public GameObject hero2;
 
 	public float poder;
 
@@ -21,10 +21,10 @@ public class avionNetwork : MonoBehaviour {
 		{
 			hero = GameObject.Find("Hero");
 		}
-		if(hero2 == null)
+		/*if(hero2 == null)
 		{
 			hero2 = GameObject.Find("Hero2");
-		}
+		}*/
 	}
 
 	public void vibrar()
@@ -32,8 +32,8 @@ public class avionNetwork : MonoBehaviour {
 		hero.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().shakeAvion = true;
 		hero.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().vib = 0.7f;
 
-		hero2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().shakeAvion = true;
-		hero2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().vib = 0.7f;
+		/*hero2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().shakeAvion = true;
+		hero2.GetComponent<HeroNetwork>().SniperCam.GetComponent<CamNetwork>().vib = 0.7f;*/
 	}
 
 	public void destruir ()
