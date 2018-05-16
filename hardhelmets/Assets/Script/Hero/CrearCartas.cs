@@ -515,7 +515,6 @@ public class CrearCartas : MonoBehaviour {
 	//ATAQUE AEREO
 	public void aereo()
 	{
-		print("LLAMAR AL AVION");
 		GetComponent<Hero>().granadahumo = true;
 		GetComponent<Hero>().avion = true;
 	}

@@ -380,6 +380,8 @@ GameObject:
   - component: {fileID: 95057548063568950}
   - component: {fileID: 114987654188519614}
   - component: {fileID: 82418125771001282}
+  - component: {fileID: 114770487115381474}
+  - component: {fileID: 114417519593052348}
   m_Layer: 11
   m_Name: AvionBueno
   m_TagString: Untagged
@@ -1226,6 +1228,18 @@ MonoBehaviour:
   Emit: 1
   MinVertexDistance: 0.1
   MaxNumberOfPoints: 200
+--- !u!114 &114417519593052348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768767124461844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d836b60fd7ddd4682ddf0aaf94c7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hero: {fileID: 0}
 --- !u!114 &114559156029606220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1238,6 +1252,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathtimer: 5
+--- !u!114 &114770487115381474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768767124461844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d353c789ff7d468bcc6a1392d8bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonido:
+  - {fileID: 8300000, guid: 8e6e9f05b2894d7478b188c300fc7c78, type: 3}
+  - {fileID: 8300000, guid: 98f23e9151b8349478392c8fb29c1da6, type: 3}
+  audio1: {fileID: 82418125771001282}
 --- !u!114 &114783894449192930
 MonoBehaviour:
   m_ObjectHideFlags: 1
