@@ -282,4 +282,15 @@ public class Pausa : MonoBehaviour {
 			Resume();
 		}
 	}
+
+	public void respawn()
+	{
+		Player.GetComponent<Hero>().salud = 0;
+
+		pantalla = "";
+		Time.timeScale = 1;
+		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(carta1);
+		gameObject.SetActive(false);
+	}
 }
