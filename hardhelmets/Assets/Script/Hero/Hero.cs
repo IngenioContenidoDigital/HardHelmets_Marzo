@@ -2398,6 +2398,7 @@ public class Hero : MonoBehaviour{
 		if(avion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<granadaHumo>().Player = gameObject;
 			avion = false;
 		}else
 		{

@@ -3035,6 +3035,7 @@ public class HeroNetwork : NetworkBehaviour{
 		if(avion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
 			NetworkServer.Spawn(granade);
 			avion = false;
 		}else
@@ -3050,6 +3051,7 @@ public class HeroNetwork : NetworkBehaviour{
 		if(avion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumoMalo, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
 			NetworkServer.Spawn(granade);
 			avion = false;
 		}else

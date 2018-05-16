@@ -8,13 +8,15 @@ public class granadaHumo : MonoBehaviour {
 
 	public ParticleSystem humo;
 
+	public GameObject Player;
+
 	bool destruir;
 
 	// Use this for initialization
 	void Start ()
 	{
 		GetComponent<Rigidbody>().velocity = transform.up * 20;
-		GetComponent<Rigidbody>().AddForce(transform.right * 50);
+		GetComponent<Rigidbody>().AddForce(transform.right * 60);
 
 		StartCoroutine(llamar());
 	}
@@ -39,5 +41,6 @@ public class granadaHumo : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(5);
 		var ataque = (GameObject)Instantiate(avion, transform.position, Quaternion.Euler(0,0,0));
+		ataque.GetComponent<avion>().poder = Player.GetComponent<Hero>().saludMax*ataque.GetComponent<avion>().poder/104;
 	}
 }

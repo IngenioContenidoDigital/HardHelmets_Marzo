@@ -772,7 +772,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//ATAQUE AEREO
 	public void aereo()
 	{
+		GetComponent<HeroNetwork>().granadahumo = true;
 		GetComponent<HeroNetwork>().avion = true;
-		GetComponent<Animator>().SetInteger("disparo", 6);
 	}
 }
