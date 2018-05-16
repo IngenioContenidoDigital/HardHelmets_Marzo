@@ -718,6 +718,11 @@ public class Hero : MonoBehaviour{
 					animator.SetInteger("disparo", 6);
 					StartCoroutine(esperaG());
 				}
+				if(granadahumo)
+				{
+					animator.SetBool("granada", true);
+					animator.SetInteger("disparo", 6);
+				}
 
 				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
 				{
@@ -2374,12 +2379,19 @@ public class Hero : MonoBehaviour{
 
 	void granada ()
 	{
-		granadas -= 1;
+		granadahumo = false;
 		animator.SetBool("granada", false);
+		animator.SetInteger("disparo", 0);
+
+		if(!avion)
+		{
+			granadas -= 1;
+		}
 
 		Granada();
 
 	}
+	public bool granadahumo;
 	public bool avion;
 	public void Granada()
 	{
