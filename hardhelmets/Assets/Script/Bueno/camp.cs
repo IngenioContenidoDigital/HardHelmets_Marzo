@@ -73,6 +73,14 @@ public class camp : MonoBehaviour {
 			letras.transform.parent = transform;
 			letras.GetComponent<TextMesh>().text = "100";
 		}
+		if(col.gameObject.name == "FRENTE")
+		{
+			transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z+10);
+		}
+		if(col.gameObject.name == "PARED")
+		{
+			transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z-10);
+		}
 	}
 	void OnTriggerEnter (Collider col)
 	{

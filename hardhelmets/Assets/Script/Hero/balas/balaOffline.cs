@@ -5,7 +5,8 @@ using UnityEngine;
 public class balaOffline : MonoBehaviour {
 
 	public GameObject efecto;
-	int efect;
+	public GameObject chatarra;
+
 	public GameObject humo;
 	public GameObject[] piedras;
 
@@ -34,18 +35,21 @@ public class balaOffline : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		efect = Random.Range(1,3);
+
 		if(col.gameObject.tag == "Player" || col.gameObject.tag == "enemy" || col.gameObject.tag == "CABEZA")
 		{
 			var explo = (GameObject)Instantiate(efecto, col.gameObject.transform.position, transform.rotation);
-			//explo.GetComponent<Animator>().SetInteger("efect",efect);
+
+			Destroy(explo, 2.0f);
+		}else if(col.gameObject.tag == "tank" || col.gameObject.tag == "enemyTank")
+		{
+			var explo = (GameObject)Instantiate(chatarra, col.gameObject.transform.position, transform.rotation);
+
 			Destroy(explo, 2.0f);
 		}else
 		{
-			//Shot();
-
 			var explo = (GameObject)Instantiate(efecto, transform.position, transform.rotation);
-			//explo.GetComponent<Animator>().SetInteger("efect",efect);
+
 			Destroy(explo, 2.0f);
 		}
 		humo.transform.parent = null;
@@ -58,28 +62,22 @@ public class balaOffline : MonoBehaviour {
 		if(cantidad == 1)
 		{
 			var roca1 = (GameObject)Instantiate(piedras[Random.Range(0,piedras.Length)], transform.position, transform.rotation);
-
 		}
 
 		if(cantidad == 2)
 		{
 			var roca1 = (GameObject)Instantiate(piedras[Random.Range(0,piedras.Length)], transform.position, transform.rotation);
 
-
 			var roca2 = (GameObject)Instantiate(piedras[Random.Range(0,piedras.Length)], transform.position, transform.rotation);
-
 		}
 
 		if(cantidad == 3)
 		{
 			var roca1 = (GameObject)Instantiate(piedras[Random.Range(0,piedras.Length)], transform.position, transform.rotation);
 
-
 			var roca2 = (GameObject)Instantiate(piedras[Random.Range(0,piedras.Length)], transform.position, transform.rotation);
 
-
 			var roca3 = (GameObject)Instantiate(piedras[Random.Range(0,piedras.Length)], transform.position, transform.rotation);
-
 		}
 	}
 }

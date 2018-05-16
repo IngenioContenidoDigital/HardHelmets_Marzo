@@ -62,6 +62,7 @@ public class CamNetwork : NetworkBehaviour {
 	public GameObject vibrador;
 	public float vib;
 	public bool shake;
+	public bool shakeAvion;
 
 	//OBJETIVO
 	public bool objetivo;
@@ -570,6 +571,11 @@ public class CamNetwork : NetworkBehaviour {
 			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
 			StartCoroutine(tiempo());
 		}
+		if(shakeAvion)
+		{
+			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
+			StartCoroutine(tiempoAvion());
+		}
 	}
 	IEnumerator finalizar()
 	{
@@ -580,6 +586,11 @@ public class CamNetwork : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(0.1f);
 		shake = false;
+	}
+	IEnumerator tiempoAvion()
+	{
+		yield return new WaitForSeconds(0.5f);
+		shakeAvion = false;
 	}
 }
 

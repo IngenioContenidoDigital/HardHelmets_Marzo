@@ -288,4 +288,11 @@ public class PausaNetwork : MonoBehaviour {
 			Resume();
 		}
 	}
+
+	public void respawn()
+	{
+		Player.GetComponent<HeroNetwork>().salud = 0;
+
+		Resume();
+	}
 }
