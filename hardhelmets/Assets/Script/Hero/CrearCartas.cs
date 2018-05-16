@@ -406,7 +406,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(campamento, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(campamento, new Vector3(nace.transform.position.x,nace.transform.position.y+20,nace.transform.position.z), Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
