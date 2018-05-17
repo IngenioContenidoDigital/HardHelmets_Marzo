@@ -33,13 +33,13 @@ public class secundarioNetwork : MonoBehaviour {
 	{
 		if(Player.tag == "Player")
 		{
-			if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase")
+			if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase" || col.gameObject.tag == "base")
 			{
 				camara.GetComponent<CamNetwork>().objetivo = true;
 			}
 		}else
 		{
-			if(col.gameObject.tag == "Player" || col.gameObject.tag == "tank" || col.gameObject.tag == "base")
+			if(col.gameObject.tag == "Player" || col.gameObject.tag == "tank" || col.gameObject.tag == "base" || col.gameObject.tag == "enemyBase")
 			{
 				camara.GetComponent<CamNetwork>().objetivo = true;
 			}
@@ -49,13 +49,13 @@ public class secundarioNetwork : MonoBehaviour {
 	{
 		if(Player.tag == "Player")
 		{
-			if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase")
+			if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase" || col.gameObject.tag == "base")
 			{
 				camara.GetComponent<CamNetwork>().objetivo = true;
 			}
 		}else
 		{
-			if(col.gameObject.tag == "Player" || col.gameObject.tag == "tank" || col.gameObject.tag == "base")
+			if(col.gameObject.tag == "Player" || col.gameObject.tag == "tank" || col.gameObject.tag == "base" || col.gameObject.tag == "enemyBase")
 			{
 				camara.GetComponent<CamNetwork>().objetivo = true;
 			}
@@ -65,13 +65,13 @@ public class secundarioNetwork : MonoBehaviour {
 	{
 		if(Player.tag == "Player")
 		{
-			if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase")
+			if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase" || col.gameObject.tag == "base")
 			{
 				camara.GetComponent<CamNetwork>().objetivo = false;
 			}
 		}else
 		{
-			if(col.gameObject.tag == "Player" || col.gameObject.tag == "tank" || col.gameObject.tag == "base")
+			if(col.gameObject.tag == "Player" || col.gameObject.tag == "tank" || col.gameObject.tag == "base" || col.gameObject.tag == "enemyBase")
 			{
 				camara.GetComponent<CamNetwork>().objetivo = false;
 			}

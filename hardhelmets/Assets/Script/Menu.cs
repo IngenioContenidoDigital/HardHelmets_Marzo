@@ -135,6 +135,10 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("Derrotas", 0);
 			PlayerPrefs.SetInt("Empates", 0);
 
+			PlayerPrefs.SetInt("Kills", 0);
+
+			PlayerPrefs.SetFloat("PlayerEXTotal", 0);
+
 			PlayerPrefs.SetInt("PlayerLevel", 1);
 			PlayerPrefs.SetFloat("PlayerEX", 0);
 			PlayerPrefs.SetInt("Bases", 0);

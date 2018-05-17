@@ -122,7 +122,27 @@ public class ESL_LeaderboardUI : MonoBehaviour
 	//ID fetched from input field directly
 	public void FetchLeaderboard()
 	{
-		string lbid = Fetch_IDField.text; //get id from input field from user
+		string lbid = "BestSoldiers";//Fetch_IDField.text; //get id from input field from user
+		FetchLeaderboardWithID(lbid, 1, 20);
+	}
+	public void FetchLeaderboardKills()
+	{
+		string lbid = "BestKills";
+		FetchLeaderboardWithID(lbid, 1, 20);
+	}
+	public void FetchLeaderboardFlags()
+	{
+		string lbid = "BestFlags";
+		FetchLeaderboardWithID(lbid, 1, 20);
+	}
+	public void FetchLeaderboardBases()
+	{
+		string lbid = "BestBases";
+		FetchLeaderboardWithID(lbid, 1, 20);
+	}
+	public void FetchLeaderboardWins()
+	{
+		string lbid = "BestWins";
 		FetchLeaderboardWithID(lbid, 1, 20);
 	}
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 using UnityStandardAssets.ImageEffects;
+using EasySteamLeaderboard;
 
 public class GameOffline : MonoBehaviour {
 
@@ -125,6 +126,7 @@ public class GameOffline : MonoBehaviour {
 
 	public float XP;
 	public float XPActual;
+	public float XPTotal;
 	public float XPNext;
 	public UnityEngine.UI.Text XPT;
 
@@ -201,6 +203,7 @@ public class GameOffline : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		XPTotal = PlayerPrefs.GetFloat("PlayerEXTotal");
 		XP = PlayerPrefs.GetFloat("PlayerEX");
 		XPActual = XP;
 		XPT.text = XP.ToString();
@@ -677,6 +680,14 @@ public class GameOffline : MonoBehaviour {
 
 		if(sumatoria)
 		{
+			if(!sumarmatados)
+			{
+				int matados = PlayerPrefs.GetInt("Kills")+KillsB;
+				PlayerPrefs.SetInt("Kills", matados);
+
+				sumarmatados = true;
+			}
+
 			KillsB2 += 100;
 			if(KillsB2 >= KillsB*300)
 			{
@@ -782,10 +793,11 @@ public class GameOffline : MonoBehaviour {
 		if(experiencia)
 		{
 			XPActual += 30;
+			XPTotal += 30;
+			PlayerPrefs.SetFloat("PlayerEXTotal", XPTotal);
 			TotalBFinalFINAL -= 30;
-			if(TotalBFinalFINAL <= 0)//(XPActual >= XP+TotalBFinal)
+			if(TotalBFinalFINAL <= 0)
 			{
-				//XPActual = XP+TotalBFinal;//XP+TotalBFinal
 				audio2.Stop();
 
 				if(Application.loadedLevelName != "Tutorial")
@@ -847,8 +859,133 @@ public class GameOffline : MonoBehaviour {
 					loading.nombre = "Comunity";
 				}
 			}
+			if(!subirpuntaje)
+			{
+				if(XPTotal > 0)
+				{
+					UploadScoreToLeaderboard();
+				}
+				if(PlayerPrefs.GetInt("Kills") > 0)
+				{
+					UploadScoreToLeaderboardKills();
+				}
+				if(PlayerPrefs.GetInt("Banderas") > 0)
+				{
+					UploadScoreToLeaderboardFlags();
+				}
+				if(PlayerPrefs.GetInt("Bases") > 0)
+				{
+					UploadScoreToLeaderboardBases();
+				}
+				if(PlayerPrefs.GetInt("Victorias") > 0)
+				{
+					UploadScoreToLeaderboardWins();
+				}
+
+				subirpuntaje = true;
+			}
 		}
 	}
+	//SUBIR A BASES DE DATOS DE STEAM
+	public bool sumarmatados;
+	public bool subirpuntaje;
+
+	public void UploadScoreToLeaderboard()
+	{
+		int score = Mathf.RoundToInt(XPTotal);//XPTotal;
+		string lbid = "BestSoldiers";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("Succesfully Uploaded!");
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardKills()
+	{
+		int score = PlayerPrefs.GetInt("Kills");
+		string lbid = "BestKills";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("Succesfully Uploaded!");
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardFlags()
+	{
+		int score = PlayerPrefs.GetInt("Banderas");
+		string lbid = "BestFlags";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("Succesfully Uploaded!");
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardBases()
+	{
+		int score = PlayerPrefs.GetInt("Bases");
+		string lbid = "BestBases";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("Succesfully Uploaded!");
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardWins()
+	{
+		int score = PlayerPrefs.GetInt("Victorias");
+		string lbid = "BestWins";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("Succesfully Uploaded!");
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+				}
+			});
+	}
+	//SUBIR A BASES DE DATOS DE STEAM
 	//SE ACABO EL TIEMPO
 	IEnumerator esperatitulos()
 	{

@@ -31,21 +31,21 @@ public class secundario : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col)
 	{
-		if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase")
+		if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase" || col.gameObject.tag == "base")
 		{
 			camara.GetComponent<Cam>().objetivo = true;
 		}
 	}
 	void OnTriggerStay (Collider col)
 	{
-		if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase")
+		if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase" || col.gameObject.tag == "base")
 		{
 			camara.GetComponent<Cam>().objetivo = true;
 		}
 	}
 	void OnTriggerExit (Collider col)
 	{
-		if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase")
+		if(col.gameObject.tag == "enemy" || col.gameObject.tag == "enemyTank" || col.gameObject.tag == "enemyBase" || col.gameObject.tag == "base")
 		{
 			camara.GetComponent<Cam>().objetivo = false;
 		}

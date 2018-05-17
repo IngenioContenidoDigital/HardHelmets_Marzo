@@ -448,6 +448,11 @@ public class AIMedico : NetworkBehaviour {
 				explocion = false;
 			}
 		}
+		//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+		if(particulas.isPlaying && target.GetComponent<Hero>().salud >= target.GetComponent<Hero>().saludMax)
+		{
+			particulas.Stop();
+		}
 	}
 	IEnumerator esperaCura()
 	{

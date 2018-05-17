@@ -436,6 +436,15 @@ public class AIMedicoOffline : MonoBehaviour {
 				explocion = false;
 			}
 		}
+		//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+		if(particulas.isPlaying && target.GetComponent<Hero>().salud >= target.GetComponent<Hero>().saludMax)
+		{
+			particulas.Stop();
+		}
+		if(!particulas.isPlaying && target.GetComponent<Hero>().salud < target.GetComponent<Hero>().saludMax && Mathf.Abs((transform.position - target.position).x) <= lejos)
+		{
+			particulas.Play();
+		}
 	}
 	IEnumerator esperaCura()
 	{
