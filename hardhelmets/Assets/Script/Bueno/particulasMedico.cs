@@ -53,6 +53,7 @@ public class particulasMedico : MonoBehaviour {
 			if(body.GetComponent<HeroNetwork>())
 			{
 				body.GetComponent<HeroNetwork>().CmdSaludSumar();
+				body.GetComponent<HeroNetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AINetwork>())
 			{

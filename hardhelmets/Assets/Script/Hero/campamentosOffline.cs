@@ -286,6 +286,7 @@ public class campamentosOffline : MonoBehaviour {
 
 		Player.GetComponent<Hero>().animacion.SetActive(false);
 		Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
+		Player.GetComponent<CustomFinal>().listo = false;
 		Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
 
 		Camara.GetComponent<Cam>().campamento = false;

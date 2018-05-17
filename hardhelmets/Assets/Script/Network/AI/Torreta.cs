@@ -232,6 +232,11 @@ public class Torreta : NetworkBehaviour {
 		{
 			col.gameObject.GetComponent<mina>().muerte = true;
 		}
+		if(col.gameObject.tag == "mira")
+		{
+			mira.SetActive(true);
+			mira.GetComponent<Animator>().SetBool("entry",true);
+		}
 	}
 	void OnTriggerStay (Collider col)
 	{
@@ -254,8 +259,12 @@ public class Torreta : NetworkBehaviour {
 		{
 			objetivo = null;
 		}
+		if(col.gameObject.tag == "mira")
+		{
+			mira.SetActive(false);
+		}
 	}
-
+	public GameObject mira;
 
 	public void disparar ()
 	{

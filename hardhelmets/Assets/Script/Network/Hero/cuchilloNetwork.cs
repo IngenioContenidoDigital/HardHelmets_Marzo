@@ -21,6 +21,7 @@ public class cuchilloNetwork : MonoBehaviour {
 		if(col.gameObject.tag == "Player" || col.gameObject.tag == "enemy")
 		{
 			Player.GetComponent<HeroNetwork>().cuchillo = true;
+			Player.GetComponent<HeroNetwork>().rafaga = true;
 		}
 	}
 

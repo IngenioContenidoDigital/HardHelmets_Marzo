@@ -39,6 +39,9 @@ namespace Prototype.NetworkLobby {
 
 		public bool retirada;
 
+		public GameObject cofre;
+		public GameObject baul;
+
 		public void Update()
 		{
 			Player1 = GameObject.Find("PlayerInfo1");
@@ -262,6 +265,11 @@ namespace Prototype.NetworkLobby {
 
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(crearButton);
 
+					}else if(actual == "cofre")
+					{
+						actual = actual2;
+						cofre.GetComponent<Animator>().SetBool("cancelar", true);
+						cofre.GetComponent<cofreLobby>().open = false;
 					}else if(actual == "servidores")
 					{
 						master.GetComponent<LobbyManager>().actual = "";
@@ -322,6 +330,26 @@ namespace Prototype.NetworkLobby {
 		public GameObject barajaServer;
 		public GameObject flecha1;
 		public GameObject barajaList;
+
+		//ABRIR COFRE
+		public void Cofre ()
+		{
+			actual2 = actual;
+			if(!baul.activeSelf)
+			{
+				baul.SetActive(true);
+			}else
+			{
+				cofre.GetComponent<Animator>().SetBool("cancelar", false);
+				cofre.GetComponent<Animator>().SetBool("reiniciar", true);
+			}
+			StartCoroutine(momentoCofre());
+		}
+		IEnumerator momentoCofre()
+		{
+			yield return new WaitForSeconds(0.4f);
+			actual = "cofre";
+		}
 
 	}
 }

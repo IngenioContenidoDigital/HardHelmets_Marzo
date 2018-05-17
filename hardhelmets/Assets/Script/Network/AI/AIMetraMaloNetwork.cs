@@ -568,7 +568,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 		//salud += 6;
 
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
-		letras.GetComponent<TextMesh>().text = suma.ToString("F0");
+		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
 		NetworkServer.Spawn(letras);
 	}
 

@@ -125,6 +125,16 @@ public class Base : NetworkBehaviour {
 			}
 		}
 	}
+	void OnTriggerEnter (Collider col)
+	{
+		if(col.gameObject.tag == "balaLlamas")
+		{
+			sangre -= 3;
+
+			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = "3";
+		}
+	}
 
 	public void vivracion()
 	{

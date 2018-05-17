@@ -17,7 +17,14 @@ public class CajaCarta : MonoBehaviour {
 			if(!seleccionada)
 			{
 				carta.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "destapar", false);
-				Cofre.GetComponent<Cofre>().abiertas += 1;
+				if(Cofre.GetComponent<Cofre>())
+				{
+					Cofre.GetComponent<Cofre>().abiertas += 1;
+				}
+				if(Cofre.GetComponent<cofreLobby>())
+				{
+					Cofre.GetComponent<cofreLobby>().abiertas += 1;
+				}
 			}
 			seleccionada = true;
 		}
@@ -28,7 +35,14 @@ public class CajaCarta : MonoBehaviour {
 		if(!seleccionada)
 		{
 			carta.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "destapar", false);
-			Cofre.GetComponent<Cofre>().abiertas += 1;
+			if(Cofre.GetComponent<Cofre>())
+			{
+				Cofre.GetComponent<Cofre>().abiertas += 1;
+			}
+			if(Cofre.GetComponent<cofreLobby>())
+			{
+				Cofre.GetComponent<cofreLobby>().abiertas += 1;
+			}
 		}
 		seleccionada = true;
 	}

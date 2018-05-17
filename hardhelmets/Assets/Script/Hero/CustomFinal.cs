@@ -93,7 +93,7 @@ public class CustomFinal : MonoBehaviour {
 		}
 	}
 
-	bool listo;
+	public bool listo;
 	//public GameObject Enemy;
 	public bool bala;
 	string cohete;

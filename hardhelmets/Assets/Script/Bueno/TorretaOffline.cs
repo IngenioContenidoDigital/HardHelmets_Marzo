@@ -181,6 +181,11 @@ public class TorretaOffline : MonoBehaviour {
 		{
 			col.gameObject.GetComponent<MinaOffline>().muerte = true;
 		}
+		if(col.gameObject.tag == "mira")
+		{
+			mira.SetActive(true);
+			mira.GetComponent<Animator>().SetBool("entry",true);
+		}
 	}
 	void OnTriggerStay (Collider col)
 	{
@@ -203,8 +208,12 @@ public class TorretaOffline : MonoBehaviour {
 		{
 			objetivo = null;
 		}
+		if(col.gameObject.tag == "mira")
+		{
+			mira.SetActive(false);
+		}
 	}
-
+	public GameObject mira;
 
 	public void disparar ()
 	{

@@ -21,6 +21,7 @@ public class cuchillo : MonoBehaviour {
 		if(col.gameObject.tag == "enemy")
 		{
 			Player.GetComponent<Hero>().cuchillo = true;
+			Player.GetComponent<Hero>().rafaga = true;
 		}
 	}
 

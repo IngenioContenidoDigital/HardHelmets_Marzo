@@ -72,7 +72,7 @@ public class Cabeza : MonoBehaviour {
 
 				Player.GetComponent<Hero>().salud -= poder;
 
-				Player.GetComponent<CustomFinal>().casco = "";
+				Player.GetComponent<CustomFinal>().skinsToCombine[0] = "";
 
 				if(numSombrero == 1)
 				{
