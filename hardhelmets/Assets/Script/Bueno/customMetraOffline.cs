@@ -66,7 +66,7 @@ public class customMetraOffline : MonoBehaviour {
 		{
 			if(GetComponent<AI>().salud <= 50)
 			{
-				skinsToCombine[6] = "cascado";
+				skinsToCombine[7] = "cascado";
 				activar = true;
 				poner = false;
 			}
