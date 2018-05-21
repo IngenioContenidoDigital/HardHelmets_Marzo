@@ -643,10 +643,11 @@ GameObject:
   - component: {fileID: 82702220982094236}
   - component: {fileID: 82288614693044778}
   - component: {fileID: 82102970744593036}
+  - component: {fileID: 114372103937715224}
   - component: {fileID: 114550669602407412}
-  - component: {fileID: 114791046005305986}
   - component: {fileID: 114486028165828478}
   - component: {fileID: 114757391499345878}
+  - component: {fileID: 195514360030420502}
   m_Layer: 9
   m_Name: Panzer Bueno
   m_TagString: Player
@@ -2357,9 +2358,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1390924141285976}
-  m_LocalRotation: {x: 0, y: 0, z: 0.46630946, w: 0.8846217}
-  m_LocalPosition: {x: 0.242, y: 2.896, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9670628, w: 0.25453815}
+  m_LocalPosition: {x: -0.50104207, y: 5.842362, z: 0}
+  m_LocalScale: {x: 0.99991196, y: 0.9998272, z: 1}
   m_Children: []
   m_Father: {fileID: 4604500650156066}
   m_RootOrder: 19
@@ -2487,9 +2488,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196549617374358}
-  m_LocalRotation: {x: 0, y: 0, z: 0.11259626, w: 0.99364084}
-  m_LocalPosition: {x: 0.5191, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.1517195, w: 0.98842365}
+  m_LocalPosition: {x: 0.5190999, y: -0.000000084242785, z: 0}
+  m_LocalScale: {x: 1.1999143, y: 1.2000859, z: 1}
   m_Children:
   - {fileID: 4940073162935188}
   - {fileID: 4090784845172814}
@@ -3227,6 +3228,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -4446,6 +4448,84 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
+--- !u!114 &114372103937715224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330540630586956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ad7cecc7ac8434f91d728a0a920d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 195514360030420502}
+  vivo: 1
+  salud: 100
+  saludMax: 0
+  distancia: 0
+  minima: 28
+  maxima: 38
+  distanciaZ: 0
+  BaseBuena: BaseMala
+  BaseMala: BaseBuena
+  BuscarBase: base
+  NameEnemy: Player
+  NameEnemyTank: tank
+  Tipo: 5
+  crearCarta: 0
+  carta: {fileID: 1374786209442772, guid: ce1b0e45980ff4e43a06879f0ac696da, type: 2}
+  target: {fileID: 0}
+  animator: {fileID: 95986604464847570}
+  _currentDirection: right
+  voltear: 0
+  groundCheck: {fileID: 4586955658429754}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  grounded: 0
+  disparando: 0
+  disparos: 0
+  textos: {fileID: 1638684850247350, guid: 3fa7561b60fb995438a3238fd4335041, type: 2}
+  textos2: {fileID: 1291947733127858, guid: af5dd40ec23338746b03a1907e728d8a, type: 2}
+  mira: {fileID: 1993229950300840}
+  level: 0
+  Jugador: {fileID: 0}
+  bulletPref: {fileID: 1097896091757640, guid: 5df3767d74b15344bae61962d7cefd18, type: 2}
+  bulletPrefFusil: {fileID: 1333870485559892, guid: 57eea0d659720be4d8c50bf950b1ebcc,
+    type: 2}
+  bulletPrefEscopeta: {fileID: 1343580064256942, guid: 2c92cf82bf98c5840a5d55af1606d5d0,
+    type: 2}
+  bulletPrefSubmetra: {fileID: 1024660671807044, guid: afb2216b8b9332240a7f72b78aee8095,
+    type: 2}
+  bulletPrefMetra: {fileID: 1367102692194648, guid: 88b5cabd861c6854bab6b55952218912,
+    type: 2}
+  cohete: {fileID: 1533225946778672, guid: 2a6693b209c7d0a42b082c3a54d79336, type: 2}
+  bulletSpawn: {fileID: 4010226548555526}
+  casquilloPref: {fileID: 1453544823036990, guid: f4c6bcbb83f17d244a02c82047a23df2,
+    type: 2}
+  casquilloPrefB: {fileID: 1130453062848680, guid: de543ad689ff03142a1d574af7b71d47,
+    type: 2}
+  casquilloSpawn: {fileID: 4352713898729000}
+  granadePref: {fileID: 1266111779487104, guid: aebed78a43248184484d061f04aa00bc,
+    type: 2}
+  luz: {fileID: 1401599021053410}
+  Huesos: {fileID: 100006, guid: 18aa1939cbf6b1e4aaa5aaca0c64a8c7, type: 2}
+  sangreCuchillo:
+  - {fileID: 100000, guid: 70ed7ca4f94fc8b489bb9275033b6d54, type: 2}
+  - {fileID: 100008, guid: c8a5c440f9d9b434f999475face08c29, type: 2}
+  - {fileID: 100000, guid: 7af345f44776c0145b62098a65fbff52, type: 2}
+  - {fileID: 100002, guid: f53c2b05c7d4ed343b6b8b031e506b25, type: 2}
+  - {fileID: 100004, guid: 0fe7712bc9c0f4c44ab0ba5de7cd1682, type: 2}
+  - {fileID: 100006, guid: 489a1d3cf5d15494f8fb97d5706b10bb, type: 2}
+  - {fileID: 100000, guid: a916dc58201e3fa4d9fd72b636b7ef82, type: 2}
+  cascadoSpawn: {fileID: 4352713898729000}
+  Base: {fileID: 1117806558849254}
+  water: 0
+  HumoPanzer: {fileID: 1403052620615378, guid: 6c977911cc20b2449a7f5527aab98030, type: 2}
+  strikeescopeta: {fileID: 1105419845263892, guid: edd2fa8d32036aa4d877c99e31c1a356,
+    type: 2}
+  Arma: {fileID: 1513162608941196, guid: ad94e737d564b354f8c4ebd6570b7e90, type: 2}
 --- !u!114 &114379030436504400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5368,71 +5448,6 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
---- !u!114 &114791046005305986
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330540630586956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a0963d4bf0cea469e6c9985c29dafb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pelea: 0
-  carta: {fileID: 1374786209442772, guid: ce1b0e45980ff4e43a06879f0ac696da, type: 2}
-  BaseBuena: BaseBuena
-  BaseMala: BaseMala
-  BuscarBase: enemyBase
-  NameEnemy: enemy
-  NameEnemyTank: enemyTank
-  Player: {fileID: 0}
-  target: {fileID: 0}
-  animator: {fileID: 95986604464847570}
-  voltear: 1
-  vivo: 1
-  salud: 100
-  saludMax: 0
-  seguir: {fileID: 1388480007576012}
-  groundCheck: {fileID: 4586955658429754}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  grounded: 0
-  bulletPref: {fileID: 1533225946778672, guid: 2a6693b209c7d0a42b082c3a54d79336, type: 2}
-  bulletSpawn: {fileID: 4010226548555526}
-  luz: {fileID: 1401599021053410}
-  cascadoSpawn: {fileID: 4352713898729000}
-  carne: {fileID: 1265866804238842, guid: 7130f1c86cf66864682d233ce8264fe3, type: 2}
-  coverPosition: {x: 0, y: 0, z: 0}
-  alejarce: 0
-  alejarce2: 0
-  caminar: 0
-  textos: {fileID: 1638684850247350, guid: 3fa7561b60fb995438a3238fd4335041, type: 2}
-  textos2: {fileID: 1029506177696318, guid: 50b6c451e4942e043a506ceaede88fc0, type: 2}
-  mira: {fileID: 1993229950300840}
-  Huesos: {fileID: 100006, guid: 18aa1939cbf6b1e4aaa5aaca0c64a8c7, type: 2}
-  sangreCuchillo:
-  - {fileID: 100000, guid: 70ed7ca4f94fc8b489bb9275033b6d54, type: 2}
-  - {fileID: 100008, guid: c8a5c440f9d9b434f999475face08c29, type: 2}
-  - {fileID: 100000, guid: 7af345f44776c0145b62098a65fbff52, type: 2}
-  - {fileID: 100002, guid: f53c2b05c7d4ed343b6b8b031e506b25, type: 2}
-  - {fileID: 100004, guid: 0fe7712bc9c0f4c44ab0ba5de7cd1682, type: 2}
-  - {fileID: 100006, guid: 489a1d3cf5d15494f8fb97d5706b10bb, type: 2}
-  - {fileID: 100000, guid: a916dc58201e3fa4d9fd72b636b7ef82, type: 2}
-  efectoSanre:
-  - {fileID: 100000, guid: 7af345f44776c0145b62098a65fbff52, type: 2}
-  - {fileID: 100002, guid: f53c2b05c7d4ed343b6b8b031e506b25, type: 2}
-  - {fileID: 100004, guid: 0fe7712bc9c0f4c44ab0ba5de7cd1682, type: 2}
-  water: 0
-  Base: {fileID: 1117806558849254}
-  medic: 
-  level: 0
-  Jugador: {fileID: 0}
-  HumoPanzer: {fileID: 1403052620615378, guid: 6c977911cc20b2449a7f5527aab98030, type: 2}
-  strikeescopeta: {fileID: 1105419845263892, guid: edd2fa8d32036aa4d877c99e31c1a356,
-    type: 2}
-  Arma: {fileID: 1513162608941196, guid: ad94e737d564b354f8c4ebd6570b7e90, type: 2}
 --- !u!114 &114819580660783048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5865,7 +5880,7 @@ CapsuleCollider:
   m_Radius: 1.42
   m_Height: 5.23
   m_Direction: 1
-  m_Center: {x: -0.45, y: 2.1, z: 0}
+  m_Center: {x: 0, y: 2.47, z: 0}
 --- !u!182 &182990816854674904
 WindZone:
   m_ObjectHideFlags: 1
@@ -5879,6 +5894,27 @@ WindZone:
   m_WindTurbulence: 1
   m_WindPulseMagnitude: 0.5
   m_WindPulseFrequency: 0.01
+--- !u!195 &195514360030420502
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330540630586956}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.42
+  m_Speed: 6
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0.2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 6
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198234948694267376
 ParticleSystem:
   m_ObjectHideFlags: 1

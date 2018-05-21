@@ -41,10 +41,6 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AI>().salud -= poder;
 			}
-			if(body.GetComponent<AIPanzer>())
-			{
-				body.GetComponent<AIPanzer>().salud -= poder;
-			}
 			if(body.GetComponent<AIMetra>())
 			{
 				body.GetComponent<AIMetra>().salud -= poder;
@@ -118,6 +114,7 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AIVikingoNetwork>().salud -= poder;
 			}
+			body.GetComponent<Animator>().SetBool("cascado", true);
 		}
 	}
 }

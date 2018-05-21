@@ -76,14 +76,6 @@ public class customFusileroOffline : MonoBehaviour {
 					activar = true;
 					poner = false;
 				}
-			}else if(GetComponent<AIPanzer>())
-			{
-				if(GetComponent<AIPanzer>().salud <= 50)
-				{
-					skinsToCombine[6] = "cascado";
-					activar = true;
-					poner = false;
-				}
 			}
 		}
 

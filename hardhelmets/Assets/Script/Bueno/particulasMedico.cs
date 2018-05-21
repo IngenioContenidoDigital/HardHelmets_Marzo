@@ -33,10 +33,6 @@ public class particulasMedico : MonoBehaviour {
 			{
 				body.GetComponent<AI>().SaludSumar();
 			}
-			if(body.GetComponent<AIPanzer>())
-			{
-				body.GetComponent<AIPanzer>().SaludSumar();
-			}
 			if(body.GetComponent<AIMetra>())
 			{
 				body.GetComponent<AIMetra>().SaludSumar();
