@@ -2,32 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.AI;
 
 public class AIVikingoNetwork : NetworkBehaviour {
 
-	public Animator animator;
-
-	//GROUND CHECHER
-	public Transform groundCheck;
-	float groundRadius = 0.3f;
-	public LayerMask whatIsGround;
-	public bool grounded = false;
-
-	public Transform Player;
-	public Transform Base;
-	public Transform target;
-
-	public string BaseBuena;
-	public string BaseMala;
-	public string BuscarBase;
-	public string NameEnemy;
-	public string NameEnemyTank;
-
-	[SyncVar]
-	public string _currentDirection = "right";
-
-	[SyncVar(hook = "FacingCallback")]
-	public float voltear;
+	public NavMeshAgent agent;
 
 	[SyncVar(hook = "noVivo")]
 	public bool vivo = true;
@@ -37,57 +16,71 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	[SyncVar]
 	public float saludMax;
 
-
-	//ACCIONES DE PERSONAJE
 	public int distancia;
-	Vector3 v3;
-	public bool actuando;
-	public bool caminar;
-	bool disparar;
-	bool atras;
-	bool cascar;
+	public int minima;
+	public int maxima;
 
-	int momento;
+	public int distanciaZ;
+
+	public string BaseBuena;
+	public string BaseMala;
+	public string BuscarBase;
+	public string NameEnemy;
+	public string NameEnemyTank;
+
+	public int Tipo;
+
+	public bool crearCarta;
+	public GameObject carta;
+
+	public Transform target;
+
+	public Animator animator;
+
+	[SyncVar]
+	public string _currentDirection = "right";
+
+	[SyncVar(hook = "FacingCallback")]
+	public float voltear;
+
+	//GROUND CHECHER
+	public Transform groundCheck;
+	float groundRadius = 0.3f;
+	public LayerMask whatIsGround;
+	public bool grounded = false;
+
+	public bool disparando;
 
 	public GameObject textos;
 	public GameObject textos2;
+
 	public GameObject mira;
-
-
-	public GameObject bulletPref;
-	public GameObject bulletPrefMalo;
-	public Transform bulletSpawn;
-
-	public GameObject casquilloPref;
-	public Transform casquilloSpawn;
-
-	public bool water;
-
-	public GameObject luz;
-
-	public bool crearCarta;
-	bool acuchillado;
-
-	public Transform cascadoSpawn;
-	public GameObject[] efectoSanre;
-	public GameObject[] sangreCuchillo;
-
-	public GameObject carta;
-
-	//VISION PARA ESQUIVAR OBSTACULOS
-	public GameObject seguir;
-
-	public GameObject BaseUno;
+	//NIVEL DE CARTA
+	public int level;
+	public GameObject Jugador;
 
 	//PANEL PARTIDA
 	GameObject Panel;
 
-	//CURACION
-	public string medic;
+	//OBJETOS DE DISPARO
+	public GameObject bulletPref;
 
-	//NIVEL DE CARTA
-	public int level;
-	public GameObject Jugador;
+	public Transform bulletSpawn;
+	public GameObject casquilloPref;
+	public Transform casquilloSpawn;
+	//LUZ DE ARMAS
+	public GameObject luz;
+
+	bool explocion;
+	bool acuchillado;
+	public GameObject Huesos;
+	public GameObject[] sangreCuchillo;
+
+	public Transform cascadoSpawn;
+
+	public GameObject Base;
+
+	public bool water;
 
 	// Use this for initialization
 	void Start ()
@@ -96,6 +89,9 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		{
 			return;
 		}
+
+		distancia = Random.Range(minima,maxima);//20-30
+		distanciaZ = Random.Range(0,8);
 
 		if(gameObject.tag == "Player")
 		{
@@ -110,8 +106,15 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		saludMax = 8*level+200;
 		salud = saludMax;
 
-		distancia = Random.Range(20,35);
+		mira.SetActive(false);
+
+		animator.SetBool("paracaidas", true);
+
+		animator.SetBool("falling", true);
+
+		_currentDirection = "right";
 	}
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -127,14 +130,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		if(Panel.GetComponent<Game>().final)
 		{
 			vivo = false;
-			actuando = false;
 
-			caminar = false;
-			disparar = false;
-			atras = false;
-			cascar = false;
 			animator.SetBool("disparar", false);
-			animator.SetBool("atras", false);
 			animator.SetBool("walk", false);
 			animator.SetBool("grounded", true);
 			if(Panel.GetComponent<Game>().continuar)
@@ -147,7 +144,6 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		{
 			salud = saludMax;
 		}
-
 		//CHECA SI ESTA EN EL PISO
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
@@ -155,268 +151,133 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		//VOLTEA PERSONAJE
 		gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
 
-
-		if(Base == null)
-		{
-			Base = GameObject.FindWithTag(BuscarBase).transform;
-		}
-
-		if(baseNeutra != null && baseNeutra.tag == BaseBuena)
-		{
-			actuando = false;
-		}
-
-		if(Player != null)
-		{
-			target = Player.transform;
-		}else
-		{
-			target = Base.transform;
-		}
-
 		if(vivo)
 		{
-			if(grounded)
+			if(grounded && target == null)
 			{
-				if(Mathf.Abs((transform.position - target.position).x) <= distancia && !actuando)
-				{
-					//momento = Random.Range(1,4);
-					//StartCoroutine(esperaDisparo());
-					disparar = true;
-					actuando = true;
-				}else if(!actuando && !atras)
-				{
-					caminar = true;
-					actuando = true;
-				}
+				target = GameObject.FindWithTag(BuscarBase).transform;
+			}else if(grounded && target.tag == BaseBuena)
+			{
+				target = null;
+			}
 
-				//ACCIONES DEL PERSONAJE
+			if(target != null && !disparando)
+			{
 				//MIRA AL OBJKETIVO
 				Vector3 v3Dir = target.position - transform.position;
 				float angle = Mathf.Atan2(0, v3Dir.x) * Mathf.Rad2Deg;
 
-				if(angle == 180 && _currentDirection == "right")
+				if(angle == 180)
 				{
-					atras = true;
-					//voltear = -1.13f;
-				}else if(angle == 0 && _currentDirection == "left")
+					_currentDirection = "left";
+					voltear = -1.13f;
+				}else
 				{
-					atras = true;
-					//voltear = 1.13f;
+					_currentDirection = "right";
+					voltear = 1.13f;
 				}
-				print(angle);
 
-				if(caminar)
+				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
 				{
-					disparar = false;
-					atras = false;
-
-					animator.SetBool("caminar",true);
-
-					if(angle == 0 && _currentDirection == "right")
+					agent.isStopped = false;
+					agent.SetDestination(target.position);
+				}
+				if(Mathf.Abs((transform.position - target.position).x) < distancia)//SI ESTA CERCA EN X
+				{
+					if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
 					{
-						if(Mathf.Abs((transform.position - target.position).x) >= distancia)
-						{
-							v3 += Vector3.right;
-						}
-					}else if(angle == 180 && _currentDirection == "left")
-					{
-						if(Mathf.Abs((transform.position - target.position).x) >= distancia)
-						{
-							v3 += Vector3.left;
-						}
-					}else if(!seguir.GetComponent<vista>().arriba && !seguir.GetComponent<vista>().abajo)//AGREGADO
-					{
-						v3 = Vector3.zero;
+						agent.isStopped = true;
 					}else
 					{
-						animator.SetBool("caminar",false);
-						atras = true;
-					}
-
-					if(seguir.GetComponent<vista>().arriba)
-					{
-						animator.SetBool("walk", true);
-						v3 += Vector3.forward;
-					}else if(seguir.GetComponent<vista>().abajo)
-					{
-						animator.SetBool("walk", true);
-						v3 += Vector3.back;
-					}
-
-					if(target.transform.position.z > transform.position.z)
-					{
-						v3 += Vector3.forward;
-					}else if (target.transform.position.z < transform.position.z)
-					{
-						v3 += Vector3.back;
-					}else if(!seguir.GetComponent<vista>().arriba && !seguir.GetComponent<vista>().abajo)//AGREGADO
-					{
-						v3 = Vector3.zero;
-					}
-
-					if(Mathf.Abs((transform.position - target.position).x) <= distancia && Mathf.Abs((transform.position - target.position).z) <= 5)
-					{
-						actuando = false;
-						animator.SetBool("caminar",false);
-						caminar = false;
-						v3 = Vector3.zero;
-					}
-				}
-
-				if(disparar)
-				{
-					if(target != Base)
-					{
-						v3 = Vector3.zero;
-
-						animator.SetBool("caminar", false);
-
-						if(Mathf.Abs((transform.position - target.position).z) <= 8)//5
+						if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
 						{
-							if(Mathf.Abs((transform.position - target.position).x) <= 7)//14
+							if(target.tag == BuscarBase) // BASE ENEMIGA
 							{
-								print("BUSQUE PARA CASCAR");
-								cascar = true;
-								caminar = false;
-								disparar = false;
-							}else
+								if(!disparando)
+								{
+									disparando = true;
+
+									animator.SetBool("disparar", true);
+								}
+								agent.isStopped = true;
+							}else // ENEMIGO
 							{
-								print("DISPARANDO AL ENEMIGO");
-								distancia = Random.Range(20,35);
-								caminar = false;
-								atras = false;
-								animator.SetBool("disparar",true);
+								if(!disparando)
+								{
+									disparando = true;
 
-								v3 = Vector3.zero;
-
-								disparar = false;
+									animator.SetBool("disparar", true);
+								}
+								agent.isStopped = true;
 							}
 
-						}else
+						}else//SI NO ESTA CERCA EN Z
 						{
-							caminar = true;
-							disparar = false;
+							if(!disparando)//SI NO ESTA DISPARANDO
+							{
+								agent.isStopped = false;
+								agent.SetDestination(new Vector3(transform.position.x+Random.Range(-8,8), transform.position.y, target.position.z));
+							}
 						}
-					}else
-					{
-						distancia = Random.Range(20,35);
-						caminar = false;
-						atras = false;
-						animator.SetBool("disparar",true);
-
-						v3 = Vector3.zero;
-
-						disparar = false;
 					}
 				}
-				if(atras)
+				if(target.tag == NameEnemy || target.tag == NameEnemyTank)
 				{
-					animator.SetBool("caminar", false);
-
-					caminar = false;
-					disparar = false;
-					animator.SetBool("atras",true);
-
-					if(_currentDirection == "right")
+					if(target.GetComponent<Hero>() != null)
 					{
-						print("IZQUIERDA");
-						v3 += Vector3.left;
-					}else
+						if(target.GetComponent<Hero>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AI>() != null)
 					{
-						print("DERECHA");
-						v3 += Vector3.right;
+						if(target.GetComponent<AI>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
 					}
 				}
-				if(cascar)
-				{
-					v3 = Vector3.zero;
-
-					caminar = false;
-					disparar = false;
-
-					animator.SetBool("caminar",true);
-
-					if(angle == 0 && _currentDirection == "right")
-					{
-						v3 += Vector3.right;
-					}else if(angle == 180 && _currentDirection == "left")
-					{
-						v3 += Vector3.left;
-					}else
-					{
-						animator.SetBool("caminar",false);
-						atras = true;
-					}
-
-					if(target.transform.position.z > transform.position.z)
-					{
-						v3 += Vector3.forward;
-					}else if (target.transform.position.z < transform.position.z)
-					{
-						v3 += Vector3.back;
-					}
-				}
-			}
-
-			if(v3 != Vector3.zero)
+			}else if(disparando)
 			{
-				GetComponent<Rigidbody>().velocity = (5 * v3.normalized);
+				agent.isStopped = true;
+				animator.SetBool("walk", false);
+			}
+			if(!agent.isStopped)
+			{
+				animator.SetBool("walk", true);
+			}else
+			{
+				animator.SetBool("walk", false);
 			}
 
+			if(salud <= 0)
+			{
+				if(explocion)
+				{
+					var bones = (GameObject)Instantiate(Huesos, cascadoSpawn.position, transform.rotation);
+					explocion = false;
+				}
+				vivo = false;
+				animator.SetBool("muerto", true);
+
+				gameObject.layer = LayerMask.NameToLayer("muerto");
+				Base.layer = LayerMask.NameToLayer("mira");
+			}else
+			{
+				explocion = false;
+			}
 		}else
 		{
-			animator.SetBool("muerto", true);
-
+			agent.isStopped = true;
 			mira.SetActive(false);
 
-			gameObject.layer = LayerMask.NameToLayer("muerto");
-			BaseUno.layer = LayerMask.NameToLayer("mira");
-			//gameObject.tag = "Untagged";
-
-			StartCoroutine(muertee());
-		}
-
-		if(salud <= 0)
-		{
-			vivo = false;
-			v3 = Vector3.zero;
 			animator.SetBool("muerto", true);
 
 			gameObject.layer = LayerMask.NameToLayer("muerto");
-			BaseUno.layer = LayerMask.NameToLayer("mira");
+			Base.layer = LayerMask.NameToLayer("mira");
 		}
-	}
-
-	IEnumerator muertee ()
-	{
-		yield return new WaitForSeconds(8f);
-		Destroy(gameObject);
-	}
-
-	//APAGA LA LUZ
-	IEnumerator apaga ()
-	{
-		yield return new WaitForSeconds(0.1f);
-		luz.SetActive(false);
-	}
-	IEnumerator esperaDisparo()
-	{
-		yield return new WaitForSeconds(momento);
-		disparar = true;
-	}
-	void vuelta ()
-	{
-		if(_currentDirection == "right")
-		{
-			_currentDirection = "left";
-			voltear = -1.13f;
-		}else
-		{
-			_currentDirection = "right";
-			voltear = 1.13f;
-		}
-		atras = false;
 	}
 
 	void noVivo(bool vivo)
@@ -436,12 +297,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			gameObject.transform.localScale = new Vector3(-1.13f,1.13f,1.13f);
 		}
 	}
-	IEnumerator esperaGolpe ()
-	{
-		float moment = Random.Range(0,0.2f);
-		yield return new WaitForSeconds(moment);
-		animator.SetBool("golpe", true);
-	}
+
 	void OnCollisionEnter (Collision col)
 	{
 		if(col.gameObject.tag == "Water")
@@ -453,61 +309,33 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			water = false;
 		}
 
-		if(col.gameObject.tag == NameEnemy || col.gameObject.tag == NameEnemyTank)
-		{
-			v3 = Vector3.zero;
-			StartCoroutine(esperaGolpe());
-			actuando = false;
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-		}
-
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
+			agent.isStopped = false;
 
 			acuchillado = true;
 
+			animator.SetBool("walk",false);
+			animator.SetBool("cascado", true);
+
+			//efect = Random.Range(3,5);
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
 				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
 			}
-
-			salud -= 50;
+			salud -= 15;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "50";
+			letras.GetComponent<TextMesh>().text = "15";
 
 			crearCarta = true;
 			StartCoroutine(esperaCarta());
 		}
 		if(col.gameObject.tag == "bala" && vivo)
 		{
-			actuando = false;
+			agent.isStopped = false;
 
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
+			animator.SetBool("walk",false);
 
 			animator.SetBool("cascado", true);
 
@@ -525,184 +353,16 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaSniper>().poder.ToString("F0");
 			}
 
-			Destroy(col.gameObject);
-
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
+				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation);
 			}
 		}
-		/*if(col.gameObject.tag == "balaFusil" && vivo)
-		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
-			Destroy(col.gameObject);
-			salud -= 40;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "40";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaEscopeta" && vivo)
-		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
-			Destroy(col.gameObject);
-			salud -= 15;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "15";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaSubmetra" && vivo)
-		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
-			Destroy(col.gameObject);
-			salud -= 20;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "20";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaMetra" && vivo)
-		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
-			Destroy(col.gameObject);
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaMG" && vivo)
-		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
-			Destroy(col.gameObject);
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}*/
-		/*if(col.gameObject.tag == "balaSniper" && vivo)
-		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			animator.SetBool("cascado", true);
-			col.gameObject.SetActive(false);
-			salud -= 100;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "100";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}*/
 		if(col.gameObject.tag == "explo" && vivo)
 		{
-			actuando = false;
+			agent.isStopped = false;
 
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("cascado", true);
+			animator.SetBool("walk",false);
 
 			salud -= col.gameObject.GetComponent<Explo>().poder;
 
@@ -711,49 +371,39 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
+				explocion = true;
 			}
 		}
-		if(col.gameObject.tag == "obstaculo1" || col.gameObject.tag == "obstaculo2" || col.gameObject.name == "PuazD")
+
+		if(col.gameObject.tag == NameEnemyTank && vivo)
 		{
-			//CAMINA HACIA ARRIBA
-			animator.SetBool("caminar",false);
-			atras = true;
-			caminar = false;
-			atras = true;
+			if(col.gameObject.GetComponent<Rigidbody>().velocity.x > 2.5f)
+			{
+				salud -= 100;
+
+				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				letras.GetComponent<TextMesh>().text = "100";
+
+				if(PlayerPrefs.GetInt("violencia") == 1)
+				{
+					var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				}
+			}
 		}
-	}
-	void OnCollisionExit (Collision col)
-	{
-		if(col.gameObject.tag == NameEnemy)
+		if(col.gameObject.tag == NameEnemy || col.gameObject.tag == NameEnemyTank)
 		{
-			actuando = false;
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
+			animator.SetBool("golpe", true);
 		}
 	}
 
-	//CREA CARTA
-	IEnumerator esperaCarta()
-	{
-		yield return new WaitForSeconds(1);
-		if(vivo)
-		{
-			crearCarta = false;
-		}
-	}
-	GameObject baseNeutra;
+	bool quemado;
 	void OnTriggerEnter (Collider col)
 	{
 		if(col.gameObject.tag == "newtra" && vivo || col.gameObject.tag == BaseMala && vivo)
 		{
 			target = col.gameObject.transform;
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetBool("caminar", false);
-			actuando = true;
+			agent.isStopped = true;
+			animator.SetBool("walk",false);
 		}
 
 		if(col.gameObject.tag == "mira" && vivo)
@@ -762,81 +412,58 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			mira.GetComponent<Animator>().SetBool("entry",true);
 		}
 
-		if(col.gameObject.tag == NameEnemy && vivo)
-		{
-			Player = col.gameObject.transform;
-		}
-		if(col.gameObject.tag == NameEnemyTank && vivo)
-		{
-			Player = col.gameObject.transform;
-		}
-
-		if(col.gameObject.name == "BaseNeutra")
-		{
-			baseNeutra = col.gameObject;
-		}
 		if(col.gameObject.tag == "balaLlamas" && vivo)
 		{
-			actuando = false;
-
-			v3 = Vector3.zero;
-
-			animator.SetBool("atras",false);
-			animator.SetBool("caminar",false);
-			animator.SetBool("disparar",false);
-			atras = false;
-			caminar = false;
-			disparar = false;
-			cascar = false;
+			animator.SetBool("walk",false);
 
 			animator.SetBool("cascado", true);
 			Destroy(col.gameObject);
-			salud -= 3;
+
+			quemado = true;
+			salud -= 1;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
+			letras.GetComponent<TextMesh>().text = "10";
 		}
-		if(col.gameObject.tag == medic)
-		{
-			if(salud < saludMax)
-			{
-				CmdSaludSumar();
-			}
-		}
-	}
-	void OnTriggerStay (Collider col)
-	{
 		if(col.gameObject.tag == NameEnemy && vivo)
 		{
-			Player = col.gameObject.transform;
+			target = col.gameObject.transform;
+			agent.isStopped = false;
 		}
 		if(col.gameObject.tag == NameEnemyTank && vivo)
 		{
-			Player = col.gameObject.transform;
+			target = col.gameObject.transform;
+			agent.isStopped = false;
 		}
 	}
 	void OnTriggerExit (Collider col)
 	{
+		if(col.gameObject.tag == "balaLlamas" && vivo)
+		{
+			quemado = false;
+		}
+
 		if(col.gameObject.tag == "mira" && vivo)
 		{
 			mira.SetActive(false);
 		}
+
 		if(col.gameObject.tag == NameEnemy)
 		{
-			Player = null;
+			target = null;
 		}
 		if(col.gameObject.tag == NameEnemyTank)
 		{
-			Player = null;
+			target = null;
 		}
-		if(col.gameObject.name == "BaseNeutra")
+	}
+
+	IEnumerator esperaCarta()
+	{
+		yield return new WaitForSeconds(1);
+		if(vivo)
 		{
-			baseNeutra = null;
+			crearCarta = false;
 		}
 	}
 
@@ -852,11 +479,18 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
 		NetworkServer.Spawn(letras);
 	}
+	//APAGA LA LUZ
+	IEnumerator apaga ()
+	{
+		yield return new WaitForSeconds(0.1f);
+		luz.SetActive(false);
+	}
 
-	//EVENTO SPINE
+	//EVENTOS SPINE
+	//CARGA
 	void giro ()
 	{
-		v3 = Vector3.zero;
+		/*
 		if(transform.localScale.x == 1.13f)
 		{
 			voltear = -1.13f;
@@ -864,13 +498,13 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		{
 			voltear = 1.13f;
 		}
-		atras = false;
-		actuando = false;
+		*/
 	}
 	void termino ()
 	{
-		actuando = false;
+		disparando = false;
 	}
+
 	void rafaga ()
 	{
 		luz.SetActive(true);
@@ -934,7 +568,6 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 		Destroy(gameObject);
 	}
-
 	void cartacrear()
 	{
 		if(crearCarta)

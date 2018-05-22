@@ -27,7 +27,7 @@ public class AnimacionesVikingo : MonoBehaviour {
 	{
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
 		{
-			GetComponent<AIVikingoNetwork>().actuando = false;
+			//GetComponent<AIVikingoNetwork>().actuando = false;
 		}
 
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("caminar"))

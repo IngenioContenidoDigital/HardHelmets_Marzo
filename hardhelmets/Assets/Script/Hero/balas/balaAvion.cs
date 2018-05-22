@@ -74,10 +74,6 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AINetwork>().salud -= poder;
 			}
-			if(body.GetComponent<AIPanzerNetwork>())
-			{
-				body.GetComponent<AIPanzerNetwork>().salud -= poder;
-			}
 			if(body.GetComponent<AIMetraNetwork>())
 			{
 				body.GetComponent<AIMetraNetwork>().salud -= poder;
@@ -93,10 +89,6 @@ public class balaAvion : MonoBehaviour {
 			if(body.GetComponent<AIMorteroMaloNetwork>())
 			{
 				body.GetComponent<AIMorteroMaloNetwork>().salud -= poder;
-			}
-			if(body.GetComponent<AIMedico>())
-			{
-				body.GetComponent<AIMedico>().salud -= poder;
 			}
 			if(body.GetComponent<Torreta>())
 			{

@@ -295,6 +295,13 @@ public class AI : MonoBehaviour {
 							target = null;
 							agent.isStopped = true;
 						}
+					}else if(target.GetComponent<AIVikingo>() != null)
+					{
+						if(target.GetComponent<AIVikingo>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
 					}
 				}
 			}

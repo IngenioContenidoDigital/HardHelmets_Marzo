@@ -112,7 +112,7 @@ public class PanzerAnimationsNetwork : MonoBehaviour {
 	}
 	void polvo ()
 	{
-		if(!GetComponent<AIPanzerNetwork>().water )
+		if(!GetComponent<AINetwork>().water )
 		{
 			var efect = (GameObject)Instantiate(polv, transform.position, transform.rotation);
 			Destroy(efect, 1.0f);
@@ -120,7 +120,7 @@ public class PanzerAnimationsNetwork : MonoBehaviour {
 	}
 	void paso()
 	{
-		if(!GetComponent<AIPanzerNetwork>().water)
+		if(!GetComponent<AINetwork>().water)
 		{
 			var efect = (GameObject)Instantiate(pasopolvo, PasoD.transform.position, PasoD.transform.rotation);
 		}else
@@ -130,7 +130,7 @@ public class PanzerAnimationsNetwork : MonoBehaviour {
 	}
 	void paso2()
 	{
-		if(!GetComponent<AIPanzerNetwork>().water)
+		if(!GetComponent<AINetwork>().water)
 		{
 			var efect = (GameObject)Instantiate(pasopolvo2, PasoI.transform.position, PasoI.transform.rotation);
 		}else

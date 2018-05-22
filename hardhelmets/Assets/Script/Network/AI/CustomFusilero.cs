@@ -84,9 +84,9 @@ public class CustomFusilero : MonoBehaviour {
 					activar = true;
 					poner = false;
 				}
-			}else if(GetComponent<AIPanzerNetwork>())
+			}else if(GetComponent<AINetwork>())
 			{
-				if(GetComponent<AIPanzerNetwork>().salud <= 50)
+				if(GetComponent<AINetwork>().salud <= 50)
 				{
 					skinsToCombine[6] = "cascado";
 					activar = true;

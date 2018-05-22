@@ -49,7 +49,7 @@ public class CustomMedico : MonoBehaviour {
 	{
 		if(poner)
 		{
-			if(GetComponent<AIMedico>().salud <= 50)
+			if(GetComponent<AINetwork>().salud <= 50)
 			{
 				skinsToCombine[4] = "cascado";
 				activar = true;

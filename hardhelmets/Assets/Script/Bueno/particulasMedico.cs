@@ -55,10 +55,6 @@ public class particulasMedico : MonoBehaviour {
 			{
 				body.GetComponent<AINetwork>().CmdSaludSumar();
 			}
-			if(body.GetComponent<AIPanzerNetwork>())
-			{
-				body.GetComponent<AIPanzerNetwork>().CmdSaludSumar();
-			}
 			if(body.GetComponent<AIMetraNetwork>())
 			{
 				body.GetComponent<AIMetraNetwork>().CmdSaludSumar();
