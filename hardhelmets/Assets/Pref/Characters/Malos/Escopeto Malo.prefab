@@ -3343,7 +3343,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -5243,7 +5242,7 @@ MonoBehaviour:
   NameEnemyTank: tank
   Tipo: 1
   crearCarta: 0
-  carta: {fileID: 1157520837908654, guid: 0bfe5a5677a3e4046a05aa119f837cec, type: 2}
+  carta: {fileID: 1708670281682196, guid: a24e465fe1051ad4d9e44210d333a6c5, type: 2}
   target: {fileID: 0}
   animator: {fileID: 95626074979189196}
   _currentDirection: right
@@ -5291,6 +5290,8 @@ MonoBehaviour:
   cascadoSpawn: {fileID: 4064986502192390}
   Base: {fileID: 1569665957616266}
   water: 0
+  particulas: {fileID: 0}
+  amigo: 
   HumoPanzer: {fileID: 0}
   strikeescopeta: {fileID: 0}
   Arma: {fileID: 1901235674030872, guid: 9bae587bf88faf645aacf6d4ce37dde5, type: 2}
@@ -6019,7 +6020,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.42
-  m_Speed: 6
+  m_Speed: 8
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 0

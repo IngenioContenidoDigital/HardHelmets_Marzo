@@ -49,10 +49,6 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AIMortero>().salud -= poder;
 			}
-			if(body.GetComponent<AIMedicoOffline>())
-			{
-				body.GetComponent<AIMedicoOffline>().salud -= poder;
-			}
 			if(body.GetComponent<AIVehicle>())
 			{
 				body.GetComponent<AIVehicle>().salud -= poder;

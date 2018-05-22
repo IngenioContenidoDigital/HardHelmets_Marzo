@@ -49,7 +49,7 @@ public class customMedicoOffline : MonoBehaviour {
 	{
 		if(poner)
 		{
-			if(GetComponent<AIMedicoOffline>().salud <= 50)
+			if(GetComponent<AI>().salud <= 50)
 			{
 				skinsToCombine[4] = "cascado";
 				activar = true;

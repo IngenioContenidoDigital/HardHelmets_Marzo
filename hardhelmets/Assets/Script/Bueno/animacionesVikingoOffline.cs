@@ -25,9 +25,13 @@ public class animacionesVikingoOffline : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		if(!animator.GetCurrentAnimatorStateInfo(0).IsName("dispara") && GetComponent<AIVikingo>().disparando)
+		{
+			GetComponent<AIVikingo>().disparando = false;
+		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
 		{
-			GetComponent<AIVikingo>().actuando = false;
+			//GetComponent<AI>().actuando = false;
 		}
 
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("caminar"))
@@ -37,6 +41,7 @@ public class animacionesVikingoOffline : MonoBehaviour {
 
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("dispara"))
 		{
+			animator.SetBool("walk", false);
 			animator.SetBool("disparando", true);
 			animator.SetBool("cascado", false);
 			animator.SetBool("disparar", false);

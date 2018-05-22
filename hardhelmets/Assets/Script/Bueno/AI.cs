@@ -85,6 +85,10 @@ public class AI : MonoBehaviour {
 
 	public bool water;
 
+	//MEDICO
+	public ParticleSystem particulas;
+	public string amigo;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -173,74 +177,105 @@ public class AI : MonoBehaviour {
 					voltear = 1;
 				}
 					
-				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
 				{
 					agent.isStopped = false;
 					agent.SetDestination(target.position);
 				}
-				if(Mathf.Abs((transform.position - target.position).x) < distancia)
+				if(Mathf.Abs((transform.position - target.position).x) < distancia)//SI ESTA CERCA EN X
 				{
-					if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
+					if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
 					{
-						if(target.tag == BuscarBase) // BASE ENEMIGA
-						{
-							if(Tipo == 5 && !disparando)
-							{
-								animator.SetBool("disparo", true);
-								StartCoroutine(esperaDisparoPanzer());
-							}else
-							{
-								if(disparos >= 3)
-								{
-									animator.SetInteger("recarga", Tipo);
-								}else if(!disparando)
-								{
-									disparando = true;
-
-									disparos += 1;
-									animator.SetInteger("disparo", Tipo);
-
-									StartCoroutine(esperaDisparo());
-								}
-							}
-							agent.isStopped = true;
-						}else if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
-						{
-							agent.isStopped = true;
-						}else // ENEMIGO
-						{
-							if(Tipo == 5 && !disparando)
-							{
-								animator.SetBool("disparo", true);
-								StartCoroutine(esperaDisparoPanzer());
-							}else
-							{
-								if(disparos >= 3)
-								{
-									animator.SetInteger("recarga", Tipo);
-								}else if(!disparando)
-								{
-									disparando = true;
-
-									disparos += 1;
-									animator.SetInteger("disparo", Tipo);
-
-									StartCoroutine(esperaDisparo());
-								}
-							}
-							agent.isStopped = true;
-						}
-
-					}else//SI NO ESTA CERCA EN Z
+						agent.isStopped = true;
+					}else
 					{
-						if(Tipo == 5 && !animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot"))//SI ES EL PANZER
+						if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
 						{
-							agent.isStopped = false;
-							agent.SetDestination(new Vector3(transform.position.x+Random.Range(-8,8), transform.position.y, target.position.z));
-						}else if(!animator.GetBool("recargando"))//SI NO ES PANZER
+							if(target.tag == BuscarBase) // BASE ENEMIGA
+							{
+								if(Tipo == 5 && !disparando)
+								{
+									animator.SetBool("disparo", true);
+									StartCoroutine(esperaDisparoPanzer());
+								}else
+								{
+									if(disparos >= 3)
+									{
+										animator.SetInteger("recarga", Tipo);
+									}else if(!disparando)
+									{
+										disparando = true;
+
+										disparos += 1;
+										animator.SetInteger("disparo", Tipo);
+
+										StartCoroutine(esperaDisparo());
+									}
+								}
+								agent.isStopped = true;
+							}else if(target.tag == amigo)//MEDICO -- TARGET ES AMIGO
+							{
+								agent.isStopped = true;
+								if(target.GetComponent<Hero>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+								{
+									if(particulas.isPlaying && target.GetComponent<Hero>().salud >= target.GetComponent<Hero>().saludMax)
+									{
+										print("TIENE LA SANGRE LLENA");
+										particulas.Stop();
+									}
+									if(!particulas.isPlaying && target.GetComponent<Hero>().salud < target.GetComponent<Hero>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									{
+										particulas.Play();
+									}
+								}
+								if(target.GetComponent<AI>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+								{
+									if(particulas.isPlaying && target.GetComponent<AI>().salud >= target.GetComponent<AI>().saludMax)
+									{
+										print("TIENE LA SANGRE LLENA");
+										particulas.Stop();
+									}
+									if(!particulas.isPlaying && target.GetComponent<AI>().salud < target.GetComponent<AI>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									{
+										particulas.Play();
+									}
+								}
+							}else // ENEMIGO
+							{
+								if(Tipo == 5 && !disparando)
+								{
+									animator.SetBool("disparo", true);
+									StartCoroutine(esperaDisparoPanzer());
+								}else
+								{
+									print("DISPARAR AL ENEMIGO");
+									if(disparos >= 3)
+									{
+										animator.SetInteger("recarga", Tipo);
+									}else if(!disparando)
+									{
+										disparando = true;
+
+										disparos += 1;
+										animator.SetInteger("disparo", Tipo);
+
+										StartCoroutine(esperaDisparo());
+									}
+								}
+								agent.isStopped = true;
+							}
+
+						}else//SI NO ESTA CERCA EN Z
 						{
-							agent.isStopped = false;
-							agent.SetDestination(new Vector3(transform.position.x+Random.Range(-8,8), transform.position.y, target.position.z));
+							if(Tipo == 5 && !animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot"))//SI ES EL PANZER
+							{
+								agent.isStopped = false;
+								agent.SetDestination(new Vector3(transform.position.x+Random.Range(-8,8), transform.position.y, target.position.z));
+							}else if(!animator.GetBool("recargando"))//SI NO ES PANZER
+							{
+								agent.isStopped = false;
+								agent.SetDestination(new Vector3(transform.position.x+Random.Range(-8,8), transform.position.y, target.position.z));
+							}
 						}
 					}
 				}
@@ -253,8 +288,7 @@ public class AI : MonoBehaviour {
 							target = null;
 							agent.isStopped = true;
 						}
-					}
-					if(target.GetComponent<AI>() != null)
+					}else if(target.GetComponent<AI>() != null)
 					{
 						if(target.GetComponent<AI>().salud <= 0)
 						{
@@ -309,9 +343,9 @@ public class AI : MonoBehaviour {
 			{
 				explocion = false;
 			}
-
 		}else
 		{
+			agent.isStopped = true;
 			mira.SetActive(false);
 			gameObject.layer = LayerMask.NameToLayer("muerto");
 		}
@@ -451,6 +485,12 @@ public class AI : MonoBehaviour {
 			target = col.gameObject.transform;
 			agent.isStopped = false;
 		}
+		//MEDICO
+		if(col.gameObject.tag == amigo && vivo)
+		{
+			target = col.gameObject.transform;
+			particulas.Play();
+		}
 	}
 	void OnTriggerExit (Collider col)
 	{
@@ -462,6 +502,12 @@ public class AI : MonoBehaviour {
 		if(col.gameObject.tag == "mira" && vivo)
 		{
 			mira.SetActive(false);
+		}
+		//MEDICO
+		if(col.gameObject.tag == amigo)
+		{
+			target = null;
+			particulas.Stop();
 		}
 	}
 
@@ -721,6 +767,7 @@ public class AI : MonoBehaviour {
 		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
 		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(-1,-6);
 	}
+	//PANZER
 	public GameObject HumoPanzer;
 	public GameObject strikeescopeta;
 	void rocket ()
@@ -738,8 +785,6 @@ public class AI : MonoBehaviour {
 			var efect = (GameObject)Instantiate(strikeescopeta, bulletSpawn.transform.position, Quaternion.Euler(0,0,bulletSpawn.rotation.z-180));
 		}
 	}
-
-
 	public void ShotDP()
 	{
 		var humo = (GameObject)Instantiate(HumoPanzer, new Vector3(bulletSpawn.position.x-4, bulletSpawn.position.y-0.5f, bulletSpawn.position.z), Quaternion.Euler(0,0,0));
@@ -749,8 +794,6 @@ public class AI : MonoBehaviour {
 
 		granade.GetComponent<balaPanzer>().poder = saludMax*granade.GetComponent<balaPanzer>().poder/80;
 	}
-
-
 	public void ShotIP()
 	{
 		var humo = (GameObject)Instantiate(HumoPanzer, new Vector3(bulletSpawn.position.x+4, bulletSpawn.position.y-0.5f, bulletSpawn.position.z), Quaternion.Euler(0,180,0));

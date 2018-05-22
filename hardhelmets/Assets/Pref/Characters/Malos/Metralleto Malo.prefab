@@ -148,7 +148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4954663933004624}
   - component: {fileID: 114739558690270530}
-  - component: {fileID: 114569980870966188}
   m_Layer: 19
   m_Name: apuntar [Override]
   m_TagString: Untagged
@@ -5155,21 +5154,6 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
---- !u!114 &114569980870966188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063047331628940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2705cb5bef3064ea97462aefe0506a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95623710532963824}
-  Player: {fileID: 0}
-  nextPosition: {x: 0, y: 0, z: 0}
-  objeto: {fileID: 1761215615044448}
 --- !u!114 &114575463407844680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5757,6 +5741,8 @@ MonoBehaviour:
   cascadoSpawn: {fileID: 4452151034080274}
   Base: {fileID: 1177764329865424}
   water: 0
+  particulas: {fileID: 0}
+  amigo: 
   HumoPanzer: {fileID: 0}
   strikeescopeta: {fileID: 0}
   Arma: {fileID: 1332843665400126, guid: 18da997f4971a654abc31ce73889b160, type: 2}
@@ -6033,7 +6019,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.42
-  m_Speed: 6
+  m_Speed: 8
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 0

@@ -901,7 +901,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4388525742848762}
   - component: {fileID: 114260063729896826}
-  - component: {fileID: 114449459483545448}
   m_Layer: 19
   m_Name: apuntar [Override]
   m_TagString: Untagged
@@ -1824,9 +1823,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831455666371836}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9670628, w: 0.25453815}
-  m_LocalPosition: {x: -0.50104207, y: 5.842362, z: 0}
-  m_LocalScale: {x: 0.99991196, y: 0.9998272, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.46630946, w: 0.8846217}
+  m_LocalPosition: {x: 0.242, y: 2.896, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4923179258760832}
   m_RootOrder: 19
@@ -2376,9 +2375,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635186405064532}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1517195, w: 0.98842365}
-  m_LocalPosition: {x: 0.5190999, y: -0.000000084242785, z: 0}
-  m_LocalScale: {x: 1.1999143, y: 1.2000859, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.11259626, w: 0.99364084}
+  m_LocalPosition: {x: 0.5191, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4263978243760446}
   - {fileID: 4873440414398244}
@@ -4798,21 +4797,6 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
---- !u!114 &114449459483545448
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1423919881509238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf2705cb5bef3064ea97462aefe0506a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 95266698464900346}
-  Player: {fileID: 0}
-  nextPosition: {x: 0, y: 0, z: 0}
-  objeto: {fileID: 1039564136229086}
 --- !u!114 &114450442786029982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5371,7 +5355,7 @@ MonoBehaviour:
   NameEnemyTank: enemyTank
   Tipo: 1
   crearCarta: 0
-  carta: {fileID: 1157520837908654, guid: 0bfe5a5677a3e4046a05aa119f837cec, type: 2}
+  carta: {fileID: 1708670281682196, guid: a24e465fe1051ad4d9e44210d333a6c5, type: 2}
   target: {fileID: 0}
   animator: {fileID: 95266698464900346}
   _currentDirection: right
@@ -5419,6 +5403,8 @@ MonoBehaviour:
   cascadoSpawn: {fileID: 4957886811841146}
   Base: {fileID: 1423265935044046}
   water: 0
+  particulas: {fileID: 0}
+  amigo: 
   HumoPanzer: {fileID: 0}
   strikeescopeta: {fileID: 0}
   Arma: {fileID: 1901235674030872, guid: 9bae587bf88faf645aacf6d4ce37dde5, type: 2}
@@ -5471,7 +5457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036d214c99f44434fa216a374bf810fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 4330305474551536}
 --- !u!114 &114789662389859076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6034,7 +6020,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.42
-  m_Speed: 6
+  m_Speed: 8
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 0
