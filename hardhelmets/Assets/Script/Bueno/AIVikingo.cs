@@ -131,14 +131,6 @@ public class AIVikingo : MonoBehaviour {
 		//VOLTEA PERSONAJE
 		gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
 
-		//ANIMACION CAYENDO
-		if(GetComponent<Rigidbody>().velocity.y < -4f)
-		{
-			animator.SetBool("falling", true);
-		}else
-		{
-			animator.SetBool("falling", false);
-		}
 		if(vivo)
 		{
 			if(grounded && target == null)

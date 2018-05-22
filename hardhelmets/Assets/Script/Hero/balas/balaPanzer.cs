@@ -35,7 +35,7 @@ public class balaPanzer : MonoBehaviour {
 
 	IEnumerator parar()
 	{
-		yield return new WaitForSeconds(1.12f);
+		yield return new WaitForSeconds(1.15f);
 		girar = false;
 		fuerza = true;
 	}

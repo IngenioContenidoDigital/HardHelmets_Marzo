@@ -1972,7 +1972,7 @@ Transform:
   m_GameObject: {fileID: 1202457840580286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -70, y: 70, z: 70}
+  m_LocalScale: {x: 80, y: 80, z: 80}
   m_Children: []
   m_Father: {fileID: 4574523151043346}
   m_RootOrder: 5
@@ -3168,7 +3168,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -4404,14 +4403,14 @@ MonoBehaviour:
   salud: 100
   saludMax: 0
   distancia: 0
-  minima: 28
-  maxima: 38
+  minima: 40
+  maxima: 45
   distanciaZ: 0
-  BaseBuena: BaseMala
-  BaseMala: BaseBuena
-  BuscarBase: base
-  NameEnemy: Player
-  NameEnemyTank: tank
+  BaseBuena: BaseBuena
+  BaseMala: BaseMala
+  BuscarBase: enemyBase
+  NameEnemy: enemy
+  NameEnemyTank: enemyTank
   Tipo: 5
   crearCarta: 0
   carta: {fileID: 1345516449843508, guid: 71d80db92e1b2d54d863bd13b4d223fa, type: 2}
