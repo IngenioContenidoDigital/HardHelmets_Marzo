@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 54313530911083422}
   - component: {fileID: 114777553277645738}
   - component: {fileID: 114507073493457556}
+  - component: {fileID: 208431660038083778}
   m_Layer: 10
   m_Name: CampMalo
   m_TagString: enemy
@@ -240,6 +241,21 @@ MonoBehaviour:
   translator:
     autoReset: 1
     layerMixModes: 00000000
+--- !u!208 &208431660038083778
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370252254054482}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.585, y: 2.78321, z: 2.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.08, y: 2.473136, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!212 &212700917734160202
 SpriteRenderer:
   m_ObjectHideFlags: 1

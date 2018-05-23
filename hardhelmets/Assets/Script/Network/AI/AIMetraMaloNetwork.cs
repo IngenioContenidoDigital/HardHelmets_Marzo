@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.AI;
 
 public class AIMetraMaloNetwork : NetworkBehaviour {
+
+	public NavMeshAgent agent;
 
 	public string enemyName;
 	public string tankName;
@@ -69,7 +72,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 	public Transform casquilloSpawn;
 
 	//ORDEN DE CAMINAR
-	Vector3 v3;
 	public bool caminar;
 	public Vector3 lugar;
 
@@ -167,51 +169,24 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 				StartCoroutine(esperaCuchillo());
 			}
 
-			if(v3 != Vector3.zero)
-			{
-				GetComponent<Rigidbody>().velocity = (6 * v3.normalized);
-			}
-
 			if(caminar)
 			{
 				animator.SetBool("caminar", true);
 
-				if(transform.position.x < lugar.x)
-				{
-					_currentDirection = "right";
-					voltear = 1;
+				agent.isStopped = false;
+				agent.SetDestination(lugar);
 
-					v3 += Vector3.right;
-
-					if(transform.position.z < lugar.z)
-					{
-						v3 += Vector3.forward;
-					}else
-					{
-						v3 += Vector3.back;
-					}
-				}else
-				{
-					_currentDirection = "left";
-					voltear = -1;
-
-					v3 += Vector3.left;
-
-					if(transform.position.z < lugar.z)
-					{
-						v3 += Vector3.forward;
-					}else
-					{
-						v3 += Vector3.back;
-					}
-				}
 				if(transform.position.x >= lugar.x-3 && transform.position.x <= lugar.x+3)
 				{
 					animator.SetBool("caminar", false);
 					caminar = false;
-					v3 = Vector3.zero;
 				}
+			}else
+			{
+				animator.SetBool("caminar", false);
+				agent.isStopped = true;
 			}
+
 			if(Player != null && !caminar)
 			{
 				//MIRA AL JUGADOR
@@ -241,7 +216,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 				}
 			}else
 			{
-				//v3 = Vector3.zero;
 				animator.SetInteger("disparo", -1);
 			}
 
@@ -262,7 +236,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 					acuchillado = false;
 				}else if(quemado)
 				{
-					v3 = Vector3.zero;
+					caminar = false;
 					animator.SetBool("muerto", true);
 					animator.SetInteger("muerte", 20);
 				}else
@@ -324,7 +298,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 	{
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			animator.SetInteger("cascado", 4);
 			acuchillado = true;
@@ -342,7 +315,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 		}
 		if(col.gameObject.tag == "bala" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			animator.SetInteger("cascado", 1);
 			Destroy(col.gameObject);
@@ -366,105 +338,9 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
 			}
 		}
-		/*if(col.gameObject.tag == "balaFusil" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 40;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "40";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaEscopeta" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 15;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "15";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaSubmetra" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 20;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "20";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaMetra" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaMG" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}*/
-		/*if(col.gameObject.tag == "balaSniper" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			col.gameObject.SetActive(false);
-			salud -= 100;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "100";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}*/
 		if(col.gameObject.tag == "explo" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
@@ -478,7 +354,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 		}
 		if(col.gameObject.tag == tankName && vivo)
 		{
-			v3 = Vector3.zero;
 			print(col.gameObject.GetComponent<Rigidbody>().velocity.x);
 			if(col.gameObject.GetComponent<Rigidbody>().velocity.x > 2.5f)
 			{
@@ -524,7 +399,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 		}
 		if(col.gameObject.tag == "balaLlamas" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			animator.SetInteger("cascado", 1);
 			Destroy(col.gameObject);

@@ -301,7 +301,7 @@ public class AINetwork : NetworkBehaviour {
 				{
 					if(target.GetComponent<HeroNetwork>() != null)
 					{
-						if(target.GetComponent<Hero>().salud <= 0)
+						if(target.GetComponent<HeroNetwork>().salud <= 0)
 						{
 							target = null;
 							agent.isStopped = true;
@@ -333,6 +333,7 @@ public class AINetwork : NetworkBehaviour {
 
 			if(salud <= 0)
 			{
+				print("MUERTE");
 				int muerteg = Random.Range(11,14);
 				if(explocion)
 				{

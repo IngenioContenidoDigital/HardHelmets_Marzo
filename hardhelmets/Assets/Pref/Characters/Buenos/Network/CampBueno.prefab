@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114673462063981618}
   - component: {fileID: 114477537038470622}
   - component: {fileID: 114815965112248284}
+  - component: {fileID: 208421263653883958}
   m_Layer: 19
   m_Name: CampBueno
   m_TagString: Player
@@ -315,6 +316,21 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!208 &208421263653883958
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261810858599270}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.585, y: 2.78321, z: 2.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.08, y: 2.473136, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!212 &212709997287215600
 SpriteRenderer:
   m_ObjectHideFlags: 1

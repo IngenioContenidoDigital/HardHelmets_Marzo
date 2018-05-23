@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIMetra : MonoBehaviour {
+
+	public NavMeshAgent agent;
 
 	public string enemyName;
 	public string tankName;
@@ -66,7 +69,6 @@ public class AIMetra : MonoBehaviour {
 	public Transform casquilloSpawn;
 
 	//ORDEN DE CAMINAR
-	Vector3 v3;
 	public bool caminar;
 	public Vector3 lugar;
 
@@ -152,54 +154,23 @@ public class AIMetra : MonoBehaviour {
 				StartCoroutine(esperaCuchillo());
 			}
 
-			if(v3 != Vector3.zero)
-			{
-				GetComponent<Rigidbody>().velocity = (6 * v3.normalized);
-			}
-
 			if(caminar)
 			{
-				if(transform.position.x < lugar.x)
-				{
-					if(voltear == -1)
-					{
-						v3 = Vector3.zero;
-					}else
-					{
-						v3 += Vector3.right;
-					}
+				animator.SetBool("caminar", true);
 
-					//_currentDirection = "right";
-					voltear = 1;
-				}else
-				{
-					if(voltear == 1)
-					{
-						v3 = Vector3.zero;
-					}else
-					{
-						v3 += Vector3.left;
-					}
-
-					//_currentDirection = "left";
-					voltear = -1;
-				}
-
-				if(transform.position.z < lugar.z)
-				{
-					v3 += Vector3.forward;
-				}else
-				{
-					v3 += Vector3.back;
-				}
+				agent.isStopped = false;
+				agent.SetDestination(lugar);
 
 				if(Mathf.Abs((transform.position - lugar).x) <= 2 && Mathf.Abs((transform.position - lugar).z) <= 2)//(transform.position.x >= lugar.x-3 && transform.position.x <= lugar.x+3 && transform.position.z >= lugar.z-2 && transform.position.z <= lugar.z+2)
 				{
 					print("ESTOY EN EL PUNTO");
 					animator.SetBool("caminar", false);
-					v3 = Vector3.zero;
 					caminar = false;
 				}
+			}else
+			{
+				animator.SetBool("caminar", false);
+				agent.isStopped = true;
 			}
 			if(Player != null && !caminar)
 			{
@@ -251,7 +222,7 @@ public class AIMetra : MonoBehaviour {
 					acuchillado = false;
 				}else if(quemado)
 				{
-					v3 = Vector3.zero;
+					caminar = false;
 					animator.SetBool("muerto", true);
 					animator.SetInteger("muerte", 20);
 				}else
@@ -304,7 +275,6 @@ public class AIMetra : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			animator.SetInteger("cascado", 4);
 			acuchillado = true;
@@ -322,7 +292,6 @@ public class AIMetra : MonoBehaviour {
 		}
 		if(col.gameObject.tag == "bala" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			animator.SetInteger("cascado", 1);
 			Destroy(col.gameObject);
@@ -444,7 +413,6 @@ public class AIMetra : MonoBehaviour {
 		}*/
 		if(col.gameObject.tag == "explo" && vivo)
 		{
-			v3 = Vector3.zero;
 			caminar = false;
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
@@ -458,7 +426,6 @@ public class AIMetra : MonoBehaviour {
 		}
 		if(col.gameObject.tag == tankName && vivo)
 		{
-			v3 = Vector3.zero;
 			print(col.gameObject.GetComponent<Rigidbody>().velocity.x);
 			if(col.gameObject.GetComponent<Rigidbody>().velocity.x > 2.5f)
 			{
@@ -480,13 +447,11 @@ public class AIMetra : MonoBehaviour {
 		if(col.gameObject.tag == "pared" && vivo || col.gameObject.tag == "Frente" && vivo)
 		{
 			caminar = false;
-			v3 = Vector3.zero;
 			animator.SetBool("caminar", false);
 		}
 		if(col.gameObject.tag == "obstaculo1" || col.gameObject.tag == "obstaculo2" || col.gameObject.name == "PuazD")
 		{
 			caminar = false;
-			v3 = Vector3.zero;
 			animator.SetBool("caminar", false);
 		}
 	}
