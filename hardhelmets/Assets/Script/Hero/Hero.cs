@@ -1686,7 +1686,9 @@ public class Hero : MonoBehaviour{
 		yield return new WaitForSeconds(5f);
 		GetComponent<Hero>().menu.SetActive(true);
 		SniperCam.GetComponent<Grayscale>().enabled = true;
-		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(muerto1);
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
+		menu.GetComponent<campamentosOffline>().cuentaatras = 5f;
+		menu.GetComponent<campamentosOffline>().contar = true;
 	}
 	IEnumerator resetArma ()
 	{

@@ -115,6 +115,11 @@ public class AI : MonoBehaviour {
 		animator.SetBool("falling", true);
 
 		_currentDirection = "right";
+
+		if(Tipo == 5)
+		{
+			groundRadius = 0.5f;
+		}
 	}
 	
 	// Update is called once per frame
@@ -146,7 +151,10 @@ public class AI : MonoBehaviour {
 		//ANIMACION CAYENDO
 		if(GetComponent<Rigidbody>().velocity.y < -4f)
 		{
-			animator.SetBool("falling", true);
+			if(Tipo != 5)
+			{
+				animator.SetBool("falling", true);
+			}
 		}else
 		{
 			animator.SetBool("falling", false);
@@ -187,6 +195,7 @@ public class AI : MonoBehaviour {
 					if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
 					{
 						agent.isStopped = true;
+						animator.SetBool("walk", false);
 					}else
 					{
 						if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
@@ -310,6 +319,10 @@ public class AI : MonoBehaviour {
 				animator.SetBool("walk", true);
 			}else
 			{
+				if(Tipo == 5)
+				{
+					animator.SetBool("normal", true);
+				}
 				animator.SetBool("walk", false);
 			}
 

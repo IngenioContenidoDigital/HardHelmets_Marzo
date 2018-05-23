@@ -123,6 +123,11 @@ public class AINetwork : NetworkBehaviour {
 		animator.SetBool("falling", true);
 
 		_currentDirection = "right";
+
+		if(Tipo == 5)
+		{
+			groundRadius = 0.5f;
+		}
 	}
 
 	// Update is called once per frame
@@ -164,7 +169,10 @@ public class AINetwork : NetworkBehaviour {
 		//ANIMACION CAYENDO
 		if(GetComponent<Rigidbody>().velocity.y < -4f)
 		{
-			animator.SetBool("falling", true);
+			if(Tipo != 5)
+			{
+				animator.SetBool("falling", true);
+			}
 		}else
 		{
 			animator.SetBool("falling", false);
@@ -328,6 +336,10 @@ public class AINetwork : NetworkBehaviour {
 				animator.SetBool("walk", true);
 			}else
 			{
+				if(Tipo == 5)
+				{
+					animator.SetBool("normal", true);
+				}
 				animator.SetBool("walk", false);
 			}
 

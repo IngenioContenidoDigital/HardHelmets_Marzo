@@ -511,15 +511,19 @@ public class CamNetwork : NetworkBehaviour {
 			nextPosition = Panel.GetComponent<Game>().posicion;
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
 		}
-
-		if(transform.position.z+50 >= Player.transform.position.z)
+		if(!bombardeo)
+		{
+			imagenBomba.GetComponent<UnityEngine.UI.Image>().fillAmount = 0;
+			imagenBomba.SetActive(true);
+		}
+		/*if(transform.position.z+50 >= Player.transform.position.z)
 		{
 			equis -= 0.3f;
 			if(equis <= 12)
 			{
 				equis = 12;
 			}
-		}
+		}*/
 
 		//POSICION DE LA CAMARA EN Z
 		if(alejar)

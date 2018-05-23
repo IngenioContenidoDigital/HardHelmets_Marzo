@@ -21,6 +21,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	public GameObject textos;
 	public GameObject textos2;
+	public GameObject textos2B;
 
 	[SyncVar]
 	public string nombre;
@@ -2006,7 +2007,9 @@ public class HeroNetwork : NetworkBehaviour{
 		yield return new WaitForSeconds(5f);
 		GetComponent<HeroNetwork>().menu.SetActive(true);
 		SniperCam.GetComponent<Grayscale>().enabled = true;
-		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(muerto1);
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
+		menu.GetComponent<campamentos>().cuentaatras = 5f;
+		menu.GetComponent<campamentos>().contar = true;
 	}
 	IEnumerator resetArma ()
 	{
@@ -2534,13 +2537,23 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSaludSumar()
 	{
-		suma = saludMax*2/104;
-		salud += saludMax*2/104;
-		//salud += 6;
+		if(gameObject.tag == "Player")
+		{
+			suma = saludMax*2/104;
+			salud += saludMax*2/104;
 
-		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
-		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
-		NetworkServer.Spawn(letras);
+			var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
+			NetworkServer.Spawn(letras);
+		}else
+		{
+			suma = saludMax2*2/104;
+			salud += saludMax2*2/104;
+
+			var letras = (GameObject)Instantiate(textos2B, transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
+			NetworkServer.Spawn(letras);
+		}
 	}
 	public void SaludSumar()
 	{

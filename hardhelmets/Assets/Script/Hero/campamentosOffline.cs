@@ -22,6 +22,8 @@ public class campamentosOffline : MonoBehaviour {
 	public GameObject A1;
 	public GameObject B1;
 
+	public GameObject BasePrimaria;
+
 	public GameObject alpha;
 	public Sprite alpha1;
 	public Sprite alpha2;
@@ -60,9 +62,36 @@ public class campamentosOffline : MonoBehaviour {
 
 	public GameObject selectedObj;
 	public EventSystem eventsystem;
+
+	public bool contar;
+	public float cuentaatras;
+	public Text contador;
 	// Update is called once per frame
 	void Update ()
 	{
+		if(contar)
+		{
+			contador.text = "Waiting..."+cuentaatras.ToString("F0");
+			cuentaatras -= Time.deltaTime;
+			if(cuentaatras <= 0)
+			{
+				BasePrimaria.SetActive(true);
+				alpha.SetActive(true);
+				beta.SetActive(true);
+
+				uno.SetActive(true);
+				dos.SetActive(true);
+				tres.SetActive(true);
+
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(BasePrimaria);
+
+				contar = false;
+			}
+		}else
+		{
+			contador.text = "";
+		}
+
 		//RESELECCIONAR ELEMENTO DE MENU
 		//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
 		if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
@@ -294,5 +323,13 @@ public class campamentosOffline : MonoBehaviour {
 		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
 
 		Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
+
+		BasePrimaria.SetActive(false);
+		alpha.SetActive(false);
+		beta.SetActive(false);
+
+		uno.SetActive(false);
+		dos.SetActive(false);
+		tres.SetActive(false);
 	}
 }
