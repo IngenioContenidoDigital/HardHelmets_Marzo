@@ -145,9 +145,6 @@ public class AI : MonoBehaviour {
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
-		//VOLTEA PERSONAJE
-		gameObject.transform.localScale = new Vector3(voltear,1,1);
-
 		//ANIMACION CAYENDO
 		if(GetComponent<Rigidbody>().velocity.y < -4f)
 		{
@@ -159,8 +156,16 @@ public class AI : MonoBehaviour {
 		{
 			animator.SetBool("falling", false);
 		}
-		if(vivo)
+		if(vivo && !animator.GetBool("paracaidas"))
 		{
+			if(gameObject.tag == "Player")
+			{
+				gameObject.layer = LayerMask.NameToLayer("Player");
+			}else
+			{
+				gameObject.layer = LayerMask.NameToLayer("Enemy");
+			}
+
 			if(grounded && target == null)
 			{
 				target = GameObject.FindWithTag(BuscarBase).transform;
@@ -175,21 +180,24 @@ public class AI : MonoBehaviour {
 				Vector3 v3Dir = target.position - transform.position;
 				float angle = Mathf.Atan2(0, v3Dir.x) * Mathf.Rad2Deg;
 
-				if(angle == 180)
+				if(angle == 180 && _currentDirection != "left")
 				{
 					_currentDirection = "left";
 					voltear = -1;
-				}else
+					animator.SetBool("girar", true);
+				}
+				if(angle == 0 && _currentDirection != "right")
 				{
 					_currentDirection = "right";
 					voltear = 1;
+					animator.SetBool("girar", true);
 				}
 					
-				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
+				/*if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
 				{
 					agent.isStopped = false;
 					agent.SetDestination(target.position);
-				}
+				}*/
 				if(Mathf.Abs((transform.position - target.position).x) < distancia)//SI ESTA CERCA EN X
 				{
 					if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
@@ -287,6 +295,17 @@ public class AI : MonoBehaviour {
 							}
 						}
 					}
+				}else //SI ESTA LEJOS EN X
+				{
+					if(Tipo == 5 && !animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot"))//SI ES EL PANZER
+					{
+						agent.isStopped = false;
+						agent.SetDestination(target.position);
+					}else if(!animator.GetBool("recargando"))//SI NO ES PANZER
+					{
+						agent.isStopped = false;
+						agent.SetDestination(target.position);
+					}
 				}
 				if(target.tag == NameEnemy || target.tag == NameEnemyTank)
 				{
@@ -316,7 +335,10 @@ public class AI : MonoBehaviour {
 			}
 			if(!agent.isStopped)
 			{
-				animator.SetBool("walk", true);
+				if(!animator.GetBool("girar"))
+				{
+					animator.SetBool("walk", true);
+				}
 			}else
 			{
 				if(Tipo == 5)
@@ -363,7 +385,7 @@ public class AI : MonoBehaviour {
 			{
 				explocion = false;
 			}
-		}else
+		}else if(!vivo)
 		{
 			agent.isStopped = true;
 			mira.SetActive(false);
@@ -509,7 +531,6 @@ public class AI : MonoBehaviour {
 		if(col.gameObject.tag == amigo && vivo)
 		{
 			target = col.gameObject.transform;
-			particulas.Play();
 		}
 	}
 	void OnTriggerExit (Collider col)
@@ -575,6 +596,11 @@ public class AI : MonoBehaviour {
 	}
 
 	//EVENTOS SPINE
+	public void regreso()
+	{
+		//VOLTEA PERSONAJE
+		gameObject.transform.localScale = new Vector3(voltear,1,1);
+	}
 	//DISPAROS
 	void ShotA ()//FUSIL
 	{

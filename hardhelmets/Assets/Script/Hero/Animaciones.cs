@@ -75,7 +75,6 @@ public class Animaciones : MonoBehaviour {
 			//quieto += 0.1f;
 			animator.SetBool("walking", false);
 			animator.SetBool("cubierto", false);
-			animator.SetBool("paracaidas", false);
 			animator.SetBool("apuntando", false);
 			animator.SetBool("movimiento", false);
 		}else
@@ -94,6 +93,10 @@ public class Animaciones : MonoBehaviour {
 		}
 
 		//MOVIMIENTOS BASICOS
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+		{
+			animator.SetBool("girar", false);
+		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk") || animator.GetCurrentAnimatorStateInfo(0).IsName("GunWalk"))
 		{
 			animator.SetBool("walking", true);
@@ -132,6 +135,9 @@ public class Animaciones : MonoBehaviour {
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasS"))
 		{
 			animator.SetBool("paracaidas", true);
+		}else
+		{
+			animator.SetBool("paracaidas", false);
 		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") || animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 		{

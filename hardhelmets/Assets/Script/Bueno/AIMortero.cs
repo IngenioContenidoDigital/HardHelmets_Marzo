@@ -149,8 +149,16 @@ public class AIMortero : MonoBehaviour {
 		//VOLTEA PERSONAJE
 		gameObject.transform.localScale = new Vector3(voltear,1,1);
 
-		if(vivo)
+		if(vivo && !animator.GetBool("paracaidas"))
 		{
+			if(gameObject.tag == "Player")
+			{
+				gameObject.layer = LayerMask.NameToLayer("Player");
+			}else
+			{
+				gameObject.layer = LayerMask.NameToLayer("Enemy");
+			}
+
 			if(acuchillado)
 			{
 				StartCoroutine(esperaCuchillo());

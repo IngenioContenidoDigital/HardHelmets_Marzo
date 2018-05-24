@@ -388,6 +388,14 @@ public class HeroNetwork : NetworkBehaviour{
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
+		if(animator.GetBool("paracaidas"))
+		{
+			ready = false;
+		}else if(GetComponent<AnimacionesNetwork>().Panel != null)
+		{
+			ready = true;
+		}
+
 		if(vivo && ready)
 		{
 			if(Input.GetButtonDown("PAUSA"))
@@ -449,7 +457,8 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					if(_currentDirection == "right")
 					{
-						CmdChangeDirection ("left");
+						animator.SetBool("girar", true);
+						//CmdChangeDirection ("left");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -484,7 +493,8 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					if(_currentDirection == "right")
 					{
-						CmdChangeDirection ("left");
+						animator.SetBool("girar", true);
+						//CmdChangeDirection ("left");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -518,7 +528,8 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					if(_currentDirection == "left")
 					{
-						CmdChangeDirection ("right");
+						animator.SetBool("girar", true);
+						//CmdChangeDirection ("right");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -553,7 +564,8 @@ public class HeroNetwork : NetworkBehaviour{
 				{
 					if(_currentDirection == "left")
 					{
-						CmdChangeDirection ("right");
+						animator.SetBool("girar", true);
+						//CmdChangeDirection ("right");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -856,7 +868,10 @@ public class HeroNetwork : NetworkBehaviour{
 				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
 				{
 					caminarD = false;
-					animator.SetBool("walk", true);
+					if(!animator.GetBool("girar"))
+					{
+						animator.SetBool("walk", true);
+					}
 					velocidad += 1f;
 					if(velocidad >= maxspeed)
 					{
@@ -868,7 +883,10 @@ public class HeroNetwork : NetworkBehaviour{
 				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
 				{
 					caminarI = false;
-					animator.SetBool("walk", true);
+					if(!animator.GetBool("girar"))
+					{
+						animator.SetBool("walk", true);
+					}
 					velocidad += 1f;
 					if(velocidad >= maxspeed)
 					{
@@ -2364,6 +2382,21 @@ public class HeroNetwork : NetworkBehaviour{
 	}
 
 	//EVENTOS SPINE
+
+	public void regreso()
+	{
+		if(_currentDirection == "right")
+		{
+			CmdChangeDirection ("left");
+			return;
+		}
+		if(_currentDirection == "left")
+		{
+			CmdChangeDirection ("right");
+			return;
+		}
+	}
+
 	public void Shot ()//PISTOLA
 	{
 		if(!isLocalPlayer)

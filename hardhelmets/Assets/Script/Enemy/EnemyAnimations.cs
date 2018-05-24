@@ -60,6 +60,10 @@ public class EnemyAnimations : MonoBehaviour {
 			animator.SetBool("panzerShot", false);
 		}
 		//MOVIMIENTOS BASICOS
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+		{
+			animator.SetBool("girar", false);
+		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk") || animator.GetCurrentAnimatorStateInfo(0).IsName("GunWalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("panzerwalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("morterowalk"))
 		{
 			//animator.SetBool("walk", false);
@@ -78,6 +82,9 @@ public class EnemyAnimations : MonoBehaviour {
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasS"))
 		{
 			animator.SetBool("paracaidas", true);
+		}else
+		{
+			animator.SetBool("paracaidas", false);
 		}
 		//DISPARO
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("FusilShot") || animator.GetCurrentAnimatorStateInfo(0).IsName("ShotgunShot") || animator.GetCurrentAnimatorStateInfo(0).IsName("SubmetraShot") || animator.GetCurrentAnimatorStateInfo(0).IsName("MetraShot") || animator.GetCurrentAnimatorStateInfo(0).IsName("Granada"))

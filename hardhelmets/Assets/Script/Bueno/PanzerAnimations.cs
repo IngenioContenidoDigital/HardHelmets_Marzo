@@ -27,6 +27,18 @@ public class PanzerAnimations : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+		{
+			animator.SetBool("girar", false);
+		}
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasS"))
+		{
+			animator.SetBool("paracaidas", true);
+		}else
+		{
+			animator.SetBool("paracaidas", false);
+		}
+
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("panzerpose"))
 		{
 			animator.SetBool("normal", false);

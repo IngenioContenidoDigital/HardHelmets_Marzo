@@ -196,6 +196,8 @@ public class Hero : MonoBehaviour{
 
 		_currentDirection = "right";
 		//transform.rotation = Quaternion.Euler(0,0,0);
+
+		animator.SetBool("paracaidas", true);
 	}
 	//public GameObject selectedObj;
 	void Update()
@@ -271,8 +273,18 @@ public class Hero : MonoBehaviour{
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
+		if(animator.GetBool("paracaidas"))
+		{
+			ready = false;
+		}else
+		{
+			ready = true;
+		}
+
 		if(vivo && ready)
 		{
+			mascara = "Player";
+
 			menu.SetActive(false);
 
 			if(tirocabeza)
@@ -318,7 +330,8 @@ public class Hero : MonoBehaviour{
 				{
 					if(_currentDirection == "right")
 					{
-						ChangeDirection ("left");
+						animator.SetBool("girar", true);
+						//ChangeDirection ("left");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -354,7 +367,8 @@ public class Hero : MonoBehaviour{
 				{
 					if(_currentDirection == "right")
 					{
-						ChangeDirection ("left");
+						animator.SetBool("girar", true);
+						//ChangeDirection ("left");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -388,7 +402,8 @@ public class Hero : MonoBehaviour{
 				{
 					if(_currentDirection == "left")
 					{
-						ChangeDirection ("right");
+						animator.SetBool("girar", true);
+						//ChangeDirection ("right");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -423,7 +438,8 @@ public class Hero : MonoBehaviour{
 				{
 					if(_currentDirection == "left")
 					{
-						ChangeDirection ("right");
+						animator.SetBool("girar", true);
+						//ChangeDirection ("right");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -727,25 +743,37 @@ public class Hero : MonoBehaviour{
 				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
 				{
 					caminarD = false;
-					animator.SetBool("walk", true);
+					if(!animator.GetBool("girar"))
+					{
+						animator.SetBool("walk", true);
+					}
 					velocidad += 1f;
 					if(velocidad >= maxspeed)
 					{
 						velocidad = maxspeed;
 					}
-					v3 += Vector3.left;
+					if(_currentDirection == "left")
+					{
+						v3 += Vector3.left;
+					}
 					//GetComponent<Rigidbody>().velocity = (Vector2.left * velocidad);//13
 				}
 				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
 				{
 					caminarI = false;
-					animator.SetBool("walk", true);
+					if(!animator.GetBool("girar"))
+					{
+						animator.SetBool("walk", true);
+					}
 					velocidad += 1f;
 					if(velocidad >= maxspeed)
 					{
 						velocidad = maxspeed;
 					}
-					v3 += Vector3.right;
+					if(_currentDirection == "right")
+					{
+						v3 += Vector3.right;
+					}
 					//GetComponent<Rigidbody>().velocity = (Vector2.right * velocidad);//13
 				}
 				if(caminarU && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
@@ -1459,6 +1487,7 @@ public class Hero : MonoBehaviour{
 			}
 		}else if(!vivo)
 		{
+			mascara = "muerto";
 			v3 = Vector3.zero;
 			SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
 
@@ -1757,7 +1786,7 @@ public class Hero : MonoBehaviour{
 			if (direction == "right")
 			{
 				transform.localScale = new Vector3(1,1,1);
-				//Girar2.transform.Rotate (0, 180, 0);
+
 				Girar2.GetComponent<Girar>().voltear = true;
 
 				bulletSpawnFusil.GetComponent<Girar>().voltear = true;
@@ -1765,14 +1794,13 @@ public class Hero : MonoBehaviour{
 				bulletSpawnSubmetra.GetComponent<Girar>().voltear = true;
 				bulletSpawnMetra.GetComponent<Girar>().voltear = true;
 				granadaSpawn.GetComponent<Girar>().voltear = true;
-				//transform.rotation = Quaternion.Euler(0,0,0);
-				//GetComponent<SkeletonAnimator>().zSpacing = -0.0002f;
+
 				_currentDirection = "right";
 			} 
 			else if (direction == "left") 
 			{
 				transform.localScale = new Vector3(-1,1,1);
-				//Girar2.transform.Rotate (0, -180, 0);
+
 				Girar2.GetComponent<Girar>().voltear = true;
 
 				bulletSpawnFusil.GetComponent<Girar>().voltear = true;
@@ -1780,8 +1808,7 @@ public class Hero : MonoBehaviour{
 				bulletSpawnSubmetra.GetComponent<Girar>().voltear = true;
 				bulletSpawnMetra.GetComponent<Girar>().voltear = true;
 				granadaSpawn.GetComponent<Girar>().voltear = true;
-				//transform.rotation = Quaternion.Euler(0,180,0);
-				//GetComponent<SkeletonAnimator>().zSpacing = 0.0002f;
+
 				_currentDirection = "left";
 			}
 		}
@@ -2008,6 +2035,20 @@ public class Hero : MonoBehaviour{
 	}
 
 	//EVENTOS SPINE
+	public void regreso()
+	{
+		if(_currentDirection == "right")
+		{
+			ChangeDirection ("left");
+			return;
+		}
+		if(_currentDirection == "left")
+		{
+			ChangeDirection ("right");
+			return;
+		}
+	}
+
 	public void Shot ()//PISTOLA
 	{
 		if(!grounded)// && animator.GetInteger("disparo") == 8)

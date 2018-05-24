@@ -115,6 +115,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 		//Player = GameObject.FindWithTag ("Player").transform;
 		_currentDirection = "right";
 	}
+	bool ponermascara;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -162,8 +163,22 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			salud = saludMax;
 		}
 
-		if(vivo)
+		if(vivo && !animator.GetBool("paracaidas"))
 		{
+			if(!ponermascara)
+			{
+				if(gameObject.tag == "Player")
+				{
+					gameObject.layer = LayerMask.NameToLayer("Player");
+					CmdChangeMascara("Player");
+				}else
+				{
+					gameObject.layer = LayerMask.NameToLayer("Enemy");
+					CmdChangeMascara("Enemy");
+				}
+				ponermascara = true;
+			}
+
 			if(acuchillado)
 			{
 				StartCoroutine(esperaCuchillo());
@@ -247,6 +262,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 
 				gameObject.layer = LayerMask.NameToLayer("muerto");
 				Base.layer = LayerMask.NameToLayer("mira");
+				CmdChangeMascara("muerto");
 
 				StartCoroutine(muertee());
 
@@ -257,13 +273,16 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			}
 		}else
 		{
+			agent.isStopped = true;
 			mira.SetActive(false);
-			if(matrix == 1 && !matrix2 && Player.name == "Hero")
-			{
-				//Manager.lenta = true;
-			}
-			gameObject.layer = LayerMask.NameToLayer("muerto");
 			Base.layer = LayerMask.NameToLayer("mira");
+			if(ponermascara)
+			{
+				gameObject.layer = LayerMask.NameToLayer("muerto");
+				CmdChangeMascara("muerto");
+
+				ponermascara = false;
+			}
 			//gameObject.tag = "Untagged";
 		}
 
@@ -275,6 +294,17 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			lugar = Jugador.GetComponent<HeroNetwork>().ordenLugar;
 			caminar = true;
 		}
+	}
+
+	[Command]
+	public void CmdChangeMascara(string newMascara)
+	{
+		RpcChangeMascara(newMascara);
+	}
+	[ClientRpc]
+	public void RpcChangeMascara (string newMascara)
+	{
+		gameObject.layer = LayerMask.NameToLayer(newMascara);
 	}
 
 	IEnumerator muertee ()

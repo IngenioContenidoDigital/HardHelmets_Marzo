@@ -35,6 +35,13 @@ public class AnimationsMG : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasS"))
+		{
+			animator.SetBool("paracaidas", true);
+		}else
+		{
+			animator.SetBool("paracaidas", false);
+		}
 		//QUIETO AL AZAR
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("MGNormal"))
 		{

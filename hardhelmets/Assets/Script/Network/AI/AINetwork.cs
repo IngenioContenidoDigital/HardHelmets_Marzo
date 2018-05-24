@@ -129,7 +129,7 @@ public class AINetwork : NetworkBehaviour {
 			groundRadius = 0.5f;
 		}
 	}
-
+	bool ponermascara;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -177,8 +177,22 @@ public class AINetwork : NetworkBehaviour {
 		{
 			animator.SetBool("falling", false);
 		}
-		if(vivo)
+		if(vivo && !animator.GetBool("paracaidas"))
 		{
+			if(!ponermascara)
+			{
+				if(gameObject.tag == "Player")
+				{
+					gameObject.layer = LayerMask.NameToLayer("Player");
+					CmdChangeMascara("Player");
+				}else
+				{
+					gameObject.layer = LayerMask.NameToLayer("Enemy");
+					CmdChangeMascara("Enemy");
+				}
+				ponermascara = true;
+			}
+
 			if(grounded && target == null)
 			{
 				target = GameObject.FindWithTag(BuscarBase).transform;
@@ -371,6 +385,7 @@ public class AINetwork : NetworkBehaviour {
 
 				gameObject.layer = LayerMask.NameToLayer("muerto");
 				Base.layer = LayerMask.NameToLayer("mira");
+				CmdChangeMascara("muerto");
 
 				vivo = false;
 
@@ -385,8 +400,26 @@ public class AINetwork : NetworkBehaviour {
 		{
 			agent.isStopped = true;
 			mira.SetActive(false);
-			gameObject.layer = LayerMask.NameToLayer("muerto");
+			Base.layer = LayerMask.NameToLayer("mira");
+			if(ponermascara)
+			{
+				gameObject.layer = LayerMask.NameToLayer("muerto");
+				CmdChangeMascara("muerto");
+
+				ponermascara = false;
+			}
 		}
+	}
+
+	[Command]
+	public void CmdChangeMascara(string newMascara)
+	{
+		RpcChangeMascara(newMascara);
+	}
+	[ClientRpc]
+	public void RpcChangeMascara (string newMascara)
+	{
+		gameObject.layer = LayerMask.NameToLayer(newMascara);
 	}
 
 	void FacingCallback(int voltear)

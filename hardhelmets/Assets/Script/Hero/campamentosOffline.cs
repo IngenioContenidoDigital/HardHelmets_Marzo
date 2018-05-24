@@ -252,7 +252,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			Player.GetComponent<Hero>().mascara = "Player";
+			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
 			Player.transform.position = new Vector3(Player.GetComponent<Animaciones>().inicial.x, Player.GetComponent<Animaciones>().inicial.y, Player.GetComponent<Animaciones>().inicial.z);//Player.GetComponent<Animaciones>().inicial;
 		}else if(nace == 1)
@@ -260,7 +260,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			Player.GetComponent<Hero>().mascara = "Player";
+			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
 			Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<Animaciones>().inicial.y, camp[0].transform.position.z);
 
@@ -270,7 +270,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			Player.GetComponent<Hero>().mascara = "Player";
+			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
 			Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y, camp[1].transform.position.z);
 
@@ -280,7 +280,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			Player.GetComponent<Hero>().mascara = "Player";
+			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
 			Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<Animaciones>().inicial.y, camp[2].transform.position.z);
 
@@ -290,7 +290,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			Player.GetComponent<Hero>().mascara = "Player";
+			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
 			Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<Animaciones>().inicial.y, Bases[0].transform.position.z-3);
 
@@ -300,7 +300,7 @@ public class campamentosOffline : MonoBehaviour {
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			Player.GetComponent<Hero>().mascara = "Player";
+			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
 			Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y, Bases[1].transform.position.z-3);
 
