@@ -877,7 +877,10 @@ public class HeroNetwork : NetworkBehaviour{
 					{
 						velocidad = maxspeed;
 					}
-					v3 += Vector3.left;
+					if(_currentDirection == "left")
+					{
+						v3 += Vector3.left;
+					}
 					//GetComponent<Rigidbody>().velocity = (Vector2.left * velocidad);//13
 				}
 				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
@@ -892,7 +895,10 @@ public class HeroNetwork : NetworkBehaviour{
 					{
 						velocidad = maxspeed;
 					}
-					v3 += Vector3.right;
+					if(_currentDirection == "right")
+					{
+						v3 += Vector3.right;
+					}
 					//GetComponent<Rigidbody>().velocity = (Vector2.right * velocidad);//13
 				}
 				if(caminarU && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
