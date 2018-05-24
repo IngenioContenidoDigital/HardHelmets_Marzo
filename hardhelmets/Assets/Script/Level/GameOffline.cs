@@ -82,6 +82,8 @@ public class GameOffline : MonoBehaviour {
 	public GameObject Alpha;
 	public GameObject AlphaB;
 	public GameObject AlphaM;
+	bool esconderAlphaB;
+	bool esconderAlphaM;
 
 	public string AlphaTomada;
 
@@ -92,6 +94,8 @@ public class GameOffline : MonoBehaviour {
 	public GameObject Beta;
 	public GameObject BetaB;
 	public GameObject BetaM;
+	bool esconderBetaB;
+	bool esconderBetaM;
 
 	public string BetaTomada;
 
@@ -619,7 +623,7 @@ public class GameOffline : MonoBehaviour {
 				AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(AlphaBEntra());
 			}
-
+			esconderAlphaB = false;
 		}else if(AlphaTomada== "Mala")
 		{
 			if(AlphaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "loop")
@@ -633,10 +637,21 @@ public class GameOffline : MonoBehaviour {
 				AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(AlphaMEntra());
 			}
+			esconderAlphaM = false;
 		}else
 		{
-			AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
-			AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			if(!esconderAlphaB)
+			{
+				AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(AlphaBSale());
+				esconderAlphaB = true;
+			}
+			if(!esconderAlphaM)
+			{
+				AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(AlphaMSale());
+				esconderAlphaM = true;
+			}
 		}
 
 		if(BetaTomada== "Buena")
@@ -651,6 +666,7 @@ public class GameOffline : MonoBehaviour {
 				BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(BetaBEntra());
 			}
+			esconderBetaB = false;
 		}else if(BetaTomada == "Mala")
 		{
 			if(BetaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "loop")
@@ -663,10 +679,21 @@ public class GameOffline : MonoBehaviour {
 				BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(BetaMEntra());
 			}
+			esconderBetaM = false;
 		}else
 		{
-			BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
-			BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+			if(!esconderBetaB)
+			{
+				BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(BetaBSale());
+				esconderBetaB = true;
+			}
+			if(!esconderBetaM)
+			{
+				BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(BetaMSale());
+				esconderBetaM = true;
+			}
 		}
 
 		CapturedFlagsB = CapturedFlagsAB + CapturedFlagsBB;

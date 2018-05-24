@@ -89,6 +89,9 @@ public class Game : NetworkBehaviour {
 	public GameObject Alpha;
 	public GameObject AlphaB;
 	public GameObject AlphaM;
+	bool esconderAlphaB;
+	bool esconderAlphaM;
+
 	[SyncVar]
 	public string AlphaTomada;
 
@@ -99,6 +102,9 @@ public class Game : NetworkBehaviour {
 	public GameObject Beta;
 	public GameObject BetaB;
 	public GameObject BetaM;
+	bool esconderBetaB;
+	bool esconderBetaM;
+
 	[SyncVar]
 	public string BetaTomada;
 
@@ -889,7 +895,7 @@ public class Game : NetworkBehaviour {
 				AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(AlphaBEntra());
 			}
-
+			esconderAlphaB = false;
 		}else if(AlphaTomada== "Mala")
 		{
 			if(AlphaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "loop")
@@ -903,15 +909,20 @@ public class Game : NetworkBehaviour {
 				AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(AlphaMEntra());
 			}
+			esconderAlphaM = false;
 		}else
 		{
-			if(AlphaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			if(!esconderAlphaB)
 			{
-				AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+				AlphaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(AlphaBSale());
+				esconderAlphaB = true;
 			}
-			if(AlphaM.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			if(!esconderAlphaM)
 			{
-				AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+				AlphaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(AlphaMSale());
+				esconderAlphaM = true;
 			}
 		}
 
@@ -927,6 +938,7 @@ public class Game : NetworkBehaviour {
 				BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(BetaBEntra());
 			}
+			esconderBetaB = false;
 		}else if(BetaTomada == "Mala")
 		{
 			if(BetaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "loop")
@@ -939,15 +951,20 @@ public class Game : NetworkBehaviour {
 				BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 				StartCoroutine(BetaMEntra());
 			}
+			esconderBetaM = false;
 		}else
 		{
-			if(BetaB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			if(!esconderBetaB)
 			{
-				BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+				BetaB.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(BetaBSale());
+				esconderBetaB = true;
 			}
-			if(BetaM.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "no")
+			if(!esconderBetaM)
 			{
-				BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "no", false);
+				BetaM.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
+				StartCoroutine(BetaMSale());
+				esconderBetaM = true;
 			}
 		}
 			

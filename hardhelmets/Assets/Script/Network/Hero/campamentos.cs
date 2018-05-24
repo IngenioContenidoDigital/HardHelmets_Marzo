@@ -24,24 +24,15 @@ public class campamentos : MonoBehaviour {
 	public GameObject BasePrimaria;
 
 	public GameObject alpha;
-	public Sprite alpha1;
-	public Sprite alpha2;
-	public Sprite alpha3;
-	public Sprite alpha4;
-
 	public GameObject alphaEnemy;
-	public Sprite alphaEnemy1;
-	public Sprite alphaEnemy2;
+
+	public GameObject alpha2;
+	public GameObject alphaEnemy2;
 
 	public GameObject beta;
-	public Sprite beta1;
-	public Sprite beta2;
-	public Sprite beta3;
-	public Sprite beta4;
-
 	public GameObject betaEnemy;
-	public Sprite betaEnemy1;
-	public Sprite betaEnemy2;
+	public GameObject beta2;
+	public GameObject betaEnemy2;
 
 	public string buena;
 	public string mala;
@@ -74,12 +65,6 @@ public class campamentos : MonoBehaviour {
 			if(cuentaatras <= 0)
 			{
 				BasePrimaria.SetActive(true);
-				alpha.SetActive(true);
-				beta.SetActive(true);
-
-				uno.SetActive(true);
-				dos.SetActive(true);
-				tres.SetActive(true);
 
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(BasePrimaria);
 
@@ -88,125 +73,151 @@ public class campamentos : MonoBehaviour {
 		}else
 		{
 			contador.text = "";
-		}
-		//RESELECCIONAR ELEMENTO DE MENU
-		//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
-		if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
-		{
-			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(selectedObj);
-			//EventSystem.current.SetSelectedGameObject(selectedObj);
-		}
 
-		selectedObj = eventsystem.GetComponent<EventSystem>().currentSelectedGameObject;
+			//RESELECCIONAR ELEMENTO DE MENU
+			//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
+			if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
+			{
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(selectedObj);
+				//EventSystem.current.SetSelectedGameObject(selectedObj);
+			}
 
-		//CAMBIE ENTRE CONTROL Y TECLADO
-		if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-		{
-			eventsystem.GetComponent<StandaloneInputModule>().horizontalAxis = "Horizontal";
-			eventsystem.GetComponent<StandaloneInputModule>().verticalAxis = "Vertical";
-		}
+			selectedObj = eventsystem.GetComponent<EventSystem>().currentSelectedGameObject;
 
-		if(Input.GetButtonDown("HorizontalUI") || Input.GetButtonDown("VerticalUI"))
-		{
-			eventsystem.GetComponent<StandaloneInputModule>().horizontalAxis = "HorizontalUI";
-			eventsystem.GetComponent<StandaloneInputModule>().verticalAxis = "VerticalUI";
-		}
+			//CAMBIE ENTRE CONTROL Y TECLADO
+			if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+			{
+				eventsystem.GetComponent<StandaloneInputModule>().horizontalAxis = "Horizontal";
+				eventsystem.GetComponent<StandaloneInputModule>().verticalAxis = "Vertical";
+			}
 
-		if(Player.tag == "Player")
-		{
-			buena = "BaseBuena";
-			mala = "BaseMala";
+			if(Input.GetButtonDown("HorizontalUI") || Input.GetButtonDown("VerticalUI"))
+			{
+				eventsystem.GetComponent<StandaloneInputModule>().horizontalAxis = "HorizontalUI";
+				eventsystem.GetComponent<StandaloneInputModule>().verticalAxis = "VerticalUI";
+			}
 
-			alpha.GetComponent<Image>().sprite = alpha1;
-			SpriteState spritestate = new SpriteState();
-			spritestate.highlightedSprite = alpha2;
-			alpha.GetComponent<Button>().spriteState = spritestate;
+			if(Player.tag == "Player")
+			{
+				buena = "BaseBuena";
+				mala = "BaseMala";
+			}else
+			{
+				buena = "BaseMala";
+				mala = "BaseBuena";
+			}
+			if(Camara == null)
+			{
+				Camara = GameObject.FindGameObjectWithTag("MainCamera");
+			}
 
-			alphaEnemy.GetComponent<Image>().sprite = alphaEnemy2;
-		}else
-		{
-			buena = "BaseMala";
-			mala = "BaseBuena";
+			if(A1 == null)
+			{
+				A1 = GameObject.Find("ALPHA");
+			}else if(A1.tag == buena)
+			{
+				Bases[0] = A1;
+			}else if(A1.tag == mala)
+			{
+				Bases[0] = null;
+				if(Player.tag == "Player")
+				{
+					alphaEnemy.SetActive(true);
+				}else
+				{
+					alphaEnemy2.SetActive(true);
+				}
+			}else
+			{
+				if(Player.tag == "Player")
+				{
+					alphaEnemy.SetActive(false);
+				}else
+				{
+					alphaEnemy2.SetActive(false);
+				}
+				Bases[0] = null;
+			}
 
-			alpha.GetComponent<Image>().sprite = alpha3;
-			SpriteState spritestate = new SpriteState();
-			spritestate.highlightedSprite = alpha4;
-			alpha.GetComponent<Button>().spriteState = spritestate;
+			if(B1 == null)
+			{
+				B1 = GameObject.Find("BETA");
+			}else if(B1.tag == buena)
+			{
+				Bases[1] = B1;
+			}else if(B1.tag == mala)
+			{
+				Bases[1] = null;
+				if(Player.tag == "Player")
+				{
+					betaEnemy.SetActive(true);
+				}else
+				{
+					betaEnemy2.SetActive(true);
+				}
+			}else
+			{
+				if(Player.tag == "Player")
+				{
+					betaEnemy.SetActive(false);
+				}else
+				{
+					betaEnemy2.SetActive(false);
+				}
+				Bases[1] = null;
+			}
 
-			alphaEnemy.GetComponent<Image>().sprite = alphaEnemy1;
-		}
-		if(Camara == null)
-		{
-			Camara = GameObject.FindGameObjectWithTag("MainCamera");
-		}
+			if(Bases[0] != null)
+			{
+				if(Player.tag == "Player")
+				{
+					alpha.SetActive(true);
+				}else
+				{
+					alpha2.SetActive(true);
+				}
+			}else
+			{
+				alpha.SetActive(false);
+				alpha2.SetActive(false);
+			}
 
-		if(A1 == null)
-		{
-			A1 = GameObject.Find("ALPHA");
-		}else if(A1.tag == buena)
-		{
-			Bases[0] = A1;
-			alphaEnemy.SetActive(false);
-		}else if(A1.tag == mala)
-		{
-			Bases[0] = null;
-			alphaEnemy.SetActive(true);
-		}else
-		{
-			alphaEnemy.SetActive(false);
-			Bases[0] = null;
-		}
+			if(Bases[1] != null)
+			{
+				if(Player.tag == "Player")
+				{
+					beta.SetActive(true);
+				}else
+				{
+					beta2.SetActive(true);
+				}
+			}else
+			{
+				beta.SetActive(false);
+				beta2.SetActive(false);
+			}
 
-		if(B1 == null)
-		{
-			B1 = GameObject.Find("BETA");
-		}else if(B1.tag == buena)
-		{
-			Bases[1] = B1;
-		}else if(B1.tag == mala)
-		{
-			betaEnemy.SetActive(true);
-		}else
-		{
-			Bases[1] = null;
-		}
-
-		if(Bases[0] != null)
-		{
-			alpha.SetActive(true);
-		}else
-		{
-			alpha.SetActive(false);
-		}
-
-		if(Bases[1] != null)
-		{
-			beta.SetActive(true);
-		}else
-		{
-			beta.SetActive(false);
-		}
-
-		if(camp[0] != null)
-		{
-			uno.SetActive(true);
-		}else
-		{
-			uno.SetActive(false);
-		}
-		if(camp[1] != null)
-		{
-			dos.SetActive(true);
-		}else
-		{
-			dos.SetActive(false);
-		}
-		if(camp[2] != null)
-		{
-			tres.SetActive(true);
-		}else
-		{
-			tres.SetActive(false);
+			if(camp[0] != null)
+			{
+				uno.SetActive(true);
+			}else
+			{
+				uno.SetActive(false);
+			}
+			if(camp[1] != null)
+			{
+				dos.SetActive(true);
+			}else
+			{
+				dos.SetActive(false);
+			}
+			if(camp[2] != null)
+			{
+				tres.SetActive(true);
+			}else
+			{
+				tres.SetActive(false);
+			}
 		}
 	}
 

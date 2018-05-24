@@ -7,6 +7,8 @@ using Prototype.NetworkLobby;
 
 public class LobbyButtonSearch : MonoBehaviour {
 
+	public GameObject padre;
+
 	public GameObject boton;
 
 	public Button este;
@@ -35,6 +37,11 @@ public class LobbyButtonSearch : MonoBehaviour {
 		}else
 		{
 			boton = GameObject.Find(buscar2);
+		}
+
+		if(padre.GetComponent<ChangeLevel>().set)
+		{
+			boton.GetComponent<Button>().enabled = false;
 		}
 
 		if(boton != null)

@@ -221,12 +221,6 @@ public class HeroNetwork : NetworkBehaviour{
 	// Use this for initialization
 	void Start ()
 	{
-		level = PlayerPrefs.GetInt("PlayerLevel");
-		CmdSendNivel(level);
-
-		nombre = PlayerPrefs.GetString("SteamName");
-		CmdSendNombre(nombre);
-
 		if(!isServer)// && gameObject.tag == "enemy")
 		{
 			saludMax2 = 100+level*4;
@@ -252,6 +246,17 @@ public class HeroNetwork : NetworkBehaviour{
 			_currentDirection = "left";
 			CmdChangeDirection ("left");
 		}
+		if(!isLocalPlayer)
+		{
+			return;
+		}
+		level = PlayerPrefs.GetInt("PlayerLevel");
+		CmdSendNivel(level);
+
+		nombre = PlayerPrefs.GetString("SteamName");
+		CmdSendNombre(nombre);
+
+		name.GetComponent<TextMesh>().text = nombre;
 	}
 
 	[Command]
@@ -319,7 +324,6 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
-		name.GetComponent<TextMesh>().text = PlayerPrefs.GetString("SteamName");//nombre;
 
 		nacerZ = bulletSpawn.rotation.z;
 
@@ -386,6 +390,11 @@ public class HeroNetwork : NetworkBehaviour{
 
 		if(vivo && ready)
 		{
+			if(Input.GetButtonDown("PAUSA"))
+			{
+				Pausa();
+			}
+
 			if(!enviarnombre)
 			{
 				CmdSendNombre(nombre);
@@ -1617,10 +1626,6 @@ public class HeroNetwork : NetworkBehaviour{
 			orden = false;
 		}
 
-		if(Input.GetButtonDown("PAUSA"))
-		{
-			Pausa();
-		}
 		if(continuar)
 		{
 			TiempoSleccion.text = "Waiting... "+GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().sleccionFinal.ToString("F0");
