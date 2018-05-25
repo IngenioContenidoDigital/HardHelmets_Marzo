@@ -55,12 +55,28 @@ public class campamentos : MonoBehaviour {
 
 	public GameObject selectedObj;
 	public EventSystem eventsystem;
+
+	public string idioma;
 	// Update is called once per frame
 	void Update ()
 	{
+		idioma = PlayerPrefs.GetString("idioma");
+
 		if(contar)
 		{
-			contador.text = "Waiting..."+cuentaatras.ToString("F0");
+			if(idioma == "ENGLISH")
+			{
+				contador.text = "Waiting..."+cuentaatras.ToString("F0");
+			}
+			if(idioma == "SPANISH")
+			{
+				contador.text = "Esperando..."+cuentaatras.ToString("F0");
+			}
+			if(idioma == "CHINESE")
+			{
+				contador.text = "等候..."+cuentaatras.ToString("F0");
+			}
+
 			cuentaatras -= Time.deltaTime;
 			if(cuentaatras <= 0)
 			{
@@ -224,38 +240,38 @@ public class campamentos : MonoBehaviour {
 	public void Base()
 	{
 		Camara.GetComponent<CamNetwork>().campamento = true;
-		Camara.GetComponent<CamNetwork>().campPos = new Vector3(Player.GetComponent<AnimacionesNetwork>().inicial.x, Camara.transform.position.y, Player.GetComponent<AnimacionesNetwork>().inicial.z-40);
+		Camara.GetComponent<CamNetwork>().campPos = new Vector3(Player.GetComponent<AnimacionesNetwork>().inicial.x, Player.transform.position.y+12, Player.GetComponent<AnimacionesNetwork>().inicial.z-100);
 	}
 
 	public void primero()
 	{
 		nace = 1;
 		Camara.GetComponent<CamNetwork>().campamento = true;
-		Camara.GetComponent<CamNetwork>().campPos = new Vector3(camp[0].transform.position.x, Player.transform.position.y+7, camp[0].transform.position.z-40);//camp[0].transform.position;
+		Camara.GetComponent<CamNetwork>().campPos = new Vector3(camp[0].transform.position.x, Player.transform.position.y+12, camp[0].transform.position.z-100);//camp[0].transform.position;
 	}
 	public void segundo()
 	{
 		nace = 2;
 		Camara.GetComponent<CamNetwork>().campamento = true;
-		Camara.GetComponent<CamNetwork>().campPos = new Vector3(camp[1].transform.position.x, Player.transform.position.y+7, camp[1].transform.position.z-40);//camp[1].transform.position;
+		Camara.GetComponent<CamNetwork>().campPos = new Vector3(camp[1].transform.position.x, Player.transform.position.y+12, camp[1].transform.position.z-100);//camp[1].transform.position;
 	}
 	public void tercero()
 	{
 		nace = 3;
 		Camara.GetComponent<CamNetwork>().campamento = true;
-		Camara.GetComponent<CamNetwork>().campPos = new Vector3(camp[2].transform.position.x, Player.transform.position.y+7, camp[2].transform.position.z-40);//camp[2].transform.position;
+		Camara.GetComponent<CamNetwork>().campPos = new Vector3(camp[2].transform.position.x, Player.transform.position.y+12, camp[2].transform.position.z-100);//camp[2].transform.position;
 	}
 	public void A()
 	{
 		nace = 5;
 		Camara.GetComponent<CamNetwork>().campamento = true;
-		Camara.GetComponent<CamNetwork>().campPos = new Vector3(Bases[0].transform.position.x, Player.transform.position.y+7, Bases[0].transform.position.z-40);//Bases[0].transform.position;
+		Camara.GetComponent<CamNetwork>().campPos = new Vector3(Bases[0].transform.position.x, Player.transform.position.y+12, Bases[0].transform.position.z-100);//Bases[0].transform.position;
 	}
 	public void B()
 	{
 		nace = 6;
 		Camara.GetComponent<CamNetwork>().campamento = true;
-		Camara.GetComponent<CamNetwork>().campPos = new Vector3(Bases[1].transform.position.x, Player.transform.position.y+7, Bases[1].transform.position.z-40);//Bases[1].transform.position;
+		Camara.GetComponent<CamNetwork>().campPos = new Vector3(Bases[1].transform.position.x, Player.transform.position.y+12, Bases[1].transform.position.z-100);//Bases[1].transform.position;
 	}
 	public void nacer()
 	{
@@ -267,8 +283,8 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Player";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
+				//Player.GetComponent<HeroNetwork>().mascara = "Player";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
 				Player.transform.position = Player.GetComponent<AnimacionesNetwork>().inicial;
 				//vidas -= 1;
@@ -278,8 +294,8 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Enemy";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
+				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
 				Player.transform.position = Player.GetComponent<AnimacionesNetwork>().inicial;
 				//vidas -= 1;
@@ -292,10 +308,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Player";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
+				//Player.GetComponent<HeroNetwork>().mascara = "Player";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, camp[0].transform.position.z);
+				Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, camp[0].transform.position.z);
 				//vidas -= 1;
 			}else
 			{
@@ -303,10 +319,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Enemy";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
+				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, camp[0].transform.position.z);
+				Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, camp[0].transform.position.z);
 				//vidas -= 1;
 			}
 		}else if(nace == 2)
@@ -317,10 +333,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Player";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
+				//Player.GetComponent<HeroNetwork>().mascara = "Player";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, camp[1].transform.position.z);
+				Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, camp[1].transform.position.z);
 				//vidas -= 1;
 			}else
 			{
@@ -328,10 +344,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Enemy";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
+				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, camp[1].transform.position.z);
+				Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, camp[1].transform.position.z);
 				//vidas -= 1;
 			}
 		}else if(nace == 4)
@@ -342,10 +358,10 @@ public class campamentos : MonoBehaviour {
 					Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 					Player.GetComponent<HeroNetwork>().vivo = true;
 					Player.GetComponent<Animator>().SetBool("muerto", false);
-					Player.GetComponent<HeroNetwork>().mascara = "Player";
-					Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
+					//Player.GetComponent<HeroNetwork>().mascara = "Player";
+					//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
 					Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-					Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, camp[2].transform.position.z);
+					Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, camp[2].transform.position.z);
 					//vidas -= 1;
 				}else
 				{
@@ -353,10 +369,10 @@ public class campamentos : MonoBehaviour {
 					Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 					Player.GetComponent<HeroNetwork>().vivo = true;
 					Player.GetComponent<Animator>().SetBool("muerto", false);
-					Player.GetComponent<HeroNetwork>().mascara = "Enemy";
-					Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
+					//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
+					//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
 					Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-					Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, camp[2].transform.position.z);
+					Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, camp[2].transform.position.z);
 					//vidas -= 1;
 				}
 		}else if(nace == 5)
@@ -367,10 +383,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Player";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
+				//Player.GetComponent<HeroNetwork>().mascara = "Player";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, Bases[0].transform.position.z);
+				Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, Bases[0].transform.position.z);
 				//vidas -= 1;
 			}else
 			{
@@ -378,10 +394,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Enemy";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
+				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, Bases[0].transform.position.z);
+				Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, Bases[0].transform.position.z);
 				//vidas -= 1;
 			}
 		}else if(nace == 6)
@@ -392,10 +408,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Player";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
+				//Player.GetComponent<HeroNetwork>().mascara = "Player";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Player");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, Bases[1].transform.position.z);
+				Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, Bases[1].transform.position.z);
 				//vidas -= 1;
 			}else
 			{
@@ -403,10 +419,10 @@ public class campamentos : MonoBehaviour {
 				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
-				Player.GetComponent<HeroNetwork>().mascara = "Enemy";
-				Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
+				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
+				//Player.GetComponent<HeroNetwork>().CmdChangeMascara("Enemy");
 				Player.GetComponent<HeroNetwork>().CmdChangeBase("Vista");
-				Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y, Bases[1].transform.position.z);
+				Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<AnimacionesNetwork>().inicial.y+10, Bases[1].transform.position.z);
 				//vidas -= 1;
 			}
 		}
@@ -430,5 +446,10 @@ public class campamentos : MonoBehaviour {
 		uno.SetActive(false);
 		dos.SetActive(false);
 		tres.SetActive(false);
+
+		alphaEnemy.SetActive(false);
+		alphaEnemy2.SetActive(false);
+		betaEnemy.SetActive(false);
+		betaEnemy2.SetActive(false);
 	}
 }

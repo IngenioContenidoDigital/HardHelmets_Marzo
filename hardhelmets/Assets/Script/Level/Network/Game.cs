@@ -558,12 +558,18 @@ public class Game : NetworkBehaviour {
 				Player1.GetComponent<HeroNetwork>().ready = true;
 				Player2.GetComponent<HeroNetwork>().ready = true;
 
-				skinlevel1.GetComponent<combinedSkins>().skinsToCombine[0] = level1.ToString();
-
-				skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] = level2.ToString();
-
 				listo = true;
 			}
+		}
+		if(skinlevel1.GetComponent<combinedSkins>().skinsToCombine[0] != level1.ToString())
+		{
+			skinlevel1.GetComponent<combinedSkins>().skinsToCombine[0] = level1.ToString();
+
+			skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] = level2.ToString();
+		}
+		if(skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] != level2.ToString())
+		{
+			skinlevel2.GetComponent<combinedSkins>().skinsToCombine[0] = level2.ToString();
 		}
 			
 		if(ArmasB.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != Armas1)
@@ -869,16 +875,16 @@ public class Game : NetworkBehaviour {
 		{
 			if(Application.loadedLevelName == "LevelNetwork0")
 			{
-				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
 			}else
 			{
-				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+8, BaseB.transform.position.z-68);
+				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
 			}
 			muerte = true;
 		}
 		if(sagreBM <= 0)
 		{
-			posicion = new Vector3(BaseM.transform.position.x-7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+			posicion = new Vector3(BaseM.transform.position.x-7, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
 			muerte = true;
 		}
 
@@ -1206,22 +1212,6 @@ public class Game : NetworkBehaviour {
 					{
 						UploadScoreToLeaderboard();
 					}
-					if(PlayerPrefs.GetInt("Kills") > 0)
-					{
-						UploadScoreToLeaderboardKills();
-					}
-					if(PlayerPrefs.GetInt("Banderas") > 0)
-					{
-						UploadScoreToLeaderboardFlags();
-					}
-					if(PlayerPrefs.GetInt("Bases") > 0)
-					{
-						UploadScoreToLeaderboardBases();
-					}
-					if(PlayerPrefs.GetInt("Victorias") > 0)
-					{
-						UploadScoreToLeaderboardWins();
-					}
 
 					subirpuntaje = true;
 				}
@@ -1413,23 +1403,6 @@ public class Game : NetworkBehaviour {
 					{
 						UploadScoreToLeaderboard();
 					}
-					if(PlayerPrefs.GetInt("Kills") > 0)
-					{
-						UploadScoreToLeaderboardKills();
-					}
-					if(PlayerPrefs.GetInt("Banderas") > 0)
-					{
-						UploadScoreToLeaderboardFlags();
-					}
-					if(PlayerPrefs.GetInt("Bases") > 0)
-					{
-						UploadScoreToLeaderboardBases();
-					}
-					if(PlayerPrefs.GetInt("Victorias") > 0)
-					{
-						UploadScoreToLeaderboardWins();
-					}
-
 					subirpuntaje = true;
 				}
 			}
@@ -1450,6 +1423,10 @@ public class Game : NetworkBehaviour {
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
 					Debug.Log("Succesfully Uploaded!");
+					if(PlayerPrefs.GetInt("Kills") > 0)
+					{
+						UploadScoreToLeaderboardKills();
+					}
 				}
 				else
 				{
@@ -1469,6 +1446,11 @@ public class Game : NetworkBehaviour {
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
 					Debug.Log("Succesfully Uploaded!");
+					if(PlayerPrefs.GetInt("Banderas") > 0)
+					{
+						UploadScoreToLeaderboardFlags();
+					}
+
 				}
 				else
 				{
@@ -1488,6 +1470,11 @@ public class Game : NetworkBehaviour {
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
 					Debug.Log("Succesfully Uploaded!");
+					if(PlayerPrefs.GetInt("Bases") > 0)
+					{
+						UploadScoreToLeaderboardBases();
+					}
+
 				}
 				else
 				{
@@ -1507,6 +1494,10 @@ public class Game : NetworkBehaviour {
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
 					Debug.Log("Succesfully Uploaded!");
+					if(PlayerPrefs.GetInt("Victorias") > 0)
+					{
+						UploadScoreToLeaderboardWins();
+					}
 				}
 				else
 				{

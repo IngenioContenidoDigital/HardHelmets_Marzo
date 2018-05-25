@@ -14,6 +14,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject carta1;
 	public GameObject muerto1;
 	public GameObject pausa1;
+	public bool pausado;
 
 	GameObject[] Enemy;
 
@@ -221,6 +222,13 @@ public class HeroNetwork : NetworkBehaviour{
 	// Use this for initialization
 	void Start ()
 	{
+		level = PlayerPrefs.GetInt("PlayerLevel");
+		CmdSendNivel(level);
+
+		nombre = PlayerPrefs.GetString("SteamName");
+		CmdSendNombre(nombre);
+
+		name.GetComponent<TextMesh>().text = nombre;
 		if(!isServer)// && gameObject.tag == "enemy")
 		{
 			saludMax2 = 100+level*4;
@@ -250,13 +258,6 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
-		level = PlayerPrefs.GetInt("PlayerLevel");
-		CmdSendNivel(level);
-
-		nombre = PlayerPrefs.GetString("SteamName");
-		CmdSendNombre(nombre);
-
-		name.GetComponent<TextMesh>().text = nombre;
 	}
 
 	[Command]
@@ -391,7 +392,7 @@ public class HeroNetwork : NetworkBehaviour{
 		if(animator.GetBool("paracaidas"))
 		{
 			ready = false;
-		}else if(GetComponent<AnimacionesNetwork>().Panel != null)
+		}else if(GetComponent<AnimacionesNetwork>().Panel != null && GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().Player1 != null && GetComponent<AnimacionesNetwork>().Panel.GetComponent<Game>().Player2 != null && !pausado)
 		{
 			ready = true;
 		}
@@ -411,6 +412,18 @@ public class HeroNetwork : NetworkBehaviour{
 			if(!isServer)
 			{
 				CmdSendArma(arma);
+			}
+
+			if(gameObject.tag == "Player" && mascara != "Player")
+			{
+				mascara = "Player";
+				CmdChangeMascara(mascara);
+			}
+
+			if(gameObject.tag != "Player" && mascara != "Enemy")
+			{
+				mascara = "Enemy";
+				CmdChangeMascara(mascara);
 			}
 
 			menu.SetActive(false);
@@ -1576,9 +1589,11 @@ public class HeroNetwork : NetworkBehaviour{
 				}
 				SniperCam.GetComponent<CamNetwork>().alejar = false;
 				SniperCam.GetComponent<CamNetwork>().campamento = true;
-				mascara = "muerto";
+
 				Base.layer = LayerMask.NameToLayer("mira");
 				CmdChangeBase("mira");
+
+				mascara = "muerto";
 				CmdChangeMascara(mascara);
 
 				StartCoroutine(muertee());
@@ -1604,13 +1619,24 @@ public class HeroNetwork : NetworkBehaviour{
 			{
 				animator.SetBool("sniper", false);
 			}
-		}else if(!vivo)
+		}else
 		{
-			SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
+			agachado = false;
 
-			if(SniperCam.GetComponent<LensAberrations>().vignette.intensity >= 1.7f)
+			if(mascara != "muerto")
 			{
-				SniperCam.GetComponent<LensAberrations>().vignette.intensity = 1.7f;
+				mascara = "muerto";
+				CmdChangeMascara(mascara);
+			}
+
+			if(salud <= 0)
+			{
+				SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
+
+				if(SniperCam.GetComponent<LensAberrations>().vignette.intensity >= 1.7f)
+				{
+					SniperCam.GetComponent<LensAberrations>().vignette.intensity = 1.7f;
+				}
 			}
 
 			mira.SetActive(false);
@@ -1758,6 +1784,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject MenuPause;
 	public void Pausa()
 	{
+		pausado = true;
 		ready = false;
 		SniperCam.GetComponent<Grayscale>().enabled = true;
 		MenuPause.SetActive(true);

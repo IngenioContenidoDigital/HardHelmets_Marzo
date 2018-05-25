@@ -97,7 +97,7 @@ public class AIVehicle : MonoBehaviour {
 
 	void Start ()
 	{
-		if(gameObject.tag == "Player")
+		if(gameObject.tag == "tank")
 		{
 			Jugador = GameObject.Find("Hero");
 		}else
@@ -105,7 +105,7 @@ public class AIVehicle : MonoBehaviour {
 			Jugador = GameObject.Find("Hero2");
 		}
 
-		if(gameObject.tag == "Player")
+		if(gameObject.tag == "tank")
 		{
 			level = Jugador.GetComponent<Hero>().level;
 		}else
@@ -428,11 +428,10 @@ public class AIVehicle : MonoBehaviour {
 		rafaga = true;
 	}
 
-	
 	void _Disparo()
 	{
 		var granade = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation);
-		granade.GetComponent<Rigidbody>().velocity = granade.transform.forward * Random.Range(35,51);
+		granade.GetComponent<Rigidbody>().velocity = granade.transform.forward * Random.Range(35,90);//35,91
 
 		granade.GetComponent<balaTank>().poder = saludMax*granade.GetComponent<balaTank>().poder/250;
 	}

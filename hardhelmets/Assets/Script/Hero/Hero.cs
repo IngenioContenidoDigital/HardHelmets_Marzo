@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour{
 	public GameObject carta1;
 	public GameObject muerto1;
 	public GameObject pausa1;
+	public bool pausado;
 
 	GameObject[] Enemy;
 
@@ -276,7 +277,7 @@ public class Hero : MonoBehaviour{
 		if(animator.GetBool("paracaidas"))
 		{
 			ready = false;
-		}else
+		}else if(!pausado)
 		{
 			ready = true;
 		}
@@ -1485,15 +1486,20 @@ public class Hero : MonoBehaviour{
 			{
 				Pausa();
 			}
-		}else if(!vivo)
+		}else
 		{
+			agachado = false;
+
 			mascara = "muerto";
 			v3 = Vector3.zero;
-			SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
-
-			if(SniperCam.GetComponent<LensAberrations>().vignette.intensity >= 1.7f)
+			if(salud <= 0)
 			{
-				SniperCam.GetComponent<LensAberrations>().vignette.intensity = 1.7f;
+				SniperCam.GetComponent<LensAberrations>().vignette.intensity += 0.3f;
+
+				if(SniperCam.GetComponent<LensAberrations>().vignette.intensity >= 1.7f)
+				{
+					SniperCam.GetComponent<LensAberrations>().vignette.intensity = 1.7f;
+				}
 			}
 
 			mira.SetActive(false);
@@ -1537,6 +1543,7 @@ public class Hero : MonoBehaviour{
 	public GameObject MenuPause;
 	public void Pausa()
 	{
+		pausado = true;
 		Time.timeScale = 0;
 		SniperCam.GetComponent<Grayscale>().enabled = true;
 		MenuPause.SetActive(true);

@@ -102,7 +102,7 @@ public class AITank2 : NetworkBehaviour
 			return;
 		}
 
-		if(gameObject.tag == "Player")
+		if(gameObject.tag == "tank")
 		{
 			Jugador = GameObject.Find("Hero");
 		}else

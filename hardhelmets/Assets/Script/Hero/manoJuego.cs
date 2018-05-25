@@ -474,7 +474,7 @@ public class manoJuego : MonoBehaviour {
 		}
 		arrastrar = false;
 
-		StartCoroutine(momentoselect());
+		//StartCoroutine(momentoselect());//SELECCIONA UNA CARTA
 		//preview = false;
 		//cursor.SetActive(false);
 	}

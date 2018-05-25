@@ -181,6 +181,7 @@ public class Pausa : MonoBehaviour {
 	{
 		pantalla = "";
 		Time.timeScale = 1;
+		Player.GetComponent<Hero>().pausado = false;
 		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(carta1);
 		gameObject.SetActive(false);
@@ -289,6 +290,7 @@ public class Pausa : MonoBehaviour {
 
 		pantalla = "";
 		Time.timeScale = 1;
+		Player.GetComponent<Hero>().pausado = false;
 		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(carta1);
 		gameObject.SetActive(false);

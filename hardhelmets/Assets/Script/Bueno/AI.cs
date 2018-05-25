@@ -174,6 +174,11 @@ public class AI : MonoBehaviour {
 				target = null;
 			}
 
+			if(gameObject.transform.localScale.x != voltear && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro2") && !animator.GetBool("girar"))
+			{
+				regreso();
+			}
+
 			if(target != null)
 			{
 				//MIRA AL OBJKETIVO

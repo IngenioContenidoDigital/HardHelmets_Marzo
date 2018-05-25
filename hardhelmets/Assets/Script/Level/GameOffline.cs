@@ -597,16 +597,16 @@ public class GameOffline : MonoBehaviour {
 		{
 			if(Application.loadedLevelName == "ComunityMatch0")
 			{
-				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+2, BaseB.transform.position.z-50);
+				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
 			}else
 			{
-				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+8, BaseB.transform.position.z-68);
+				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
 			}
 			muerte = true;
 		}
 		if(sagreBM <= 0)
 		{
-			posicion = new Vector3(BaseM.transform.position.x-7, BaseM.transform.position.y+2, BaseM.transform.position.z-50);
+			posicion = new Vector3(BaseM.transform.position.x-7, BaseM.transform.position.y+10, BaseM.transform.position.z-100);
 			muerte = true;
 		}
 
@@ -820,8 +820,11 @@ public class GameOffline : MonoBehaviour {
 		if(experiencia)
 		{
 			XPActual += 30;
-			XPTotal += 30;
-			PlayerPrefs.SetFloat("PlayerEXTotal", XPTotal);
+			if(Application.loadedLevelName != "Tutorial")
+			{
+				XPTotal += 30;
+				PlayerPrefs.SetFloat("PlayerEXTotal", XPTotal);
+			}
 			TotalBFinalFINAL -= 30;
 			if(TotalBFinalFINAL <= 0)
 			{
@@ -888,25 +891,12 @@ public class GameOffline : MonoBehaviour {
 			}
 			if(!subirpuntaje)
 			{
-				if(XPTotal > 0)
+				if(Application.loadedLevelName != "Tutorial")
 				{
-					UploadScoreToLeaderboard();
-				}
-				if(PlayerPrefs.GetInt("Kills") > 0)
-				{
-					UploadScoreToLeaderboardKills();
-				}
-				if(PlayerPrefs.GetInt("Banderas") > 0)
-				{
-					UploadScoreToLeaderboardFlags();
-				}
-				if(PlayerPrefs.GetInt("Bases") > 0)
-				{
-					UploadScoreToLeaderboardBases();
-				}
-				if(PlayerPrefs.GetInt("Victorias") > 0)
-				{
-					UploadScoreToLeaderboardWins();
+					if(XPTotal > 0)
+					{
+						UploadScoreToLeaderboard();
+					}
 				}
 
 				subirpuntaje = true;
@@ -927,7 +917,11 @@ public class GameOffline : MonoBehaviour {
 				//check if leaderboard successfully fetched
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
-					Debug.Log("Succesfully Uploaded!");
+					Debug.Log("CARGADO PUNTAJE");
+					if(PlayerPrefs.GetInt("Kills") > 0)
+					{
+						UploadScoreToLeaderboardKills();
+					}
 				}
 				else
 				{
@@ -946,7 +940,11 @@ public class GameOffline : MonoBehaviour {
 				//check if leaderboard successfully fetched
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
-					Debug.Log("Succesfully Uploaded!");
+					Debug.Log("CARGADO MUERTES");
+					if(PlayerPrefs.GetInt("Banderas") > 0)
+					{
+						UploadScoreToLeaderboardFlags();
+					}
 				}
 				else
 				{
@@ -965,7 +963,11 @@ public class GameOffline : MonoBehaviour {
 				//check if leaderboard successfully fetched
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
-					Debug.Log("Succesfully Uploaded!");
+					Debug.Log("CARGADO BANDERAS");
+					if(PlayerPrefs.GetInt("Bases") > 0)
+					{
+						UploadScoreToLeaderboardBases();
+					}
 				}
 				else
 				{
@@ -984,7 +986,11 @@ public class GameOffline : MonoBehaviour {
 				//check if leaderboard successfully fetched
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
-					Debug.Log("Succesfully Uploaded!");
+					Debug.Log("CARGADO BASES");
+					if(PlayerPrefs.GetInt("Victorias") > 0)
+					{
+						UploadScoreToLeaderboardWins();
+					}
 				}
 				else
 				{
@@ -1003,7 +1009,7 @@ public class GameOffline : MonoBehaviour {
 				//check if leaderboard successfully fetched
 				if (result.resultCode == ESL_ResultCode.Success)
 				{
-					Debug.Log("Succesfully Uploaded!");
+					Debug.Log("CARGADO VICTORIAS");
 				}
 				else
 				{
