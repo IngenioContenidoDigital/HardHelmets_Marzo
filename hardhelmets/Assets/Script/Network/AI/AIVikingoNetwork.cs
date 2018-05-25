@@ -82,6 +82,9 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 	public bool water;
 
+	//LLAMERO
+	public ParticleSystem particulas;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -110,11 +113,14 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 		animator.SetBool("paracaidas", true);
 
-		animator.SetBool("falling", true);
+		if(Tipo == 1)
+		{
+			animator.SetBool("falling", true);
+		}
 
 		_currentDirection = "right";
 	}
-
+	bool ponermascara;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -149,10 +155,27 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		animator.SetBool("grounded", grounded);
 
 		//VOLTEA PERSONAJE
-		gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
-
-		if(vivo)
+		if(Tipo == 1)
 		{
+			gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
+		}
+
+		if(vivo && !animator.GetBool("paracaidas"))
+		{
+			if(!ponermascara)
+			{
+				if(gameObject.tag == "Player")
+				{
+					gameObject.layer = LayerMask.NameToLayer("Player");
+					CmdChangeMascara("Player");
+				}else
+				{
+					gameObject.layer = LayerMask.NameToLayer("Enemy");
+					CmdChangeMascara("Enemy");
+				}
+				ponermascara = true;
+			}
+
 			if(grounded && target == null)
 			{
 				target = GameObject.FindWithTag(BuscarBase).transform;
@@ -161,20 +184,34 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				target = null;
 			}
 
+			if(Tipo == 2 && gameObject.transform.localScale.x != voltear && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetBool("girar"))
+			{
+				regreso();
+			}
+
 			if(target != null && !disparando)
 			{
 				//MIRA AL OBJKETIVO
 				Vector3 v3Dir = target.position - transform.position;
 				float angle = Mathf.Atan2(0, v3Dir.x) * Mathf.Rad2Deg;
 
-				if(angle == 180)
+				if(angle == 180 && _currentDirection != "left")
 				{
 					_currentDirection = "left";
-					voltear = -1.13f;
-				}else
+					voltear = -1;
+					if(Tipo == 2)
+					{
+						animator.SetBool("girar", true);
+					}
+				}
+				if(angle == 0 && _currentDirection != "right")
 				{
 					_currentDirection = "right";
-					voltear = 1.13f;
+					voltear = 1;
+					if(Tipo == 2)
+					{
+						animator.SetBool("girar", true);
+					}
 				}
 
 				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
@@ -197,7 +234,13 @@ public class AIVikingoNetwork : NetworkBehaviour {
 								{
 									disparando = true;
 
-									animator.SetBool("disparar", true);
+									if(Tipo == 2)
+									{
+										animator.SetBool("shot", true);
+									}else
+									{
+										animator.SetBool("disparar", true);
+									}
 								}
 								agent.isStopped = true;
 							}else // ENEMIGO
@@ -206,7 +249,13 @@ public class AIVikingoNetwork : NetworkBehaviour {
 								{
 									disparando = true;
 
-									animator.SetBool("disparar", true);
+									if(Tipo == 2)
+									{
+										animator.SetBool("shot", true);
+									}else
+									{
+										animator.SetBool("disparar", true);
+									}
 								}
 								agent.isStopped = true;
 							}
@@ -223,16 +272,58 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				}
 				if(target.tag == NameEnemy || target.tag == NameEnemyTank)
 				{
-					if(target.GetComponent<Hero>() != null)
+					if(target.GetComponent<HeroNetwork>() != null)
 					{
-						if(target.GetComponent<Hero>().salud <= 0)
+						if(target.GetComponent<HeroNetwork>().salud <= 0)
 						{
 							target = null;
 							agent.isStopped = true;
 						}
-					}else if(target.GetComponent<AI>() != null)
+					}else if(target.GetComponent<AINetwork>() != null)
 					{
-						if(target.GetComponent<AI>().salud <= 0)
+						if(target.GetComponent<AINetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMorteroNetwork>() != null)
+					{
+						if(target.GetComponent<AIMorteroNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMetraNetwork>() != null)
+					{
+						if(target.GetComponent<AIMetraNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIVikingoNetwork>() != null)
+					{
+						if(target.GetComponent<AIVikingoNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AITank2>() != null)
+					{
+						if(target.GetComponent<AITank2>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMetraMaloNetwork>() != null)
+					{
+						if(target.GetComponent<AIMetraMaloNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMorteroMaloNetwork>() != null)
+					{
+						if(target.GetComponent<AIMorteroMaloNetwork>().salud <= 0)
 						{
 							target = null;
 							agent.isStopped = true;
@@ -246,7 +337,10 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			}
 			if(!agent.isStopped)
 			{
-				animator.SetBool("walk", true);
+				if(!animator.GetBool("girar"))
+				{
+					animator.SetBool("walk", true);
+				}
 			}else
 			{
 				animator.SetBool("walk", false);
@@ -273,11 +367,31 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			agent.isStopped = true;
 			mira.SetActive(false);
 
-			animator.SetBool("muerto", true);
+			if(salud <= 0)
+			{
+				animator.SetBool("muerto", true);
+			}
 
-			gameObject.layer = LayerMask.NameToLayer("muerto");
+			if(ponermascara)
+			{
+				gameObject.layer = LayerMask.NameToLayer("muerto");
+				CmdChangeMascara("muerto");
+
+				ponermascara = false;
+			}
 			Base.layer = LayerMask.NameToLayer("mira");
 		}
+	}
+
+	[Command]
+	public void CmdChangeMascara(string newMascara)
+	{
+		RpcChangeMascara(newMascara);
+	}
+	[ClientRpc]
+	public void RpcChangeMascara (string newMascara)
+	{
+		gameObject.layer = LayerMask.NameToLayer(newMascara);
 	}
 
 	void noVivo(bool vivo)
@@ -487,18 +601,29 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	}
 
 	//EVENTOS SPINE
-	//CARGA
-	void giro ()
+	//PARA EL LLAMERO
+	public void regreso()
 	{
-		/*
-		if(transform.localScale.x == 1.13f)
-		{
-			voltear = -1.13f;
-		}else
-		{
-			voltear = 1.13f;
-		}
-		*/
+		//VOLTEA PERSONAJE
+		gameObject.transform.localScale = new Vector3(voltear,1,1);
+	}
+	//PATADA
+	public GameObject golpe;
+	public void pata ()
+	{
+		golpe.SetActive(true);
+	}
+	public void patapaga()
+	{
+		golpe.SetActive(false);
+	}
+	public void fuegoentra ()
+	{
+		particulas.Play();
+	}
+	public void fuegosale ()
+	{
+		particulas.Stop();
 	}
 	void termino ()
 	{
@@ -510,7 +635,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		luz.SetActive(true);
 		StartCoroutine(apaga());
 
-		if(transform.localScale.x == 1.13f)
+		if(_currentDirection != "left")
 		{
 			CmdDisparoD();
 		}else

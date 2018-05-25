@@ -1127,7 +1127,7 @@ GameObject:
   - component: {fileID: 54790955685648814}
   - component: {fileID: 23943713692654262}
   - component: {fileID: 114497356982585044}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Golpe
   m_TagString: explo
   m_Icon: {fileID: 0}
@@ -4108,6 +4108,8 @@ MonoBehaviour:
   cascadoSpawn: {fileID: 4646652197708080}
   Base: {fileID: 1058713272683388}
   water: 0
+  particulas: {fileID: 0}
+  golpe: {fileID: 0}
 --- !u!114 &114612160010977232
 MonoBehaviour:
   m_ObjectHideFlags: 1

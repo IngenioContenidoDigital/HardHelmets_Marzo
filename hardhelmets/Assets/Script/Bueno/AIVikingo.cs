@@ -77,6 +77,9 @@ public class AIVikingo : MonoBehaviour {
 
 	public bool water;
 
+	//LLAMERO
+	public ParticleSystem particulas;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -100,7 +103,10 @@ public class AIVikingo : MonoBehaviour {
 
 		animator.SetBool("paracaidas", true);
 
-		animator.SetBool("falling", true);
+		if(Tipo == 1)
+		{
+			animator.SetBool("falling", true);
+		}
 
 		_currentDirection = "right";
 	}
@@ -129,10 +135,21 @@ public class AIVikingo : MonoBehaviour {
 		animator.SetBool("grounded", grounded);
 
 		//VOLTEA PERSONAJE
-		gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
-
-		if(vivo)
+		if(Tipo == 1)
 		{
+			gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
+		}
+
+		if(vivo && !animator.GetBool("paracaidas"))
+		{
+			if(gameObject.tag == "Player")
+			{
+				gameObject.layer = LayerMask.NameToLayer("Player");
+			}else
+			{
+				gameObject.layer = LayerMask.NameToLayer("Enemy");
+			}
+
 			if(grounded && target == null)
 			{
 				target = GameObject.FindWithTag(BuscarBase).transform;
@@ -141,20 +158,34 @@ public class AIVikingo : MonoBehaviour {
 				target = null;
 			}
 
+			if(Tipo == 2 && gameObject.transform.localScale.x != voltear && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetBool("girar"))
+			{
+				regreso();
+			}
+
 			if(target != null && !disparando)
 			{
 				//MIRA AL OBJKETIVO
 				Vector3 v3Dir = target.position - transform.position;
 				float angle = Mathf.Atan2(0, v3Dir.x) * Mathf.Rad2Deg;
 
-				if(angle == 180)
+				if(angle == 180 && _currentDirection != "left")
 				{
 					_currentDirection = "left";
-					voltear = -1.13f;
-				}else
+					voltear = -1;
+					if(Tipo == 2)
+					{
+						animator.SetBool("girar", true);
+					}
+				}
+				if(angle == 0 && _currentDirection != "right")
 				{
 					_currentDirection = "right";
-					voltear = 1.13f;
+					voltear = 1;
+					if(Tipo == 2)
+					{
+						animator.SetBool("girar", true);
+					}
 				}
 
 				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
@@ -176,8 +207,13 @@ public class AIVikingo : MonoBehaviour {
 								if(!disparando)
 								{
 									disparando = true;
-
-									animator.SetBool("disparar", true);
+									if(Tipo == 2)
+									{
+										animator.SetBool("shot", true);
+									}else
+									{
+										animator.SetBool("disparar", true);
+									}
 								}
 								agent.isStopped = true;
 							}else // ENEMIGO
@@ -186,7 +222,13 @@ public class AIVikingo : MonoBehaviour {
 								{
 									disparando = true;
 
-									animator.SetBool("disparar", true);
+									if(Tipo == 2)
+									{
+										animator.SetBool("shot", true);
+									}else
+									{
+										animator.SetBool("disparar", true);
+									}
 								}
 								agent.isStopped = true;
 							}
@@ -217,6 +259,34 @@ public class AIVikingo : MonoBehaviour {
 							target = null;
 							agent.isStopped = true;
 						}
+					}else if(target.GetComponent<AIMortero>() != null)
+					{
+						if(target.GetComponent<AIMortero>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMetra>() != null)
+					{
+						if(target.GetComponent<AIMetra>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIVikingo>() != null)
+					{
+						if(target.GetComponent<AIVikingo>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIVehicle>() != null)
+					{
+						if(target.GetComponent<AIVehicle>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
 					}
 				}
 			}else if(disparando)
@@ -226,7 +296,10 @@ public class AIVikingo : MonoBehaviour {
 			}
 			if(!agent.isStopped)
 			{
-				animator.SetBool("walk", true);
+				if(!animator.GetBool("girar"))
+				{
+					animator.SetBool("walk", true);
+				}
 			}else
 			{
 				animator.SetBool("walk", false);
@@ -253,7 +326,10 @@ public class AIVikingo : MonoBehaviour {
 			agent.isStopped = true;
 			mira.SetActive(false);
 
-			animator.SetBool("muerto", true);
+			if(salud <= 0)
+			{
+				animator.SetBool("muerto", true);
+			}
 
 			gameObject.layer = LayerMask.NameToLayer("muerto");
 			Base.layer = LayerMask.NameToLayer("mira");
@@ -277,7 +353,7 @@ public class AIVikingo : MonoBehaviour {
 
 			acuchillado = true;
 
-			animator.SetBool("walk",false);
+			//animator.SetBool("walk",false);
 			animator.SetBool("cascado", true);
 
 			//efect = Random.Range(3,5);
@@ -297,7 +373,7 @@ public class AIVikingo : MonoBehaviour {
 		{
 			agent.isStopped = false;
 
-			animator.SetBool("walk",false);
+			//animator.SetBool("walk",false);
 
 			animator.SetBool("cascado", true);
 
@@ -324,7 +400,7 @@ public class AIVikingo : MonoBehaviour {
 		{
 			agent.isStopped = false;
 
-			animator.SetBool("walk",false);
+			//animator.SetBool("walk",false);
 
 			salud -= col.gameObject.GetComponent<ExploOffline>().poder;
 
@@ -355,6 +431,7 @@ public class AIVikingo : MonoBehaviour {
 		if(col.gameObject.tag == NameEnemy || col.gameObject.tag == NameEnemyTank)
 		{
 			animator.SetBool("golpe", true);
+			disparando = true;
 		}
 	}
 
@@ -365,7 +442,7 @@ public class AIVikingo : MonoBehaviour {
 		{
 			target = col.gameObject.transform;
 			agent.isStopped = true;
-			animator.SetBool("walk",false);
+			//animator.SetBool("walk",false);
 		}
 
 		if(col.gameObject.tag == "mira" && vivo)
@@ -376,7 +453,7 @@ public class AIVikingo : MonoBehaviour {
 
 		if(col.gameObject.tag == "balaLlamas" && vivo)
 		{
-			animator.SetBool("walk",false);
+			//animator.SetBool("walk",false);
 
 			animator.SetBool("cascado", true);
 			Destroy(col.gameObject);
@@ -447,19 +524,32 @@ public class AIVikingo : MonoBehaviour {
 	}
 
 	//EVENTOS SPINE
-	//CARGA
-	void giro ()
+	//PARA EL LLAMERO
+	public void regreso()
 	{
-		/*
-		if(transform.localScale.x == 1.13f)
-		{
-			voltear = -1.13f;
-		}else
-		{
-			voltear = 1.13f;
-		}
-		*/
+		//VOLTEA PERSONAJE
+		gameObject.transform.localScale = new Vector3(voltear,1,1);
 	}
+	//PATADA
+	public GameObject golpe;
+	public void pata ()
+	{
+		golpe.SetActive(true);
+	}
+	public void patapaga()
+	{
+		golpe.SetActive(false);
+	}
+	public void fuegoentra ()
+	{
+		particulas.Play();
+	}
+	public void fuegosale ()
+	{
+		particulas.Stop();
+	}
+
+	//PARA EL VIKINGO
 	void termino ()
 	{
 		disparando = false;
@@ -469,7 +559,7 @@ public class AIVikingo : MonoBehaviour {
 		luz.SetActive(true);
 		StartCoroutine(apaga());
 
-		if(transform.localScale.x == 1.13f)
+		if(_currentDirection != "left")
 		{
 			DisparoD();
 		}else

@@ -25,9 +25,13 @@ public class AnimacionesVikingo : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		if(!animator.GetCurrentAnimatorStateInfo(0).IsName("dispara") && !animator.GetCurrentAnimatorStateInfo(0).IsName("casca") && GetComponent<AIVikingoNetwork>().disparando)
+		{
+			GetComponent<AIVikingoNetwork>().disparando = false;
+		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
 		{
-			//GetComponent<AIVikingoNetwork>().actuando = false;
+			animator.SetBool("paracaidas", false);
 		}
 
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("caminar"))
@@ -64,6 +68,37 @@ public class AnimacionesVikingo : MonoBehaviour {
 		{
 			animator.SetBool("muerto2", true);
 			animator.SetBool("muerto", false);
+		}
+		//PARA EL LLAMERO
+		if(GetComponent<AIVikingoNetwork>().Tipo == 2)
+		{
+			if(animator.GetCurrentAnimatorStateInfo(1).IsName("golpeado2"))
+			{
+				animator.SetBool("cascado", false);
+			}
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro")|| animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+			{
+				animator.SetBool("girar", false);
+			}
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
+			{
+				GetComponent<AIVikingoNetwork>().agent.isStopped = true;
+				animator.SetBool("walk", false);
+				animator.SetBool("shot", false);
+				animator.SetBool("disparando", true);
+			}else
+			{
+				animator.SetBool("disparando", false);
+			}
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("muerto"))
+			{
+				animator.SetBool("murio", true);
+			}
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk"))
+			{
+				GetComponent<AIVikingo>().particulas.Stop();
+				animator.SetBool("shot", false);
+			}
 		}
 	}
 

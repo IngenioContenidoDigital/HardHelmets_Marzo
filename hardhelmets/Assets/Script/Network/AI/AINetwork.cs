@@ -335,9 +335,44 @@ public class AINetwork : NetworkBehaviour {
 							target = null;
 							agent.isStopped = true;
 						}
+					}else if(target.GetComponent<AIMorteroNetwork>() != null)
+					{
+						if(target.GetComponent<AIMorteroNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMetraNetwork>() != null)
+					{
+						if(target.GetComponent<AIMetraNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
 					}else if(target.GetComponent<AIVikingoNetwork>() != null)
 					{
 						if(target.GetComponent<AIVikingoNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AITank2>() != null)
+					{
+						if(target.GetComponent<AITank2>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMetraMaloNetwork>() != null)
+					{
+						if(target.GetComponent<AIMetraMaloNetwork>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMorteroMaloNetwork>() != null)
+					{
+						if(target.GetComponent<AIMorteroMaloNetwork>().salud <= 0)
 						{
 							target = null;
 							agent.isStopped = true;

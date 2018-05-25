@@ -328,9 +328,30 @@ public class AI : MonoBehaviour {
 							target = null;
 							agent.isStopped = true;
 						}
+					}else if(target.GetComponent<AIMortero>() != null)
+					{
+						if(target.GetComponent<AIMortero>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIMetra>() != null)
+					{
+						if(target.GetComponent<AIMetra>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
 					}else if(target.GetComponent<AIVikingo>() != null)
 					{
 						if(target.GetComponent<AIVikingo>().salud <= 0)
+						{
+							target = null;
+							agent.isStopped = true;
+						}
+					}else if(target.GetComponent<AIVehicle>() != null)
+					{
+						if(target.GetComponent<AIVehicle>().salud <= 0)
 						{
 							target = null;
 							agent.isStopped = true;
