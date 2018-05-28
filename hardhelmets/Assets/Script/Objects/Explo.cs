@@ -24,18 +24,21 @@ public class Explo : NetworkBehaviour {
 		/*explo = Random.Range(1,3);
 		GetComponent<Animator>().SetInteger("explo",explo);*/
 
-		random = Random.Range(1,3);
-		if(random == 1)
+		if(GetComponent<AudioSource>())
 		{
-			GetComponent<AudioSource>().volume = efectos;
-			GetComponent<AudioSource>().clip = explo1;
-			GetComponent<AudioSource>().Play();
-		}
-		if(random == 2)
-		{
-			GetComponent<AudioSource>().volume = efectos;
-			GetComponent<AudioSource>().clip = explo2;
-			GetComponent<AudioSource>().Play();
+			random = Random.Range(1,3);
+			if(random == 1)
+			{
+				GetComponent<AudioSource>().volume = efectos;
+				GetComponent<AudioSource>().clip = explo1;
+				GetComponent<AudioSource>().Play();
+			}
+			if(random == 2)
+			{
+				GetComponent<AudioSource>().volume = efectos;
+				GetComponent<AudioSource>().clip = explo2;
+				GetComponent<AudioSource>().Play();
+			}
 		}
 		CamNetwork.visible = true;
 		StartCoroutine(tiempo());

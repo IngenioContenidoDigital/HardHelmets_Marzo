@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136972501526694470}
   - component: {fileID: 114234468995388374}
   - component: {fileID: 114172769445105226}
+  - component: {fileID: 114409226939019682}
   m_Layer: 12
   m_Name: balaLlamas 1
   m_TagString: balaLlamas
@@ -154,6 +155,18 @@ MonoBehaviour:
     i15: 236
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114409226939019682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1127813084837402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19977323da379546ab4a9f71c4e530b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poder: 5
 --- !u!136 &136972501526694470
 CapsuleCollider:
   m_ObjectHideFlags: 1

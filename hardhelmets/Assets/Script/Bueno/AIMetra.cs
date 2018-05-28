@@ -484,10 +484,10 @@ public class AIMetra : MonoBehaviour {
 			quemado = true;
 			caminar = false;
 
-			salud -= 3;
+			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == medic)
 		{

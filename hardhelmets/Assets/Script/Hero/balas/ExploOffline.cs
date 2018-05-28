@@ -19,9 +19,11 @@ public class ExploOffline : MonoBehaviour {
 
 		//explo = Random.Range(1,3);
 		//GetComponent<Animator>().SetInteger("explo",explo);
-
-		GetComponent<AudioSource>().clip = explo[Random.Range(0,explo.Length)];
-		GetComponent<AudioSource>().Play();
+		if(GetComponent<AudioSource>())
+		{
+			GetComponent<AudioSource>().clip = explo[Random.Range(0,explo.Length)];
+			GetComponent<AudioSource>().Play();
+		}
 
 		Cam.visible = true;
 		StartCoroutine(tiempo());

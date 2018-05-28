@@ -76,7 +76,7 @@ public class AnimacionesVikingo : MonoBehaviour {
 			{
 				animator.SetBool("cascado", false);
 			}
-			if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro")|| animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
 			{
 				animator.SetBool("girar", false);
 			}
@@ -94,9 +94,15 @@ public class AnimacionesVikingo : MonoBehaviour {
 			{
 				animator.SetBool("murio", true);
 			}
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("casca"))
+			{
+				animator.SetBool("golpe", false);
+			}
+
 			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk"))
 			{
-				GetComponent<AIVikingo>().particulas.Stop();
+				GetComponent<AIVikingoNetwork>().particulas.Stop();
+				GetComponent<AIVikingoNetwork>().disparafuego = false;
 				animator.SetBool("shot", false);
 			}
 		}

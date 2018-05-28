@@ -145,9 +145,11 @@ public class AIVikingo : MonoBehaviour {
 			if(gameObject.tag == "Player")
 			{
 				gameObject.layer = LayerMask.NameToLayer("Player");
+				Base.layer = LayerMask.NameToLayer("Vista");
 			}else
 			{
 				gameObject.layer = LayerMask.NameToLayer("Enemy");
+				Base.layer = LayerMask.NameToLayer("Vista");
 			}
 
 			if(grounded && target == null)
@@ -321,6 +323,34 @@ public class AIVikingo : MonoBehaviour {
 			{
 				explocion = false;
 			}
+
+			//DISPARO DE FUEGO
+			if(disparafuego)
+			{
+				if(fuegodisparo == 0)
+				{
+					if(_currentDirection != "left")
+					{
+						var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation); 
+						bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 10;
+
+						bullet.GetComponent<balaFuego>().poder = saludMax*bullet.GetComponent<balaFuego>().poder/200;
+						Destroy(bullet, 1.5f);
+					}else
+					{
+						var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation); 
+						bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * -10;
+
+						bullet.GetComponent<balaFuego>().poder = saludMax*bullet.GetComponent<balaFuego>().poder/200;
+						Destroy(bullet, 1.5f);
+					}
+				}
+			}
+			fuegodisparo += 1;
+			if(fuegodisparo >= 5)
+			{
+				fuegodisparo = 0;
+			}
 		}else
 		{
 			agent.isStopped = true;
@@ -459,10 +489,10 @@ public class AIVikingo : MonoBehaviour {
 			Destroy(col.gameObject);
 
 			quemado = true;
-			salud -= 1;
+			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "10";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == NameEnemy && vivo)
 		{
@@ -522,7 +552,8 @@ public class AIVikingo : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		luz.SetActive(false);
 	}
-
+	public bool disparafuego;
+	int fuegodisparo;
 	//EVENTOS SPINE
 	//PARA EL LLAMERO
 	public void regreso()
@@ -542,10 +573,12 @@ public class AIVikingo : MonoBehaviour {
 	}
 	public void fuegoentra ()
 	{
+		disparafuego = true;
 		particulas.Play();
 	}
 	public void fuegosale ()
 	{
+		disparafuego = false;
 		particulas.Stop();
 	}
 

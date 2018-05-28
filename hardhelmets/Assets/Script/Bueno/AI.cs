@@ -121,7 +121,6 @@ public class AI : MonoBehaviour {
 			groundRadius = 0.5f;
 		}
 	}
-	int distancia2;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -209,20 +208,10 @@ public class AI : MonoBehaviour {
 				{
 					if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
 					{
-						if(distancia2 != distancia-10)
-						{
-							distancia2 = distancia-10;
-							distancia = distancia2;
-						}
 						agent.isStopped = true;
 						animator.SetBool("walk", false);
 					}else
 					{
-						if(distancia2 != distancia+10)
-						{
-							distancia2 = distancia+10;
-							distancia = distancia2;
-						}
 						if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
 						{
 							if(target.tag == BuscarBase) // BASE ENEMIGA
@@ -550,10 +539,10 @@ public class AI : MonoBehaviour {
 			Destroy(col.gameObject);
 
 			quemado = true;
-			salud -= 1;
+			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "10";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == NameEnemy && vivo)
 		{

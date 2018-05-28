@@ -168,10 +168,14 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				{
 					gameObject.layer = LayerMask.NameToLayer("Player");
 					CmdChangeMascara("Player");
+					Base.layer = LayerMask.NameToLayer("Vista");
+					CmdChangeMascaraBase("Vista");
 				}else
 				{
 					gameObject.layer = LayerMask.NameToLayer("Enemy");
 					CmdChangeMascara("Enemy");
+					Base.layer = LayerMask.NameToLayer("Vista");
+					CmdChangeMascaraBase("Vista");
 				}
 				ponermascara = true;
 			}
@@ -358,9 +362,38 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 				gameObject.layer = LayerMask.NameToLayer("muerto");
 				Base.layer = LayerMask.NameToLayer("mira");
+				CmdChangeMascaraBase("mira");
 			}else
 			{
 				explocion = false;
+			}
+
+			//DISPARO DE FUEGO
+			if(disparafuego)
+			{
+				if(fuegodisparo == 0)
+				{
+					if(_currentDirection != "left")
+					{
+						var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation); 
+						bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 10;
+
+						bullet.GetComponent<balaFuego>().poder = saludMax*bullet.GetComponent<balaFuego>().poder/200;
+						Destroy(bullet, 1.5f);
+					}else
+					{
+						var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation); 
+						bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * -10;
+
+						bullet.GetComponent<balaFuego>().poder = saludMax*bullet.GetComponent<balaFuego>().poder/200;
+						Destroy(bullet, 1.5f);
+					}
+				}
+			}
+			fuegodisparo += 1;
+			if(fuegodisparo >= 5)
+			{
+				fuegodisparo = 0;
 			}
 		}else
 		{
@@ -380,6 +413,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				ponermascara = false;
 			}
 			Base.layer = LayerMask.NameToLayer("mira");
+			CmdChangeMascaraBase("mira");
 		}
 	}
 
@@ -392,6 +426,16 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	public void RpcChangeMascara (string newMascara)
 	{
 		gameObject.layer = LayerMask.NameToLayer(newMascara);
+	}
+	[Command]
+	public void CmdChangeMascaraBase(string newMascara)
+	{
+		RpcChangeMascaraBase(newMascara);
+	}
+	[ClientRpc]
+	public void RpcChangeMascaraBase (string newMascara)
+	{
+		Base.layer = LayerMask.NameToLayer(newMascara);
 	}
 
 	void noVivo(bool vivo)
@@ -534,10 +578,10 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			Destroy(col.gameObject);
 
 			quemado = true;
-			salud -= 1;
+			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "10";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == NameEnemy && vivo)
 		{
@@ -602,7 +646,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		luz.SetActive(false);
 	}
-
+	public bool disparafuego;
+	int fuegodisparo;
 	//EVENTOS SPINE
 	//PARA EL LLAMERO
 	public void regreso()
@@ -622,10 +667,12 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	}
 	public void fuegoentra ()
 	{
+		disparafuego = true;
 		particulas.Play();
 	}
 	public void fuegosale ()
 	{
+		disparafuego = false;
 		particulas.Stop();
 	}
 	void termino ()

@@ -85,7 +85,7 @@ public class animacionesVikingoOffline : MonoBehaviour {
 			}
 			if(animator.GetCurrentAnimatorStateInfo(0).IsName("shoot"))
 			{
-				GetComponent<AIVikingoNetwork>().agent.isStopped = true;
+				GetComponent<AIVikingo>().agent.isStopped = true;
 				animator.SetBool("walk", false);
 				animator.SetBool("shot", false);
 				animator.SetBool("disparando", true);
@@ -105,6 +105,7 @@ public class animacionesVikingoOffline : MonoBehaviour {
 			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk"))
 			{
 				GetComponent<AIVikingo>().particulas.Stop();
+				GetComponent<AIVikingo>().disparafuego = false;
 				animator.SetBool("shot", false);
 			}
 		}

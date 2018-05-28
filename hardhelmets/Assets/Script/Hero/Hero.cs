@@ -94,6 +94,8 @@ public class Hero : MonoBehaviour{
 	public GameObject granadePrefHumo;
 	public GameObject luz;
 	//BALAS POR PISTOLA
+	int fuegodisparo;
+
 	public bool rafaga = true;
 	bool Gready = true;
 	public int balaPistola = 12;
@@ -905,7 +907,15 @@ public class Hero : MonoBehaviour{
 			{
 				if(balaLlamas >= 1)
 				{
-					BalaLlamas();
+					if(fuegodisparo == 0)
+					{
+						BalaLlamas();
+					}
+					fuegodisparo += 1;
+					if(fuegodisparo >= 5)
+					{
+						fuegodisparo = 0;
+					}
 
 					luz.SetActive(true);
 					StartCoroutine(apaga());
@@ -1560,6 +1570,7 @@ public class Hero : MonoBehaviour{
 	{
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
 		Destroy(bulletB, 0.7f);
 	}
 
@@ -2011,13 +2022,13 @@ public class Hero : MonoBehaviour{
 
 			quemado = true;
 
-			salud -= 2;
+			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			animacion.SetActive(true);
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "2";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 			//StartCoroutine(sumar());
 
 			SniperCam.GetComponent<Cam>().cancelar = true;

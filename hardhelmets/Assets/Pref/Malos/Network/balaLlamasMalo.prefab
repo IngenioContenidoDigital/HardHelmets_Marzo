@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136559401190783310}
   - component: {fileID: 114672237421606904}
   - component: {fileID: 114742702223406980}
+  - component: {fileID: 114788004321154428}
   m_Layer: 13
   m_Name: balaLlamasMalo
   m_TagString: balaLlamas
@@ -154,6 +155,18 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114788004321154428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063667503187212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a19977323da379546ab4a9f71c4e530b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poder: 5
 --- !u!136 &136559401190783310
 CapsuleCollider:
   m_ObjectHideFlags: 1

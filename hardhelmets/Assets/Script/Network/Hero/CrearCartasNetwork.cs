@@ -36,6 +36,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//PERSONAJES FUERTES 
 	public GameObject metralleto;
 	public GameObject vikingo;
+	public GameObject vikingoLlamero;
 	//PERSONAJES DEFENSA
 	public GameObject mg;
 	public GameObject mortero;
@@ -60,6 +61,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//PERSONAJES FUERTES 
 	public GameObject metralletoMalo;
 	public GameObject vikingoMalo;
+	public GameObject vikingoLlameroMalo;
 	//PERSONAJES DEFENSA
 	public GameObject mgMalo;
 	public GameObject morteroMalo;
@@ -570,6 +572,34 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	public void CmdVikingoMalo()
 	{
 		var objeto = (GameObject)Instantiate(vikingoMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		NetworkServer.Spawn(objeto);
+	}
+	//LLAMERO
+	public void crearLlamero ()
+	{
+		if(!tirar)
+		{
+			if(gameObject.tag == "Player")
+			{
+				CmdLlameroBueno();
+			}else
+			{
+				CmdLlameroMalo();
+			}
+
+			tirar = true;
+		}
+	}
+	[Command]
+	public void CmdLlameroBueno()
+	{
+		var objeto = (GameObject)Instantiate(vikingoLlamero, nace.transform.position, Quaternion.Euler(0,0,0));
+		NetworkServer.Spawn(objeto);
+	}
+	[Command]
+	public void CmdLlameroMalo()
+	{
+		var objeto = (GameObject)Instantiate(vikingoLlameroMalo, nace.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//CAMPAMENTO

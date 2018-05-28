@@ -35,6 +35,7 @@ public class CrearCartas : MonoBehaviour {
 	//PERSONAJES FUERTES 
 	public GameObject metralleto;
 	public GameObject vikingo;
+	public GameObject vikingoFuego;
 	//PERSONAJES DEFENSA
 	public GameObject mg;
 	public GameObject mortero;
@@ -392,6 +393,16 @@ public class CrearCartas : MonoBehaviour {
 		if(!tirar)
 		{
 			var objeto = (GameObject)Instantiate(vikingo, nace.transform.position, Quaternion.Euler(0,0,0));
+
+			tirar = true;
+		}
+	}
+	//LLAMERO
+	public void crearLlamero()
+	{
+		if(!tirar)
+		{
+			var objeto = (GameObject)Instantiate(vikingoFuego, nace.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}

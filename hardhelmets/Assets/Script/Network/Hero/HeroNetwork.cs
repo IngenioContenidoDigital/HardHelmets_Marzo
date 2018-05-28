@@ -121,6 +121,8 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject granadePrefHumoMalo;
 	public GameObject luz;
 	//BALAS POR PISTOLA
+	int fuegodisparo;
+
 	public bool rafaga = true;
 	bool Gready = true;
 	public int balaPistola = 12;
@@ -1038,13 +1040,22 @@ public class HeroNetwork : NetworkBehaviour{
 			{
 				if(balaLlamas >= 1)
 				{
-					if(gameObject.tag == "Player")
+					if(fuegodisparo == 0)
 					{
-						CmdBalaLlamas();
-					}else
-					{
-						CmdBalaLlamasMalo();
+						if(gameObject.tag == "Player")
+						{
+							CmdBalaLlamas();
+						}else
+						{
+							CmdBalaLlamasMalo();
+						}
 					}
+					fuegodisparo += 1;
+					if(fuegodisparo >= 5)
+					{
+						fuegodisparo = 0;
+					}
+
 					luz.SetActive(true);
 					StartCoroutine(apaga());
 
@@ -1872,6 +1883,7 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
 		NetworkServer.Spawn(bulletB);
 		Destroy(bulletB, 0.7f);
 
@@ -1881,6 +1893,7 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
+		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
 		NetworkServer.Spawn(bulletB);
 		Destroy(bulletB, 0.7f);
 	}
@@ -2410,10 +2423,10 @@ public class HeroNetwork : NetworkBehaviour{
 
 			quemado = true;
 
-			salud -= 2;
+			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "2";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 			//StartCoroutine(sumar());
 
 			SniperCam.GetComponent<CamNetwork>().cancelar = true;
