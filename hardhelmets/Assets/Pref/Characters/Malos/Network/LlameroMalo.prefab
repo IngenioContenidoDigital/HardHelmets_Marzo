@@ -2601,8 +2601,8 @@ MonoBehaviour:
   salud: 100
   saludMax: 0
   distancia: 0
-  minima: 20
-  maxima: 30
+  minima: 10
+  maxima: 20
   distanciaZ: 0
   BaseBuena: BaseMala
   BaseMala: BaseBuena
@@ -2723,14 +2723,14 @@ MonoBehaviour:
   initialFlipX: 0
   initialFlipY: 0
   separatorSlotNames: []
-  zSpacing: 0
+  zSpacing: -0.001
   useClipping: 1
   immutableTriangles: 0
   pmaVertexColors: 1
   clearStateOnDisable: 0
   tintBlack: 0
   singleSubmesh: 0
-  addNormals: 0
+  addNormals: 1
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
@@ -3205,8 +3205,8 @@ MonoBehaviour:
   m_Script: {fileID: 1590678366, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
-  m_ParameterSendBits: 127
+  m_Animator: {fileID: 95572467297270910}
+  m_ParameterSendBits: 511
   param0: 
   param1: 
   param2: 

@@ -3369,6 +3369,7 @@ MonoBehaviour:
   Base: {fileID: 1113402110288382}
   water: 0
   particulas: {fileID: 0}
+  disparafuego: 0
   golpe: {fileID: 0}
 --- !u!114 &114128712044664312
 MonoBehaviour:
@@ -4871,7 +4872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 95115946322127792}
-  m_ParameterSendBits: 127
+  m_ParameterSendBits: 511
   param0: 
   param1: 
   param2: 

@@ -102,7 +102,7 @@ public class animacionesVikingoOffline : MonoBehaviour {
 				animator.SetBool("golpe", false);
 			}
 
-			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk"))
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") && animator.GetBool("disparando") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk") && animator.GetBool("disparando"))
 			{
 				GetComponent<AIVikingo>().particulas.Stop();
 				GetComponent<AIVikingo>().disparafuego = false;

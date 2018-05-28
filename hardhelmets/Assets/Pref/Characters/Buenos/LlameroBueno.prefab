@@ -2577,8 +2577,8 @@ MonoBehaviour:
   salud: 100
   saludMax: 0
   distancia: 0
-  minima: 20
-  maxima: 30
+  minima: 10
+  maxima: 20
   distanciaZ: 0
   BaseBuena: BaseBuena
   BaseMala: BaseMala
@@ -2919,14 +2919,14 @@ MonoBehaviour:
   initialFlipX: 0
   initialFlipY: 0
   separatorSlotNames: []
-  zSpacing: 0
+  zSpacing: -0.001
   useClipping: 1
   immutableTriangles: 0
   pmaVertexColors: 1
   clearStateOnDisable: 0
   tintBlack: 0
   singleSubmesh: 0
-  addNormals: 0
+  addNormals: 1
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
