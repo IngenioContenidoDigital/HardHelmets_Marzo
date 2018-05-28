@@ -2453,15 +2453,18 @@ public class HeroNetwork : NetworkBehaviour{
 
 	public void regreso()
 	{
-		if(_currentDirection == "right")
+		if(isLocalPlayer)
 		{
-			ChangeDirection ("left");
-			return;
-		}
-		if(_currentDirection == "left")
-		{
-			ChangeDirection ("right");
-			return;
+			if(_currentDirection == "right")
+			{
+				ChangeDirection ("left");
+				return;
+			}
+			if(_currentDirection == "left")
+			{
+				ChangeDirection ("right");
+				return;
+			}
 		}
 	}
 

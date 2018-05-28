@@ -121,6 +121,7 @@ public class AI : MonoBehaviour {
 			groundRadius = 0.5f;
 		}
 	}
+	public GameObject spheraColision;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -246,7 +247,7 @@ public class AI : MonoBehaviour {
 										print("TIENE LA SANGRE LLENA");
 										particulas.Stop();
 									}
-									if(!particulas.isPlaying && target.GetComponent<Hero>().salud < target.GetComponent<Hero>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									if(!particulas.isPlaying && target.GetComponent<Hero>().salud < target.GetComponent<Hero>().saludMax)
 									{
 										particulas.Play();
 									}
@@ -258,7 +259,7 @@ public class AI : MonoBehaviour {
 										print("TIENE LA SANGRE LLENA");
 										particulas.Stop();
 									}
-									if(!particulas.isPlaying && target.GetComponent<AI>().salud < target.GetComponent<AI>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									if(!particulas.isPlaying && target.GetComponent<AI>().salud < target.GetComponent<AI>().saludMax)
 									{
 										particulas.Play();
 									}
@@ -321,6 +322,8 @@ public class AI : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AI>() != null)
 					{
@@ -328,6 +331,8 @@ public class AI : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMortero>() != null)
 					{
@@ -335,6 +340,8 @@ public class AI : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMetra>() != null)
 					{
@@ -342,6 +349,8 @@ public class AI : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIVikingo>() != null)
 					{
@@ -349,6 +358,8 @@ public class AI : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIVehicle>() != null)
 					{
@@ -356,6 +367,8 @@ public class AI : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}
 				}
@@ -419,7 +432,11 @@ public class AI : MonoBehaviour {
 			gameObject.layer = LayerMask.NameToLayer("muerto");
 		}
 	}
-
+	IEnumerator momentoSphere()
+	{
+		yield return new WaitForSeconds(0.5f);
+		spheraColision.SetActive(true);
+	}
 	void OnCollisionEnter (Collision col)
 	{
 		if(col.gameObject.tag == "Water")

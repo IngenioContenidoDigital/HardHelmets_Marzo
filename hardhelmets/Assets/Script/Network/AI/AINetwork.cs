@@ -130,6 +130,7 @@ public class AINetwork : NetworkBehaviour {
 		}
 	}
 	bool ponermascara;
+	public GameObject spheraColision;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -267,7 +268,7 @@ public class AINetwork : NetworkBehaviour {
 										print("TIENE LA SANGRE LLENA");
 										particulas.Stop();
 									}
-									if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax)
 									{
 										particulas.Play();
 									}
@@ -279,7 +280,7 @@ public class AINetwork : NetworkBehaviour {
 										print("TIENE LA SANGRE LLENA");
 										particulas.Stop();
 									}
-									if(!particulas.isPlaying && target.GetComponent<AINetwork>().salud < target.GetComponent<AINetwork>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									if(!particulas.isPlaying && target.GetComponent<AINetwork>().salud < target.GetComponent<AINetwork>().saludMax)
 									{
 										particulas.Play();
 									}
@@ -331,6 +332,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AINetwork>() != null)
 					{
@@ -338,6 +341,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMorteroNetwork>() != null)
 					{
@@ -345,6 +350,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMetraNetwork>() != null)
 					{
@@ -352,6 +359,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIVikingoNetwork>() != null)
 					{
@@ -359,6 +368,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AITank2>() != null)
 					{
@@ -366,6 +377,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMetraMaloNetwork>() != null)
 					{
@@ -373,6 +386,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMorteroMaloNetwork>() != null)
 					{
@@ -380,6 +395,8 @@ public class AINetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}
 				}
@@ -452,6 +469,11 @@ public class AINetwork : NetworkBehaviour {
 				ponermascara = false;
 			}
 		}
+	}
+	IEnumerator momentoSphere()
+	{
+		yield return new WaitForSeconds(0.3f);
+		spheraColision.SetActive(true);
 	}
 
 	[Command]

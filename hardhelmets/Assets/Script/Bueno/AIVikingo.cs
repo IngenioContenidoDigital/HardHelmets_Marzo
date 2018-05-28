@@ -110,7 +110,7 @@ public class AIVikingo : MonoBehaviour {
 
 		_currentDirection = "right";
 	}
-
+	public GameObject spheraColision;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -253,6 +253,8 @@ public class AIVikingo : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AI>() != null)
 					{
@@ -260,6 +262,8 @@ public class AIVikingo : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMortero>() != null)
 					{
@@ -267,6 +271,8 @@ public class AIVikingo : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMetra>() != null)
 					{
@@ -274,6 +280,8 @@ public class AIVikingo : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIVikingo>() != null)
 					{
@@ -281,6 +289,8 @@ public class AIVikingo : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIVehicle>() != null)
 					{
@@ -288,6 +298,8 @@ public class AIVikingo : MonoBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}
 				}
@@ -364,6 +376,12 @@ public class AIVikingo : MonoBehaviour {
 			gameObject.layer = LayerMask.NameToLayer("muerto");
 			Base.layer = LayerMask.NameToLayer("mira");
 		}
+	}
+
+	IEnumerator momentoSphere()
+	{
+		yield return new WaitForSeconds(0.3f);
+		spheraColision.SetActive(true);
 	}
 
 	void OnCollisionEnter (Collision col)

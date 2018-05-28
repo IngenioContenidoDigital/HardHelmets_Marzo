@@ -121,6 +121,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		_currentDirection = "right";
 	}
 	bool ponermascara;
+	public GameObject spheraColision;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -282,6 +283,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AINetwork>() != null)
 					{
@@ -289,6 +292,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMorteroNetwork>() != null)
 					{
@@ -296,6 +301,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMetraNetwork>() != null)
 					{
@@ -303,6 +310,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIVikingoNetwork>() != null)
 					{
@@ -310,6 +319,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AITank2>() != null)
 					{
@@ -317,6 +328,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMetraMaloNetwork>() != null)
 					{
@@ -324,6 +337,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}else if(target.GetComponent<AIMorteroMaloNetwork>() != null)
 					{
@@ -331,6 +346,8 @@ public class AIVikingoNetwork : NetworkBehaviour {
 						{
 							target = null;
 							agent.isStopped = true;
+							spheraColision.SetActive(false);
+							StartCoroutine(momentoSphere());
 						}
 					}
 				}
@@ -415,6 +432,12 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			Base.layer = LayerMask.NameToLayer("mira");
 			CmdChangeMascaraBase("mira");
 		}
+	}
+
+	IEnumerator momentoSphere()
+	{
+		yield return new WaitForSeconds(0.3f);
+		spheraColision.SetActive(true);
 	}
 
 	[Command]
