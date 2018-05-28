@@ -252,7 +252,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}else
 		{
 			_currentDirection = "left";
-			CmdChangeDirection ("left");
+			ChangeDirection ("left");
 		}
 		if(!isLocalPlayer)
 		{
@@ -471,7 +471,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "right")
 					{
 						animator.SetBool("girar", true);
-						//CmdChangeDirection ("left");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -507,7 +506,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "right")
 					{
 						animator.SetBool("girar", true);
-						//CmdChangeDirection ("left");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -542,7 +540,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "left")
 					{
 						animator.SetBool("girar", true);
-						//CmdChangeDirection ("right");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -578,7 +575,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "left")
 					{
 						animator.SetBool("girar", true);
-						//CmdChangeDirection ("right");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -2126,17 +2122,14 @@ public class HeroNetwork : NetworkBehaviour{
 		cubierto = false;
 	}
 	//CAMBIAR DIRECCION
-	[Command]
+	/*[Command]
 	public void CmdChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
 		{
 			if (direction == "right")
 			{
-				//transform.rotation = Quaternion.Euler(0,0,0);
-				//GetComponent<SkeletonAnimator>().zSpacing = -0.0002f;
 				transform.localScale = new Vector3(1,1,1);
-				//Girar2.transform.Rotate (0, 180, 0);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
 
 				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
@@ -2149,10 +2142,39 @@ public class HeroNetwork : NetworkBehaviour{
 			} 
 			else if (direction == "left") 
 			{
-				//transform.rotation = Quaternion.Euler(0,180,0);
-				//GetComponent<SkeletonAnimator>().zSpacing = 0.0002f;
 				transform.localScale = new Vector3(-1,1,1);
-				//Girar2.transform.Rotate (0, -180, 0);
+				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
+				_currentDirection = "left";
+			}
+		}
+	}*/
+	public void ChangeDirection(string direction)
+	{
+		if (_currentDirection != direction)
+		{
+			if (direction == "right")
+			{
+				transform.localScale = new Vector3(1,1,1);
+				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
+				_currentDirection = "right";
+			} 
+			else if (direction == "left") 
+			{
+				transform.localScale = new Vector3(-1,1,1);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
 
 				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
@@ -2420,12 +2442,12 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		if(_currentDirection == "right")
 		{
-			CmdChangeDirection ("left");
+			ChangeDirection ("left");
 			return;
 		}
 		if(_currentDirection == "left")
 		{
-			CmdChangeDirection ("right");
+			ChangeDirection ("right");
 			return;
 		}
 	}
@@ -2612,24 +2634,26 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			suma = saludMax*2/104;
 			salud += saludMax*2/104;
-
-			var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
-			NetworkServer.Spawn(letras);
 		}else
 		{
 			suma = saludMax2*2/104;
 			salud += saludMax2*2/104;
-
-			var letras = (GameObject)Instantiate(textos2B, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
-			NetworkServer.Spawn(letras);
 		}
 	}
 	public void SaludSumar()
 	{
-		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
-		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
+		CmdSaludSumar();
+		if(gameObject.tag == "Player")
+		{
+			suma = saludMax*2/104;
+			var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
+		}else
+		{
+			suma = saludMax2*2/104;
+			var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
+		}
 	}
 
 	[Command]

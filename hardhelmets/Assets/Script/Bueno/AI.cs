@@ -121,7 +121,7 @@ public class AI : MonoBehaviour {
 			groundRadius = 0.5f;
 		}
 	}
-	
+	int distancia2;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -161,9 +161,11 @@ public class AI : MonoBehaviour {
 			if(gameObject.tag == "Player")
 			{
 				gameObject.layer = LayerMask.NameToLayer("Player");
+				Base.layer = LayerMask.NameToLayer("Vista");
 			}else
 			{
 				gameObject.layer = LayerMask.NameToLayer("Enemy");
+				Base.layer = LayerMask.NameToLayer("Vista");
 			}
 
 			if(grounded && target == null)
@@ -207,10 +209,20 @@ public class AI : MonoBehaviour {
 				{
 					if(target.tag == BaseMala || target.tag == "newtra") // BASES NEUTRAS
 					{
+						if(distancia2 != distancia-10)
+						{
+							distancia2 = distancia-10;
+							distancia = distancia2;
+						}
 						agent.isStopped = true;
 						animator.SetBool("walk", false);
 					}else
 					{
+						if(distancia2 != distancia+10)
+						{
+							distancia2 = distancia+10;
+							distancia = distancia2;
+						}
 						if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
 						{
 							if(target.tag == BuscarBase) // BASE ENEMIGA

@@ -211,6 +211,7 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetInt("24costo", 70);//MINA
 			PlayerPrefs.SetInt("25costo", 100);//BOMBARDEO
 			PlayerPrefs.SetInt("26costo", 80);//AEREO
+			PlayerPrefs.SetInt("27costo", 70);//Llamero
 			//CANTIDAD DE CAJAS de cartas
 			PlayerPrefs.SetInt("caja1",0);
 			PlayerPrefs.SetInt("caja2",0);
@@ -311,6 +312,10 @@ public class Menu : MonoBehaviour {
 		if(PlayerPrefs.GetInt("26costo") != 80)
 		{
 			PlayerPrefs.SetInt("26costo", 80);//AVION
+		}
+		if(PlayerPrefs.GetInt("27costo") != 70)
+		{
+			PlayerPrefs.SetInt("27costo", 70);//Llamero
 		}
 
 		idioma = PlayerPrefs.GetString("idioma");

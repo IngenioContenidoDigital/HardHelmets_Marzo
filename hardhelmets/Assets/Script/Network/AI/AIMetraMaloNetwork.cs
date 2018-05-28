@@ -402,13 +402,6 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 				}
 			}
 		}
-		if(col.gameObject.tag == medic)
-		{
-			if(salud < saludMax)
-			{
-				CmdSaludSumar();
-			}
-		}
 	}
 
 	bool quemado;
@@ -469,11 +462,14 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 	{
 		suma = saludMax*2/80;
 		salud += saludMax*2/80;
-		//salud += 6;
+	}
+	public void SaludSumar()
+	{
+		CmdSaludSumar();
 
+		suma = saludMax*2/80;
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
-		NetworkServer.Spawn(letras);
 	}
 
 	IEnumerator esperaCuchillo()

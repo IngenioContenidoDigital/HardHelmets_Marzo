@@ -185,10 +185,14 @@ public class AINetwork : NetworkBehaviour {
 				{
 					gameObject.layer = LayerMask.NameToLayer("Player");
 					CmdChangeMascara("Player");
+					Base.layer = LayerMask.NameToLayer("Vista");
+					CmdChangeMascaraBase("Vista");
 				}else
 				{
 					gameObject.layer = LayerMask.NameToLayer("Enemy");
 					CmdChangeMascara("Enemy");
+					Base.layer = LayerMask.NameToLayer("Vista");
+					CmdChangeMascaraBase("Vista");
 				}
 				ponermascara = true;
 			}
@@ -256,26 +260,26 @@ public class AINetwork : NetworkBehaviour {
 							}else if(target.tag == amigo)//MEDICO -- TARGET ES AMIGO
 							{
 								agent.isStopped = true;
-								if(target.GetComponent<Hero>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+								if(target.GetComponent<HeroNetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 								{
-									if(particulas.isPlaying && target.GetComponent<Hero>().salud >= target.GetComponent<Hero>().saludMax)
+									if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
 									{
 										print("TIENE LA SANGRE LLENA");
 										particulas.Stop();
 									}
-									if(!particulas.isPlaying && target.GetComponent<Hero>().salud < target.GetComponent<Hero>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
 									{
 										particulas.Play();
 									}
 								}
-								if(target.GetComponent<AI>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+								if(target.GetComponent<AINetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 								{
-									if(particulas.isPlaying && target.GetComponent<AI>().salud >= target.GetComponent<AI>().saludMax)
+									if(particulas.isPlaying && target.GetComponent<AINetwork>().salud >= target.GetComponent<AINetwork>().saludMax)
 									{
 										print("TIENE LA SANGRE LLENA");
 										particulas.Stop();
 									}
-									if(!particulas.isPlaying && target.GetComponent<AI>().salud < target.GetComponent<AI>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
+									if(!particulas.isPlaying && target.GetComponent<AINetwork>().salud < target.GetComponent<AINetwork>().saludMax && Mathf.Abs((transform.position - target.position).x) <= distancia)
 									{
 										particulas.Play();
 									}
@@ -421,6 +425,7 @@ public class AINetwork : NetworkBehaviour {
 				gameObject.layer = LayerMask.NameToLayer("muerto");
 				Base.layer = LayerMask.NameToLayer("mira");
 				CmdChangeMascara("muerto");
+				CmdChangeMascaraBase("mira");
 
 				vivo = false;
 
@@ -435,11 +440,14 @@ public class AINetwork : NetworkBehaviour {
 		{
 			agent.isStopped = true;
 			mira.SetActive(false);
-			Base.layer = LayerMask.NameToLayer("mira");
+		
 			if(ponermascara)
 			{
 				gameObject.layer = LayerMask.NameToLayer("muerto");
 				CmdChangeMascara("muerto");
+
+				Base.layer = LayerMask.NameToLayer("mira");
+				CmdChangeMascaraBase("mira");
 
 				ponermascara = false;
 			}
@@ -455,6 +463,17 @@ public class AINetwork : NetworkBehaviour {
 	public void RpcChangeMascara (string newMascara)
 	{
 		gameObject.layer = LayerMask.NameToLayer(newMascara);
+	}
+
+	[Command]
+	public void CmdChangeMascaraBase(string newMascara)
+	{
+		RpcChangeMascaraBase(newMascara);
+	}
+	[ClientRpc]
+	public void RpcChangeMascaraBase (string newMascara)
+	{
+		Base.layer = LayerMask.NameToLayer(newMascara);
 	}
 
 	void FacingCallback(int voltear)
@@ -606,7 +625,6 @@ public class AINetwork : NetworkBehaviour {
 		if(col.gameObject.tag == amigo && vivo)
 		{
 			target = col.gameObject.transform;
-			particulas.Play();
 		}
 	}
 	void OnTriggerExit (Collider col)
@@ -649,11 +667,15 @@ public class AINetwork : NetworkBehaviour {
 	{
 		suma = saludMax*2/80;
 		salud += saludMax*2/80;
-		//salud += 6;
 
+	}
+	public void SaludSumar()
+	{
+		CmdSaludSumar();
+
+		suma = saludMax*2/80;
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
-		NetworkServer.Spawn(letras);
 	}
 	//APAGA LA LUZ
 	IEnumerator apaga ()

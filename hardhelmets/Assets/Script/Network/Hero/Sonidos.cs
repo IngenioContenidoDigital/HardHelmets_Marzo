@@ -192,7 +192,7 @@ public class Sonidos : NetworkBehaviour {
 	}
 	void metrareload()
 	{
-		if(GetComponent<HeroNetwork>().arma == "metra")
+		if(GetComponent<HeroNetwork>() && GetComponent<HeroNetwork>().arma == "metra")
 		{
 			audio2.volume = efectos;
 			audio2.clip = rmetra;

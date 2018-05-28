@@ -48,28 +48,27 @@ public class particulasMedico : MonoBehaviour {
 			//ONLINE
 			if(body.GetComponent<HeroNetwork>())
 			{
-				body.GetComponent<HeroNetwork>().CmdSaludSumar();
 				body.GetComponent<HeroNetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AINetwork>())
 			{
-				body.GetComponent<AINetwork>().CmdSaludSumar();
+				body.GetComponent<AINetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AIMetraNetwork>())
 			{
-				body.GetComponent<AIMetraNetwork>().CmdSaludSumar();
+				body.GetComponent<AIMetraNetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AIMorteroNetwork>())
 			{
-				body.GetComponent<AIMorteroNetwork>().CmdSaludSumar();
+				body.GetComponent<AIMorteroNetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AIMetraMaloNetwork>())
 			{
-				body.GetComponent<AIMetraMaloNetwork>().CmdSaludSumar();
+				body.GetComponent<AIMetraMaloNetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AIMorteroMaloNetwork>())
 			{
-				body.GetComponent<AIMorteroMaloNetwork>().CmdSaludSumar();
+				body.GetComponent<AIMorteroMaloNetwork>().SaludSumar();
 			}
 			if(body.GetComponent<AIVikingoNetwork>())
 			{

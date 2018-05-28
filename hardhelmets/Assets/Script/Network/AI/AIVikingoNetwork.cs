@@ -587,11 +587,14 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	{
 		suma = saludMax*2/80;
 		salud += saludMax*2/80;
-		//salud += 6;
+	}
+	public void SaludSumar()
+	{
+		CmdSaludSumar();
 
+		suma = saludMax*2/80;
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
-		NetworkServer.Spawn(letras);
 	}
 	//APAGA LA LUZ
 	IEnumerator apaga ()
