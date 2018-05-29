@@ -2175,7 +2175,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346134648424610}
   m_LocalRotation: {x: 0, y: 0, z: -0.014922012, w: 0.99988866}
-  m_LocalPosition: {x: 4.4484, y: 4.1633997, z: 0}
+  m_LocalPosition: {x: 4.427307, y: 4.1633997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4683031187565958}
@@ -2333,9 +2333,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154982170973448}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1517195, w: 0.98842365}
-  m_LocalPosition: {x: 0.5191004, y: 0.0000009006121, z: 0}
-  m_LocalScale: {x: 1.1999143, y: 1.2000859, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.11259626, w: 0.99364084}
+  m_LocalPosition: {x: 0.5191, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4240644794146794}
   - {fileID: 4821001600594816}
@@ -2479,9 +2479,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327637779534812}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9670628, w: 0.25453815}
-  m_LocalPosition: {x: -0.5010396, y: 5.8423615, z: 0}
-  m_LocalScale: {x: 0.99991196, y: 0.9998272, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.46630946, w: 0.8846217}
+  m_LocalPosition: {x: 0.242, y: 2.896, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4683031187565958}
   m_RootOrder: 20
@@ -2507,7 +2507,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1569545843347260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6844, y: 0.1039, z: 0}
+  m_LocalPosition: {x: 2.8, y: 0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4275955404810300}
@@ -3340,7 +3340,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -5234,7 +5233,6 @@ MonoBehaviour:
   water: 0
   particulas: {fileID: 0}
   amigo: 
-  spheraColision: {fileID: 1256161175744614}
   HumoPanzer: {fileID: 0}
   strikeescopeta: {fileID: 0}
   Arma: {fileID: 1901235674030872, guid: 9bae587bf88faf645aacf6d4ce37dde5, type: 2}
