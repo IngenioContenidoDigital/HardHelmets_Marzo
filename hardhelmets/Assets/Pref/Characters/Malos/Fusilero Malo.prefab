@@ -2229,9 +2229,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1353340620316572}
-  m_LocalRotation: {x: 0, y: 0, z: 0.11259626, w: 0.99364084}
-  m_LocalPosition: {x: 0.5191, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.1517195, w: 0.98842365}
+  m_LocalPosition: {x: 0.5191004, y: 0.0000009006121, z: 0}
+  m_LocalScale: {x: 1.1999143, y: 1.2000859, z: 1}
   m_Children:
   - {fileID: 4170786718416416}
   - {fileID: 4498992091206514}
@@ -2608,9 +2608,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211406903416298}
-  m_LocalRotation: {x: 0, y: 0, z: 0.46630946, w: 0.8846217}
-  m_LocalPosition: {x: 0.242, y: 2.896, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9670628, w: 0.25453815}
+  m_LocalPosition: {x: -0.5010396, y: 5.8423615, z: 0}
+  m_LocalScale: {x: 0.99991196, y: 0.9998272, z: 1}
   m_Children: []
   m_Father: {fileID: 4530279817316594}
   m_RootOrder: 20
@@ -3213,7 +3213,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162501814990540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8056946, y: 4.2636, z: 0}
+  m_LocalPosition: {x: 5.8268, y: 4.2636, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4530279817316594}
@@ -3374,6 +3374,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -4293,6 +4294,7 @@ MonoBehaviour:
   water: 0
   particulas: {fileID: 0}
   amigo: 
+  spheraColision: {fileID: 1954467110982354}
   HumoPanzer: {fileID: 0}
   strikeescopeta: {fileID: 0}
   Arma: {fileID: 1994301069094708, guid: 3903e8984f6dbe942a150673a37654f3, type: 2}
