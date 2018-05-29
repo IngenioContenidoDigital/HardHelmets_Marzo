@@ -254,7 +254,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}else
 		{
 			_currentDirection = "left";
-			ChangeDirection ("left");
+			CmdChangeDirection ("left");
 		}
 		if(!isLocalPlayer)
 		{
@@ -2135,7 +2135,7 @@ public class HeroNetwork : NetworkBehaviour{
 		cubierto = false;
 	}
 	//CAMBIAR DIRECCION
-	/*[Command]
+	[Command]
 	public void CmdChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
@@ -2167,8 +2167,8 @@ public class HeroNetwork : NetworkBehaviour{
 				_currentDirection = "left";
 			}
 		}
-	}*/
-	public void ChangeDirection(string direction)
+	}
+	/*public void ChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
 		{
@@ -2199,7 +2199,7 @@ public class HeroNetwork : NetworkBehaviour{
 				_currentDirection = "left";
 			}
 		}
-	}
+	}*/
 
 	void cambiavivo (bool newvivo)
 	{
@@ -2457,12 +2457,12 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			if(_currentDirection == "right")
 			{
-				ChangeDirection ("left");
+				CmdChangeDirection ("left");
 				return;
 			}
 			if(_currentDirection == "left")
 			{
-				ChangeDirection ("right");
+				CmdChangeDirection ("right");
 				return;
 			}
 		}
