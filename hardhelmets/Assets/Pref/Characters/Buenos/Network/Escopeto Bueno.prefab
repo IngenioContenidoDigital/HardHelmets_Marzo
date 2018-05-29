@@ -2115,7 +2115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013693915010012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8, y: 0.14, z: 0}
+  m_LocalPosition: {x: 0.6844, y: 0.1039, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4380984218089702}
@@ -2411,7 +2411,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818124230623536}
   m_LocalRotation: {x: 0, y: 0, z: -0.014922012, w: 0.99988866}
-  m_LocalPosition: {x: 4.427307, y: 4.1633997, z: 0}
+  m_LocalPosition: {x: 4.4484, y: 4.1633997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4852060084333096}
@@ -3378,6 +3378,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
@@ -4903,6 +4904,7 @@ MonoBehaviour:
   water: 0
   particulas: {fileID: 0}
   amigo: 
+  spheraColision: {fileID: 1920603728527218}
   HumoPanzer: {fileID: 0}
   strikeescopeta: {fileID: 0}
   Arma: {fileID: 1774967630334590, guid: 8a0ae280de48aad43b71ed5b36520cf9, type: 2}
@@ -5469,55 +5471,55 @@ MonoBehaviour:
   inmortero: {fileID: 8300000, guid: bd9036262a8c54e4fb848134cde237d1, type: 3}
   outmortero: {fileID: 8300000, guid: 4a2b19f108c9b414e84f247ed87ff416, type: 3}
   dead:
-  - {fileID: 8300000, guid: 1223c22aec8977345a4a12ab45bf9601, type: 3}
-  - {fileID: 8300000, guid: 84f8660a2f7d94b43a906804fafd3137, type: 3}
-  - {fileID: 8300000, guid: 51a5a5b61e3d37a48b3bbc04c3d94c5e, type: 3}
-  - {fileID: 8300000, guid: 5cac5d218e9e9a149bc9239e9fb83846, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   attack:
-  - {fileID: 8300000, guid: 237665e814a7a174c9a833ac89336be6, type: 3}
-  - {fileID: 8300000, guid: 1af3d9e25b80209408f9a96161451341, type: 3}
-  - {fileID: 8300000, guid: 8e084a7d90fa444419ecbfa2326f50fe, type: 3}
-  - {fileID: 8300000, guid: a0ac29ba4aaf7af43af521393e281318, type: 3}
-  - {fileID: 8300000, guid: 4858c22ae6c334d4db7d34a026b28cac, type: 3}
-  - {fileID: 8300000, guid: 84c06fa589e21cb44a42869d6d23c0a0, type: 3}
-  - {fileID: 8300000, guid: 545f3634c4d081e4ba550b8ab3570dd8, type: 3}
-  - {fileID: 8300000, guid: b3bcc0089adb52548b618abcc86d81a4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   damage:
-  - {fileID: 8300000, guid: 1ebabfc8d64c70a41b0ade4a8e61474c, type: 3}
-  - {fileID: 8300000, guid: a78b9e74e0c6e0a4280926f0e27915a8, type: 3}
-  - {fileID: 8300000, guid: 298d524a045bc054aa8fe39b80d35092, type: 3}
-  - {fileID: 8300000, guid: df93adefe28ae1e45a0d7547952e28b2, type: 3}
-  - {fileID: 8300000, guid: 8b7e7545b01f54d4e87f135d015f3d14, type: 3}
-  - {fileID: 8300000, guid: b8f66753485a5f9438893922b6711baa, type: 3}
-  - {fileID: 8300000, guid: ef2e18db6b597b34ba6c1472b93c8db8, type: 3}
-  - {fileID: 8300000, guid: a15bd763a83db4e4081e99f55e87c75d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   idle:
-  - {fileID: 8300000, guid: 61cfab877681f3e4abdaebabc407c3e4, type: 3}
-  - {fileID: 8300000, guid: 86be8e687829fed49a167f70bad3172e, type: 3}
-  - {fileID: 8300000, guid: a565bc7787ab3c148b2feb91c11565f1, type: 3}
-  - {fileID: 8300000, guid: 3f3ef3928ddf30d48b2c638cd25fed60, type: 3}
-  - {fileID: 8300000, guid: 2d740a4a58580b548894f2840db80594, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   muerto:
-  - {fileID: 8300000, guid: 84f8660a2f7d94b43a906804fafd3137, type: 3}
-  - {fileID: 8300000, guid: 51a5a5b61e3d37a48b3bbc04c3d94c5e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   xx:
-  - {fileID: 8300000, guid: d3c34f77ca5ac8c48a1f41d2e08d84d6, type: 3}
-  - {fileID: 8300000, guid: 1721c6efaa10f0045a2ce2a1f21a72d7, type: 3}
-  - {fileID: 8300000, guid: 61078ab5ec56e2749aa72c58309c774c, type: 3}
-  - {fileID: 8300000, guid: d58ea7f2b2ffb914b9eb8fb7f6a69e81, type: 3}
-  - {fileID: 8300000, guid: 16036cf2f9370d747880052d1cc698f9, type: 3}
-  - {fileID: 8300000, guid: 531b83ccb3ba9e14db6a4892f18cc0bb, type: 3}
-  - {fileID: 8300000, guid: 1b7fb11fd8f737244b2d1eaf82e4455f, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   quemado:
-  - {fileID: 8300000, guid: ee23ad1b17e92324e8384309df6d35de, type: 3}
-  - {fileID: 8300000, guid: 7927d3c97837d1b4db01d1ef0955a6d2, type: 3}
-  - {fileID: 8300000, guid: 05dd162d92b5be44285c9dad45b04928, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   grito:
-  - {fileID: 8300000, guid: 908e926a0e3632b4ca9aa0c481b65f89, type: 3}
-  - {fileID: 8300000, guid: ff38982bbacc8564a8996ded345e516e, type: 3}
-  - {fileID: 8300000, guid: 9c5188b966d0aba4390822dc1975badc, type: 3}
-  - {fileID: 8300000, guid: 2a458721d3a93c848802ef2d88b9ad1b, type: 3}
-  - {fileID: 8300000, guid: f50bee89373f5774e89009292f2a097c, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   splat: {fileID: 0}
   sordo: {fileID: 0}
 --- !u!114 &114675223154624942
