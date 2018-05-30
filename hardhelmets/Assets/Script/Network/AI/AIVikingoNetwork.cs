@@ -94,7 +94,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		}
 
 		distancia = Random.Range(minima,maxima);//20-30
-		distanciaZ = Random.Range(0,8);
+		distanciaZ = Random.Range(3,8);
 
 		if(gameObject.tag == "Player")
 		{
@@ -112,11 +112,6 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		mira.SetActive(false);
 
 		animator.SetBool("paracaidas", true);
-
-		if(Tipo == 1)
-		{
-			animator.SetBool("falling", true);
-		}
 
 		_currentDirection = "right";
 	}
@@ -155,12 +150,6 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
-		//VOLTEA PERSONAJE
-		if(Tipo == 1)
-		{
-			gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
-		}
-
 		if(vivo && !animator.GetBool("paracaidas"))
 		{
 			if(!ponermascara)
@@ -189,7 +178,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				target = null;
 			}
 
-			if(Tipo == 2 && gameObject.transform.localScale.x != voltear && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetBool("girar"))
+			if(gameObject.transform.localScale.x != voltear && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetBool("girar"))
 			{
 				regreso();
 			}
@@ -203,20 +192,26 @@ public class AIVikingoNetwork : NetworkBehaviour {
 				if(angle == 180 && _currentDirection != "left")
 				{
 					_currentDirection = "left";
-					voltear = -1;
-					if(Tipo == 2)
+					if(Tipo == 1)
 					{
-						animator.SetBool("girar", true);
+						voltear = -1.13f;
+					}else
+					{
+						voltear = -1;
 					}
+					animator.SetBool("girar", true);
 				}
 				if(angle == 0 && _currentDirection != "right")
 				{
 					_currentDirection = "right";
-					voltear = 1;
-					if(Tipo == 2)
+					if(Tipo == 1)
 					{
-						animator.SetBool("girar", true);
+						voltear = 1.13f;
+					}else
+					{
+						voltear = 1;
 					}
+					animator.SetBool("girar", true);
 				}
 
 				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
@@ -676,7 +671,13 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	public void regreso()
 	{
 		//VOLTEA PERSONAJE
-		gameObject.transform.localScale = new Vector3(voltear,1,1);
+		if(Tipo == 1)
+		{
+			gameObject.transform.localScale = new Vector3(voltear,1.13f,1.13f);
+		}else
+		{
+			gameObject.transform.localScale = new Vector3(voltear,1,1);
+		}
 	}
 	//PATADA
 	public GameObject golpe;

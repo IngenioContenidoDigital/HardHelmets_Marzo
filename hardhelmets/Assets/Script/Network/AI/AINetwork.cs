@@ -101,7 +101,7 @@ public class AINetwork : NetworkBehaviour {
 		}
 
 		distancia = Random.Range(minima,maxima);//20-30
-		distanciaZ = Random.Range(0,8);
+		distanciaZ = Random.Range(3,8);
 
 		if(gameObject.tag == "Player")
 		{
