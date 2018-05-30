@@ -254,7 +254,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}else
 		{
 			_currentDirection = "left";
-			ChangeDirection ("left");
+			CmdChangeDirection ("left");
 		}
 		if(!isLocalPlayer)
 		{
@@ -327,6 +327,7 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
+		RpcSetSalud(salud);
 
 		nacerZ = bulletSpawn.rotation.z;
 
@@ -1830,8 +1831,10 @@ public class HeroNetwork : NetworkBehaviour{
 	[ClientRpc]
 	public void RpcSetSalud (float newSalud)
 	{
+		//saludMax2 = newLevel;
 		if(!isLocalPlayer)
 		{
+			print("ACTUALIZANDO SALUD");
 			salud = newSalud;
 		}
 	}
@@ -2135,8 +2138,8 @@ public class HeroNetwork : NetworkBehaviour{
 		cubierto = false;
 	}
 	//CAMBIAR DIRECCION
-	//[Command]
-	public void ChangeDirection(string direction)
+	[Command]
+	public void CmdChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
 		{
@@ -2167,10 +2170,10 @@ public class HeroNetwork : NetworkBehaviour{
 				_currentDirection = "left";
 			}
 		}
-		RpcChangeDirection(_currentDirection);
+		//RpcChangeDirection(_currentDirection);
 	}
 
-	[ClientRpc]
+	/*[ClientRpc]
 	public void RpcChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
@@ -2202,7 +2205,7 @@ public class HeroNetwork : NetworkBehaviour{
 				_currentDirection = "left";
 			}
 		}
-	}
+	}*/
 
 	void cambiavivo (bool newvivo)
 	{
@@ -2433,12 +2436,12 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			if(_currentDirection == "right")
 			{
-				ChangeDirection ("left");
+				CmdChangeDirection ("left");
 				return;
 			}
 			if(_currentDirection == "left")
 			{
-				ChangeDirection ("right");
+				CmdChangeDirection ("right");
 				return;
 			}
 		}
