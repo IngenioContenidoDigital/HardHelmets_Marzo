@@ -331,7 +331,7 @@ public class Hero : MonoBehaviour{
 				//IZQUIERDA CONTROL
 				if(Input.GetAxis("lado") < 0 && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
-					if(_currentDirection == "right")
+					if(_currentDirection == "right" && !caminarI)
 					{
 						animator.SetBool("girar", true);
 						//ChangeDirection ("left");
@@ -403,7 +403,7 @@ public class Hero : MonoBehaviour{
 				//DERECHA CONTROL
 				if(Input.GetAxis("lado") > 0 && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
-					if(_currentDirection == "left")
+					if(_currentDirection == "left" && !caminarD)
 					{
 						animator.SetBool("girar", true);
 						//ChangeDirection ("right");
@@ -944,7 +944,7 @@ public class Hero : MonoBehaviour{
 					GetComponent<SonidosOffline>().fuego = false;
 					llamas = false;
 				}
-				/*animator.SetInteger("disparo", 0);*/
+				animator.SetInteger("disparo", 0);
 				//rafaga = true;
 				pressDisparo = true;
 			}

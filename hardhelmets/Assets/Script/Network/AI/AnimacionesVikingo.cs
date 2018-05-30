@@ -99,11 +99,10 @@ public class AnimacionesVikingo : MonoBehaviour {
 				animator.SetBool("golpe", false);
 			}
 
-			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") && animator.GetBool("disparando") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk") && animator.GetBool("disparando"))
+			if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle") || animator.GetCurrentAnimatorStateInfo(0).IsName("walk"))
 			{
 				GetComponent<AIVikingoNetwork>().particulas.Stop();
 				GetComponent<AIVikingoNetwork>().disparafuego = false;
-				animator.SetBool("shot", false);
 			}
 		}
 	}

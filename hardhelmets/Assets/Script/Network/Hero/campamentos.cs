@@ -64,6 +64,19 @@ public class campamentos : MonoBehaviour {
 
 		if(contar)
 		{
+			BasePrimaria.SetActive(false);
+			alpha.SetActive(false);
+			beta.SetActive(false);
+
+			uno.SetActive(false);
+			dos.SetActive(false);
+			tres.SetActive(false);
+
+			alphaEnemy.SetActive(false);
+			alphaEnemy2.SetActive(false);
+			betaEnemy.SetActive(false);
+			betaEnemy2.SetActive(false);
+
 			if(idioma == "ENGLISH")
 			{
 				contador.text = "Waiting..."+cuentaatras.ToString("F0");
@@ -427,18 +440,6 @@ public class campamentos : MonoBehaviour {
 			}
 		}
 
-		//Player.GetComponent<HeroNetwork>().animacion.SetActive(false);
-
-		Player.GetComponent<CustomFinalNetwork>().CmdSetCasco(Player.GetComponent<CustomFinalNetwork>().casco);
-		Cabeza.GetComponent<CabezaNetwork>().tirosCabeza = 0;
-
-		Camara.GetComponent<CamNetwork>().campamento = false;
-
-		Player.GetComponent<HeroNetwork>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<HeroNetwork>().carta1);
-		Player.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = false;
-
-		nace = 0;
-
 		BasePrimaria.SetActive(false);
 		alpha.SetActive(false);
 		beta.SetActive(false);
@@ -451,5 +452,16 @@ public class campamentos : MonoBehaviour {
 		alphaEnemy2.SetActive(false);
 		betaEnemy.SetActive(false);
 		betaEnemy2.SetActive(false);
+		//Player.GetComponent<HeroNetwork>().animacion.SetActive(false);
+
+		Player.GetComponent<CustomFinalNetwork>().CmdSetCasco(Player.GetComponent<CustomFinalNetwork>().casco);
+		Cabeza.GetComponent<CabezaNetwork>().tirosCabeza = 0;
+
+		Camara.GetComponent<CamNetwork>().campamento = false;
+
+		Player.GetComponent<HeroNetwork>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<HeroNetwork>().carta1);
+		Player.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = false;
+
+		nace = 0;
 	}
 }

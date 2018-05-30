@@ -470,7 +470,7 @@ public class HeroNetwork : NetworkBehaviour{
 				//IZQUIERDA CONTROL
 				if(Input.GetAxis("lado") < 0 && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
-					if(_currentDirection == "right")
+					if(_currentDirection == "right" && !caminarI)
 					{
 						animator.SetBool("girar", true);
 						v3 = Vector3.zero;
@@ -539,7 +539,7 @@ public class HeroNetwork : NetworkBehaviour{
 				//DERECHA CONTROL
 				if(Input.GetAxis("lado") > 0 && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !animator.GetCurrentAnimatorStateInfo(0).IsName("backJump") && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
-					if(_currentDirection == "left")
+					if(_currentDirection == "left" && !caminarD)
 					{
 						animator.SetBool("girar", true);
 						v3 = Vector3.zero;

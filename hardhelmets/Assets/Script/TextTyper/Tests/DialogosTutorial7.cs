@@ -47,6 +47,9 @@
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			habla = 3;
 
+			Hero.GetComponent<Hero>().pausado = true;
+			Hero.GetComponent<Hero>().ready = false;
+
 			this.testTextTyper.PrintCompleted.AddListener(this.HandlePrintCompleted); 
 			this.testTextTyper.CharacterPrinted.AddListener(this.HandleCharacterPrinted);
 
@@ -140,6 +143,7 @@
 		{
 			yield return new WaitForSeconds(0.3f);
 			enemy3.SetActive(true);
+			Hero.GetComponent<Hero>().pausado = false;
 			Hero.GetComponent<Hero>().ready = true;
 			ventana.SetActive(false);
 			Destroy(gameObject);

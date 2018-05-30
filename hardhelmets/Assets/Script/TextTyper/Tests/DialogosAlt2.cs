@@ -47,6 +47,9 @@
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			habla = 3;
 
+			Hero.GetComponent<Hero>().pausado = true;
+			Hero.GetComponent<Hero>().ready = false;
+
 			this.testTextTyper.PrintCompleted.AddListener(this.HandlePrintCompleted); 
 			this.testTextTyper.CharacterPrinted.AddListener(this.HandleCharacterPrinted);
 
@@ -98,6 +101,7 @@
 				if(dialogos >= max)
 				{
 					animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
+					Hero.GetComponent<Hero>().pausado = false;
 					ventana.SetActive(false);
 					gameObject.SetActive(false);
 				}else if(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "idle")

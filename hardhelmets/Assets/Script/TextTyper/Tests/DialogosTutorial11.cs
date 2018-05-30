@@ -47,6 +47,9 @@
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			habla = 3;
 
+			Hero.GetComponent<Hero>().pausado = true;
+			Hero.GetComponent<Hero>().ready = false;
+
 			this.testTextTyper.PrintCompleted.AddListener(this.HandlePrintCompleted); 
 			this.testTextTyper.CharacterPrinted.AddListener(this.HandleCharacterPrinted);
 
@@ -107,6 +110,7 @@
 					carta3.GetComponent<manoTutorial>().nombre = "12";
 					carta4.GetComponent<manoTutorial>().nombre = "16";
 					carta5.GetComponent<manoTutorial>().nombre = "18";
+					Hero.GetComponent<Hero>().pausado = false;
 					Hero.GetComponent<Hero>().ready = true;
 					ventana.SetActive(false);
 					Destroy(gameObject);

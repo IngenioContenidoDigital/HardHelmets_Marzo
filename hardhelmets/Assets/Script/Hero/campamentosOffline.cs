@@ -75,6 +75,17 @@ public class campamentosOffline : MonoBehaviour {
 
 		if(contar)
 		{
+			BasePrimaria.SetActive(false);
+			alpha.SetActive(false);
+			beta.SetActive(false);
+
+			uno.SetActive(false);
+			dos.SetActive(false);
+			tres.SetActive(false);
+
+			alphaEnemy.SetActive(false);
+			betaEnemy.SetActive(false);
+
 			if(idioma == "ENGLISH")
 			{
 				contador.text = "Waiting..."+cuentaatras.ToString("F0");
@@ -322,17 +333,6 @@ public class campamentosOffline : MonoBehaviour {
 			nace = 0;
 		}
 
-		Player.GetComponent<Hero>().animacion.SetActive(false);
-		Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
-		Player.GetComponent<CustomFinal>().listo = false;
-		Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
-
-		Camara.GetComponent<Cam>().campamento = false;
-		Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<Hero>().carta1);
-		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
-
-		Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
-
 		BasePrimaria.SetActive(false);
 		alpha.SetActive(false);
 		beta.SetActive(false);
@@ -343,5 +343,16 @@ public class campamentosOffline : MonoBehaviour {
 
 		alphaEnemy.SetActive(false);
 		betaEnemy.SetActive(false);
+
+		Player.GetComponent<Hero>().animacion.SetActive(false);
+		Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
+		Player.GetComponent<CustomFinal>().listo = false;
+		Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
+
+		Camara.GetComponent<Cam>().campamento = false;
+		Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<Hero>().carta1);
+		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
+
+		Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
 	}
 }
