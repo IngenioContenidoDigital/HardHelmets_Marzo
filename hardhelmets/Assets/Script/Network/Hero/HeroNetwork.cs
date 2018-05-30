@@ -325,6 +325,14 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		Health.fillAmount = salud/saludMax;
 
+		if(salud <= saludMax*70/100)
+		{
+			Health.color = new Color32(255,0,0,255);
+		}else
+		{
+			Health.color = new Color32(0,255,0,255);
+		}
+
 		if(!isLocalPlayer)
 		{
 			return;
@@ -356,12 +364,10 @@ public class HeroNetwork : NetworkBehaviour{
 				SniperCam.GetComponent<BleedBehavior>().EdgeSharpness = 0.65f;//0.8
 				SniperCam.GetComponent<BleedBehavior>().minAlpha = 0.5f+0-salud/100;//0.2
 			}
-			Health.color = new Color32(255,0,0,255);
 		}else
 		{
 			SniperCam.GetComponent<BleedBehavior>().minAlpha = -0.1809f;
 			SniperCam.GetComponent<BleedBehavior>().EdgeSharpness = 0.65f;
-			Health.color = new Color32(0,255,0,255);
 		}
 
 		// EFECTO DIPARO EN PANTALLA (DESTELLO)
@@ -1828,7 +1834,6 @@ public class HeroNetwork : NetworkBehaviour{
 	{
 		if(!isLocalPlayer)
 		{
-			print("CMD SINCRONIZA SANGRE");
 			salud = newSalud;
 		}
 		RpcSetSalud(newSalud);
@@ -1839,7 +1844,6 @@ public class HeroNetwork : NetworkBehaviour{
 		//saludMax2 = newLevel;
 		if(!isLocalPlayer)
 		{
-			print("RPC SINCRONIZA SANGRE");
 			salud = newSalud;
 		}
 	}
@@ -2646,11 +2650,13 @@ public class HeroNetwork : NetworkBehaviour{
 		if(gameObject.tag == "Player")
 		{
 			suma = saludMax*2/104;
+			salud += saludMax*2/104;
 			var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
 		}else
 		{
 			suma = saludMax2*2/104;
+			salud += saludMax2*2/104;
 			var letras = (GameObject)Instantiate(textos2B, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
 		}
