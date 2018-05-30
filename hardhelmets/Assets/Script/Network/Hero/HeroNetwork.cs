@@ -327,7 +327,7 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
-		RpcSetSalud(salud);
+		CmdSendSalud(salud);
 
 		nacerZ = bulletSpawn.rotation.z;
 
@@ -1826,6 +1826,11 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSendSalud (float newSalud)
 	{
+		if(!isLocalPlayer)
+		{
+			print("CMD SINCRONIZA SANGRE");
+			salud = newSalud;
+		}
 		RpcSetSalud(newSalud);
 	}
 	[ClientRpc]
@@ -1834,7 +1839,7 @@ public class HeroNetwork : NetworkBehaviour{
 		//saludMax2 = newLevel;
 		if(!isLocalPlayer)
 		{
-			print("ACTUALIZANDO SALUD");
+			print("RPC SINCRONIZA SANGRE");
 			salud = newSalud;
 		}
 	}

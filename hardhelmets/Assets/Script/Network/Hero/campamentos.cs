@@ -293,7 +293,7 @@ public class campamentos : MonoBehaviour {
 			if(Player.tag == "Player")
 			{
 				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Player";
@@ -303,8 +303,8 @@ public class campamentos : MonoBehaviour {
 				//vidas -= 1;
 			}else
 			{
-				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax2;
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax2);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -318,7 +318,7 @@ public class campamentos : MonoBehaviour {
 			if(Player.tag == "Player")
 			{
 				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Player";
@@ -328,8 +328,8 @@ public class campamentos : MonoBehaviour {
 				//vidas -= 1;
 			}else
 			{
-				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax2;
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax2);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -343,7 +343,7 @@ public class campamentos : MonoBehaviour {
 			if(Player.tag == "Player")
 			{
 				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Player";
@@ -353,8 +353,8 @@ public class campamentos : MonoBehaviour {
 				//vidas -= 1;
 			}else
 			{
-				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax2;
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax2);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -368,7 +368,7 @@ public class campamentos : MonoBehaviour {
 				if(Player.tag == "Player")
 				{
 					Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-					Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+					Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax);
 					Player.GetComponent<HeroNetwork>().vivo = true;
 					Player.GetComponent<Animator>().SetBool("muerto", false);
 					//Player.GetComponent<HeroNetwork>().mascara = "Player";
@@ -378,8 +378,8 @@ public class campamentos : MonoBehaviour {
 					//vidas -= 1;
 				}else
 				{
-					Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-					Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+					Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax2;
+					Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax2);
 					Player.GetComponent<HeroNetwork>().vivo = true;
 					Player.GetComponent<Animator>().SetBool("muerto", false);
 					//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -393,7 +393,7 @@ public class campamentos : MonoBehaviour {
 			if(Player.tag == "Player")
 			{
 				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Player";
@@ -403,8 +403,8 @@ public class campamentos : MonoBehaviour {
 				//vidas -= 1;
 			}else
 			{
-				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax2;
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax2);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
@@ -418,7 +418,7 @@ public class campamentos : MonoBehaviour {
 			if(Player.tag == "Player")
 			{
 				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Player";
@@ -428,8 +428,8 @@ public class campamentos : MonoBehaviour {
 				//vidas -= 1;
 			}else
 			{
-				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax;
-				Player.GetComponent<HeroNetwork>().CmdSendSalud(100);
+				Player.GetComponent<HeroNetwork>().salud = Player.GetComponent<HeroNetwork>().saludMax2;
+				Player.GetComponent<HeroNetwork>().CmdSendSalud(Player.GetComponent<HeroNetwork>().saludMax2);
 				Player.GetComponent<HeroNetwork>().vivo = true;
 				Player.GetComponent<Animator>().SetBool("muerto", false);
 				//Player.GetComponent<HeroNetwork>().mascara = "Enemy";
