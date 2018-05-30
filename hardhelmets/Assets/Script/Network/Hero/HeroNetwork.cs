@@ -323,6 +323,8 @@ public class HeroNetwork : NetworkBehaviour{
 	bool enviarnombre;
 	void Update()
 	{
+		Health.fillAmount = salud/saludMax;
+
 		if(!isLocalPlayer)
 		{
 			return;
@@ -335,8 +337,6 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			apuntar.GetComponent<apuntarNetwork>().apuntar = true;
 		}
-
-		Health.fillAmount = salud/saludMax;
 
 		if(salud >= saludMax)
 		{

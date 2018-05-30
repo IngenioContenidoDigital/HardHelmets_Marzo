@@ -15,10 +15,12 @@ public class AINetwork : NetworkBehaviour {
 	[SyncVar]
 	public float saludMax;
 
+	[SyncVar]
 	public int distancia;
 	public int minima;
 	public int maxima;
 
+	[SyncVar]
 	public int distanciaZ;
 
 	public string BaseBuena;
@@ -32,6 +34,7 @@ public class AINetwork : NetworkBehaviour {
 	public bool crearCarta;
 	public GameObject carta;
 
+	[SyncVar]
 	public Transform target;
 
 	public Animator animator;
@@ -484,6 +487,62 @@ public class AINetwork : NetworkBehaviour {
 			}
 		}
 	}
+	//EN EL CLIENTE
+	public void FixedUpdate()
+	{
+		if(isServer)
+		{
+			return;
+		}
+		if(Mathf.Abs((transform.position - target.position).x) < distancia)//SI ESTA CERCA EN X
+		{
+			if(Mathf.Abs((transform.position - target.position).z) <= distanciaZ)//SI ESTA CERCA EN Z
+			{
+				if(target.tag == amigo)//MEDICO -- TARGET ES AMIGO
+				{
+					if(target.GetComponent<HeroNetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+					{
+						if(gameObject.tag == "Player")
+						{
+							if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
+							{
+								print("TIENE LA SANGRE LLENA");
+								particulas.Stop();
+							}
+							if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax)
+							{
+								particulas.Play();
+							}
+						}else
+						{
+							if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax2)
+							{
+								print("TIENE LA SANGRE LLENA");
+								particulas.Stop();
+							}
+							if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax2)
+							{
+								particulas.Play();
+							}
+						}
+					}
+					if(target.GetComponent<AINetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+					{
+						if(particulas.isPlaying && target.GetComponent<AINetwork>().salud >= target.GetComponent<AINetwork>().saludMax)
+						{
+							print("TIENE LA SANGRE LLENA");
+							particulas.Stop();
+						}
+						if(!particulas.isPlaying && target.GetComponent<AINetwork>().salud < target.GetComponent<AINetwork>().saludMax)
+						{
+							particulas.Play();
+						}
+					}
+				}
+			}
+		}
+	}
+
 	IEnumerator momentoSphere()
 	{
 		yield return new WaitForSeconds(0.3f);
