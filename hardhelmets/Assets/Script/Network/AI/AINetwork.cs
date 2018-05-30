@@ -263,14 +263,28 @@ public class AINetwork : NetworkBehaviour {
 								agent.isStopped = true;
 								if(target.GetComponent<HeroNetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 								{
-									if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
+									if(gameObject.tag == "Player")
 									{
-										print("TIENE LA SANGRE LLENA");
-										particulas.Stop();
-									}
-									if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax)
+										if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
+										{
+											print("TIENE LA SANGRE LLENA");
+											particulas.Stop();
+										}
+										if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax)
+										{
+											particulas.Play();
+										}
+									}else
 									{
-										particulas.Play();
+										if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax2)
+										{
+											print("TIENE LA SANGRE LLENA");
+											particulas.Stop();
+										}
+										if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax2)
+										{
+											particulas.Play();
+										}
 									}
 								}
 								if(target.GetComponent<AINetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
@@ -647,6 +661,7 @@ public class AINetwork : NetworkBehaviour {
 		if(col.gameObject.tag == amigo && vivo)
 		{
 			target = col.gameObject.transform;
+			particulas.Play();
 		}
 	}
 	void OnTriggerExit (Collider col)

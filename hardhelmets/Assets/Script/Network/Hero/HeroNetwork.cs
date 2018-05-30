@@ -2658,7 +2658,7 @@ public class HeroNetwork : NetworkBehaviour{
 	}
 	public void SaludSumar()
 	{
-		CmdSaludSumar();
+		//CmdSaludSumar();
 		if(gameObject.tag == "Player")
 		{
 			suma = saludMax*2/104;
@@ -2667,7 +2667,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}else
 		{
 			suma = saludMax2*2/104;
-			var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
+			var letras = (GameObject)Instantiate(textos2B, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
 		}
 	}
