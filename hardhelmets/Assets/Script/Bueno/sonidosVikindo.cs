@@ -58,4 +58,20 @@ public class sonidosVikindo : MonoBehaviour {
 		audio1.clip = golpeado[Random.Range(0,golpeado.Length)];
 		audio1.Play();
 	}
+
+	public AudioClip falli;
+	void fall()
+	{
+		audio1.volume = efectos;
+		audio1.clip = falli;
+		audio1.Play();
+	}
+
+	public AudioClip gunmini;
+	void minigun()
+	{
+		audio1.volume = efectos;
+		audio1.clip = gunmini;
+		audio1.Play();
+	} 	
 }

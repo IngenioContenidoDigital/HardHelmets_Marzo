@@ -336,4 +336,19 @@ public class Sonidos : NetworkBehaviour {
 			bomba();
 		}
 	}
+	public AudioClip falli;
+	void fall()
+	{
+		audio1.volume = efectos;
+		audio1.clip = falli;
+		audio1.Play();
+	}
+
+	public AudioClip gunmini;
+	void minigun()
+	{
+		audio1.volume = efectos;
+		audio1.clip = gunmini;
+		audio1.Play();
+	} 
 }

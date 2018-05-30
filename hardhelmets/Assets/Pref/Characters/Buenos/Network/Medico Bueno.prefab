@@ -2486,9 +2486,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583341558200798}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9670628, w: 0.25453815}
-  m_LocalPosition: {x: -0.5010396, y: 5.8423615, z: 0}
-  m_LocalScale: {x: 0.99991196, y: 0.9998272, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.46630946, w: 0.8846217}
+  m_LocalPosition: {x: 0.242, y: 2.896, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4946197840353182}
   m_RootOrder: 20
@@ -3241,9 +3241,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509244405456060}
-  m_LocalRotation: {x: 0, y: 0, z: 0.1517195, w: 0.98842365}
-  m_LocalPosition: {x: 0.5191004, y: 0.0000009006121, z: 0}
-  m_LocalScale: {x: 1.1999143, y: 1.2000859, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.11259626, w: 0.99364084}
+  m_LocalPosition: {x: 0.5191, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 4720821665175850}
   - {fileID: 4031578033812248}
@@ -4538,6 +4538,8 @@ MonoBehaviour:
   - {fileID: 0}
   splat: {fileID: 0}
   sordo: {fileID: 0}
+  falli: {fileID: 8300000, guid: a390705b9f7db5a41bcb11c35028d09a, type: 3}
+  gunmini: {fileID: 8300000, guid: 680bedd13bb211741b9b33fc45126e79, type: 3}
 --- !u!114 &114329402219576736
 MonoBehaviour:
   m_ObjectHideFlags: 1
