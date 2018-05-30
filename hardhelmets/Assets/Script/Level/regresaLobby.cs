@@ -42,6 +42,14 @@ namespace Prototype.NetworkLobby {
 		public GameObject cofre;
 		public GameObject baul;
 
+		public void Start ()
+		{
+			actual = "";
+
+			crear.SetActive(true);
+			lista.SetActive(true);
+		}
+
 		public void Update()
 		{
 			Player1 = GameObject.Find("PlayerInfo1");

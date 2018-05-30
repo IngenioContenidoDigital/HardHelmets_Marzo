@@ -29,7 +29,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	public GameObject name;
 
-	[SyncVar(hook = "OnChangeHealth")]
+	[SyncVar]
 	public float salud;
 
 	[SyncVar]
@@ -254,7 +254,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}else
 		{
 			_currentDirection = "left";
-			CmdChangeDirection ("left");
+			ChangeDirection ("left");
 		}
 		if(!isLocalPlayer)
 		{
@@ -2135,8 +2135,43 @@ public class HeroNetwork : NetworkBehaviour{
 		cubierto = false;
 	}
 	//CAMBIAR DIRECCION
-	[Command]
-	public void CmdChangeDirection(string direction)
+	//[Command]
+	public void ChangeDirection(string direction)
+	{
+		if (_currentDirection != direction)
+		{
+			if (direction == "right")
+			{
+				transform.localScale = new Vector3(1,1,1);
+				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
+				_currentDirection = "right";
+			} 
+			else if (direction == "left") 
+			{
+				transform.localScale = new Vector3(-1,1,1);
+				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
+				_currentDirection = "left";
+			}
+		}
+		RpcChangeDirection(_currentDirection);
+	}
+
+	[ClientRpc]
+	public void RpcChangeDirection(string direction)
 	{
 		if (_currentDirection != direction)
 		{
@@ -2168,38 +2203,6 @@ public class HeroNetwork : NetworkBehaviour{
 			}
 		}
 	}
-	/*public void ChangeDirection(string direction)
-	{
-		if (_currentDirection != direction)
-		{
-			if (direction == "right")
-			{
-				transform.localScale = new Vector3(1,1,1);
-				Girar2.GetComponent<GirarNetwork>().voltear = true;
-
-				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
-				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
-
-				_currentDirection = "right";
-			} 
-			else if (direction == "left") 
-			{
-				transform.localScale = new Vector3(-1,1,1);
-				Girar2.GetComponent<GirarNetwork>().voltear = true;
-
-				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
-				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
-
-				_currentDirection = "left";
-			}
-		}
-	}*/
 
 	void cambiavivo (bool newvivo)
 	{
@@ -2247,33 +2250,6 @@ public class HeroNetwork : NetworkBehaviour{
 
 				_currentDirection = "left";
 			}
-		}
-	}
-
-	void OnChangeHealth(float salud)
-	{
-		Health.fillAmount = salud/saludMax;
-
-		if(salud <= saludMax*70/100)
-		{
-			Health.color = new Color32(255,0,0,255);
-		}else
-		{
-			Health.color = new Color32(0,255,0,255);
-		}
-		CmdSangre();
-	}
-	[Command]
-	public void CmdSangre()
-	{
-		Health.fillAmount = salud/saludMax;
-
-		if(salud <= saludMax*70/100)
-		{
-			Health.color = new Color32(255,0,0,255);
-		}else
-		{
-			Health.color = new Color32(0,255,0,255);
 		}
 	}
 
@@ -2457,12 +2433,12 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			if(_currentDirection == "right")
 			{
-				CmdChangeDirection ("left");
+				ChangeDirection ("left");
 				return;
 			}
 			if(_currentDirection == "left")
 			{
-				CmdChangeDirection ("right");
+				ChangeDirection ("right");
 				return;
 			}
 		}
@@ -2643,7 +2619,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 	}
 	float suma;
-	[Command]
+	/*[Command]
 	public void CmdSaludSumar()
 	{
 		if(gameObject.tag == "Player")
@@ -2655,7 +2631,7 @@ public class HeroNetwork : NetworkBehaviour{
 			suma = saludMax2*2/104;
 			salud += saludMax2*2/104;
 		}
-	}
+	}*/
 	public void SaludSumar()
 	{
 		//CmdSaludSumar();

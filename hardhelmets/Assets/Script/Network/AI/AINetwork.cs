@@ -661,7 +661,7 @@ public class AINetwork : NetworkBehaviour {
 		if(col.gameObject.tag == amigo && vivo)
 		{
 			target = col.gameObject.transform;
-			particulas.Play();
+			//particulas.Play();
 		}
 	}
 	void OnTriggerExit (Collider col)
