@@ -624,6 +624,7 @@ public class Game : NetworkBehaviour {
 				if(sagreBM <= 0)
 				{
 					Ganador1.SetActive(true);
+					Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
@@ -646,6 +647,7 @@ public class Game : NetworkBehaviour {
 				}else if(sagreBB <= 0)
 				{
 					Perdedor1.SetActive(true);
+					Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
@@ -667,6 +669,7 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB > CapturedFlagsM)
 				{
 					Ganador1.SetActive(true);
+					Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
@@ -688,6 +691,7 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB < CapturedFlagsM)
 				{
 					Perdedor1.SetActive(true);
+					Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
@@ -709,6 +713,7 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB == CapturedFlagsM)
 				{
 					Empate.SetActive(true);
+					Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "withdrawal";
@@ -727,6 +732,7 @@ public class Game : NetworkBehaviour {
 				if(sagreBB <= 0)
 				{
 					Ganador2.SetActive(true);
+					Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
@@ -742,6 +748,7 @@ public class Game : NetworkBehaviour {
 				}else if(sagreBM <= 0)
 				{
 					Perdedor2.SetActive(true);
+					Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
@@ -757,6 +764,7 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsM > CapturedFlagsB)
 				{
 					Ganador2.SetActive(true);
+					Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
@@ -772,6 +780,7 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsM < CapturedFlagsB)
 				{
 					Perdedor2.SetActive(true);
+					Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
@@ -787,6 +796,7 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsM == CapturedFlagsB)
 				{
 					Empate.SetActive(true);
+					Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", false);
 					if(idioma == "ENGLISH")
 					{
 						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "withdrawal";
@@ -805,6 +815,28 @@ public class Game : NetworkBehaviour {
 
 		if(final && final2)
 		{
+			if(Ganador1.activeSelf && Ganador1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+			if(Perdedor1.activeSelf && Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+
+			if(Ganador2.activeSelf && Ganador2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+			if(Perdedor2.activeSelf && Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+			if(Empate.activeSelf && Empate.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+
 			titulos = false;
 			ponerVictoria = false;
 			ponerVictoria2 = false;
@@ -1986,6 +2018,16 @@ public class Game : NetworkBehaviour {
 		Ganador2.SetActive(false);
 		Perdedor2.SetActive(false);
 
+		Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+		Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+		Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+		Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+
+		Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+		Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+		Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+		Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+
 		Empate.SetActive(false);
 
 		ponerVictoria = false;
@@ -2177,6 +2219,16 @@ public class Game : NetworkBehaviour {
 
 		Ganador2.SetActive(false);
 		Perdedor2.SetActive(false);
+
+		Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+		Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+		Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+		Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+
+		Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+		Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+		Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
+		Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 
 		Empate.SetActive(false);
 
