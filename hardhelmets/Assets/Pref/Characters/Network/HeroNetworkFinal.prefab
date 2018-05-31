@@ -5130,7 +5130,6 @@ GameObject:
   - component: {fileID: 23271694242063442}
   - component: {fileID: 114881201696746764}
   - component: {fileID: 82664701028375208}
-  - component: {fileID: 114059647729316600}
   m_Layer: 0
   m_Name: Empate
   m_TagString: Untagged
@@ -12608,7 +12607,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 51073a5a319628345be12c2ef293ad0c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 893f1994db6e2824fbe075f70a223194, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -13248,7 +13247,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 893f1994db6e2824fbe075f70a223194, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 51073a5a319628345be12c2ef293ad0c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -15113,19 +15112,6 @@ MonoBehaviour:
   _animationName: entrada
   loop: 0
   timeScale: 1
---- !u!114 &114059647729316600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1705710468212748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc96d7496f544d04396715129a9135d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinsToCombine:
-  - 
 --- !u!114 &114060271906900676
 MonoBehaviour:
   m_ObjectHideFlags: 1
