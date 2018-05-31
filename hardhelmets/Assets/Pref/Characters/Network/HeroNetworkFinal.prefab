@@ -5130,6 +5130,7 @@ GameObject:
   - component: {fileID: 23271694242063442}
   - component: {fileID: 114881201696746764}
   - component: {fileID: 82664701028375208}
+  - component: {fileID: 114925715682021246}
   m_Layer: 0
   m_Name: Empate
   m_TagString: Untagged
@@ -11196,6 +11197,10 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: feaa6d92e1653e846b7453b7471bcc85, type: 2}
+  - {fileID: 2100000, guid: 2dc7160074c19e54fae2386e6597e271, type: 2}
+  - {fileID: 2100000, guid: feaa6d92e1653e846b7453b7471bcc85, type: 2}
+  - {fileID: 2100000, guid: 2dc7160074c19e54fae2386e6597e271, type: 2}
   - {fileID: 2100000, guid: feaa6d92e1653e846b7453b7471bcc85, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -30027,6 +30032,19 @@ MonoBehaviour:
     i15: 186
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &114925715682021246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705710468212748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc96d7496f544d04396715129a9135d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsToCombine:
+  - 
 --- !u!114 &114927263381546110
 MonoBehaviour:
   m_ObjectHideFlags: 1
