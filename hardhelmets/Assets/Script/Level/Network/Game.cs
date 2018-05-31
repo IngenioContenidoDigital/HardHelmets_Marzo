@@ -19,9 +19,6 @@ public class Game : NetworkBehaviour {
 	public GameObject arriba;
 	public GameObject End;
 
-	public GameObject banderaBuena;
-	public GameObject banderaMala;
-
 	public GameObject Medalla1;
 	public GameObject MedallaTorre;
 	public GameObject Medalla2;
@@ -225,12 +222,14 @@ public class Game : NetworkBehaviour {
 
 	public GameObject musica;
 
-	public GameObject fondo;
-
 	public GameObject finpartida;
 
-	public GameObject Ganador;
-	public GameObject Perdedor;
+	//JUGADOR 1
+	public GameObject Ganador1;
+	public GameObject Perdedor1;
+	//JUGADOR 2
+	public GameObject Ganador2;
+	public GameObject Perdedor2;
 	public GameObject Empate;
 
 	bool titulos;
@@ -403,8 +402,6 @@ public class Game : NetworkBehaviour {
 			}
 			if(Falta <= 0 && !final && !muerte)
 			{
-				Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
-				Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
 				final = true;
 			}
 
@@ -518,9 +515,13 @@ public class Game : NetworkBehaviour {
 	bool cargar;
 	bool cargar2;
 
+	string idioma;
+
 	//SERVIDOR Y CLIENTE
 	public void FixedUpdate ()
 	{
+		idioma = PlayerPrefs.GetString("idioma");
+
 		if(Player2 == null)
 		{
 			Player2 = GameObject.Find("Hero2");
@@ -617,15 +618,24 @@ public class Game : NetworkBehaviour {
 				titulos3 = true;
 				StartCoroutine(esperafinal());
 			}
-			fondo.SetActive(true);
 
 			if(isServer)
 			{
-				banderaBuena.SetActive(true);
-
 				if(sagreBM <= 0)
 				{
-					Ganador.SetActive(true);
+					Ganador1.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
 					if(!ponerVictoria)
 					{
 						victoriaS += 1;
@@ -635,7 +645,19 @@ public class Game : NetworkBehaviour {
 
 				}else if(sagreBB <= 0)
 				{
-					Perdedor.SetActive(true);
+					Perdedor1.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
 					if(!ponerVictoria2)
 					{
 						victoriaC += 1;
@@ -644,7 +666,19 @@ public class Game : NetworkBehaviour {
 					}
 				}else if(CapturedFlagsB > CapturedFlagsM)
 				{
-					Ganador.SetActive(true);
+					Ganador1.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
 					if(!ponerVictoria)
 					{
 						victoriaS += 1;
@@ -653,7 +687,19 @@ public class Game : NetworkBehaviour {
 					}
 				}else if(CapturedFlagsB < CapturedFlagsM)
 				{
-					Perdedor.SetActive(true);
+					Perdedor1.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
 					if(!ponerVictoria2)
 					{
 						victoriaC += 1;
@@ -663,26 +709,96 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB == CapturedFlagsM)
 				{
 					Empate.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "withdrawal";
+					}
+					if(idioma == "SPANISH")
+					{
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retirada";
+					}
+					if(idioma == "CHINESE")
+					{
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCH";
+					}
 				}
 			}else
 			{
-				banderaMala.SetActive(true);
-
 				if(sagreBB <= 0)
 				{
-					Ganador.SetActive(true);
+					Ganador2.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
 				}else if(sagreBM <= 0)
 				{
-					Perdedor.SetActive(true);
+					Perdedor2.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
 				}else if(CapturedFlagsM > CapturedFlagsB)
 				{
-					Ganador.SetActive(true);
+					Ganador2.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
 				}else if(CapturedFlagsM < CapturedFlagsB)
 				{
-					Perdedor.SetActive(true);
+					Perdedor2.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
 				}else if(CapturedFlagsM == CapturedFlagsB)
 				{
 					Empate.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "withdrawal";
+					}
+					if(idioma == "SPANISH")
+					{
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retirada";
+					}
+					if(idioma == "CHINESE")
+					{
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCH";
+					}
 				}
 			}
 		}
@@ -695,12 +811,8 @@ public class Game : NetworkBehaviour {
 
 			End.SetActive(true);
 
-			Player1.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
-			Player2.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = true;
-
 			if(isServer)
 			{
-				banderaBuena.SetActive(true);
 				Bueno.SetActive(true);
 
 				int siguiente = PlayerPrefs.GetInt("PlayerLevel")+1;
@@ -767,7 +879,6 @@ public class Game : NetworkBehaviour {
 				}
 			}else
 			{
-				banderaMala.SetActive(true);
 				Malo.SetActive(true);
 
 				int siguiente = PlayerPrefs.GetInt("PlayerLevel")+1;
@@ -1537,9 +1648,9 @@ public class Game : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(7f);
 		final2 = true;
-		Ganador.SetActive(false);
-		Perdedor.SetActive(false);
-		Empate.SetActive(false);
+		//Ganador.SetActive(false);
+		//Perdedor.SetActive(false);
+		//Empate.SetActive(false);
 	}
 
 	[Command]
@@ -1779,9 +1890,6 @@ public class Game : NetworkBehaviour {
 		cargar = false;
 		cargar2 = false;
 
-		banderaBuena.SetActive(false);
-		banderaMala.SetActive(false);
-
 		rangoUP.SetActive(false);
 
 		//SANGRE BASE BUENA
@@ -1872,8 +1980,12 @@ public class Game : NetworkBehaviour {
 		sumar2Cliente = false;
 		sumar3Cliente = false;
 
-		Ganador.SetActive(false);
-		Perdedor.SetActive(false);
+		Ganador1.SetActive(false);
+		Perdedor1.SetActive(false);
+
+		Ganador2.SetActive(false);
+		Perdedor2.SetActive(false);
+
 		Empate.SetActive(false);
 
 		ponerVictoria = false;
@@ -1925,7 +2037,6 @@ public class Game : NetworkBehaviour {
 		vecesTomadaBetaM = 0;
 
 		End.SetActive(false);
-		fondo.SetActive(false);
 		arriba.SetActive(true);
 
 		explotar = false;
@@ -1969,9 +2080,6 @@ public class Game : NetworkBehaviour {
 		rematchC = -1;
 		cargar = false;
 		cargar2 = false;
-
-		banderaBuena.SetActive(false);
-		banderaMala.SetActive(false);
 
 		rangoUP.SetActive(false);
 
@@ -2064,8 +2172,12 @@ public class Game : NetworkBehaviour {
 		sumar2Cliente = false;
 		sumar3Cliente = false;
 
-		Ganador.SetActive(false);
-		Perdedor.SetActive(false);
+		Ganador1.SetActive(false);
+		Perdedor1.SetActive(false);
+
+		Ganador2.SetActive(false);
+		Perdedor2.SetActive(false);
+
 		Empate.SetActive(false);
 
 		ponerVictoria = false;
@@ -2117,7 +2229,6 @@ public class Game : NetworkBehaviour {
 		vecesTomadaBetaM = 0;
 
 		End.SetActive(false);
-		fondo.SetActive(false);
 		arriba.SetActive(true);
 
 		explotar = false;

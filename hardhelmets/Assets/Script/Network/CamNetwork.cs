@@ -89,6 +89,13 @@ public class CamNetwork : NetworkBehaviour {
 	//LIMITES DE CAMARA
 	public int limiteObjetivo;
 	public int limiteAleja;
+
+	public GameObject Ganador1;
+	public GameObject Perdedor1;
+	public GameObject Ganador2;
+	public GameObject Perdedor2;
+	public GameObject Empate;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -168,6 +175,28 @@ public class CamNetwork : NetworkBehaviour {
 		if(Panel == null)
 		{
 			Panel = GameObject.Find("GAME");
+		}else
+		{
+			if(Panel.GetComponent<Game>().Ganador1 == null)
+			{
+				Panel.GetComponent<Game>().Ganador1 =  Ganador1;
+			}
+			if(Panel.GetComponent<Game>().Perdedor1 == null)
+			{
+				Panel.GetComponent<Game>().Perdedor1 =  Perdedor1;
+			}
+			if(Panel.GetComponent<Game>().Ganador2 == null)
+			{
+				Panel.GetComponent<Game>().Ganador2 =  Ganador2;
+			}
+			if(Panel.GetComponent<Game>().Perdedor2 == null)
+			{
+				Panel.GetComponent<Game>().Perdedor2 =  Perdedor2;
+			}
+			if(Panel.GetComponent<Game>().Empate == null)
+			{
+				Panel.GetComponent<Game>().Empate =  Empate;
+			}
 		}
 		if(Panel != null && Panel.GetComponent<Game>().muerte)
 		{
