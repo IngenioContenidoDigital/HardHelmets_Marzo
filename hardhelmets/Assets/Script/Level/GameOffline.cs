@@ -15,8 +15,7 @@ public class GameOffline : MonoBehaviour {
 	public GameObject arriba;
 	public GameObject End;
 
-	public GameObject banderaBuena;
-	public GameObject banderaMala;
+	//public GameObject banderaBuena;
 
 	public GameObject Medalla1;
 	public GameObject MedallaTorre;
@@ -192,8 +191,6 @@ public class GameOffline : MonoBehaviour {
 
 	public GameObject musica;
 
-	public GameObject fondo;
-
 	public GameObject finpartida;
 
 	public GameObject Ganador;
@@ -204,6 +201,7 @@ public class GameOffline : MonoBehaviour {
 	bool titulos2;
 	bool titulos3;
 
+	string idioma;
 	// Use this for initialization
 	void Start ()
 	{
@@ -230,10 +228,11 @@ public class GameOffline : MonoBehaviour {
 		cofre = PlayerPrefs.GetInt("caja1");
 		banderasCofre = PlayerPrefs.GetInt("banderasCofre");
 	}
-
-	// SOLO EL SERVIDOR
+		
 	void Update ()
 	{
+		idioma = PlayerPrefs.GetString("idioma");
+
 		if(Player1 == null)
 		{
 			Player1 = GameObject.Find("Hero");
@@ -291,7 +290,6 @@ public class GameOffline : MonoBehaviour {
 
 			if(Falta <= 0 && !final && !muerte)
 			{
-				Player1.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
 				final = true;
 			}
 
@@ -375,7 +373,6 @@ public class GameOffline : MonoBehaviour {
 	public bool sumar2;
 	public bool sumar3;
 
-	//SERVIDOR Y CLIENTE
 	void FixedUpdate ()
 	{
 		if(Player2 == null)
@@ -465,32 +462,102 @@ public class GameOffline : MonoBehaviour {
 				titulos3 = true;
 				StartCoroutine(esperafinal());
 			}
-			fondo.SetActive(true);
-			banderaBuena.SetActive(true);
+			//banderaBuena.SetActive(true);
 
 			if(sagreBM <= 0)
 			{
 				Ganador.SetActive(true);
+				if(idioma == "ENGLISH")
+				{
+					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+				}
+				if(idioma == "SPANISH")
+				{
+					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+				}
+				if(idioma == "CHINESE")
+				{
+					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+				}
 			}else if(sagreBB <= 0)
 			{
 				Perdedor.SetActive(true);
+				if(idioma == "ENGLISH")
+				{
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+				}
+				if(idioma == "SPANISH")
+				{
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+				}
+				if(idioma == "CHINESE")
+				{
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+				}
 			}else if(CapturedFlagsB > CapturedFlagsM)
 			{
 				Ganador.SetActive(true);
+				if(idioma == "ENGLISH")
+				{
+					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+				}
+				if(idioma == "SPANISH")
+				{
+					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+				}
+				if(idioma == "CHINESE")
+				{
+					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+				}
 			}else if(CapturedFlagsB < CapturedFlagsM)
 			{
 				Perdedor.SetActive(true);
+				if(idioma == "ENGLISH")
+				{
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+				}
+				if(idioma == "SPANISH")
+				{
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+				}
+				if(idioma == "CHINESE")
+				{
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+				}
 			}else if(CapturedFlagsB == CapturedFlagsM)
 			{
 				Empate.SetActive(true);
+				if(idioma == "ENGLISH")
+				{
+					Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "withdrawal";
+				}
+				if(idioma == "SPANISH")
+				{
+					Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retirada";
+				}
+				if(idioma == "CHINESE")
+				{
+					Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCH";
+				}
 			}
 		}
 
 		if(final && final2)
 		{
-			End.SetActive(true);
+			if(Ganador.activeSelf && Ganador.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Ganador.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+			if(Perdedor.activeSelf && Perdedor.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Perdedor.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
+			if(Empate.activeSelf && Empate.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+			}
 
-			Player1.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = true;
+			End.SetActive(true);
 
 			if(Player1.tag == "Player")
 			{
@@ -1030,9 +1097,9 @@ public class GameOffline : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(7f);
 		final2 = true;
-		Ganador.SetActive(false);
-		Perdedor.SetActive(false);
-		Empate.SetActive(false);
+		//Ganador.SetActive(false);
+		//Perdedor.SetActive(false);
+		//Empate.SetActive(false);
 	}
 	//--ORDEN DE LAS MEDALLAS
 	IEnumerator EspSale1()
