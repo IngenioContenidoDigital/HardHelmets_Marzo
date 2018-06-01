@@ -55,10 +55,10 @@ public class Cam : MonoBehaviour {
 	public bool disparo2;
 
 	public bool alejar;
-	public float velocidad;
+	//public float velocidad;
 
-	public float equis;
-	public float yee;
+	//public float equis;
+	//public float yee;
 
 	public GameObject vibrador;
 	public float vib;
@@ -379,35 +379,35 @@ public class Cam : MonoBehaviour {
 			{
 				if(transform.position.x >= Player.transform.position.x+180)
 				{
-					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//velocidad);
 				}else if(transform.position.x <= Player.transform.position.x+9)
 				{
-					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//velocidad);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//velocidad);
 				}
 			}
 			if(Player.GetComponent<Hero>()._currentDirection == "left")//LIMITES HACIA ATRAS
 			{
 				if(transform.position.x <= Player.transform.position.x-180)
 				{
-					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//velocidad);
 				}else if(transform.position.x >= Player.transform.position.x-9)
 				{
-					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//velocidad);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//velocidad);
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
 			if(transform.position.y <= Player.transform.position.y+1)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, velocidad);
+				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);//velocidad);
 			}else if(transform.position.y >= Player.transform.position.y+20)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, velocidad);
+				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);//velocidad);
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
@@ -422,30 +422,43 @@ public class Cam : MonoBehaviour {
 
 			if(objetivo)
 			{
-				velocidad = limiteObjetivo;
-				if(Player.GetComponent<Hero>()._currentDirection == "right")
+				altura = 10.8f;
+
+				GetComponent<Camera>().fieldOfView += 0.15f;
+				if(GetComponent<Camera>().fieldOfView  >= 25)
 				{
-					nextPosition = new Vector3(Player.transform.position.x+15, Player.transform.position.y+7, velocidad);
-				}else
-				{
-					nextPosition = new Vector3(Player.transform.position.x-15, Player.transform.position.y+7, velocidad);
+					GetComponent<Camera>().fieldOfView = 25;
 				}
 
-				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
 			}else
 			{
-				//velocidad = -40;
-				//SIGUE AL JUGADOR
-				if(Player.GetComponent<Hero>()._currentDirection == "right")
+				altura = 7.8f;
+				GetComponent<Camera>().fieldOfView -= 0.15f;
+				if(GetComponent<Camera>().fieldOfView  <= 15.5f)
 				{
-					nextPosition = new Vector3(Player.transform.position.x+equis, Player.transform.position.y+5, velocidad);//-170-velocidad);
-				}else
-				{
-					nextPosition = new Vector3(Player.transform.position.x-equis, Player.transform.position.y+5, velocidad);
+					GetComponent<Camera>().fieldOfView = 15.5f;
 				}
-
-				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
 			}
+
+			if(Player.transform.position.z > -30)
+			{
+				ajuste = -90.5f;
+			}else
+			{
+				ajuste = -98.5f;
+			}
+			//velocidad = -40;
+			//SIGUE AL JUGADOR
+			if(Player.GetComponent<Hero>()._currentDirection == "right")//-28.5 -20.5
+			{
+				nextPosition = new Vector3(Player.transform.position.x+4, altura, ajuste);//Player.transform.position.x+equis, Player.transform.position.y+8, velocidad
+			}else
+			{
+				nextPosition = new Vector3(Player.transform.position.x-4, altura, ajuste);//Player.transform.position.x-equis, Player.transform.position.y+8, velocidad
+			}
+
+			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
+
 		}else if(ver)
 		{
 			nextPosition = Panel.GetComponent<GameOffline>().posicion;
@@ -469,44 +482,44 @@ public class Cam : MonoBehaviour {
 		//POSICION DE LA CAMARA EN Z
 		if(alejar)
 		{
-			equis += 0.3f;
+			/*equis += 0.3f;
 			if(equis >= 20)
 			{
 				equis = 20;
 			}
 
-			velocidad -= 0.3f;
-			if(transform.position.z <= limiteAleja)//LIMITE EN Z
+			velocidad -= 0.3f;*/
+			/*if(transform.position.z <= limiteAleja)//LIMITE EN Z
 			{
 				velocidad = -200;
 			}else if(velocidad <= Player.transform.position.z-70)
 			{
 				velocidad = Player.transform.position.z-70;
-			}
-			GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane += 0.3f;
+			}*/
+			/*GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane += 0.3f;
 			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane >= 49.3f)
 			{
 				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 49.3f;
-			}
+			}*/
 		}else
 		{
-			equis -= 0.2f;
+			/*equis -= 0.2f;
 			if(equis <= 6)//10
 			{
 				equis = 6;//10
 			}
 
-			velocidad += 0.2f;
-			if(velocidad >= Player.transform.position.z-40)
+			velocidad += 0.2f;*/
+			/*if(velocidad >= Player.transform.position.z-40)
 			{
 				velocidad = Player.transform.position.z-40;
-			}
+			}*/
 
-			GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane -= 0.3f;
+			/*GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane -= 0.3f;
 			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane <= 34.5f)
 			{
 				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 34.5f;
-			}
+			}*/
 		}
 
 		//VIBRACION
@@ -521,6 +534,8 @@ public class Cam : MonoBehaviour {
 			StartCoroutine(tiempoAvion());
 		}
 	}
+	public float ajuste;
+	public float altura;
 	IEnumerator finalizar()
 	{
 		yield return new WaitForSeconds(2f);

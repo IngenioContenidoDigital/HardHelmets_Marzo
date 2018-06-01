@@ -5,6 +5,8 @@ using UnityStandardAssets.ImageEffects;
 
 public class CrearCartas : MonoBehaviour {
 
+	public GameObject naceJugadores;
+
 	public GameObject nace;
 
 	public GameObject nace2;
@@ -254,7 +256,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(fusilero, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(fusilero, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -269,7 +271,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(escopeto, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(escopeto, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -284,7 +286,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(submetro, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(submetro, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -299,7 +301,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(metralleto, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(metralleto, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -314,7 +316,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(medico, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(medico, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -330,7 +332,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(mg, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(mg, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -345,7 +347,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(mortero, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(mortero, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -360,7 +362,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(panzer, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(panzer, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -377,7 +379,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
+			var objeto = (GameObject)Instantiate(tankPesado, naceJugadores.transform.position, Quaternion.Euler(0,90,0));
 
 			tirar = true;
 		}
@@ -392,7 +394,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(vikingo, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(vikingo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -402,7 +404,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(vikingoFuego, nace.transform.position, Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(vikingoFuego, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
@@ -417,7 +419,7 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(campamento, new Vector3(nace.transform.position.x,nace.transform.position.y+20,nace.transform.position.z), Quaternion.Euler(0,0,0));
+			var objeto = (GameObject)Instantiate(campamento, new Vector3(naceJugadores.transform.position.x,nace.transform.position.y+20,nace.transform.position.z), Quaternion.Euler(0,0,0));
 
 			tirar = true;
 		}
