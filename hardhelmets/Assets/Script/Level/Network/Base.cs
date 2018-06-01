@@ -13,16 +13,15 @@ public class Base : NetworkBehaviour {
 
 	public GameObject textos;
 
-	public GameObject luz;
-
 	public GameObject fuego1;
 	public GameObject fuego2;
 	public GameObject fuego3;
 	public GameObject fuego4;
+	public GameObject fuego5;
 
 	public GameObject destruida;
 
-	public AudioSource audio1;
+	//public AudioSource audio1;
 
 	public GameObject camara;
 
@@ -53,12 +52,22 @@ public class Base : NetworkBehaviour {
 		}else if(sangre <= saludMax*10/100)
 		{
 			fuego4.SetActive(true);
+		}else if(sangre <= saludMax*10/100)
+		{
+			if(fuego5 != null)
+			{
+				fuego5.SetActive(true);
+			}
 		}else
 		{
 			fuego1.SetActive(false);
 			fuego2.SetActive(false);
 			fuego3.SetActive(false);
 			fuego4.SetActive(false);
+			if(fuego5 != null)
+			{
+				fuego4.SetActive(false);
+			}
 		}
 
 		if(sangre <= 0 && !matada)
@@ -70,7 +79,7 @@ public class Base : NetworkBehaviour {
 		if(sangre > 0)
 		{
 			matada = false;
-			GetComponent<Animator>().SetBool("muere", false);
+			//GetComponent<Animator>().SetBool("muere", false);
 		}
 
 		if(!isServer)
@@ -88,10 +97,7 @@ public class Base : NetworkBehaviour {
 					sangre = Panel.GetComponent<Game>().sagreBM*saludMax;
 				}
 			}
-
-			print("SOY LA BASE EN EL CLIENTE");
 		}
-
 	}
 
 	public bool matada;
@@ -99,8 +105,8 @@ public class Base : NetworkBehaviour {
 	IEnumerator momentito()
 	{
 		yield return new WaitForSeconds(1f);
-		GetComponent<Animator>().SetBool("muere", true);
-		audio1.Play();
+		//GetComponent<Animator>().SetBool("muere", true);
+		//audio1.Play();
 		destruida.SetActive(true);
 	}
 

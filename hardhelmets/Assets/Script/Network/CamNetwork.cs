@@ -70,16 +70,6 @@ public class CamNetwork : NetworkBehaviour {
 	public bool campamento;
 	public Vector3 campPos;
 
-	//IMAGENES DE FONDO
-	public GameObject Imagen;
-
-	public Sprite Cero;
-	public Sprite Uno;
-	public Sprite Dos;
-	public Sprite Tres;
-
-	public bool PonerImagen;
-
 	//PANEL PARTIDA
 	GameObject Panel;
 	public bool ver;
@@ -99,23 +89,6 @@ public class CamNetwork : NetworkBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		if(!PonerImagen)
-		{
-			if(Application.loadedLevelName == "LevelNetwork0")
-			{
-				Imagen.GetComponent<SpriteRenderer>().sprite = Cero;
-			}else if(Application.loadedLevelName == "LevelNetwork1")
-			{
-				Imagen.GetComponent<SpriteRenderer>().sprite = Uno;
-			}else if(Application.loadedLevelName == "LevelNetwork2")
-			{
-				Imagen.GetComponent<SpriteRenderer>().sprite = Dos;
-			}else if(Application.loadedLevelName == "LevelNetwork3")
-			{
-				Imagen.GetComponent<SpriteRenderer>().sprite = Tres;
-			}
-			PonerImagen = true;
-		}
 		//Player = GameObject.Find("Hero");
 		musica = PlayerPrefs.GetFloat("musica");
 		intensidad = 0.1f;
@@ -126,22 +99,6 @@ public class CamNetwork : NetworkBehaviour {
 
 	void Update ()
 	{
-		if(Application.loadedLevelName == "LevelNetwork0")
-		{
-			limiteObjetivo = -220;
-			limiteAleja = -220;
-		}
-		if(Application.loadedLevelName == "LevelNetwork1")
-		{
-			limiteObjetivo = +35;
-			limiteAleja = -200;
-		}
-		if(Application.loadedLevelName == "LevelNetwork2")
-		{
-			limiteObjetivo = -80;
-			limiteAleja = -200;
-		}
-
 		if(!Player.GetComponent<NetworkIdentity>().isLocalPlayer)
 		{
 			return;
@@ -512,29 +469,41 @@ public class CamNetwork : NetworkBehaviour {
 
 			if(objetivo)
 			{
-				velocidad = limiteObjetivo;
-				if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")
-				{
-					nextPosition = new Vector3(Player.transform.position.x+20, Player.transform.position.y+7, velocidad);
-				}else
-				{
-					nextPosition = new Vector3(Player.transform.position.x-20, Player.transform.position.y+7, velocidad);
-				}
+				altura = 10.8f;
 
-				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
+				GetComponent<Camera>().fieldOfView += 0.15f;
+				if(GetComponent<Camera>().fieldOfView  >= 25)
+				{
+					GetComponent<Camera>().fieldOfView = 25;
+				}
 			}else
 			{
-				//SIGUE AL JUGADOR
-				if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")
+				altura = 7.8f;
+				GetComponent<Camera>().fieldOfView -= 0.15f;
+				if(GetComponent<Camera>().fieldOfView  <= 15.5f)
 				{
-					nextPosition = new Vector3(Player.transform.position.x+equis, Player.transform.position.y+5, velocidad);//-170-velocidad);
-				}else
-				{
-					nextPosition = new Vector3(Player.transform.position.x-equis, Player.transform.position.y+5, velocidad);
+					GetComponent<Camera>().fieldOfView = 15.5f;
 				}
-
-				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
 			}
+
+			if(Player.transform.position.z > -30)
+			{
+				ajuste = -90.5f;
+			}else
+			{
+				ajuste = -98.5f;
+			}
+			//velocidad = -40;
+			//SIGUE AL JUGADOR
+			if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")//-28.5 -20.5
+			{
+				nextPosition = new Vector3(Player.transform.position.x+4, altura, ajuste);//Player.transform.position.x+equis, Player.transform.position.y+8, velocidad
+			}else
+			{
+				nextPosition = new Vector3(Player.transform.position.x-4, altura, ajuste);//Player.transform.position.x-equis, Player.transform.position.y+8, velocidad
+			}
+
+			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);
 		}else if(ver)
 		{
 			nextPosition = Panel.GetComponent<Game>().posicion;
@@ -557,7 +526,7 @@ public class CamNetwork : NetworkBehaviour {
 		//POSICION DE LA CAMARA EN Z
 		if(alejar)
 		{
-			equis += 0.3f;
+			/*equis += 0.3f;
 			if(equis >= 20)
 			{
 				equis = 20;
@@ -576,10 +545,10 @@ public class CamNetwork : NetworkBehaviour {
 			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane >= 49.3f)
 			{
 				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 49.3f;
-			}
+			}*/
 		}else
 		{
-			equis -= 0.2f;
+			/*equis -= 0.2f;
 			if(equis <= 6)
 			{
 				equis = 6;
@@ -595,7 +564,7 @@ public class CamNetwork : NetworkBehaviour {
 			if(GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane <= 34.5f)
 			{
 				GetComponent<UnityStandardAssets.CinematicEffects.DepthOfField>().focus.focusPlane = 34.5f;
-			}
+			}*/
 		}
 
 		//VIBRACION
@@ -610,6 +579,8 @@ public class CamNetwork : NetworkBehaviour {
 			StartCoroutine(tiempoAvion());
 		}
 	}
+	public float ajuste;
+	public float altura;
 	IEnumerator finalizar()
 	{
 		yield return new WaitForSeconds(2f);

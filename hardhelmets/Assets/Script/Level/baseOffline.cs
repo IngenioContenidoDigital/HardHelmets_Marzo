@@ -9,16 +9,15 @@ public class baseOffline : MonoBehaviour {
 
 	public GameObject textos;
 
-	public GameObject luz;
-
 	public GameObject fuego1;
 	public GameObject fuego2;
 	public GameObject fuego3;
 	public GameObject fuego4;
+	public GameObject fuego5;
 
 	public GameObject destruida;
 
-	public AudioSource audio1;
+	//public AudioSource audio1;
 
 	public GameObject camera;
 
@@ -41,9 +40,16 @@ public class baseOffline : MonoBehaviour {
 		{
 			fuego3.SetActive(true);
 		}
-		if(sangre <= saludMax*10/100)
+		if(sangre <= saludMax*20/100)
 		{
 			fuego4.SetActive(true);
+		}
+		if(sangre <= saludMax*10/100)
+		{
+			if(fuego5 != null)
+			{
+				fuego5.SetActive(true);
+			}
 		}
 
 		if(sangre <= 0 && !matada)
@@ -58,8 +64,8 @@ public class baseOffline : MonoBehaviour {
 	IEnumerator momentito()
 	{
 		yield return new WaitForSeconds(1f);
-		GetComponent<Animator>().SetBool("muere", true);
-		audio1.Play();
+		//GetComponent<Animator>().SetBool("muere", true);
+		//audio1.Play();
 		destruida.SetActive(true);
 	}
 
