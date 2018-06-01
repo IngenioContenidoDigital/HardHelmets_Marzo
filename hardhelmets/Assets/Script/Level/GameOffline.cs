@@ -537,7 +537,7 @@ public class GameOffline : MonoBehaviour {
 				}
 				if(idioma == "CHINESE")
 				{
-					Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCH";
+					Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCh";
 				}
 			}
 		}
