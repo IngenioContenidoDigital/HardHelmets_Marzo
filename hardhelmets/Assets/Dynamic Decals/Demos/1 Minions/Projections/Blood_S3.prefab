@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4e20093490099439d506563fdccad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSize: 0.2
-  maxSize: 1.2
+  minSize: 6
+  maxSize: 8
 --- !u!114 &114265908777513784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,7 +83,7 @@ MonoBehaviour:
   tiling: {x: 0.125, y: 0.125}
   offset: {x: 0, y: 0.875}
   maskMethod: 0
-  masks: 01000101
+  masks: 00000000
   _TilingOffset: 184
   _MaskBase: 185
   _MaskLayers: 186
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1998db89cdc03074aa0689a5a00cb639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frequency: 0
   type: 1
-  method: 0
   wrapMode: 0
   fade:
     serializedVersion: 2
@@ -127,4 +127,3 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   fadeLength: 30
-  updateRate: 0.05
