@@ -34,7 +34,7 @@ MonoBehaviour:
   - name: Layer 3
     layers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 2048
   - name: Layer 4
     layers:
       serializedVersion: 2
@@ -43,7 +43,7 @@ MonoBehaviour:
   - vector: {x: 0, y: 0, z: 0, w: 0}
     layers:
       serializedVersion: 2
-      m_Bits: 4294965759
+      m_Bits: 4294963711
   - vector: {x: 1, y: 0, z: 0, w: 0}
     layers:
       serializedVersion: 2
@@ -52,6 +52,10 @@ MonoBehaviour:
     layers:
       serializedVersion: 2
       m_Bits: 1024
+  - vector: {x: 0, y: 0, z: 1, w: 0}
+    layers:
+      serializedVersion: 2
+      m_Bits: 2048
   replacement: 0
   materials: []
   materialQueues: 

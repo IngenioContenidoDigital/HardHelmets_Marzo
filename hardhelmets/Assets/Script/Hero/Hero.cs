@@ -37,7 +37,7 @@ public class Hero : MonoBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.6f;
+	float groundRadius = 0.4f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;

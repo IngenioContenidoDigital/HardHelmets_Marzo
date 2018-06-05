@@ -53,7 +53,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.4f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;
