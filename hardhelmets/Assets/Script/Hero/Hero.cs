@@ -37,7 +37,7 @@ public class Hero : MonoBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.4f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;
@@ -73,7 +73,7 @@ public class Hero : MonoBehaviour{
 	public GameObject bulletPrefSubmetra;
 	public GameObject bulletPrefMetra;
 	public GameObject bulletPrefLlamas;
-	public GameObject fuegoFin;
+	public ParticleSystem firePart;
 	public GameObject bulletPrefSniper;
 	public GameObject bulletPrefPanzer;
 
@@ -1568,6 +1568,10 @@ public class Hero : MonoBehaviour{
 		
 	void BalaLlamas()
 	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
@@ -1580,7 +1584,6 @@ public class Hero : MonoBehaviour{
 		if(balaSniper >= 1)
 		{
 			SniperCam.GetComponent<Cam>().disparo = true;
-			SniperCam.GetComponent<Cam>().maximo = 0.5f;
 
 			SniperCam.GetComponent<Cam>().shake = true;
 			SniperCam.GetComponent<Cam>().disparo = true;
@@ -1616,7 +1619,7 @@ public class Hero : MonoBehaviour{
 
 	void BalaSniperBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSniper, bulletSniperSpawn.position, Quaternion.Euler(4,0,0));
+		var bullet = (GameObject)Instantiate(bulletPrefSniper, bulletSniperSpawn.position, Quaternion.Euler(5,0,0));
 		bullet.GetComponent<balaSniperOffline>().poder = saludMax*bullet.GetComponent<balaSniperOffline>().poder/104;
 
 		Destroy(bullet, 0.5f);
@@ -1873,7 +1876,7 @@ public class Hero : MonoBehaviour{
 			}
 		}
 	}
-
+	public GameObject sangre;
 	//COLLISIONS
 	void OnCollisionEnter (Collision col)
 	{
@@ -1904,6 +1907,11 @@ public class Hero : MonoBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			if(col.gameObject.GetComponent<balaOffline>())
@@ -1945,6 +1953,11 @@ public class Hero : MonoBehaviour{
 			animator.SetBool("granada", true);
 			animator.SetInteger("cascado", 10);
 
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
+			}
+
 			salud -= col.gameObject.GetComponent<ExploOffline>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
@@ -1972,8 +1985,9 @@ public class Hero : MonoBehaviour{
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				//var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
+
 			salud -= 50;
 
 			animacion.SetActive(true);
@@ -2011,6 +2025,11 @@ public class Hero : MonoBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			caminarA = false;
@@ -2108,7 +2127,6 @@ public class Hero : MonoBehaviour{
 					if(balaFusil >= 1 )
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 1f;
 
 						SniperCam.GetComponent<Cam>().shake = true;
 						SniperCam.GetComponent<Cam>().vib = 0.55f;
@@ -2124,7 +2142,6 @@ public class Hero : MonoBehaviour{
 					if(balaSubmetra >= 1)
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 0.4f;
 						SniperCam.GetComponent<Cam>().shake = true;
 						SniperCam.GetComponent<Cam>().vib = 0.4f;
 						luz.SetActive(true);
@@ -2138,7 +2155,6 @@ public class Hero : MonoBehaviour{
 					if(balaMetra >= 1)
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 0.6f;
 
 						//SniperCam.GetComponent<Cam>().sube = true;
 
@@ -2155,7 +2171,6 @@ public class Hero : MonoBehaviour{
 					if(balaPanzer >= 1)
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 0.4f;
 
 						SniperCam.GetComponent<Cam>().shake = true;
 						SniperCam.GetComponent<Cam>().vib = 0.7f;
@@ -2224,7 +2239,6 @@ public class Hero : MonoBehaviour{
 		if(!sniperListo)
 		{
 			SniperCam.GetComponent<Cam>().disparo = true;
-			SniperCam.GetComponent<Cam>().maximo = 1f;
 
 			/*SniperCam.GetComponent<Cam>().sube = true;*/
 
@@ -2333,7 +2347,6 @@ public class Hero : MonoBehaviour{
 	void ShotC ()//SUBMETRA
 	{
 		SniperCam.GetComponent<Cam>().disparo = true;
-		SniperCam.GetComponent<Cam>().maximo = 0.4f;
 		SniperCam.GetComponent<Cam>().shake = true;
 		SniperCam.GetComponent<Cam>().vib = 0.4f;
 		luz.SetActive(true);
@@ -2361,7 +2374,6 @@ public class Hero : MonoBehaviour{
 	void ShotD ()//METRA
 	{
 		SniperCam.GetComponent<Cam>().disparo = true;
-		SniperCam.GetComponent<Cam>().maximo = 0.6f;
 
 		//SniperCam.GetComponent<Cam>().sube = true;
 
@@ -2393,7 +2405,6 @@ public class Hero : MonoBehaviour{
 	void ShotE ()//PANZER
 	{
 		SniperCam.GetComponent<Cam>().disparo = true;
-		SniperCam.GetComponent<Cam>().maximo = 0.4f;
 
 		SniperCam.GetComponent<Cam>().shake = true;
 		SniperCam.GetComponent<Cam>().vib = 0.7f;
@@ -2429,7 +2440,7 @@ public class Hero : MonoBehaviour{
 		
 	public void Fuego()
 	{
-		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawnFuego.position.x, bulletSpawnFuego.position.y+2, bulletSpawnFuego.position.z), bulletSpawn.rotation); 
+		firePart.Stop();
 	}
 	IEnumerator apaga ()
 	{

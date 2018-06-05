@@ -53,7 +53,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.4f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;
@@ -89,7 +89,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject bulletPrefSubmetra;
 	public GameObject bulletPrefMetra;
 	public GameObject bulletPrefLlamas;
-	public GameObject fuegoFin;
+	public ParticleSystem firePart;
 	public GameObject bulletPrefSniper;
 	public GameObject bulletPrefPanzer;
 	//OBJETOS DE DISPARO MALO
@@ -1893,6 +1893,10 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaLlamas()
 	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
@@ -1903,6 +1907,10 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaLlamasMalo()
 	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
@@ -1915,7 +1923,6 @@ public class HeroNetwork : NetworkBehaviour{
 		if(balaSniper >= 1)
 		{
 			SniperCam.GetComponent<CamNetwork>().disparo = true;
-			SniperCam.GetComponent<CamNetwork>().maximo = 0.5f;
 
 			SniperCam.GetComponent<CamNetwork>().shake = true;
 			SniperCam.GetComponent<CamNetwork>().disparo = true;
@@ -1957,7 +1964,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaSniperBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSniper, bulletSniperSpawn.position, Quaternion.Euler(4,0,0));
+		var bullet = (GameObject)Instantiate(bulletPrefSniper, bulletSniperSpawn.position, Quaternion.Euler(5,0,0));
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<balaSniper>().poder = saludMax*bullet.GetComponent<balaSniper>().poder/104;
 
@@ -1966,7 +1973,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaSniperMalo()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSniperMalo, bulletSniperSpawn.position, Quaternion.Euler(4,0,0));
+		var bullet = (GameObject)Instantiate(bulletPrefSniperMalo, bulletSniperSpawn.position, Quaternion.Euler(5,0,0));
 		NetworkServer.Spawn(bullet);
 		bullet.GetComponent<balaSniper>().poder = saludMax2*bullet.GetComponent<balaSniper>().poder/104;
 
@@ -2264,7 +2271,7 @@ public class HeroNetwork : NetworkBehaviour{
 			}
 		}
 	}
-
+	public GameObject sangre;
 	//COLLISIONS
 	void OnCollisionEnter (Collision col)
 	{
@@ -2295,6 +2302,11 @@ public class HeroNetwork : NetworkBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			if(col.gameObject.GetComponent<bala>())
@@ -2331,6 +2343,11 @@ public class HeroNetwork : NetworkBehaviour{
 			velocidad = 0;
 			v3 = Vector3.zero;
 
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
+			}
+
 			animator.SetBool("granada", true);
 			animator.SetInteger("cascado", 10);
 
@@ -2358,7 +2375,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				//var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 			salud -= 50;
 
@@ -2400,6 +2417,11 @@ public class HeroNetwork : NetworkBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			caminarA = false;
@@ -2514,7 +2536,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(balaFusil >= 1 )
 					{
 						SniperCam.GetComponent<CamNetwork>().disparo = true;
-						SniperCam.GetComponent<CamNetwork>().maximo = 1f;
 
 						SniperCam.GetComponent<CamNetwork>().shake = true;
 						SniperCam.GetComponent<CamNetwork>().vib = 0.55f;
@@ -2536,7 +2557,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(balaSubmetra >= 1)
 					{
 						SniperCam.GetComponent<CamNetwork>().disparo = true;
-						SniperCam.GetComponent<CamNetwork>().maximo = 0.4f;
 						SniperCam.GetComponent<CamNetwork>().shake = true;
 						SniperCam.GetComponent<CamNetwork>().vib = 0.4f;
 						luz.SetActive(true);
@@ -2556,7 +2576,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(balaMetra >= 1)
 					{
 						SniperCam.GetComponent<CamNetwork>().disparo = true;
-						SniperCam.GetComponent<CamNetwork>().maximo = 0.6f;
 
 						//SniperCam.GetComponent<CamNetwork>().sube = true;
 
@@ -2579,7 +2598,6 @@ public class HeroNetwork : NetworkBehaviour{
 					if(balaPanzer >= 1)
 					{
 						SniperCam.GetComponent<CamNetwork>().disparo = true;
-						SniperCam.GetComponent<CamNetwork>().maximo = 0.4f;
 
 						SniperCam.GetComponent<CamNetwork>().shake = true;
 						SniperCam.GetComponent<CamNetwork>().vib = 0.7f;
@@ -2704,7 +2722,6 @@ public class HeroNetwork : NetworkBehaviour{
 		if(!sniperListo)
 		{
 			SniperCam.GetComponent<CamNetwork>().disparo = true;
-			SniperCam.GetComponent<CamNetwork>().maximo = 1f;
 
 			/*SniperCam.GetComponent<CamNetwork>().sube = true;*/
 
@@ -2761,7 +2778,6 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 
 		/*SniperCam.GetComponent<CamNetwork>().disparo = true;
-		SniperCam.GetComponent<CamNetwork>().maximo = 0.7f;
 
 		SniperCam.GetComponent<CamNetwork>().shake = true;
 		SniperCam.GetComponent<CamNetwork>().vib = 0.7f;*/
@@ -2937,7 +2953,6 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 
 		SniperCam.GetComponent<CamNetwork>().disparo = true;
-		SniperCam.GetComponent<CamNetwork>().maximo = 0.4f;
 		SniperCam.GetComponent<CamNetwork>().shake = true;
 		SniperCam.GetComponent<CamNetwork>().vib = 0.4f;
 		luz.SetActive(true);
@@ -2989,7 +3004,6 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 
 		SniperCam.GetComponent<CamNetwork>().disparo = true;
-		SniperCam.GetComponent<CamNetwork>().maximo = 0.6f;
 
 		//SniperCam.GetComponent<CamNetwork>().sube = true;
 
@@ -3046,7 +3060,6 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 
 		SniperCam.GetComponent<CamNetwork>().disparo = true;
-		SniperCam.GetComponent<CamNetwork>().maximo = 0.4f;
 
 		SniperCam.GetComponent<CamNetwork>().shake = true;
 		SniperCam.GetComponent<CamNetwork>().vib = 0.7f;
@@ -3113,8 +3126,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void Cmd_Fuego()
 	{
-		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawnFuego.position.x, bulletSpawnFuego.position.y+2, bulletSpawnFuego.position.z), bulletSpawn.rotation); 
-		NetworkServer.Spawn(fire);
+		firePart.Stop();
 	}
 	IEnumerator apaga ()
 	{

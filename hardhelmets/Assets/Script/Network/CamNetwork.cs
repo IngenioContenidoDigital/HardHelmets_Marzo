@@ -48,7 +48,6 @@ public class CamNetwork : NetworkBehaviour {
 	bool baja;
 	bool loop;
 	float intensidad;
-	public float maximo;
 
 	public bool disparo;
 	public bool disparo2;
@@ -91,8 +90,6 @@ public class CamNetwork : NetworkBehaviour {
 	{
 		//Player = GameObject.Find("Hero");
 		musica = PlayerPrefs.GetFloat("musica");
-		intensidad = 0.1f;
-		GetComponent<Bloom>().bloomThreshold = 0.62f;
 	}
 	public bool unaVez;
 	// Update is called once per frame
@@ -184,16 +181,14 @@ public class CamNetwork : NetworkBehaviour {
 			}
 		}
 
-		GetComponent<Bloom>().bloomIntensity = intensidad;
-
 		if(sube)
 		{
 			loop = true;
 			//ProCamera2DShake.Instance.Shake();
 			shake = true;
-			intensidad += 0.7f;
-			GetComponent<Bloom>().bloomThreshold = -0.05f;
-			if(intensidad >= 2)
+			intensidad += 0.02f;
+			GetComponent<BloomOptimized>().intensity = intensidad;
+			if(intensidad >= 0.2f)//2
 			{
 				baja = true;
 				sube = false;
@@ -201,11 +196,12 @@ public class CamNetwork : NetworkBehaviour {
 		}
 		if(baja)
 		{
-			intensidad -= 0.5f;
-			if(intensidad <= 0.1f)
+			intensidad -= 0.02f;
+			GetComponent<BloomOptimized>().intensity = intensidad;
+			if(intensidad <= 0.01f)
 			{
-				GetComponent<Bloom>().bloomThreshold = 0.62f;
-				intensidad = 0.1f;
+				GetComponent<BloomOptimized>().intensity = 0.01f;
+				intensidad = 0.01f;
 				loop = false;
 				//StartCoroutine(explo());
 				baja = false;
@@ -213,9 +209,9 @@ public class CamNetwork : NetworkBehaviour {
 		}
 		if(disparo)
 		{
-			intensidad += 0.15f;
-			GetComponent<Bloom>().bloomThreshold = -0.05f;
-			if(intensidad >= maximo)
+			intensidad += 0.02f;
+			GetComponent<BloomOptimized>().intensity = intensidad;
+			if(intensidad >= 0.2f)//2
 			{
 				disparo2 = true;
 				disparo = false;
@@ -224,7 +220,7 @@ public class CamNetwork : NetworkBehaviour {
 		if(disparo2)
 		{
 			intensidad = 0.1f;
-			GetComponent<Bloom>().bloomThreshold = 0.62f;
+			GetComponent<BloomOptimized>().intensity = 0.01f;
 			disparo2 = false;
 		}
 
@@ -237,7 +233,7 @@ public class CamNetwork : NetworkBehaviour {
 			//GetComponent<ProCamera2DForwardFocus>().enabled = false;
 			//GetComponent<ProCamera2DSpeedBasedZoom>().enabled = false;
 
-			GetComponent<Camera>().fieldOfView = 20.5f;
+			GetComponent<Camera>().fieldOfView = 28;
 
 			if(Input.GetAxis("MIRA") != 0 || Input.GetAxis("MIRA H") != 0)
 			{
@@ -286,10 +282,10 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
 			}
@@ -302,7 +298,7 @@ public class CamNetwork : NetworkBehaviour {
 
 			GetComponent<DirtyLensFlare>().enabled = true;
 
-			GetComponent<Camera>().fieldOfView = 20.5f;
+			GetComponent<Camera>().fieldOfView = 28;
 
 			if(Input.GetAxis("MIRA") != 0 || Input.GetAxis("MIRA H") != 0)
 			{
@@ -386,6 +382,7 @@ public class CamNetwork : NetworkBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<HeroNetwork>().pausado = false;
 					Player.GetComponent<HeroNetwork>().ready = true;
 					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -401,6 +398,7 @@ public class CamNetwork : NetworkBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<HeroNetwork>().pausado = false;
 					Player.GetComponent<HeroNetwork>().ready = true;
 					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -449,10 +447,10 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, velocidad);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, velocidad);
 			}
@@ -478,7 +476,7 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}else
 			{
-				altura = 7.8f;
+				altura = 8.5f;
 				GetComponent<Camera>().fieldOfView -= 0.15f;
 				if(GetComponent<Camera>().fieldOfView  <= 15.5f)
 				{

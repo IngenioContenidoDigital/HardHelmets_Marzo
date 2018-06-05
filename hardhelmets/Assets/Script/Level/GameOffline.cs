@@ -522,7 +522,7 @@ public class GameOffline : MonoBehaviour {
 				}
 				if(idioma == "CHINESE")
 				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCh";
 				}
 			}else if(CapturedFlagsB == CapturedFlagsM)
 			{
@@ -544,17 +544,17 @@ public class GameOffline : MonoBehaviour {
 
 		if(final && final2)
 		{
-			if(Ganador.activeSelf && Ganador.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Ganador.activeSelf && Ganador.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Ganador.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Ganador.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
-			if(Perdedor.activeSelf && Perdedor.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Perdedor.activeSelf && Perdedor.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Perdedor.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Perdedor.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
-			if(Empate.activeSelf && Empate.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Empate.activeSelf && Empate.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Empate.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
 
 			End.SetActive(true);

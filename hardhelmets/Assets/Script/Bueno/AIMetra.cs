@@ -58,7 +58,7 @@ public class AIMetra : MonoBehaviour {
 	//MUERE CON EXPLOCION
 	bool explocion;
 	public GameObject Huesos;
-	public GameObject[] sangreCuchillo;
+	public GameObject sangre2;
 
 	public GameObject[] efectoSanre;
 
@@ -288,7 +288,7 @@ public class AIMetra : MonoBehaviour {
 			acuchillado = true;
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var efect = (GameObject)Instantiate(sangre2, col.transform.position, transform.rotation);
 			}
 			salud -= 50;
 
@@ -303,6 +303,11 @@ public class AIMetra : MonoBehaviour {
 			caminar = false;
 			animator.SetInteger("cascado", 1);
 			Destroy(col.gameObject);
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre2, col.transform.position, transform.rotation);
+			}
 
 			if(col.gameObject.GetComponent<balaOffline>())
 			{
@@ -323,108 +328,17 @@ public class AIMetra : MonoBehaviour {
 				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
 			}
 		}
-		/*if(col.gameObject.tag == "balaFusil" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 40;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "40";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaEscopeta" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 15;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "15";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaSubmetra" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 20;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "20";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaMetra" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}
-		if(col.gameObject.tag == "balaMG" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			Destroy(col.gameObject);
-			salud -= 25;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "25";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}*/
-		/*if(col.gameObject.tag == "balaSniper" && vivo)
-		{
-			v3 = Vector3.zero;
-			caminar = false;
-			animator.SetInteger("cascado", 1);
-			col.gameObject.SetActive(false);
-			salud -= 100;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "100";
-
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-			}
-		}*/
 		if(col.gameObject.tag == "explo" && vivo)
 		{
 			caminar = false;
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
 				explocion = true;
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre2, col.transform.position, transform.rotation);
 			}
 
 			salud -= col.gameObject.GetComponent<ExploOffline>().poder;
@@ -445,10 +359,7 @@ public class AIMetra : MonoBehaviour {
 
 				if(PlayerPrefs.GetInt("violencia") == 1)
 				{
-					if(PlayerPrefs.GetInt("violencia") == 1)
-					{
-						var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-					}
+					var efect = (GameObject)Instantiate(sangre2, col.transform.position, transform.rotation);
 				}
 			}
 		}
@@ -483,6 +394,11 @@ public class AIMetra : MonoBehaviour {
 		{
 			quemado = true;
 			caminar = false;
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre2, col.transform.position, transform.rotation);
+			}
 
 			salud -= col.gameObject.GetComponent<balaFuego>().poder;
 

@@ -40,7 +40,7 @@ public class AI : MonoBehaviour {
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.6f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 
@@ -77,7 +77,7 @@ public class AI : MonoBehaviour {
 	bool explocion;
 	bool acuchillado;
 	public GameObject Huesos;
-	public GameObject[] sangreCuchillo;
+	public GameObject sangre;
 
 	public Transform cascadoSpawn;
 
@@ -461,7 +461,7 @@ public class AI : MonoBehaviour {
 			//efect = Random.Range(3,5);
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 			salud -= 15;
 
@@ -495,7 +495,7 @@ public class AI : MonoBehaviour {
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation);
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 		}
 		if(col.gameObject.tag == "explo" && vivo)
@@ -526,7 +526,7 @@ public class AI : MonoBehaviour {
 
 				if(PlayerPrefs.GetInt("violencia") == 1)
 				{
-					var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+					var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 				}
 			}
 		}
@@ -554,6 +554,11 @@ public class AI : MonoBehaviour {
 
 			animator.SetInteger("cascado", 1);
 			Destroy(col.gameObject);
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
+			}
 
 			quemado = true;
 			salud -= col.gameObject.GetComponent<balaFuego>().poder;

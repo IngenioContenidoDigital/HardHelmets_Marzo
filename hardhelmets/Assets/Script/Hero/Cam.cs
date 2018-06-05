@@ -49,7 +49,6 @@ public class Cam : MonoBehaviour {
 	bool baja;
 	bool loop;
 	float intensidad;
-	public float maximo;
 
 	public bool disparo;
 	public bool disparo2;
@@ -85,8 +84,6 @@ public class Cam : MonoBehaviour {
 	{
 		//Player = GameObject.Find("Hero");
 		musica = PlayerPrefs.GetFloat("musica");
-		intensidad = 0.1f;
-		GetComponent<Bloom>().bloomThreshold = 0.62f;
 	}
 	// Update is called once per frame
 	void Update ()
@@ -142,16 +139,14 @@ public class Cam : MonoBehaviour {
 			}
 		}
 
-		GetComponent<Bloom>().bloomIntensity = intensidad;
-
 		if(sube)
 		{
 			loop = true;
 			//ProCamera2DShake.Instance.Shake();
 			shake = true;
-			intensidad += 0.7f;
-			GetComponent<Bloom>().bloomThreshold = -0.05f;
-			if(intensidad >= 2)
+			intensidad += 0.02f;
+			GetComponent<BloomOptimized>().intensity = intensidad;
+			if(intensidad >= 0.2f)//2
 			{
 				baja = true;
 				sube = false;
@@ -159,11 +154,12 @@ public class Cam : MonoBehaviour {
 		}
 		if(baja)
 		{
-			intensidad -= 0.5f;
-			if(intensidad <= 0.1f)
+			intensidad -= 0.02f;
+			GetComponent<BloomOptimized>().intensity = intensidad;
+			if(intensidad <= 0.01f)
 			{
-				GetComponent<Bloom>().bloomThreshold = 0.62f;
-				intensidad = 0.1f;
+				GetComponent<BloomOptimized>().intensity = 0.01f;
+				intensidad = 0.01f;
 				loop = false;
 				//StartCoroutine(explo());
 				baja = false;
@@ -171,9 +167,9 @@ public class Cam : MonoBehaviour {
 		}
 		if(disparo)
 		{
-			intensidad += 0.15f;
-			GetComponent<Bloom>().bloomThreshold = -0.05f;
-			if(intensidad >= maximo)
+			intensidad += 0.02f;
+			GetComponent<BloomOptimized>().intensity = intensidad;
+			if(intensidad >= 0.2f)//2
 			{
 				disparo2 = true;
 				disparo = false;
@@ -182,7 +178,7 @@ public class Cam : MonoBehaviour {
 		if(disparo2)
 		{
 			intensidad = 0.1f;
-			GetComponent<Bloom>().bloomThreshold = 0.62f;
+			GetComponent<BloomOptimized>().intensity = 0.01f;
 			disparo2 = false;
 		}
 
@@ -195,7 +191,7 @@ public class Cam : MonoBehaviour {
 			//GetComponent<ProCamera2DForwardFocus>().enabled = false;
 			//GetComponent<ProCamera2DSpeedBasedZoom>().enabled = false;
 
-			GetComponent<Camera>().fieldOfView = 20.5f;
+			GetComponent<Camera>().fieldOfView = 28;
 
 			if(Input.GetAxis("MIRA") != 0 || Input.GetAxis("MIRA H") != 0)
 			{
@@ -245,10 +241,10 @@ public class Cam : MonoBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)//+1
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)//+20
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
 			}
@@ -261,7 +257,7 @@ public class Cam : MonoBehaviour {
 
 			GetComponent<DirtyLensFlare>().enabled = true;
 
-			GetComponent<Camera>().fieldOfView = 20.5f;
+			GetComponent<Camera>().fieldOfView = 28;
 
 			if(Input.GetAxis("MIRA") != 0 || Input.GetAxis("MIRA H") != 0)
 			{
@@ -339,6 +335,7 @@ public class Cam : MonoBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<Hero>().pausado = false;
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -354,6 +351,7 @@ public class Cam : MonoBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<Hero>().pausado = false;
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -402,10 +400,10 @@ public class Cam : MonoBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)//1
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);//velocidad);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)//20
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);//velocidad);
 			}

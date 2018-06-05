@@ -61,9 +61,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 	//MUERE CON EXPLOCION
 	bool explocion;
 	public GameObject Huesos;
-	public GameObject[] sangreCuchillo;
-
-	public GameObject[] efectoSanre;
+	public GameObject sangre2;
 
 	//ACUCHILLADO
 	bool acuchillado;
@@ -333,7 +331,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			acuchillado = true;
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var sangre = (GameObject)Instantiate(sangre2, col.transform.position, cascadoSpawn.rotation); 
 			}
 			salud -= 50;
 
@@ -365,7 +363,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
+				var sangre = (GameObject)Instantiate(sangre2, col.transform.position, cascadoSpawn.rotation); 
 			}
 		}
 
@@ -375,6 +373,10 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
 				explocion = true;
+			}
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var sangre = (GameObject)Instantiate(sangre2, col.transform.position, cascadoSpawn.rotation); 
 			}
 
 			salud -= col.gameObject.GetComponent<Explo>().poder;
@@ -395,10 +397,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 
 				if(PlayerPrefs.GetInt("violencia") == 1)
 				{
-					if(PlayerPrefs.GetInt("violencia") == 1)
-					{
-						var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), cascadoSpawn.rotation);
-					}
+					var sangre = (GameObject)Instantiate(sangre2, col.transform.position, cascadoSpawn.rotation); 
 				}
 			}
 		}
@@ -426,6 +425,11 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			animator.SetInteger("cascado", 1);
 			Destroy(col.gameObject);
 			quemado = true;
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var sangre = (GameObject)Instantiate(sangre2, col.transform.position, cascadoSpawn.rotation); 
+			}
 
 			caminar = false;
 

@@ -1744,6 +1744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4150687052316552}
   - component: {fileID: 114716641134797656}
+  - component: {fileID: 114318002525104280}
   m_Layer: 0
   m_Name: pieIzquierdo
   m_TagString: Untagged
@@ -1825,6 +1826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4981941054873930}
   - component: {fileID: 114769062234380166}
+  - component: {fileID: 114443927830874114}
   m_Layer: 0
   m_Name: pieDerecho
   m_TagString: Untagged
@@ -2132,7 +2134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893050822495652}
   m_LocalRotation: {x: 0, y: 0, z: -0.36495805, w: 0.93102396}
-  m_LocalPosition: {x: 0.4008, y: 0.94839996, z: 0}
+  m_LocalPosition: {x: 0.4008007, y: 0.9484005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4110939492376200}
@@ -2239,7 +2241,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351947186971324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.445, y: -0.53, z: 0}
+  m_LocalPosition: {x: 0, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4534336976675174}
@@ -3516,7 +3518,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1956183543293828}
   m_LocalRotation: {x: 0, y: 0, z: -0.543321, w: 0.8395251}
-  m_LocalPosition: {x: -0.4814, y: 1.2368001, z: 0}
+  m_LocalPosition: {x: -0.48140144, y: 1.2367992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4301990846208280}
@@ -4450,6 +4452,27 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b3e4253bb1be9849ac2b615c271a7f1, type: 3}
   - {fileID: 8300000, guid: 654371c2a05642b4c9bdc4d5e4a00b76, type: 3}
   - {fileID: 8300000, guid: 46fd0312f64d2254bbe1fd5a1b174fb1, type: 3}
+--- !u!114 &114318002525104280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893050822495652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3662334b99de5fe4396ab24e30c4fd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  use2D: 0
+  useRadius: 1
+  castRadius: 0.31
+  castDistance: 5
+  castOffset: 0
+  groundOffset: 0.4
+  adjustSpeed: 50
 --- !u!114 &114320487430893314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4749,6 +4772,27 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
+--- !u!114 &114443927830874114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956183543293828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3662334b99de5fe4396ab24e30c4fd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  use2D: 0
+  useRadius: 1
+  castRadius: 0.31
+  castDistance: 5
+  castOffset: 0
+  groundOffset: 0.4
+  adjustSpeed: 50
 --- !u!114 &114451836947607806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4995,14 +5039,7 @@ MonoBehaviour:
     type: 2}
   luz: {fileID: 1141336934541004}
   Huesos: {fileID: 100006, guid: 18aa1939cbf6b1e4aaa5aaca0c64a8c7, type: 2}
-  sangreCuchillo:
-  - {fileID: 100000, guid: 70ed7ca4f94fc8b489bb9275033b6d54, type: 2}
-  - {fileID: 100008, guid: c8a5c440f9d9b434f999475face08c29, type: 2}
-  - {fileID: 100000, guid: 7af345f44776c0145b62098a65fbff52, type: 2}
-  - {fileID: 100002, guid: f53c2b05c7d4ed343b6b8b031e506b25, type: 2}
-  - {fileID: 100004, guid: 0fe7712bc9c0f4c44ab0ba5de7cd1682, type: 2}
-  - {fileID: 100006, guid: 489a1d3cf5d15494f8fb97d5706b10bb, type: 2}
-  - {fileID: 100000, guid: a916dc58201e3fa4d9fd72b636b7ef82, type: 2}
+  sangre: {fileID: 1490089321829530, guid: 147f46b5df14b704783a7a0f12dd5cf9, type: 2}
   cascadoSpawn: {fileID: 4356802497145146}
   Base: {fileID: 1632395156269590}
   water: 0
@@ -6334,9 +6371,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.42
-  m_Height: 5.23
+  m_Height: 6.25
   m_Direction: 1
-  m_Center: {x: 0, y: 2.47, z: 0}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!148 &148243262683349740
 NetworkView:
   m_ObjectHideFlags: 1
@@ -6366,7 +6403,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 6
+  m_Height: 6.25
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
