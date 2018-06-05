@@ -335,6 +335,7 @@ public class Cam : MonoBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<Hero>().pausado = false;
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -350,6 +351,7 @@ public class Cam : MonoBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<Hero>().pausado = false;
 					Player.GetComponent<Hero>().ready = true;
 					Player.GetComponent<Hero>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -398,10 +400,10 @@ public class Cam : MonoBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)//1
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);//velocidad);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)//20
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);//velocidad);
 			}

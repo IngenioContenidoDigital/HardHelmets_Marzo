@@ -282,10 +282,10 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
 			}
@@ -382,6 +382,7 @@ public class CamNetwork : NetworkBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<HeroNetwork>().pausado = false;
 					Player.GetComponent<HeroNetwork>().ready = true;
 					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -397,6 +398,7 @@ public class CamNetwork : NetworkBehaviour {
 					TexturaBombardeo.SetActive(false);
 					GetComponent<Grayscale>().enabled = false;
 
+					Player.GetComponent<HeroNetwork>().pausado = false;
 					Player.GetComponent<HeroNetwork>().ready = true;
 					Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
 					GetComponent<AudioSource>().Stop();
@@ -445,10 +447,10 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+1)
+			if(transform.position.y <= Player.transform.position.y+5)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, velocidad);
-			}else if(transform.position.y >= Player.transform.position.y+20)
+			}else if(transform.position.y >= Player.transform.position.y+18)
 			{
 				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, velocidad);
 			}

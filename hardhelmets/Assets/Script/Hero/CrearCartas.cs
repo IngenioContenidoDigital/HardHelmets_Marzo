@@ -506,6 +506,7 @@ public class CrearCartas : MonoBehaviour {
 	//BOMBARDEO
 	public void bombardeo()
 	{
+		GetComponent<Hero>().pausado = true;
 		GetComponent<Hero>().ready = false;
 
 		GetComponent<Hero>().caminarA = false;

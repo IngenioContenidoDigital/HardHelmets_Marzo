@@ -2117,7 +2117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170673621130288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.445, y: -0.97, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4217082081985722}
@@ -4267,18 +4267,7 @@ MonoBehaviour:
   textos2: {fileID: 1291947733127858, guid: af5dd40ec23338746b03a1907e728d8a, type: 2}
   mira: {fileID: 1777942528411028}
   Huesos: {fileID: 100006, guid: 18aa1939cbf6b1e4aaa5aaca0c64a8c7, type: 2}
-  sangreCuchillo:
-  - {fileID: 100000, guid: 70ed7ca4f94fc8b489bb9275033b6d54, type: 2}
-  - {fileID: 100008, guid: c8a5c440f9d9b434f999475face08c29, type: 2}
-  - {fileID: 100000, guid: 7af345f44776c0145b62098a65fbff52, type: 2}
-  - {fileID: 100002, guid: f53c2b05c7d4ed343b6b8b031e506b25, type: 2}
-  - {fileID: 100004, guid: 0fe7712bc9c0f4c44ab0ba5de7cd1682, type: 2}
-  - {fileID: 100006, guid: 489a1d3cf5d15494f8fb97d5706b10bb, type: 2}
-  - {fileID: 100000, guid: a916dc58201e3fa4d9fd72b636b7ef82, type: 2}
-  efectoSanre:
-  - {fileID: 100002, guid: f53c2b05c7d4ed343b6b8b031e506b25, type: 2}
-  - {fileID: 100004, guid: 0fe7712bc9c0f4c44ab0ba5de7cd1682, type: 2}
-  - {fileID: 100006, guid: 489a1d3cf5d15494f8fb97d5706b10bb, type: 2}
+  sangre2: {fileID: 1490089321829530, guid: 147f46b5df14b704783a7a0f12dd5cf9, type: 2}
   caminar: 0
   lugar: {x: 0, y: 0, z: 0}
   Base: {fileID: 1713839412940630}

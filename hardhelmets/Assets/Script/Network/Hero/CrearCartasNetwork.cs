@@ -765,6 +765,7 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	//BOMBARDEO
 	public void bombardeo()
 	{
+		GetComponent<HeroNetwork>().pausado = true;
 		GetComponent<HeroNetwork>().ready = false;
 
 		GetComponent<HeroNetwork>().caminarA = false;

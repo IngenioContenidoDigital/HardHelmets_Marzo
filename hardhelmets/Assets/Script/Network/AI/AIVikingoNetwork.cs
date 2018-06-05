@@ -74,7 +74,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 	bool explocion;
 	bool acuchillado;
 	public GameObject Huesos;
-	public GameObject[] sangreCuchillo;
+	public GameObject sangre;
 
 	public Transform cascadoSpawn;
 
@@ -497,7 +497,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			//efect = Random.Range(3,5);
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var sangre2 = (GameObject)Instantiate(sangre, col.transform.position, cascadoSpawn.rotation); 
 			}
 			salud -= 15;
 
@@ -531,7 +531,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation);
+				var sangre2 = (GameObject)Instantiate(sangre, col.transform.position, cascadoSpawn.rotation); 
 			}
 		}
 		if(col.gameObject.tag == "explo" && vivo)
@@ -539,6 +539,11 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			agent.isStopped = false;
 
 			animator.SetBool("walk",false);
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var sangre2 = (GameObject)Instantiate(sangre, col.transform.position, cascadoSpawn.rotation); 
+			}
 
 			salud -= col.gameObject.GetComponent<Explo>().poder;
 
@@ -562,7 +567,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 				if(PlayerPrefs.GetInt("violencia") == 1)
 				{
-					var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+					var sangre2 = (GameObject)Instantiate(sangre, col.transform.position, cascadoSpawn.rotation); 
 				}
 			}
 		}
@@ -594,6 +599,11 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 			animator.SetBool("cascado", true);
 			Destroy(col.gameObject);
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var sangre2 = (GameObject)Instantiate(sangre, col.transform.position, cascadoSpawn.rotation); 
+			}
 
 			quemado = true;
 			salud -= col.gameObject.GetComponent<balaFuego>().poder;

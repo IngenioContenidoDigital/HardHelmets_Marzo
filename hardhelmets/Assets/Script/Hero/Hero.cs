@@ -1872,7 +1872,7 @@ public class Hero : MonoBehaviour{
 			}
 		}
 	}
-
+	public GameObject sangre;
 	//COLLISIONS
 	void OnCollisionEnter (Collision col)
 	{
@@ -1903,6 +1903,11 @@ public class Hero : MonoBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			if(col.gameObject.GetComponent<balaOffline>())
@@ -1944,6 +1949,11 @@ public class Hero : MonoBehaviour{
 			animator.SetBool("granada", true);
 			animator.SetInteger("cascado", 10);
 
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
+			}
+
 			salud -= col.gameObject.GetComponent<ExploOffline>().poder;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
@@ -1971,8 +1981,9 @@ public class Hero : MonoBehaviour{
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				//var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
+
 			salud -= 50;
 
 			animacion.SetActive(true);
@@ -2010,6 +2021,11 @@ public class Hero : MonoBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			caminarA = false;
