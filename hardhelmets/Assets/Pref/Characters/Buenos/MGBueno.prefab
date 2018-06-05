@@ -871,6 +871,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4650797573313980}
   - component: {fileID: 114628197813581414}
+  - component: {fileID: 114965165470786918}
   m_Layer: 0
   m_Name: pieDerecho
   m_TagString: Untagged
@@ -1222,6 +1223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4462199454896950}
   - component: {fileID: 114184208068331386}
+  - component: {fileID: 114112786884873158}
   m_Layer: 0
   m_Name: pieIzquierdo
   m_TagString: Untagged
@@ -2443,9 +2445,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527307197580224}
-  m_LocalRotation: {x: 0, y: 0, z: 0.11259626, w: 0.99364084}
-  m_LocalPosition: {x: 0.5191, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.1517195, w: 0.98842365}
+  m_LocalPosition: {x: 0.5191004, y: 0.0000009006121, z: 0}
+  m_LocalScale: {x: 1.1999143, y: 1.2000859, z: 1}
   m_Children:
   - {fileID: 4156095161072770}
   - {fileID: 4443032102065892}
@@ -2526,7 +2528,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1649176716944078}
   m_LocalRotation: {x: 0, y: 0, z: -0.36495805, w: 0.93102396}
-  m_LocalPosition: {x: 0.4008, y: 0.94839996, z: 0}
+  m_LocalPosition: {x: 0.4008236, y: 0.9484005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4127710784848178}
@@ -2622,7 +2624,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059619000375954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4591249993692324}
@@ -2686,9 +2688,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1366003900261700}
-  m_LocalRotation: {x: 0, y: 0, z: 0.46630946, w: 0.8846217}
-  m_LocalPosition: {x: 0.242, y: 2.896, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9670628, w: 0.25453815}
+  m_LocalPosition: {x: -0.5010396, y: 5.8423615, z: 0}
+  m_LocalScale: {x: 0.99991196, y: 0.9998272, z: 1}
   m_Children: []
   m_Father: {fileID: 4441612342421590}
   m_RootOrder: 20
@@ -2794,7 +2796,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426959259007190}
   m_LocalRotation: {x: 0, y: 0, z: -0.543321, w: 0.8395251}
-  m_LocalPosition: {x: -0.4814, y: 1.2368001, z: 0}
+  m_LocalPosition: {x: -0.48137856, y: 1.2367992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4877215807995916}
@@ -3864,6 +3866,27 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
+--- !u!114 &114112786884873158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649176716944078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3662334b99de5fe4396ab24e30c4fd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  use2D: 0
+  useRadius: 1
+  castRadius: 0.31
+  castDistance: 5
+  castOffset: 0
+  groundOffset: 0.4
+  adjustSpeed: 50
 --- !u!114 &114121183013464400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5591,6 +5614,27 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
+--- !u!114 &114965165470786918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426959259007190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3662334b99de5fe4396ab24e30c4fd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  use2D: 0
+  useRadius: 1
+  castRadius: 0.31
+  castDistance: 5
+  castOffset: 0
+  groundOffset: 0.4
+  adjustSpeed: 50
 --- !u!114 &114968224139806794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5665,7 +5709,7 @@ CapsuleCollider:
   m_Radius: 1.42
   m_Height: 4.2
   m_Direction: 1
-  m_Center: {x: 0, y: 1.61, z: 0}
+  m_Center: {x: 0, y: 1.7, z: 0}
 --- !u!182 &182322416651080040
 WindZone:
   m_ObjectHideFlags: 1

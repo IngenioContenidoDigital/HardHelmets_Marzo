@@ -96,6 +96,13 @@ public class AnimacionesVikingo : MonoBehaviour {
 				animator.SetBool("disparando", true);
 			}else
 			{
+				if(GetComponent<AIVikingo>())
+				{
+					GetComponent<AIVikingo>().particulas.Stop();
+				}else
+				{
+					GetComponent<AIVikingoNetwork>().particulas.Stop();
+				}
 				animator.SetBool("disparando", false);
 			}
 			if(animator.GetCurrentAnimatorStateInfo(0).IsName("muerto"))

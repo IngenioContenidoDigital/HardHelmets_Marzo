@@ -476,7 +476,7 @@ public class CamNetwork : NetworkBehaviour {
 				}
 			}else
 			{
-				altura = 7.8f;
+				altura = 8.5f;
 				GetComponent<Camera>().fieldOfView -= 0.15f;
 				if(GetComponent<Camera>().fieldOfView  <= 15.5f)
 				{

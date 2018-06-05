@@ -250,6 +250,10 @@ public class AnimacionesNetwork : NetworkBehaviour {
 			animator.SetBool("recargando", true);
 			//GetComponent<HeroNetwork>().cargando = true;
 		}
+		if(!animator.GetCurrentAnimatorStateInfo(1).IsName("lansallamasShotMescla"))
+		{
+			GetComponent<Hero>().firePart.Stop();
+		}
 		//LANSA LLAMAS
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasPose") || animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasPoseWalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasShot") || animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasPoseAgachado") || animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasShotagachado"))
 		{

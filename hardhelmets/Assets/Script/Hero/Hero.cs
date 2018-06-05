@@ -73,7 +73,7 @@ public class Hero : MonoBehaviour{
 	public GameObject bulletPrefSubmetra;
 	public GameObject bulletPrefMetra;
 	public GameObject bulletPrefLlamas;
-	public GameObject fuegoFin;
+	public ParticleSystem firePart;
 	public GameObject bulletPrefSniper;
 	public GameObject bulletPrefPanzer;
 
@@ -1568,6 +1568,10 @@ public class Hero : MonoBehaviour{
 		
 	void BalaLlamas()
 	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
@@ -2436,7 +2440,7 @@ public class Hero : MonoBehaviour{
 		
 	public void Fuego()
 	{
-		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawnFuego.position.x, bulletSpawnFuego.position.y+2, bulletSpawnFuego.position.z), bulletSpawn.rotation); 
+		firePart.Stop();
 	}
 	IEnumerator apaga ()
 	{

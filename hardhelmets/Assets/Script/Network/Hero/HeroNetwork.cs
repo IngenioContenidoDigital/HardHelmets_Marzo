@@ -89,7 +89,7 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject bulletPrefSubmetra;
 	public GameObject bulletPrefMetra;
 	public GameObject bulletPrefLlamas;
-	public GameObject fuegoFin;
+	public ParticleSystem firePart;
 	public GameObject bulletPrefSniper;
 	public GameObject bulletPrefPanzer;
 	//OBJETOS DE DISPARO MALO
@@ -1893,6 +1893,10 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaLlamas()
 	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
@@ -1903,6 +1907,10 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	void CmdBalaLlamasMalo()
 	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
 		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
@@ -2263,7 +2271,7 @@ public class HeroNetwork : NetworkBehaviour{
 			}
 		}
 	}
-
+	public GameObject sangre;
 	//COLLISIONS
 	void OnCollisionEnter (Collision col)
 	{
@@ -2294,6 +2302,11 @@ public class HeroNetwork : NetworkBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			if(col.gameObject.GetComponent<bala>())
@@ -2330,6 +2343,11 @@ public class HeroNetwork : NetworkBehaviour{
 			velocidad = 0;
 			v3 = Vector3.zero;
 
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
+			}
+
 			animator.SetBool("granada", true);
 			animator.SetInteger("cascado", 10);
 
@@ -2357,7 +2375,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 			if(PlayerPrefs.GetInt("violencia") == 1)
 			{
-				//var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], cascadoSpawn.position, cascadoSpawn.rotation); 
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 			salud -= 50;
 
@@ -2399,6 +2417,11 @@ public class HeroNetwork : NetworkBehaviour{
 			if(grounded)
 			{
 				animator.SetInteger("cascado", 1);
+			}
+
+			if(PlayerPrefs.GetInt("violencia") == 1)
+			{
+				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
 
 			caminarA = false;
@@ -3103,8 +3126,7 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void Cmd_Fuego()
 	{
-		var fire = (GameObject)Instantiate(fuegoFin, new Vector3(bulletSpawnFuego.position.x, bulletSpawnFuego.position.y+2, bulletSpawnFuego.position.z), bulletSpawn.rotation); 
-		NetworkServer.Spawn(fire);
+		firePart.Stop();
 	}
 	IEnumerator apaga ()
 	{

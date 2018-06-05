@@ -624,9 +624,9 @@ public class Game : NetworkBehaviour {
 				if(sagreBM <= 0)
 				{
 					Ganador1.SetActive(true);
-					if(Ganador1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Ganador1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Ganador1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -650,9 +650,9 @@ public class Game : NetworkBehaviour {
 				}else if(sagreBB <= 0)
 				{
 					Perdedor1.SetActive(true);
-					if(Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -664,7 +664,7 @@ public class Game : NetworkBehaviour {
 					}
 					if(idioma == "CHINESE")
 					{
-						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCh";
 					}
 					if(!ponerVictoria2)
 					{
@@ -675,9 +675,9 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB > CapturedFlagsM)
 				{
 					Ganador1.SetActive(true);
-					if(Ganador1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Ganador1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Ganador1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -700,9 +700,9 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB < CapturedFlagsM)
 				{
 					Perdedor1.SetActive(true);
-					if(Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -714,7 +714,7 @@ public class Game : NetworkBehaviour {
 					}
 					if(idioma == "CHINESE")
 					{
-						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+						Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCh";
 					}
 					if(!ponerVictoria2)
 					{
@@ -725,9 +725,9 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsB == CapturedFlagsM)
 				{
 					Empate.SetActive(true);
-					if(Empate.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Empate.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Empate.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -747,9 +747,9 @@ public class Game : NetworkBehaviour {
 				if(sagreBB <= 0)
 				{
 					Ganador2.SetActive(true);
-					if(Ganador2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Ganador2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Ganador2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -766,9 +766,9 @@ public class Game : NetworkBehaviour {
 				}else if(sagreBM <= 0)
 				{
 					Perdedor2.SetActive(true);
-					if(Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -785,9 +785,9 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsM > CapturedFlagsB)
 				{
 					Ganador2.SetActive(true);
-					if(Ganador2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Ganador2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Ganador2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -804,9 +804,9 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsM < CapturedFlagsB)
 				{
 					Perdedor2.SetActive(true);
-					if(Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -823,9 +823,9 @@ public class Game : NetworkBehaviour {
 				}else if(CapturedFlagsM == CapturedFlagsB)
 				{
 					Empate.SetActive(true);
-					if(Empate.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
+					if(Empate.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "entrada")
 					{
-						Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "entrada", true);
+						Empate.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", true);
 					}
 					if(idioma == "ENGLISH")
 					{
@@ -837,7 +837,7 @@ public class Game : NetworkBehaviour {
 					}
 					if(idioma == "CHINESE")
 					{
-						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCH";
+						Empate.GetComponent<combinedSkins>().skinsToCombine[0] = "retiradaCh";
 					}
 				}
 			}
@@ -845,26 +845,26 @@ public class Game : NetworkBehaviour {
 
 		if(final && final2)
 		{
-			if(Ganador1.activeSelf && Ganador1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Ganador1.activeSelf && Ganador1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Ganador1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
-			if(Perdedor1.activeSelf && Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Perdedor1.activeSelf && Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
 
-			if(Ganador2.activeSelf && Ganador2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Ganador2.activeSelf && Ganador2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Ganador2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
-			if(Perdedor2.activeSelf && Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Perdedor2.activeSelf && Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
-			if(Empate.activeSelf && Empate.GetComponent<SkeletonAnimation>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(Empate.activeSelf && Empate.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "loop", true);
+				Empate.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
 
 			titulos = false;
@@ -1956,23 +1956,29 @@ public class Game : NetworkBehaviour {
 
 		//SANGRE BASE BUENA
 		BaseB.GetComponent<Base>().sangre = BaseB.GetComponent<Base>().saludMax;
-		BaseB.GetComponent<Animator>().SetBool("muere", false);
 		BaseB.GetComponent<Base>().matada = false;
 		BaseB.GetComponent<Base>().fuego1.SetActive(false);
 		BaseB.GetComponent<Base>().fuego2.SetActive(false);
 		BaseB.GetComponent<Base>().fuego3.SetActive(false);
 		BaseB.GetComponent<Base>().fuego4.SetActive(false);
+		if(BaseB.GetComponent<Base>().fuego5 != null)
+		{
+			BaseB.GetComponent<Base>().fuego5.SetActive(false);
+		}
 		BaseB.GetComponent<Base>().destruida.SetActive(false);
 
 
 		//SANGRE BASE MALA
 		BaseM.GetComponent<Base>().sangre = BaseM.GetComponent<Base>().saludMax;
-		BaseM.GetComponent<Animator>().SetBool("muere", false);
 		BaseM.GetComponent<Base>().matada = false;
 		BaseM.GetComponent<Base>().fuego1.SetActive(false);
 		BaseM.GetComponent<Base>().fuego2.SetActive(false);
 		BaseM.GetComponent<Base>().fuego3.SetActive(false);
 		BaseM.GetComponent<Base>().fuego4.SetActive(false);
+		if(BaseM.GetComponent<Base>().fuego5 != null)
+		{
+			BaseM.GetComponent<Base>().fuego5.SetActive(false);
+		}
 		BaseM.GetComponent<Base>().destruida.SetActive(false);
 
 		//ESTADISTICAS JUGADOR 1
@@ -2044,27 +2050,27 @@ public class Game : NetworkBehaviour {
 
 		if(Ganador1.activeSelf)
 		{
-			Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Ganador1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Perdedor1.activeSelf)
 		{
-			Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Ganador2.activeSelf)
 		{
-			Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Ganador2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Perdedor2.activeSelf)
 		{
-			Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Empate.activeSelf)
 		{
-			Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Empate.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 		}
 
 		Ganador1.SetActive(false);
@@ -2172,23 +2178,29 @@ public class Game : NetworkBehaviour {
 
 		//SANGRE BASE BUENA
 		BaseB.GetComponent<Base>().sangre = BaseB.GetComponent<Base>().saludMax;
-		BaseB.GetComponent<Animator>().SetBool("muere", false);
 		BaseB.GetComponent<Base>().matada = false;
 		BaseB.GetComponent<Base>().fuego1.SetActive(false);
 		BaseB.GetComponent<Base>().fuego2.SetActive(false);
 		BaseB.GetComponent<Base>().fuego3.SetActive(false);
 		BaseB.GetComponent<Base>().fuego4.SetActive(false);
+		if(BaseB.GetComponent<Base>().fuego5 != null)
+		{
+			BaseB.GetComponent<Base>().fuego5.SetActive(false);
+		}
 		BaseB.GetComponent<Base>().destruida.SetActive(false);
 
 
 		//SANGRE BASE MALA
 		BaseM.GetComponent<Base>().sangre = BaseM.GetComponent<Base>().saludMax;
-		BaseM.GetComponent<Animator>().SetBool("muere", false);
 		BaseM.GetComponent<Base>().matada = false;
 		BaseM.GetComponent<Base>().fuego1.SetActive(false);
 		BaseM.GetComponent<Base>().fuego2.SetActive(false);
 		BaseM.GetComponent<Base>().fuego3.SetActive(false);
 		BaseM.GetComponent<Base>().fuego4.SetActive(false);
+		if(BaseM.GetComponent<Base>().fuego5 != null)
+		{
+			BaseM.GetComponent<Base>().fuego5.SetActive(false);
+		}
 		BaseM.GetComponent<Base>().destruida.SetActive(false);
 
 		//ESTADISTICAS JUGADOR 1
@@ -2261,27 +2273,27 @@ public class Game : NetworkBehaviour {
 
 		if(Ganador1.activeSelf)
 		{
-			Ganador1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Ganador1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Ganador1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Perdedor1.activeSelf)
 		{
-			Perdedor1.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Perdedor1.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Perdedor1.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Ganador2.activeSelf)
 		{
-			Ganador2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Ganador2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Ganador2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Perdedor2.activeSelf)
 		{
-			Perdedor2.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Perdedor2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 			Perdedor2.GetComponent<combinedSkins>().skinsToCombine[0] = "default";
 		}
 		if(Empate.activeSelf)
 		{
-			Empate.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "nada", false);
+			Empate.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "nada", false);
 		}
 
 		Ganador1.SetActive(false);
