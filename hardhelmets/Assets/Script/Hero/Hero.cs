@@ -37,7 +37,7 @@ public class Hero : MonoBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.6f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;
@@ -1580,7 +1580,6 @@ public class Hero : MonoBehaviour{
 		if(balaSniper >= 1)
 		{
 			SniperCam.GetComponent<Cam>().disparo = true;
-			SniperCam.GetComponent<Cam>().maximo = 0.5f;
 
 			SniperCam.GetComponent<Cam>().shake = true;
 			SniperCam.GetComponent<Cam>().disparo = true;
@@ -1616,7 +1615,7 @@ public class Hero : MonoBehaviour{
 
 	void BalaSniperBueno()
 	{
-		var bullet = (GameObject)Instantiate(bulletPrefSniper, bulletSniperSpawn.position, Quaternion.Euler(4,0,0));
+		var bullet = (GameObject)Instantiate(bulletPrefSniper, bulletSniperSpawn.position, Quaternion.Euler(5,0,0));
 		bullet.GetComponent<balaSniperOffline>().poder = saludMax*bullet.GetComponent<balaSniperOffline>().poder/104;
 
 		Destroy(bullet, 0.5f);
@@ -2108,7 +2107,6 @@ public class Hero : MonoBehaviour{
 					if(balaFusil >= 1 )
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 1f;
 
 						SniperCam.GetComponent<Cam>().shake = true;
 						SniperCam.GetComponent<Cam>().vib = 0.55f;
@@ -2124,7 +2122,6 @@ public class Hero : MonoBehaviour{
 					if(balaSubmetra >= 1)
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 0.4f;
 						SniperCam.GetComponent<Cam>().shake = true;
 						SniperCam.GetComponent<Cam>().vib = 0.4f;
 						luz.SetActive(true);
@@ -2138,7 +2135,6 @@ public class Hero : MonoBehaviour{
 					if(balaMetra >= 1)
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 0.6f;
 
 						//SniperCam.GetComponent<Cam>().sube = true;
 
@@ -2155,7 +2151,6 @@ public class Hero : MonoBehaviour{
 					if(balaPanzer >= 1)
 					{
 						SniperCam.GetComponent<Cam>().disparo = true;
-						SniperCam.GetComponent<Cam>().maximo = 0.4f;
 
 						SniperCam.GetComponent<Cam>().shake = true;
 						SniperCam.GetComponent<Cam>().vib = 0.7f;
@@ -2224,7 +2219,6 @@ public class Hero : MonoBehaviour{
 		if(!sniperListo)
 		{
 			SniperCam.GetComponent<Cam>().disparo = true;
-			SniperCam.GetComponent<Cam>().maximo = 1f;
 
 			/*SniperCam.GetComponent<Cam>().sube = true;*/
 
@@ -2333,7 +2327,6 @@ public class Hero : MonoBehaviour{
 	void ShotC ()//SUBMETRA
 	{
 		SniperCam.GetComponent<Cam>().disparo = true;
-		SniperCam.GetComponent<Cam>().maximo = 0.4f;
 		SniperCam.GetComponent<Cam>().shake = true;
 		SniperCam.GetComponent<Cam>().vib = 0.4f;
 		luz.SetActive(true);
@@ -2361,7 +2354,6 @@ public class Hero : MonoBehaviour{
 	void ShotD ()//METRA
 	{
 		SniperCam.GetComponent<Cam>().disparo = true;
-		SniperCam.GetComponent<Cam>().maximo = 0.6f;
 
 		//SniperCam.GetComponent<Cam>().sube = true;
 
@@ -2393,7 +2385,6 @@ public class Hero : MonoBehaviour{
 	void ShotE ()//PANZER
 	{
 		SniperCam.GetComponent<Cam>().disparo = true;
-		SniperCam.GetComponent<Cam>().maximo = 0.4f;
 
 		SniperCam.GetComponent<Cam>().shake = true;
 		SniperCam.GetComponent<Cam>().vib = 0.7f;
