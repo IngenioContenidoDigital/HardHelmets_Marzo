@@ -337,7 +337,10 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
-		CmdSendSalud(salud);
+		if(gameObject.tag != "Player")
+		{
+			CmdSendSalud(salud);
+		}
 
 		nacerZ = bulletSpawn.rotation.z;
 
@@ -1844,15 +1847,6 @@ public class HeroNetwork : NetworkBehaviour{
 	public void CmdSendSalud (float newSalud)
 	{
 		salud = newSalud;
-		if(gameObject.tag == "Player")
-		{
-			RpcSetSalud(newSalud);
-		}
-	}
-	[ClientRpc]
-	public void RpcSetSalud (float newSalud)
-	{
-		salud = newSalud;
 	}
 
 
@@ -2189,8 +2183,7 @@ public class HeroNetwork : NetworkBehaviour{
 				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
 
 				_currentDirection = "right";
-			} 
-			else if (direction == "left") 
+			}else if (direction == "left") 
 			{
 				transform.localScale = new Vector3(-1,1,1);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
@@ -2202,6 +2195,9 @@ public class HeroNetwork : NetworkBehaviour{
 				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
 
 				_currentDirection = "left";
+			}else
+			{
+				_currentDirection = "";
 			}
 			CmdChangeDirection(_currentDirection);
 		}
@@ -2223,8 +2219,7 @@ public class HeroNetwork : NetworkBehaviour{
 				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
 
 				_currentDirection = "right";
-			} 
-			else if (direction == "left") 
+			}else if (direction == "left") 
 			{
 				transform.localScale = new Vector3(-1,1,1);
 				Girar2.GetComponent<GirarNetwork>().voltear = true;
@@ -2236,53 +2231,18 @@ public class HeroNetwork : NetworkBehaviour{
 				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
 
 				_currentDirection = "left";
+			}else
+			{
+				_currentDirection = "";
 			}
 		}
 	}
-
-	/*[ClientRpc]
-	public void RpcChangeDirection(string direction)
-	{
-		if (_currentDirection != direction)
-		{
-			if (direction == "right")
-			{
-				transform.localScale = new Vector3(1,1,1);
-				Girar2.GetComponent<GirarNetwork>().voltear = true;
-
-				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
-				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
-
-				_currentDirection = "right";
-			} 
-			else if (direction == "left") 
-			{
-				transform.localScale = new Vector3(-1,1,1);
-				Girar2.GetComponent<GirarNetwork>().voltear = true;
-
-				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
-				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
-				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
-
-				_currentDirection = "left";
-			}
-		}
-	}*/
 
 	void cambiavivo (bool newvivo)
 	{
 		vivo = newvivo;
 		//gameObject.layer = LayerMask.NameToLayer("muerto");
 	}
-	/*void cambiavivo2 (string mascara)
-	{
-		gameObject.layer = LayerMask.NameToLayer(mascara);
-	}*/
 
 	void FacingCallback(string direction)
 	{

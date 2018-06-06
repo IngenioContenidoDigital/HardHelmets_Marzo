@@ -463,15 +463,30 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 	void FacingCallback(float voltear)
 	{
-		if (voltear == 1.13f)
+		if(Tipo == 1)
 		{
-			_currentDirection = "right";
-			gameObject.transform.localScale = new Vector3(1.13f,1.13f,1.13f);
+			if (voltear == 1.13f)
+			{
+				_currentDirection = "right";
+				gameObject.transform.localScale = new Vector3(1.13f,1.13f,1.13f);
+			}else
+			{
+				_currentDirection = "left";
+				gameObject.transform.localScale = new Vector3(-1.13f,1.13f,1.13f);
+			}
 		}else
 		{
-			_currentDirection = "left";
-			gameObject.transform.localScale = new Vector3(-1.13f,1.13f,1.13f);
+			if (voltear == 1)
+			{
+				_currentDirection = "right";
+				gameObject.transform.localScale = new Vector3(1,1,1);
+			}else
+			{
+				_currentDirection = "left";
+				gameObject.transform.localScale = new Vector3(-1,1,1);
+			}
 		}
+
 	}
 
 	void OnCollisionEnter (Collision col)
