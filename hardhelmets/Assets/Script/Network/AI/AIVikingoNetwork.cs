@@ -385,7 +385,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 			{
 				if(fuegodisparo == 0)
 				{
-					if(_currentDirection != "left")
+					if(_currentDirection == "right")
 					{
 						var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, bulletSpawn.rotation); 
 						bullet.GetComponent<Rigidbody>().velocity = bullet.transform.right * 10;

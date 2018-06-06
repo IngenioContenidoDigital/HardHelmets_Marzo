@@ -30,6 +30,7 @@ public class AnimacionesVikingo : MonoBehaviour {
 			if(!animator.GetCurrentAnimatorStateInfo(0).IsName("dispara") && !animator.GetCurrentAnimatorStateInfo(0).IsName("casca") && GetComponent<AIVikingo>().disparando)
 			{
 				GetComponent<AIVikingo>().disparando = false;
+				animator.SetBool("girar", false);
 			}
 		}
 		if(GetComponent<AIVikingoNetwork>())
@@ -37,6 +38,7 @@ public class AnimacionesVikingo : MonoBehaviour {
 			if(!animator.GetCurrentAnimatorStateInfo(0).IsName("dispara") && !animator.GetCurrentAnimatorStateInfo(0).IsName("casca") && GetComponent<AIVikingoNetwork>().disparando)
 			{
 				GetComponent<AIVikingoNetwork>().disparando = false;
+				animator.SetBool("girar", false);
 			}
 		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
@@ -91,6 +93,7 @@ public class AnimacionesVikingo : MonoBehaviour {
 				{
 					GetComponent<AIVikingoNetwork>().agent.isStopped = true;
 				}
+				animator.SetBool("girar", false);
 				animator.SetBool("walk", false);
 				animator.SetBool("shot", false);
 				animator.SetBool("disparando", true);

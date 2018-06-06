@@ -187,9 +187,6 @@ public class Cam : MonoBehaviour {
 			//Ocultar.SetActive(false);
 
 			GetComponent<DirtyLensFlare>().enabled = true;
-			//GetComponent<ProCamera2D>().enabled = false;
-			//GetComponent<ProCamera2DForwardFocus>().enabled = false;
-			//GetComponent<ProCamera2DSpeedBasedZoom>().enabled = false;
 
 			GetComponent<Camera>().fieldOfView = 28;
 
@@ -252,7 +249,7 @@ public class Cam : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
 		}else if(bombardeo && !ver)
 		{
-			alejar = true;
+			//alejar = true;
 			TexturaBombardeo.SetActive(true);
 
 			GetComponent<DirtyLensFlare>().enabled = true;
@@ -372,40 +369,39 @@ public class Cam : MonoBehaviour {
 				}
 			}
 
-
 			if(Player.GetComponent<Hero>()._currentDirection == "right")//LIMITES HACIA ADELANTE
 			{
 				if(transform.position.x >= Player.transform.position.x+180)
 				{
-					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//velocidad);
+					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//zeta);
 				}else if(transform.position.x <= Player.transform.position.x+9)
 				{
-					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//velocidad);
+					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//velocidad);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
 				}
 			}
 			if(Player.GetComponent<Hero>()._currentDirection == "left")//LIMITES HACIA ATRAS
 			{
 				if(transform.position.x <= Player.transform.position.x-180)
 				{
-					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//velocidad);
+					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//zeta);
 				}else if(transform.position.x >= Player.transform.position.x-9)
 				{
-					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//velocidad);
+					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//velocidad);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
-			if(transform.position.y <= Player.transform.position.y+5)//1
+			if(transform.position.y <= Player.transform.position.y+5)//+1
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);//velocidad);
-			}else if(transform.position.y >= Player.transform.position.y+18)//20
+				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
+			}else if(transform.position.y >= Player.transform.position.y+18)//+20
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);//velocidad);
+				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);

@@ -66,8 +66,9 @@ public class Base : NetworkBehaviour {
 			fuego4.SetActive(false);
 			if(fuego5 != null)
 			{
-				fuego4.SetActive(false);
+				fuego5.SetActive(false);
 			}
+			destruida.SetActive(false);
 		}
 
 		if(sangre <= 0 && !matada)

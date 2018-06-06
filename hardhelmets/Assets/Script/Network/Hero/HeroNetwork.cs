@@ -254,7 +254,7 @@ public class HeroNetwork : NetworkBehaviour{
 		}else
 		{
 			_currentDirection = "left";
-			CmdChangeDirection ("left");
+			ChangeDirection ("left");
 		}
 		if(!isLocalPlayer)
 		{
@@ -480,6 +480,7 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "right" && !caminarI)
 					{
 						animator.SetBool("girar", true);
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -515,6 +516,7 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "right")
 					{
 						animator.SetBool("girar", true);
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -549,6 +551,7 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "left" && !caminarD)
 					{
 						animator.SetBool("girar", true);
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -584,6 +587,7 @@ public class HeroNetwork : NetworkBehaviour{
 					if(_currentDirection == "left")
 					{
 						animator.SetBool("girar", true);
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -883,7 +887,7 @@ public class HeroNetwork : NetworkBehaviour{
 					animator.SetInteger("disparo", 6);
 				}
 
-				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && _currentDirection == "left")
 				{
 					caminarD = false;
 					if(!animator.GetBool("girar"))
@@ -901,7 +905,7 @@ public class HeroNetwork : NetworkBehaviour{
 					}
 					//GetComponent<Rigidbody>().velocity = (Vector2.left * velocidad);//13
 				}
-				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && _currentDirection == "right")
 				{
 					caminarI = false;
 					if(!animator.GetBool("girar"))
@@ -950,6 +954,13 @@ public class HeroNetwork : NetworkBehaviour{
 					agachado = false;
 					GetComponent<Rigidbody>().velocity = (velocidad * v3.normalized);
 					//transform.Translate(velocidad * v3.normalized * Time.deltaTime);  
+				}
+				if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+				{
+					caminarA = false;
+					caminarU = false;
+					caminarI = false;
+					caminarD = false;
 				}
 
 			}else if(!cargando && !sniperListo)//DISPARO EN EL AIRE
@@ -1896,8 +1907,10 @@ public class HeroNetwork : NetworkBehaviour{
 		if(!firePart.isPlaying)
 		{
 			firePart.Play();
+			RpcBalaLlamas();
 		}
-		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawn.rotation); 
+
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamas, bulletSpawnFuego.position, bulletSpawnFusil.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
 		NetworkServer.Spawn(bulletB);
@@ -1910,13 +1923,23 @@ public class HeroNetwork : NetworkBehaviour{
 		if(!firePart.isPlaying)
 		{
 			firePart.Play();
+			RpcBalaLlamas();
 		}
-		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFuego.rotation); 
+		var bulletB = (GameObject)Instantiate(bulletPrefLlamasMalo, bulletSpawnFuego.position, bulletSpawnFusil.rotation); 
 		bulletB.GetComponent<Rigidbody>().velocity = bulletB.transform.right * 15;
 		bulletB.GetComponent<balaFuego>().poder = saludMax*bulletB.GetComponent<balaFuego>().poder/104;
 		NetworkServer.Spawn(bulletB);
 		Destroy(bulletB, 0.7f);
 	}
+	[ClientRpc]
+	public void RpcBalaLlamas()
+	{
+		if(!firePart.isPlaying)
+		{
+			firePart.Play();
+		}
+	}
+
 	public GameObject estela;
 	void disparoSniper()
 	{
@@ -2154,6 +2177,39 @@ public class HeroNetwork : NetworkBehaviour{
 		cubierto = false;
 	}
 	//CAMBIAR DIRECCION
+	public void ChangeDirection(string direction)
+	{
+		if (_currentDirection != direction)
+		{
+			if (direction == "right")
+			{
+				transform.localScale = new Vector3(1,1,1);
+				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
+				_currentDirection = "right";
+			} 
+			else if (direction == "left") 
+			{
+				transform.localScale = new Vector3(-1,1,1);
+				Girar2.GetComponent<GirarNetwork>().voltear = true;
+
+				bulletSpawnFusil.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnEscopeta.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnSubmetra.GetComponent<GirarNetwork>().voltear = true;
+				bulletSpawnMetra.GetComponent<GirarNetwork>().voltear = true;
+				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
+
+				_currentDirection = "left";
+			}
+			CmdChangeDirection(_currentDirection);
+		}
+	}
 	[Command]
 	public void CmdChangeDirection(string direction)
 	{
@@ -2186,7 +2242,6 @@ public class HeroNetwork : NetworkBehaviour{
 				_currentDirection = "left";
 			}
 		}
-		//RpcChangeDirection(_currentDirection);
 	}
 
 	/*[ClientRpc]
@@ -2467,13 +2522,26 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			if(_currentDirection == "right")
 			{
-				CmdChangeDirection ("left");
+				ChangeDirection ("left");
 				return;
 			}
 			if(_currentDirection == "left")
 			{
-				CmdChangeDirection ("right");
+				ChangeDirection ("right");
 				return;
+			}
+			if(_currentDirection == "")
+			{
+				if(transform.localScale.x == 1)
+				{
+					ChangeDirection ("left");
+					return;
+				}
+				if(transform.localScale.x == -1)
+				{
+					ChangeDirection ("right");
+					return;
+				}
 			}
 		}
 	}
@@ -3125,6 +3193,12 @@ public class HeroNetwork : NetworkBehaviour{
 
 	[Command]
 	public void Cmd_Fuego()
+	{
+		firePart.Stop();
+		Rpc_Fuego();
+	}
+	[ClientRpc]
+	public void Rpc_Fuego()
 	{
 		firePart.Stop();
 	}

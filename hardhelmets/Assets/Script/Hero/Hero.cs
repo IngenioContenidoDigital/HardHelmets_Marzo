@@ -334,7 +334,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "right" && !caminarI)
 					{
 						animator.SetBool("girar", true);
-						//ChangeDirection ("left");
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -371,7 +371,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "right")
 					{
 						animator.SetBool("girar", true);
-						//ChangeDirection ("left");
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -406,7 +406,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "left" && !caminarD)
 					{
 						animator.SetBool("girar", true);
-						//ChangeDirection ("right");
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -442,7 +442,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "left")
 					{
 						animator.SetBool("girar", true);
-						//ChangeDirection ("right");
+						ChangeDirection ("");
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -743,7 +743,7 @@ public class Hero : MonoBehaviour{
 					animator.SetInteger("disparo", 6);
 				}
 
-				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+				if(caminarI && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && _currentDirection == "left")
 				{
 					caminarD = false;
 					if(!animator.GetBool("girar"))
@@ -761,7 +761,7 @@ public class Hero : MonoBehaviour{
 					}
 					//GetComponent<Rigidbody>().velocity = (Vector2.left * velocidad);//13
 				}
-				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+				if(caminarD && !sniperListo && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit") && _currentDirection == "right")
 				{
 					caminarI = false;
 					if(!animator.GetBool("girar"))
@@ -1817,8 +1817,7 @@ public class Hero : MonoBehaviour{
 				granadaSpawn.GetComponent<Girar>().voltear = true;
 
 				_currentDirection = "right";
-			} 
-			else if (direction == "left") 
+			}else if (direction == "left") 
 			{
 				transform.localScale = new Vector3(-1,1,1);
 
@@ -1831,6 +1830,9 @@ public class Hero : MonoBehaviour{
 				granadaSpawn.GetComponent<Girar>().voltear = true;
 
 				_currentDirection = "left";
+			}else
+			{
+				_currentDirection = "";
 			}
 		}
 	}
@@ -2083,6 +2085,19 @@ public class Hero : MonoBehaviour{
 		{
 			ChangeDirection ("right");
 			return;
+		}
+		if(_currentDirection == "")
+		{
+			if(transform.localScale.x == 1)
+			{
+				ChangeDirection ("left");
+				return;
+			}
+			if(transform.localScale.x == -1)
+			{
+				ChangeDirection ("right");
+				return;
+			}
 		}
 	}
 

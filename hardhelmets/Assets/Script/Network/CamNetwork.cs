@@ -79,12 +79,6 @@ public class CamNetwork : NetworkBehaviour {
 	public int limiteObjetivo;
 	public int limiteAleja;
 
-	public GameObject Ganador1;
-	public GameObject Perdedor1;
-	public GameObject Ganador2;
-	public GameObject Perdedor2;
-	public GameObject Empate;
-
 	// Use this for initialization
 	void Start ()
 	{
@@ -129,28 +123,6 @@ public class CamNetwork : NetworkBehaviour {
 		if(Panel == null)
 		{
 			Panel = GameObject.Find("GAME");
-		}else
-		{
-			if(Panel.GetComponent<Game>().Ganador1 == null)
-			{
-				Panel.GetComponent<Game>().Ganador1 =  Ganador1;
-			}
-			if(Panel.GetComponent<Game>().Perdedor1 == null)
-			{
-				Panel.GetComponent<Game>().Perdedor1 =  Perdedor1;
-			}
-			if(Panel.GetComponent<Game>().Ganador2 == null)
-			{
-				Panel.GetComponent<Game>().Ganador2 =  Ganador2;
-			}
-			if(Panel.GetComponent<Game>().Perdedor2 == null)
-			{
-				Panel.GetComponent<Game>().Perdedor2 =  Perdedor2;
-			}
-			if(Panel.GetComponent<Game>().Empate == null)
-			{
-				Panel.GetComponent<Game>().Empate =  Empate;
-			}
 		}
 		if(Panel != null && Panel.GetComponent<Game>().muerte)
 		{
@@ -229,9 +201,6 @@ public class CamNetwork : NetworkBehaviour {
 			//Ocultar.SetActive(false);
 
 			GetComponent<DirtyLensFlare>().enabled = true;
-			//GetComponent<ProCamera2D>().enabled = false;
-			//GetComponent<ProCamera2DForwardFocus>().enabled = false;
-			//GetComponent<ProCamera2DSpeedBasedZoom>().enabled = false;
 
 			GetComponent<Camera>().fieldOfView = 28;
 
@@ -293,7 +262,7 @@ public class CamNetwork : NetworkBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
 		}else if(bombardeo && !ver)
 		{
-			alejar = true;
+			//alejar = true;
 			TexturaBombardeo.SetActive(true);
 
 			GetComponent<DirtyLensFlare>().enabled = true;
@@ -424,35 +393,35 @@ public class CamNetwork : NetworkBehaviour {
 			{
 				if(transform.position.x >= Player.transform.position.x+180)
 				{
-					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x-0.5f, transform.position.y+v, transform.position.z);//zeta);
 				}else if(transform.position.x <= Player.transform.position.x+9)
 				{
-					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+2f, transform.position.y+v, transform.position.z);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
 				}
 			}
 			if(Player.GetComponent<HeroNetwork>()._currentDirection == "left")//LIMITES HACIA ATRAS
 			{
 				if(transform.position.x <= Player.transform.position.x-180)
 				{
-					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+0.5f, transform.position.y+v, transform.position.z);//zeta);
 				}else if(transform.position.x >= Player.transform.position.x-9)
 				{
-					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x-2f, transform.position.y+v, transform.position.z);//zeta);
 				}else
 				{
-					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, velocidad);//zeta);
+					nextPosition = new Vector3(transform.position.x+h, transform.position.y+v, transform.position.z);//zeta);
 				}
 			}
 			//LIMITES HACIA ARRIBA Y ABAJO
 			if(transform.position.y <= Player.transform.position.y+5)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, velocidad);
+				nextPosition = new Vector3(transform.position.x, transform.position.y+0.2f, transform.position.z);
 			}else if(transform.position.y >= Player.transform.position.y+18)
 			{
-				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, velocidad);
+				nextPosition = new Vector3(transform.position.x, transform.position.y-0.2f, transform.position.z);
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
