@@ -24,6 +24,8 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject textos2;
 	public GameObject textos2B;
 
+	public GameObject pies;
+
 	[SyncVar]
 	public string nombre;
 
@@ -53,7 +55,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.4f;
+	float groundRadius = 0.5f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;
@@ -337,10 +339,6 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			return;
 		}
-		if(gameObject.tag != "Player")
-		{
-			CmdSendSalud(salud);
-		}
 
 		nacerZ = bulletSpawn.rotation.z;
 
@@ -469,12 +467,21 @@ public class HeroNetwork : NetworkBehaviour{
 
 			if(grounded && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasShot") && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasrecarga") && !animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasSCae") && !animator.GetCurrentAnimatorStateInfo(0).IsName("hammer") && !animator.GetCurrentAnimatorStateInfo(0).IsName("mina"))
 			{
+				if(gameObject.transform.localScale.x == 1 && _currentDirection != "right" && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro2") && !animator.GetBool("girar"))
+				{
+					regreso();
+				}
+				if(gameObject.transform.localScale.x == -1 && _currentDirection != "left" && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro2") && !animator.GetBool("girar"))
+				{
+					regreso();
+				}
 				//SALTO
 				if(Input.GetButtonDown("Jump") && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !cubierto && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
-					//GetComponent<Rigidbody>().AddForce (Vector2.up * 1000);
+					pies.SetActive(false);
 					GetComponent<Rigidbody>().AddForce (new Vector3(0,20,0), ForceMode.Impulse);
 					animator.SetBool("jump", true);
+					StartCoroutine(ponerPies());
 				}
 				//CAMINAR
 				//IZQUIERDA CONTROL
@@ -957,13 +964,6 @@ public class HeroNetwork : NetworkBehaviour{
 					agachado = false;
 					GetComponent<Rigidbody>().velocity = (velocidad * v3.normalized);
 					//transform.Translate(velocidad * v3.normalized * Time.deltaTime);  
-				}
-				if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
-				{
-					caminarA = false;
-					caminarU = false;
-					caminarI = false;
-					caminarD = false;
 				}
 
 			}else if(!cargando && !sniperListo)//DISPARO EN EL AIRE
@@ -1809,6 +1809,13 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 	}
 
+
+	IEnumerator ponerPies()
+	{
+		yield return new WaitForSeconds(0.2f);
+		pies.SetActive(true);
+	}
+
 	public GameObject MenuPause;
 	public void Pausa()
 	{
@@ -2183,6 +2190,7 @@ public class HeroNetwork : NetworkBehaviour{
 				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
 
 				_currentDirection = "right";
+				CmdChangeDirection(_currentDirection);
 			}else if (direction == "left") 
 			{
 				transform.localScale = new Vector3(-1,1,1);
@@ -2195,11 +2203,11 @@ public class HeroNetwork : NetworkBehaviour{
 				granadaSpawn.GetComponent<GirarNetwork>().voltear = true;
 
 				_currentDirection = "left";
+				CmdChangeDirection(_currentDirection);
 			}else
 			{
 				_currentDirection = "";
 			}
-			CmdChangeDirection(_currentDirection);
 		}
 	}
 	[Command]
@@ -2322,13 +2330,19 @@ public class HeroNetwork : NetworkBehaviour{
 
 			if(col.gameObject.GetComponent<bala>())
 			{
-				salud -= col.gameObject.GetComponent<bala>().poder;
+				if(isLocalPlayer)
+				{
+					salud -= col.gameObject.GetComponent<bala>().poder;
+				}
 
 				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
 			}else
 			{
-				salud -= col.gameObject.GetComponent<balaSniper>().poder;
+				if(isLocalPlayer)
+				{
+					salud -= col.gameObject.GetComponent<balaSniper>().poder;
+				}
 
 				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaSniper>().poder.ToString("F0");
@@ -2338,6 +2352,11 @@ public class HeroNetwork : NetworkBehaviour{
 			efectodisparo = true;
 
 			SniperCam.GetComponent<CamNetwork>().cancelar = true;
+
+			if(gameObject.tag != "Player")
+			{
+				CmdSendSalud(salud);
+			}
 		}
 
 		if(col.gameObject.tag == "explo")
@@ -2362,7 +2381,10 @@ public class HeroNetwork : NetworkBehaviour{
 			animator.SetBool("granada", true);
 			animator.SetInteger("cascado", 10);
 
-			salud -= col.gameObject.GetComponent<Explo>().poder;
+			if(isLocalPlayer)
+			{
+				salud -= col.gameObject.GetComponent<Explo>().poder;
+			}
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
@@ -2371,6 +2393,11 @@ public class HeroNetwork : NetworkBehaviour{
 			efectodisparo = true;
 
 			SniperCam.GetComponent<CamNetwork>().cancelar = true;
+
+			if(gameObject.tag != "Player")
+			{
+				CmdSendSalud(salud);
+			}
 		}
 		if(col.gameObject.tag == "cuchillo" && vivo)
 		{
@@ -2388,7 +2415,10 @@ public class HeroNetwork : NetworkBehaviour{
 			{
 				var efect = (GameObject)Instantiate(sangre, col.transform.position, transform.rotation);
 			}
-			salud -= 50;
+			if(isLocalPlayer)
+			{
+				salud -= 50;
+			}
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "50";
@@ -2396,6 +2426,11 @@ public class HeroNetwork : NetworkBehaviour{
 			efectodisparo = true;
 
 			SniperCam.GetComponent<CamNetwork>().cancelar = true;
+
+			if(gameObject.tag != "Player")
+			{
+				CmdSendSalud(salud);
+			}
 		}
 		if(col.gameObject.tag == "granade")
 		{
@@ -2443,14 +2478,21 @@ public class HeroNetwork : NetworkBehaviour{
 			v3 = Vector3.zero;
 
 			quemado = true;
-
-			salud -= col.gameObject.GetComponent<balaFuego>().poder;
+			if(isLocalPlayer)
+			{
+				salud -= col.gameObject.GetComponent<balaFuego>().poder;
+			}
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 			//StartCoroutine(sumar());
 
 			SniperCam.GetComponent<CamNetwork>().cancelar = true;
+
+			if(gameObject.tag != "Player")
+			{
+				CmdSendSalud(salud);
+			}
 		}
 	}
 	void OnTriggerExit (Collider col)

@@ -40,7 +40,7 @@ public class AIVikingo : MonoBehaviour {
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.6f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 
