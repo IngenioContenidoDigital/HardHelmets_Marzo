@@ -60,6 +60,10 @@ public class EnemyAnimationsNetwork : MonoBehaviour {
 			animator.SetBool("panzerShot", false);
 		}
 		//MOVIMIENTOS BASICOS
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("giro") || animator.GetCurrentAnimatorStateInfo(0).IsName("giro2"))
+		{
+			animator.SetBool("girar", false);
+		}
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("walk") || animator.GetCurrentAnimatorStateInfo(0).IsName("GunWalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("panzerwalk") || animator.GetCurrentAnimatorStateInfo(0).IsName("morterowalk"))
 		{
 			//animator.SetBool("walk", false);

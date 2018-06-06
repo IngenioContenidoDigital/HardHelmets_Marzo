@@ -45,7 +45,8 @@ namespace Prototype.NetworkLobby
 		// Use this for initialization
 		void Start ()
 		{
-			
+			//SELECCION DE NIVEL PREDETERMINADO
+			nivel = 2;
 		}
 		
 		public void Update ()

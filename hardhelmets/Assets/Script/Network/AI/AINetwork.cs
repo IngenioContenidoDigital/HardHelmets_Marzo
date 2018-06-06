@@ -41,12 +41,12 @@ public class AINetwork : NetworkBehaviour {
 
 	public string _currentDirection = "right";
 
-	[SyncVar(hook = "FacingCallback")]
+	[SyncVar]//[SyncVar(hook = "FacingCallback")]
 	public int voltear;
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.6f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 
@@ -167,9 +167,6 @@ public class AINetwork : NetworkBehaviour {
 		grounded = Physics.CheckSphere(groundCheck.position, groundRadius, whatIsGround);
 		animator.SetBool("grounded", grounded);
 
-		//VOLTEA PERSONAJE
-		gameObject.transform.localScale = new Vector3(voltear,1,1);
-
 		//ANIMACION CAYENDO
 		if(GetComponent<Rigidbody>().velocity.y < -4f)
 		{
@@ -203,10 +200,15 @@ public class AINetwork : NetworkBehaviour {
 
 			if(grounded && target == null)
 			{
-				target = GameObject.FindWithTag(BuscarBase).transform;
+				target = GameObject.Find(BuscarBase).transform;
 			}else if(grounded && target.tag == BaseBuena)
 			{
 				target = null;
+			}
+
+			if(gameObject.transform.localScale.x != voltear && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro2") && !animator.GetBool("girar"))
+			{
+				regreso();
 			}
 
 			if(target != null)
@@ -215,14 +217,17 @@ public class AINetwork : NetworkBehaviour {
 				Vector3 v3Dir = target.position - transform.position;
 				float angle = Mathf.Atan2(0, v3Dir.x) * Mathf.Rad2Deg;
 
-				if(angle == 180)
+				if(angle == 180 && _currentDirection != "left")
 				{
 					_currentDirection = "left";
 					voltear = -1;
-				}else
+					animator.SetBool("girar", true);
+				}
+				if(angle == 0 && _currentDirection != "right")
 				{
 					_currentDirection = "right";
 					voltear = 1;
+					animator.SetBool("girar", true);
 				}
 
 				if(Mathf.Abs((transform.position - target.position).x) >= distancia && !animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"))//SI ESTA LEJOS EN X
@@ -418,9 +423,13 @@ public class AINetwork : NetworkBehaviour {
 					}
 				}
 			}
+
 			if(!agent.isStopped)
 			{
-				animator.SetBool("walk", true);
+				if(!animator.GetBool("girar"))
+				{
+					animator.SetBool("walk", true);
+				}
 			}else
 			{
 				if(Tipo == 5)
@@ -571,7 +580,7 @@ public class AINetwork : NetworkBehaviour {
 		Base.layer = LayerMask.NameToLayer(newMascara);
 	}
 
-	void FacingCallback(int voltear)
+	/*void FacingCallback(int voltear)
 	{
 		if (voltear == 1)
 		{
@@ -580,7 +589,7 @@ public class AINetwork : NetworkBehaviour {
 		{
 			gameObject.transform.localScale = new Vector3(-1,1,1);
 		}
-	}
+	}*/
 
 	void OnCollisionEnter (Collision col)
 	{
@@ -802,6 +811,11 @@ public class AINetwork : NetworkBehaviour {
 	}
 
 	//EVENTOS SPINE
+	public void regreso()
+	{
+		//VOLTEA PERSONAJE
+		gameObject.transform.localScale = new Vector3(voltear,1,1);
+	}
 	//DISPAROS
 	void ShotA ()//FUSIL
 	{
