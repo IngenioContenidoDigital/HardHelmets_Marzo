@@ -64,6 +64,7 @@ public class campamentos : MonoBehaviour {
 
 		if(contar)
 		{
+			nace = 0;
 			BasePrimaria.SetActive(false);
 			alpha.SetActive(false);
 			beta.SetActive(false);

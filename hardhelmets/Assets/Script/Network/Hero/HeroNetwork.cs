@@ -1843,20 +1843,16 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSendSalud (float newSalud)
 	{
-		if(!isLocalPlayer)
+		salud = newSalud;
+		if(gameObject.tag == "Player")
 		{
-			salud = newSalud;
+			RpcSetSalud(newSalud);
 		}
-		RpcSetSalud(newSalud);
 	}
 	[ClientRpc]
 	public void RpcSetSalud (float newSalud)
 	{
-		//saludMax2 = newLevel;
-		if(!isLocalPlayer)
-		{
-			salud = newSalud;
-		}
+		salud = newSalud;
 	}
 
 

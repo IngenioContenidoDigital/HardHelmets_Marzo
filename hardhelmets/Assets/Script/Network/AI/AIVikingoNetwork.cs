@@ -172,7 +172,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 			if(grounded && target == null)
 			{
-				target = GameObject.FindWithTag(BuscarBase).transform;
+				target = GameObject.Find(BuscarBase).transform;
 			}else if(grounded && target.tag == BaseBuena)
 			{
 				target = null;
