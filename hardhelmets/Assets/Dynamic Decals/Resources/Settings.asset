@@ -38,12 +38,16 @@ MonoBehaviour:
   - name: Layer 4
     layers:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 256
   passes:
   - vector: {x: 0, y: 0, z: 0, w: 0}
     layers:
       serializedVersion: 2
-      m_Bits: 4294963711
+      m_Bits: 4294963455
+  - vector: {x: 0, y: 0, z: 0, w: 1}
+    layers:
+      serializedVersion: 2
+      m_Bits: 256
   - vector: {x: 1, y: 0, z: 0, w: 0}
     layers:
       serializedVersion: 2
