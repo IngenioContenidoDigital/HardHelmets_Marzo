@@ -37,7 +37,8 @@ public class changeLevelOffline : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-
+		//SELECCION DE NIVEL PREDETERMINADO
+		nivel = 2;
 	}
 
 	public void Update ()

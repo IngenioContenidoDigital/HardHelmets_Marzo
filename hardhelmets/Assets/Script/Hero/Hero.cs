@@ -21,6 +21,8 @@ public class Hero : MonoBehaviour{
 	public GameObject textos;
 	public GameObject textos2;
 
+	public GameObject pies;
+
 	public float salud;
 
 	public float saludMax;
@@ -37,7 +39,7 @@ public class Hero : MonoBehaviour{
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.4f;
+	float groundRadius = 0.5f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 	//Physics hitColliders;
@@ -319,12 +321,21 @@ public class Hero : MonoBehaviour{
 
 			if(grounded && !cargando && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasShot") && !animator.GetCurrentAnimatorStateInfo(0).IsName("lansallamasrecarga") && !animator.GetCurrentAnimatorStateInfo(0).IsName("paracaidasSCae") && !animator.GetCurrentAnimatorStateInfo(0).IsName("hammer") && !animator.GetCurrentAnimatorStateInfo(0).IsName("mina"))
 			{
+				if(gameObject.transform.localScale.x == 1 && _currentDirection != "right" && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro2") && !animator.GetBool("girar"))
+				{
+					regreso();
+				}
+				if(gameObject.transform.localScale.x == -1 && _currentDirection != "left" && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro") && !animator.GetCurrentAnimatorStateInfo(0).IsName("giro2") && !animator.GetBool("girar"))
+				{
+					regreso();
+				}
 				//SALTO
 				if(Input.GetButtonDown("Jump") && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !cubierto && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
-					//GetComponent<Rigidbody>().AddForce (Vector2.up * 1000);
+					pies.SetActive(false);
 					GetComponent<Rigidbody>().AddForce (new Vector3(0,20,0), ForceMode.Impulse);
 					animator.SetBool("jump", true);
+					StartCoroutine(ponerPies());
 				}
 				//CAMINAR
 
@@ -334,7 +345,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "right" && !caminarI)
 					{
 						animator.SetBool("girar", true);
-						ChangeDirection ("");
+						_currentDirection = "";
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -371,7 +382,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "right")
 					{
 						animator.SetBool("girar", true);
-						ChangeDirection ("");
+						_currentDirection = "";
 						v3 = Vector3.zero;
 						caminarD = false;
 					}
@@ -406,7 +417,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "left" && !caminarD)
 					{
 						animator.SetBool("girar", true);
-						ChangeDirection ("");
+						_currentDirection = "";
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -442,7 +453,7 @@ public class Hero : MonoBehaviour{
 					if(_currentDirection == "left")
 					{
 						animator.SetBool("girar", true);
-						ChangeDirection ("");
+						_currentDirection = "";
 						v3 = Vector3.zero;
 						caminarI = false;
 					}
@@ -1550,6 +1561,12 @@ public class Hero : MonoBehaviour{
 		}
 	}
 
+	IEnumerator ponerPies()
+	{
+		yield return new WaitForSeconds(0.2f);
+		pies.SetActive(true);
+	}
+
 	public GameObject MenuPause;
 	public void Pausa()
 	{
@@ -1830,9 +1847,6 @@ public class Hero : MonoBehaviour{
 				granadaSpawn.GetComponent<Girar>().voltear = true;
 
 				_currentDirection = "left";
-			}else
-			{
-				_currentDirection = "";
 			}
 		}
 	}

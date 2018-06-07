@@ -45,7 +45,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 0.6f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 
@@ -702,6 +702,18 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		}else
 		{
 			gameObject.transform.localScale = new Vector3(voltear,1,1);
+		}
+		Rpc_regreso(voltear);
+	}
+	[ClientRpc]
+	public void Rpc_regreso(float newvoltear)
+	{
+		if(Tipo == 1)
+		{
+			gameObject.transform.localScale = new Vector3(newvoltear,1.13f,1.13f);
+		}else
+		{
+			gameObject.transform.localScale = new Vector3(newvoltear,1,1);
 		}
 	}
 	//PATADA
