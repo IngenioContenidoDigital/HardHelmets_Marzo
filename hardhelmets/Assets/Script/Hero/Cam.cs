@@ -122,6 +122,22 @@ public class Cam : MonoBehaviour {
 			{
 				StartCoroutine(finalizar());
 			}
+		}else if(Panel.GetComponent<GameOffline>().final || Panel.GetComponent<GameOffline>().muerte)
+		{
+			bombardeo = false;
+			bombardeocarga2 = false;
+			tirarbomba = false;
+			tirarbomba2 = false;
+			tirarbomba3 = false;
+			TexturaBombardeo.SetActive(false);
+			GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<Hero>().ready = true;
+			Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+			GetComponent<AudioSource>().Stop();
+			alejar = false;
+
+			cancelar = false;
 		}
 
 		if(Player == null)

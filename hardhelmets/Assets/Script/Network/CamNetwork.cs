@@ -137,6 +137,23 @@ public class CamNetwork : NetworkBehaviour {
 			unaVez = false;
 			ver = false;
 		}
+		if(Panel.GetComponent<Game>().final || Panel.GetComponent<Game>().muerte)
+		{
+			bombardeo = false;
+			bombardeocarga2 = false;
+			tirarbomba = false;
+			tirarbomba2 = false;
+			tirarbomba3 = false;
+			TexturaBombardeo.SetActive(false);
+			GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<HeroNetwork>().ready = true;
+			Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+			GetComponent<AudioSource>().Stop();
+			alejar = false;
+
+			cancelar = false;
+		}
 
 		if(Player == null)
 		{
