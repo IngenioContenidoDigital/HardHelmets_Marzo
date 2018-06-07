@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: NubeB
   m_Shader: {fileID: 4800000, guid: 0803b816564bc844b9300c6e1572fcff, type: 3}
-  m_ShaderKeywords:
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -36,7 +36,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Distort:
         m_Texture: {fileID: 2800000, guid: e0da27e078408504884d3bfd1f81bea8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 20, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
@@ -44,7 +44,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _LavaTex:
         m_Texture: {fileID: 2800000, guid: 7e10f93f0e2cc294fbafdff22facab3b, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 20, y: 1}
         m_Offset: {x: -4.309425, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: cdbfe2c109221354397f619126fe2b30, type: 3}
