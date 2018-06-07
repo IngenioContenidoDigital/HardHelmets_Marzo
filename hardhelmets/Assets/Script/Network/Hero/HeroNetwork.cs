@@ -230,7 +230,6 @@ public class HeroNetwork : NetworkBehaviour{
 		CmdSendNivel(level);
 
 		nombre = PlayerPrefs.GetString("SteamName");
-		CmdSendNombre(nombre);
 
 		name.GetComponent<TextMesh>().text = nombre;
 		if(!isServer)// && gameObject.tag == "enemy")
@@ -311,16 +310,15 @@ public class HeroNetwork : NetworkBehaviour{
 	[Command]
 	public void CmdSendNombre (string newNombre)
 	{
-		RpcGetNombre (newNombre);
+		nombre = newNombre;
+		name.GetComponent<TextMesh>().text = newNombre;
 	}
 
 	[ClientRpc]
 	public void RpcGetNombre (string newNombre)
 	{
-		if(!isLocalPlayer)
-		{
-			nombre = newNombre;
-		}
+		nombre = newNombre;
+		name.GetComponent<TextMesh>().text = newNombre;
 	}
 	bool enviarnombre;
 	void Update()
@@ -416,7 +414,13 @@ public class HeroNetwork : NetworkBehaviour{
 
 			if(!enviarnombre)
 			{
-				CmdSendNombre(nombre);
+				if(gameObject.tag == "Player")
+				{
+					RpcGetNombre(nombre);
+				}else
+				{
+					CmdSendNombre(nombre);
+				}
 				enviarnombre = true;
 			}
 			if(!isServer)
@@ -1812,7 +1816,7 @@ public class HeroNetwork : NetworkBehaviour{
 
 	IEnumerator ponerPies()
 	{
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.5f);
 		pies.SetActive(true);
 	}
 

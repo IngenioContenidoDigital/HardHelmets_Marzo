@@ -122,6 +122,22 @@ public class Cam : MonoBehaviour {
 			{
 				StartCoroutine(finalizar());
 			}
+		}else if(Panel.GetComponent<GameOffline>().final || Panel.GetComponent<GameOffline>().muerte)
+		{
+			bombardeo = false;
+			bombardeocarga2 = false;
+			tirarbomba = false;
+			tirarbomba2 = false;
+			tirarbomba3 = false;
+			TexturaBombardeo.SetActive(false);
+			GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<Hero>().ready = true;
+			Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+			GetComponent<AudioSource>().Stop();
+			alejar = false;
+
+			cancelar = false;
 		}
 
 		if(Player == null)
@@ -445,10 +461,22 @@ public class Cam : MonoBehaviour {
 			//SIGUE AL JUGADOR
 			if(Player.GetComponent<Hero>()._currentDirection == "right")//-28.5 -20.5
 			{
-				nextPosition = new Vector3(Player.transform.position.x+4, altura, ajuste);//Player.transform.position.x+equis, Player.transform.position.y+8, velocidad
+				if(objetivo)
+				{
+					nextPosition = new Vector3(Player.transform.position.x+10, altura, ajuste);
+				}else
+				{
+					nextPosition = new Vector3(Player.transform.position.x+6, altura, ajuste);
+				}
 			}else
 			{
-				nextPosition = new Vector3(Player.transform.position.x-4, altura, ajuste);//Player.transform.position.x-equis, Player.transform.position.y+8, velocidad
+				if(objetivo)
+				{
+					nextPosition = new Vector3(Player.transform.position.x-10, altura, ajuste);
+				}else
+				{
+					nextPosition = new Vector3(Player.transform.position.x-6, altura, ajuste);
+				}
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);

@@ -1563,7 +1563,7 @@ public class Hero : MonoBehaviour{
 
 	IEnumerator ponerPies()
 	{
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.5f);
 		pies.SetActive(true);
 	}
 
