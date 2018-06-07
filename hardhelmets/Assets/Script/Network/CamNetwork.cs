@@ -137,7 +137,7 @@ public class CamNetwork : NetworkBehaviour {
 			unaVez = false;
 			ver = false;
 		}
-		if(Panel.GetComponent<Game>().final || Panel.GetComponent<Game>().muerte)
+		if(Panel != null && Panel.GetComponent<Game>().final || Panel != null && Panel.GetComponent<Game>().muerte)
 		{
 			bombardeo = false;
 			bombardeocarga2 = false;
@@ -159,7 +159,7 @@ public class CamNetwork : NetworkBehaviour {
 		{
 			Player = GameObject.Find("Hero");
 		}
-		//Player.GetComponent<Hero>().SniperCam = gameObject;
+
 		Explo = GameObject.FindGameObjectsWithTag("explo");
 
 		foreach(GameObject explo in Explo)
@@ -481,10 +481,22 @@ public class CamNetwork : NetworkBehaviour {
 			//SIGUE AL JUGADOR
 			if(Player.GetComponent<HeroNetwork>()._currentDirection == "right")//-28.5 -20.5
 			{
-				nextPosition = new Vector3(Player.transform.position.x+4, altura, ajuste);//Player.transform.position.x+equis, Player.transform.position.y+8, velocidad
+				if(objetivo)
+				{
+					nextPosition = new Vector3(Player.transform.position.x+10, altura, ajuste);
+				}else
+				{
+					nextPosition = new Vector3(Player.transform.position.x+6, altura, ajuste);
+				}
 			}else
 			{
-				nextPosition = new Vector3(Player.transform.position.x-4, altura, ajuste);//Player.transform.position.x-equis, Player.transform.position.y+8, velocidad
+				if(objetivo)
+				{
+					nextPosition = new Vector3(Player.transform.position.x-10, altura, ajuste);
+				}else
+				{
+					nextPosition = new Vector3(Player.transform.position.x-6, altura, ajuste);
+				}
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);

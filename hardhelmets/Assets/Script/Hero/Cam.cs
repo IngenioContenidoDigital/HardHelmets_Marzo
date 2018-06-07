@@ -461,10 +461,22 @@ public class Cam : MonoBehaviour {
 			//SIGUE AL JUGADOR
 			if(Player.GetComponent<Hero>()._currentDirection == "right")//-28.5 -20.5
 			{
-				nextPosition = new Vector3(Player.transform.position.x+4, altura, ajuste);//Player.transform.position.x+equis, Player.transform.position.y+8, velocidad
+				if(objetivo)
+				{
+					nextPosition = new Vector3(Player.transform.position.x+10, altura, ajuste);
+				}else
+				{
+					nextPosition = new Vector3(Player.transform.position.x+6, altura, ajuste);
+				}
 			}else
 			{
-				nextPosition = new Vector3(Player.transform.position.x-4, altura, ajuste);//Player.transform.position.x-equis, Player.transform.position.y+8, velocidad
+				if(objetivo)
+				{
+					nextPosition = new Vector3(Player.transform.position.x-10, altura, ajuste);
+				}else
+				{
+					nextPosition = new Vector3(Player.transform.position.x-6, altura, ajuste);
+				}
 			}
 
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 2);

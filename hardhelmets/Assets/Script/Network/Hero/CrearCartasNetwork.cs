@@ -6,6 +6,8 @@ using UnityStandardAssets.ImageEffects;
 
 public class CrearCartasNetwork : NetworkBehaviour {
 
+	public GameObject naceJugadores;
+
 	public GameObject nace;
 
 	public GameObject nace2;
@@ -308,14 +310,14 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdFusileroBueno()
 	{
-		var objeto = (GameObject)Instantiate(fusilero, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(fusilero, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		//objeto.transform.position = new Vector3(valorNace,-20, gameObject.transform.position.z);
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdFusileroMalo()
 	{
-		var objeto = (GameObject)Instantiate(fusileroMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(fusileroMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 		//objeto.transform.position = new Vector3(valorNace,-20, gameObject.transform.position.z);
 	}
@@ -338,13 +340,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdEscopetoBueno()
 	{
-		var objeto = (GameObject)Instantiate(escopeto, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(escopeto, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdEscopetoMalo()
 	{
-		var objeto = (GameObject)Instantiate(escopetoMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(escopetoMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//SUBMETRALLETO
@@ -366,13 +368,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdSubmetralletoBueno()
 	{
-		var objeto = (GameObject)Instantiate(submetro, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(submetro, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdSubmetralletoMalo()
 	{
-		var objeto = (GameObject)Instantiate(submetroMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(submetroMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//METRALLETO
@@ -394,13 +396,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdMetralletoBueno()
 	{
-		var objeto = (GameObject)Instantiate(metralleto, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(metralleto, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdMetralletoMalo()
 	{
-		var objeto = (GameObject)Instantiate(metralletoMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(metralletoMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//MEDICO
@@ -422,13 +424,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdMedicoBueno()
 	{
-		var objeto = (GameObject)Instantiate(medico, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(medico, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdMedicoMalo()
 	{
-		var objeto = (GameObject)Instantiate(medicoMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(medicoMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//-------------------PERSOJAES DEFENSA
@@ -451,13 +453,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdMgBueno()
 	{
-		var objeto = (GameObject)Instantiate(mg, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(mg, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdMgMalo()
 	{
-		var objeto = (GameObject)Instantiate(mgMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(mgMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//MORTERO
@@ -479,13 +481,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdMorteroBueno()
 	{
-		var objeto = (GameObject)Instantiate(mortero, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(mortero, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdMorteroMalo()
 	{
-		var objeto = (GameObject)Instantiate(morteroMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(morteroMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//PANZER
@@ -507,13 +509,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdPanzerBueno()
 	{
-		var objeto = (GameObject)Instantiate(panzer, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(panzer, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdPanzerMalo()
 	{
-		var objeto = (GameObject)Instantiate(panzerMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(panzerMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//----------VEHICULOS
@@ -537,13 +539,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdTanquePesadoBueno()
 	{
-		var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
+		var objeto = (GameObject)Instantiate(tankPesado, naceJugadores.transform.position, Quaternion.Euler(0,90,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdTanquePesadoMalo()
 	{
-		var objeto = (GameObject)Instantiate(tankPesadoMalo, nace.transform.position, Quaternion.Euler(0,-90,0));
+		var objeto = (GameObject)Instantiate(tankPesadoMalo, naceJugadores.transform.position, Quaternion.Euler(0,-90,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//VIKINGO
@@ -565,13 +567,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdVikingoBueno()
 	{
-		var objeto = (GameObject)Instantiate(vikingo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(vikingo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdVikingoMalo()
 	{
-		var objeto = (GameObject)Instantiate(vikingoMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(vikingoMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//LLAMERO
@@ -593,13 +595,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdLlameroBueno()
 	{
-		var objeto = (GameObject)Instantiate(vikingoLlamero, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(vikingoLlamero, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdLlameroMalo()
 	{
-		var objeto = (GameObject)Instantiate(vikingoLlameroMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(vikingoLlameroMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//CAMPAMENTO
@@ -621,13 +623,13 @@ public class CrearCartasNetwork : NetworkBehaviour {
 	[Command]
 	public void CmdCampamentoBueno()
 	{
-		var objeto = (GameObject)Instantiate(campamento, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(campamento, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	[Command]
 	public void CmdCampamentoMalo()
 	{
-		var objeto = (GameObject)Instantiate(campamentoMalo, nace.transform.position, Quaternion.Euler(0,0,0));
+		var objeto = (GameObject)Instantiate(campamentoMalo, naceJugadores.transform.position, Quaternion.Euler(0,0,0));
 		NetworkServer.Spawn(objeto);
 	}
 	//TORRETA
