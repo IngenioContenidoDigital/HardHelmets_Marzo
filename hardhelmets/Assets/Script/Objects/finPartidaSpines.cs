@@ -33,6 +33,7 @@ public class finPartidaSpines : MonoBehaviour {
 			audio2.Play();
 		}
 	}
+
 	[Header("SONIDOS")]
 	public AudioSource audio1;
 	public AudioSource audio2;

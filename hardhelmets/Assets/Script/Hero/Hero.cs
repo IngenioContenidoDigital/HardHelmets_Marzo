@@ -1477,6 +1477,8 @@ public class Hero : MonoBehaviour{
 				animacion.SetActive(true);
 				animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "muerto", false);
 
+				esconderBarra.SetActive(false);
+
 				StartCoroutine(muertee());
 				vivo = false;
 			}else
@@ -1544,6 +1546,9 @@ public class Hero : MonoBehaviour{
 			animator.SetBool("walk", false);
 			animator.SetBool("grounded", true);
 			//gameObject.tag = "Untagged";
+
+			SniperCam.GetComponent<Cam>().shake = false;
+			firePart.Stop();
 		}
 
 		gameObject.layer = LayerMask.NameToLayer(mascara);

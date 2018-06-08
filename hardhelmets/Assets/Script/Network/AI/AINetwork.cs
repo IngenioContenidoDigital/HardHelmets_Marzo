@@ -273,10 +273,12 @@ public class AINetwork : NetworkBehaviour {
 								{
 									if(gameObject.tag == "Player")
 									{
-										if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
+										if(target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
 										{
 											print("TIENE LA SANGRE LLENA");
+											target = null;
 											particulas.Stop();
+											StartCoroutine(momentoSphere());
 										}
 										if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax)
 										{
@@ -284,10 +286,12 @@ public class AINetwork : NetworkBehaviour {
 										}
 									}else
 									{
-										if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax2)
+										if(target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax2)
 										{
 											print("TIENE LA SANGRE LLENA");
+											target = null;
 											particulas.Stop();
+											StartCoroutine(momentoSphere());
 										}
 										if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax2)
 										{
@@ -297,12 +301,28 @@ public class AINetwork : NetworkBehaviour {
 								}
 								if(target.GetComponent<AINetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 								{
-									if(particulas.isPlaying && target.GetComponent<AINetwork>().salud >= target.GetComponent<AINetwork>().saludMax)
+									if(target.GetComponent<AINetwork>().salud >= target.GetComponent<AINetwork>().saludMax)
 									{
 										print("TIENE LA SANGRE LLENA");
+										target = null;
 										particulas.Stop();
+										StartCoroutine(momentoSphere());
 									}
 									if(!particulas.isPlaying && target.GetComponent<AINetwork>().salud < target.GetComponent<AINetwork>().saludMax)
+									{
+										particulas.Play();
+									}
+								}
+								if(target.GetComponent<AIVikingoNetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+								{
+									if(target.GetComponent<AIVikingoNetwork>().salud >= target.GetComponent<AIVikingoNetwork>().saludMax)
+									{
+										print("TIENE LA SANGRE LLENA");
+										target = null;
+										particulas.Stop();
+										StartCoroutine(momentoSphere());
+									}
+									if(!particulas.isPlaying && target.GetComponent<AIVikingoNetwork>().salud < target.GetComponent<AIVikingoNetwork>().saludMax)
 									{
 										particulas.Play();
 									}
@@ -513,10 +533,11 @@ public class AINetwork : NetworkBehaviour {
 					{
 						if(gameObject.tag == "Player")
 						{
-							if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
+							if(target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax)
 							{
 								print("TIENE LA SANGRE LLENA");
 								particulas.Stop();
+								StartCoroutine(momentoSphere());
 							}
 							if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax)
 							{
@@ -524,10 +545,11 @@ public class AINetwork : NetworkBehaviour {
 							}
 						}else
 						{
-							if(particulas.isPlaying && target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax2)
+							if(target.GetComponent<HeroNetwork>().salud >= target.GetComponent<HeroNetwork>().saludMax2)
 							{
 								print("TIENE LA SANGRE LLENA");
 								particulas.Stop();
+								StartCoroutine(momentoSphere());
 							}
 							if(!particulas.isPlaying && target.GetComponent<HeroNetwork>().salud < target.GetComponent<HeroNetwork>().saludMax2)
 							{
@@ -537,12 +559,26 @@ public class AINetwork : NetworkBehaviour {
 					}
 					if(target.GetComponent<AINetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 					{
-						if(particulas.isPlaying && target.GetComponent<AINetwork>().salud >= target.GetComponent<AINetwork>().saludMax)
+						if(target.GetComponent<AINetwork>().salud >= target.GetComponent<AINetwork>().saludMax)
 						{
 							print("TIENE LA SANGRE LLENA");
 							particulas.Stop();
+							StartCoroutine(momentoSphere());
 						}
 						if(!particulas.isPlaying && target.GetComponent<AINetwork>().salud < target.GetComponent<AINetwork>().saludMax)
+						{
+							particulas.Play();
+						}
+					}
+					if(target.GetComponent<AIVikingoNetwork>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+					{
+						if(target.GetComponent<AIVikingoNetwork>().salud >= target.GetComponent<AIVikingoNetwork>().saludMax)
+						{
+							print("TIENE LA SANGRE LLENA");
+							particulas.Stop();
+							StartCoroutine(momentoSphere());
+						}
+						if(!particulas.isPlaying && target.GetComponent<AIVikingoNetwork>().salud < target.GetComponent<AIVikingoNetwork>().saludMax)
 						{
 							particulas.Play();
 						}
