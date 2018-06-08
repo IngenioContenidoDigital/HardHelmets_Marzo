@@ -1628,6 +1628,8 @@ public class HeroNetwork : NetworkBehaviour{
 				mascara = "muerto";
 				CmdChangeMascara(mascara);
 
+				esconderBarra.SetActive(false);
+
 				StartCoroutine(muertee());
 				vivo = false;
 			}else
@@ -1692,6 +1694,8 @@ public class HeroNetwork : NetworkBehaviour{
 			animator.SetBool("walk", false);
 			animator.SetBool("grounded", true);
 			//gameObject.tag = "Untagged";
+
+			SniperCam.GetComponent<CamNetwork>().shake = false;
 		}
 
 		gameObject.layer = LayerMask.NameToLayer(mascara);

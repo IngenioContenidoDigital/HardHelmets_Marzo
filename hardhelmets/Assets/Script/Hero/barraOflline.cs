@@ -26,7 +26,7 @@ public class barraOflline : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		if(Player.GetComponent<Hero>().ready)
+		if(Player.GetComponent<Hero>().ready && Player.GetComponent<Hero>().salud > 0)
 		{
 			fill += carga;
 			GetComponent<Image>().fillAmount = fill;

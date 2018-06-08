@@ -463,6 +463,8 @@ public class campamentos : MonoBehaviour {
 		Player.GetComponent<HeroNetwork>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<HeroNetwork>().carta1);
 		Player.GetComponent<HeroNetwork>().SniperCam.GetComponent<Grayscale>().enabled = false;
 
+		Player.GetComponent<HeroNetwork>().esconderBarra.SetActive(true);
+
 		nace = 0;
 	}
 }
