@@ -1548,6 +1548,7 @@ public class Hero : MonoBehaviour{
 			//gameObject.tag = "Untagged";
 
 			SniperCam.GetComponent<Cam>().shake = false;
+			firePart.Stop();
 		}
 
 		gameObject.layer = LayerMask.NameToLayer(mascara);

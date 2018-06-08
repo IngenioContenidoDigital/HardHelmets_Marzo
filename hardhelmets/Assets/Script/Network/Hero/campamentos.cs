@@ -64,6 +64,8 @@ public class campamentos : MonoBehaviour {
 
 		if(contar)
 		{
+			Player.GetComponent<HeroNetwork>().salud = 0;
+
 			nace = 0;
 			BasePrimaria.SetActive(false);
 			alpha.SetActive(false);

@@ -170,7 +170,7 @@ public class AI : MonoBehaviour {
 
 			if(grounded && target == null)
 			{
-				target = GameObject.FindWithTag(BuscarBase).transform;
+				target = GameObject.Find(BuscarBase).transform;
 			}else if(grounded && target.tag == BaseBuena)
 			{
 				target = null;
@@ -242,10 +242,12 @@ public class AI : MonoBehaviour {
 								agent.isStopped = true;
 								if(target.GetComponent<Hero>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 								{
-									if(particulas.isPlaying && target.GetComponent<Hero>().salud >= target.GetComponent<Hero>().saludMax)
+									if(target.GetComponent<Hero>().salud >= target.GetComponent<Hero>().saludMax)
 									{
 										print("TIENE LA SANGRE LLENA");
+										target = null;
 										particulas.Stop();
+										StartCoroutine(momentoSphere());
 									}
 									if(!particulas.isPlaying && target.GetComponent<Hero>().salud < target.GetComponent<Hero>().saludMax)
 									{
@@ -254,12 +256,28 @@ public class AI : MonoBehaviour {
 								}
 								if(target.GetComponent<AI>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
 								{
-									if(particulas.isPlaying && target.GetComponent<AI>().salud >= target.GetComponent<AI>().saludMax)
+									if(target.GetComponent<AI>().salud >= target.GetComponent<AI>().saludMax)
 									{
 										print("TIENE LA SANGRE LLENA");
+										target = null;
 										particulas.Stop();
+										StartCoroutine(momentoSphere());
 									}
 									if(!particulas.isPlaying && target.GetComponent<AI>().salud < target.GetComponent<AI>().saludMax)
+									{
+										particulas.Play();
+									}
+								}
+								if(target.GetComponent<AIVikingo>())//SI EL JUGADOR TIENE LA SANGRE AL MAXIMO DEJA DE CURAR
+								{
+									if(target.GetComponent<AIVikingo>().salud >= target.GetComponent<AIVikingo>().saludMax)
+									{
+										print("TIENE LA SANGRE LLENA");
+										target = null;
+										particulas.Stop();
+										StartCoroutine(momentoSphere());
+									}
+									if(!particulas.isPlaying && target.GetComponent<AIVikingo>().salud < target.GetComponent<AIVikingo>().saludMax)
 									{
 										particulas.Play();
 									}

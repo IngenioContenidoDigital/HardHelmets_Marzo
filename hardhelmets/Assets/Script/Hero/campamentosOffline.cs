@@ -75,6 +75,8 @@ public class campamentosOffline : MonoBehaviour {
 
 		if(contar)
 		{
+			Player.GetComponent<Hero>().salud = 0;
+
 			nace = 0;
 			BasePrimaria.SetActive(false);
 			alpha.SetActive(false);

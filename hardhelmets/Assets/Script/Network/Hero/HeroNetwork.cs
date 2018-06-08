@@ -1696,6 +1696,7 @@ public class HeroNetwork : NetworkBehaviour{
 			//gameObject.tag = "Untagged";
 
 			SniperCam.GetComponent<CamNetwork>().shake = false;
+			firePart.Stop();
 		}
 
 		gameObject.layer = LayerMask.NameToLayer(mascara);
