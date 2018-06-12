@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.AI;
 
 public class AITank2 : NetworkBehaviour
 {
@@ -22,6 +23,7 @@ public class AITank2 : NetworkBehaviour
 	float autoParkingBrakeLag = 0.5f;
 
 	/// MIOS
+	public NavMeshAgent agent;
 	//GROUND CHECHER
 	public Transform groundCheck;
 	float groundRadius = 0.3f;
@@ -176,6 +178,11 @@ public class AITank2 : NetworkBehaviour
 		{
 			if(grounded && !quieto)
 			{
+				if(agent != null)
+				{
+					Destroy(agent);
+				}
+
 				trail1.SetActive(true);
 				trail2.SetActive(true);
 				if(disparo && listo)
