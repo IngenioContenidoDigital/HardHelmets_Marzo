@@ -287,6 +287,10 @@ public class Animaciones : MonoBehaviour {
 			animator.SetBool("walk", false);
 			animator.SetInteger("cascado", 0);
 		}
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("KillJump"))
+		{
+			animator.SetInteger("cascado", 0);
+		}
 		//AGACHADO
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("Agachado"))
 		{
