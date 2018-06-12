@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TorretaOffline : MonoBehaviour {
+
+	public NavMeshAgent agent;
 
 	public Animator animator;
 
@@ -64,6 +67,14 @@ public class TorretaOffline : MonoBehaviour {
 
 		saludMax = 8*level+200;
 		salud = saludMax;
+
+		StartCoroutine(Quitaragente());
+	}
+
+	IEnumerator Quitaragente()
+	{
+		yield return new WaitForSeconds(0.02f);
+		Destroy(agent);
 	}
 
 	// Update is called once per frame

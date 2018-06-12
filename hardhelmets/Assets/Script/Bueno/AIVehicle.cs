@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIVehicle : MonoBehaviour {
 
@@ -22,6 +23,9 @@ public class AIVehicle : MonoBehaviour {
 	float autoParkingBrakeLag = 0.5f;
 
 	/// MIOS
+	/// 
+	public NavMeshAgent agent;
+	/// 
 	//GROUND CHECHER
 	public Transform groundCheck;
 	float groundRadius = 0.3f;
@@ -167,6 +171,10 @@ public class AIVehicle : MonoBehaviour {
 		{
 			if(grounded && !quieto)
 			{
+				if(agent != null)
+				{
+					Destroy(agent);
+				}
 				trail1.SetActive(true);
 				trail2.SetActive(true);
 				if(disparo && listo)
