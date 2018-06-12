@@ -214,6 +214,7 @@ public class CommunityList : MonoBehaviour {
 
 	public void negar()
 	{
+		pantalla = "";
 		capitan.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 		mensaje.SetActive(false);
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(list);

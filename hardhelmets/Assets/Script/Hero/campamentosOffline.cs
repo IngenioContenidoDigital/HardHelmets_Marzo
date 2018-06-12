@@ -75,6 +75,9 @@ public class campamentosOffline : MonoBehaviour {
 
 		if(contar)
 		{
+			Player.GetComponent<Hero>().salud = 0;
+
+			nace = 0;
 			BasePrimaria.SetActive(false);
 			alpha.SetActive(false);
 			beta.SetActive(false);
@@ -354,5 +357,8 @@ public class campamentosOffline : MonoBehaviour {
 		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
 
 		Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
+		Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+
+		nace = 0;
 	}
 }
