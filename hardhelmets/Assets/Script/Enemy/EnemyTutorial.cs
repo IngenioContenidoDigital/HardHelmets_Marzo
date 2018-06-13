@@ -14,13 +14,7 @@ public class EnemyTutorial : MonoBehaviour {
 
 	public bool crearCarta;
 
-	public GameObject[] sangreCuchillo;
-	public GameObject[] efectoSanre;
-
 	public GameObject textos;
-
-	public bool explocion;
-	public GameObject Huesos;
 
 	public static int colision;
 	public static int matado;
@@ -35,6 +29,8 @@ public class EnemyTutorial : MonoBehaviour {
 	public GameObject limite;
 
 	public GameObject humo;
+
+	public GameObject Base;
 
 	// Use this for initialization
 	void Start ()
@@ -54,25 +50,14 @@ public class EnemyTutorial : MonoBehaviour {
 		{
 			if(salud <= 0)
 			{
-				if(explocion)
-				{
-					animator.SetBool("muerte", true);
-					var bones = (GameObject)Instantiate(Huesos, transform.position, transform.rotation);
-					explocion = false;
-				}else
-				{
-					animator.SetBool("muerte", true);
-				}
 				matado += 1;
 
 				vivo = false;
-			}else
-			{
-				explocion = false;
 			}
 		}else
 		{
-			if(matado >= maximo)
+			LayerMask.NameToLayer("muerto");
+			if(matado >= maximo && gameObject.name != "Espantapajaros")
 			{
 				Hero.GetComponent<Hero>().caminarA = false;
 				Hero.GetComponent<Hero>().caminarU = false;
@@ -86,15 +71,25 @@ public class EnemyTutorial : MonoBehaviour {
 					Dialogos2.SetActive(true);
 				}
 
+				Hero.GetComponent<Hero>().SniperCam.GetComponent<Cam>().objetivo = false;
+
 				Destroy(limite);
 
 				siguiente.SetActive(true);
 			}
+			if(Base != null)
+			{
+				Base.layer = LayerMask.NameToLayer("mira");
+			}
 			pedazos.SetActive(true);
 			mira.SetActive(false);
-			Destroy(mira);
-			Destroy(gameObject);
+			StartCoroutine(matar());
 		}
+	}
+	IEnumerator matar()
+	{
+		yield return new WaitForSeconds(0.3f);
+		Destroy(gameObject);
 	}
 	public int maximo;
 
@@ -108,10 +103,6 @@ public class EnemyTutorial : MonoBehaviour {
 
 				animator.SetBool("cascado", true);
 
-				if(PlayerPrefs.GetInt("violencia") == 1)
-				{
-					var sangre2 = (GameObject)Instantiate(sangreCuchillo[Random.Range(0,sangreCuchillo.Length)], transform.position, transform.rotation); 
-				}
 				salud -= 15;
 
 				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
@@ -130,10 +121,6 @@ public class EnemyTutorial : MonoBehaviour {
 				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
 
-				if(PlayerPrefs.GetInt("violencia") == 1)
-				{
-					var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), transform.rotation);
-				}
 				var partic = (GameObject)Instantiate(humo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			}
 		}else
@@ -165,10 +152,6 @@ public class EnemyTutorial : MonoBehaviour {
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<ExploOffline>().poder.ToString("F0");
 
-			if(PlayerPrefs.GetInt("violencia") == 1)
-			{
-				explocion = true;
-			}
 			var partic = (GameObject)Instantiate(humo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 		}
 	}

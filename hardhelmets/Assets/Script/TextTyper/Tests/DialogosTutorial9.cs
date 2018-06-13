@@ -59,14 +59,17 @@
 			if(idioma == "ENGLISH")
 			{
 				dialogueLines.Enqueue("To claim the victory in every battle you’ll have to claim some checkpoints first. Get yourself close to the Flag and wait there until you capture the checkpoint.");
+				dialogueLines.Enqueue("To claim the checkpoint you will first have to defeat all enemies in the area.");
 			}
 			if(idioma == "SPANISH")
 			{
 				dialogueLines.Enqueue("Para reclamar la victoria en cada batalla, primero tendrá que reclamar algunos puntos de control. Acérquece a la bandera y espera allí hasta que capture el punto de control.");
+				dialogueLines.Enqueue("Para reclamar el punto de control primero tendrá que derrotar a todos los enemigos de la zona.");
 			}
 			if(idioma == "CHINESE")
 			{
-				dialogueLines.Enqueue("为了在每场战斗中获得胜利，你必须首先要求检查点。 让自己靠近国旗并在那里等到捕获检查点。");
+				dialogueLines.Enqueue("为了在每场战斗中获得胜利，你必须首先要求检查点。 让自己靠近国旗并在那里等到捕获检查点");
+				dialogueLines.Enqueue("要宣称检查点，你必须先击败该地区的所有敌人");
 			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
             dialogueLines.Enqueue("You can <b>use</b> <i>uGUI</i> <size=40>text</size> <size=20>tag</size> and <color=#ff0000ff>color</color> tag <color=#00ff00ff>like this</color>.");

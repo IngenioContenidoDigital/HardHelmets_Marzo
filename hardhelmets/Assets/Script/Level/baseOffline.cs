@@ -78,58 +78,16 @@ public class baseOffline : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "bala")
 		{
-			sangre -= 2;
+			sangre -= col.gameObject.GetComponent<balaOffline>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "2";
-		}
-		if(col.gameObject.tag == "balaFusil")
-		{
-			sangre -= 3;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
-		}
-		if(col.gameObject.tag == "balaEscopeta")
-		{
-			sangre -= 2;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "2";
-		}
-		if(col.gameObject.tag == "balaSubmetra")
-		{
-			sangre -= 2;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "2";
-		}
-		if(col.gameObject.tag == "balaMetra")
-		{
-			sangre -= 3;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
-		}
-		if(col.gameObject.tag == "balaMG")
-		{
-			sangre -= 3;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
-		}
-		if(col.gameObject.tag == "balaSniper")
-		{
-			sangre -= 1;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "1";
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == "explo")
 		{
-			sangre -= 50;
+			sangre -= col.gameObject.GetComponent<ExploOffline>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "50";
 		}
 	}
@@ -137,9 +95,9 @@ public class baseOffline : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "balaLlamas")
 		{
-			sangre -= 3;
+			sangre -= col.gameObject.GetComponent<balaFuego>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "3";
 		}
 	}

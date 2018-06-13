@@ -119,7 +119,7 @@ public class Base : NetworkBehaviour {
 			{
 				sangre -= col.gameObject.GetComponent<bala>().poder;
 
-				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
 			}
 
@@ -127,7 +127,7 @@ public class Base : NetworkBehaviour {
 			{
 				sangre -= col.gameObject.GetComponent<Explo>().poder;
 
-				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+				var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
 			}
 		}
@@ -136,9 +136,9 @@ public class Base : NetworkBehaviour {
 	{
 		if(col.gameObject.tag == "balaLlamas")
 		{
-			sangre -= 3;
+			sangre -= col.gameObject.GetComponent<balaFuego>().poder;
 
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = "3";
 		}
 	}
