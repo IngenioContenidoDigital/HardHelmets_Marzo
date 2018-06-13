@@ -240,6 +240,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boneRoot: {fileID: 1569951179}
   skeletonRenderer: {fileID: 4953526}
+--- !u!1001 &203456541
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -91.255615
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.7879333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -35.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351307630350444, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cf4a7e67b3bfef946ac0a343f5f7db03, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &253384971
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +520,10 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471730604776164, guid: 2268da431649ff14c9b76213ff2be50a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2268da431649ff14c9b76213ff2be50a, type: 2}
@@ -1131,7 +1177,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh266690
+  m_Name: pb_Mesh-1158
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
