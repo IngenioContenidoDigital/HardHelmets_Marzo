@@ -28,7 +28,7 @@ public class AIVehicle : MonoBehaviour {
 	/// 
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 5f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 
@@ -124,6 +124,8 @@ public class AIVehicle : MonoBehaviour {
 	}
 
 	public float giro;
+
+	public GameObject cuerpo;
 	void Update ()
 	{
 		if(Panel == null)
@@ -174,6 +176,10 @@ public class AIVehicle : MonoBehaviour {
 				if(agent != null)
 				{
 					Destroy(agent);
+				}
+				if(!cuerpo.GetComponent<NavMeshObstacle>().enabled)
+				{
+					cuerpo.GetComponent<NavMeshObstacle>().enabled = true;
 				}
 				trail1.SetActive(true);
 				trail2.SetActive(true);

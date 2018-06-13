@@ -36,9 +36,20 @@ public class vistaTank : MonoBehaviour {
 		{
 			obstacle = true;
 		}
-		if(col.gameObject.name == "PuazD")
+
+		if(col.gameObject.tag == "uno")
 		{
-			obstacle = true;
+			if(gameObject.name == "Vista")
+			{
+				obstacle = true;
+			}
+		}
+		if(col.gameObject.tag == "dos")
+		{
+			if(gameObject.name == "Vista2")
+			{
+				obstacle = true;
+			}
 		}
 	}
 
@@ -57,10 +68,6 @@ public class vistaTank : MonoBehaviour {
 			obstacle = true;
 		}
 		if(col.gameObject.tag == "obstaculo2")
-		{
-			obstacle = true;
-		}
-		if(col.gameObject.name == "PuazD")
 		{
 			obstacle = true;
 		}

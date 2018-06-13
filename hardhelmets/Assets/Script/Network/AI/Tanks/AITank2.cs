@@ -26,7 +26,7 @@ public class AITank2 : NetworkBehaviour
 	public NavMeshAgent agent;
 	//GROUND CHECHER
 	public Transform groundCheck;
-	float groundRadius = 0.3f;
+	float groundRadius = 5f;
 	public LayerMask whatIsGround;
 	public bool grounded = false;
 
@@ -121,6 +121,7 @@ public class AITank2 : NetworkBehaviour
 	}
 
 	public float giro;
+	public GameObject cuerpo;
 	void Update ()
 	{
 		if(!isServer)
@@ -181,6 +182,10 @@ public class AITank2 : NetworkBehaviour
 				if(agent != null)
 				{
 					Destroy(agent);
+				}
+				if(!cuerpo.GetComponent<NavMeshObstacle>().enabled)
+				{
+					cuerpo.GetComponent<NavMeshObstacle>().enabled = true;
 				}
 
 				trail1.SetActive(true);

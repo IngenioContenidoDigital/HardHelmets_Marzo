@@ -81,14 +81,14 @@ public class baseOffline : MonoBehaviour {
 			sangre -= col.gameObject.GetComponent<balaOffline>().poder;
 
 			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == "explo")
 		{
 			sangre -= col.gameObject.GetComponent<ExploOffline>().poder;
 
 			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "50";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<ExploOffline>().poder.ToString("F0");
 		}
 	}
 	void OnTriggerEnter (Collider col)
@@ -98,7 +98,7 @@ public class baseOffline : MonoBehaviour {
 			sangre -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 		}
 	}
 }
