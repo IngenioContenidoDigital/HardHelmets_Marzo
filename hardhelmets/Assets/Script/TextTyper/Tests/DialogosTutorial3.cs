@@ -101,14 +101,9 @@
 				if(dialogos >= max)
 				{
 					animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
-					enemigo.GetComponent<EnemyTutorial>().enabled = true;
-					enemigo2.GetComponent<EnemyTutorial>().enabled = true;
-					enemigo3.GetComponent<EnemyTutorial>().enabled = true;
-
-					Hero.GetComponent<Hero>().pausado = false;
-					Hero.GetComponent<Hero>().ready = true;
-					ventana.SetActive(false);
-					Destroy(gameObject);
+					enemigo.SetActive(true);
+					StartCoroutine(enemi2());
+					StartCoroutine(enemi3());
 				}else if(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "idle")
 				{
 					habla = 3;
@@ -135,6 +130,20 @@
 		{
 			yield return new WaitForSpineAnimationComplete(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
 			animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "idle", false);
+		}
+		IEnumerator enemi2()
+		{
+			yield return new WaitForSeconds(0.3f);
+			enemigo2.SetActive(true);
+		}
+		IEnumerator enemi3()
+		{
+			yield return new WaitForSeconds(0.3f);
+			enemigo3.SetActive(true);
+			Hero.GetComponent<Hero>().pausado = false;
+			Hero.GetComponent<Hero>().ready = true;
+			ventana.SetActive(false);
+			Destroy(gameObject);
 		}
 
 		private void HandlePrintNextClicked()

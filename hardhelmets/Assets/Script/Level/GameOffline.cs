@@ -220,8 +220,12 @@ public class GameOffline : MonoBehaviour {
 		nombres1.text = nombre1;
 		marine1.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("PlayerLevel").ToString();
 
-		nombre2 = PlayerPrefs.GetString("nameCommunity");
-		nombres2.text = nombre2;
+		if(Application.loadedLevelName != "Tutorial")
+		{
+			nombre2 = PlayerPrefs.GetString("nameCommunity");
+			nombres2.text = nombre2;
+		}
+
 		level2 = PlayerPrefs.GetInt("levelCommunity");
 		marine2.GetComponent<combinedSkins>().skinsToCombine[0] = PlayerPrefs.GetInt("levelCommunity").ToString();
 

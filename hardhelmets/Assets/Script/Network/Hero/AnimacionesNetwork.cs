@@ -278,7 +278,7 @@ public class AnimacionesNetwork : NetworkBehaviour {
 		{
 			animator.SetBool("cuchillo2", false);
 			animator.SetBool("cuchillando", true);
-			GetComponent<HeroNetwork>().cuchillo = false;
+			//GetComponent<HeroNetwork>().cuchillo = false;
 		}else
 		{
 			animator.SetBool("cuchillando", false);

@@ -260,7 +260,7 @@ public class Animaciones : MonoBehaviour {
 		{
 			animator.SetBool("cuchillo2", false);
 			animator.SetBool("cuchillando", true);
-			GetComponent<Hero>().cuchillo = false;
+			//GetComponent<Hero>().cuchillo = false;
 		}else
 		{
 			animator.SetBool("cuchillando", false);
