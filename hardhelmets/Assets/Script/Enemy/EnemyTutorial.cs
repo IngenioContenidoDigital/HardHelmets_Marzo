@@ -34,7 +34,7 @@ public class EnemyTutorial : MonoBehaviour {
 
 	public GameObject limite;
 
-	public ParticleSystem humo;
+	public GameObject humo;
 
 	// Use this for initialization
 	void Start ()
@@ -45,7 +45,7 @@ public class EnemyTutorial : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if(animator.GetCurrentAnimatorStateInfo(0).IsName("targetHit"))
+		if(animator.GetCurrentAnimatorStateInfo(0).IsName("hit"))
 		{
 			animator.SetBool("cascado", false);
 		}
@@ -116,6 +116,8 @@ public class EnemyTutorial : MonoBehaviour {
 
 				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = "15";
+
+				var partic = (GameObject)Instantiate(humo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			}
 			if(col.gameObject.tag == "bala" && vivo)
 			{
@@ -132,7 +134,7 @@ public class EnemyTutorial : MonoBehaviour {
 				{
 					var explo = (GameObject)Instantiate(efectoSanre[Random.Range(0,efectoSanre.Length)], new Vector3(col.gameObject.transform.position.x,col.gameObject.transform.position.y-3, col.gameObject.transform.position.z-1), transform.rotation);
 				}
-				humo.Play();
+				var partic = (GameObject)Instantiate(humo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			}
 		}else
 		{
@@ -145,7 +147,7 @@ public class EnemyTutorial : MonoBehaviour {
 				var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
 				letras.GetComponent<TextMesh>().text = "USE HAND GRANADE";
 
-				humo.Play();
+				var partic = (GameObject)Instantiate(humo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			}
 		}
 
@@ -167,7 +169,7 @@ public class EnemyTutorial : MonoBehaviour {
 			{
 				explocion = true;
 			}
-			humo.Play();
+			var partic = (GameObject)Instantiate(humo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 		}
 	}
 
