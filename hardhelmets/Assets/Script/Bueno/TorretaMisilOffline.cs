@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TorretaMisilOffline : MonoBehaviour {
+
+	public NavMeshAgent agent;
 
 	public string enemyName;
 	public string tankName;
@@ -66,6 +69,13 @@ public class TorretaMisilOffline : MonoBehaviour {
 
 		saludMax = 8*level+200;
 		salud = saludMax;
+
+		StartCoroutine(Quitaragente());
+	}
+	IEnumerator Quitaragente()
+	{
+		yield return new WaitForSeconds(0.02f);
+		Destroy(agent);
 	}
 
 	bool listo;

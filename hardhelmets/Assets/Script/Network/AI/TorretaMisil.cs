@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.AI;
 
 public class TorretaMisil : NetworkBehaviour {
+
+	public NavMeshAgent agent;
 
 	public string enemyName;
 	public string tankName;
@@ -66,6 +69,13 @@ public class TorretaMisil : NetworkBehaviour {
 
 		saludMax = 8*level+200;
 		salud = saludMax;
+
+		StartCoroutine(Quitaragente());
+	}
+	IEnumerator Quitaragente()
+	{
+		yield return new WaitForSeconds(0.02f);
+		Destroy(agent);
 	}
 
 	bool listo;
