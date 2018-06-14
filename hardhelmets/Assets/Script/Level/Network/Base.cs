@@ -113,23 +113,22 @@ public class Base : NetworkBehaviour {
 
 	void OnCollisionEnter (Collision col)
 	{
-		if(isServer)
+		//if(isServer)
+		//{
+		if(col.gameObject.tag == "bala")
 		{
-			if(col.gameObject.tag == "bala")
-			{
-				sangre -= col.gameObject.GetComponent<bala>().poder;
+			sangre -= col.gameObject.GetComponent<bala>().poder;
 
-				var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
-			}
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
+		}
 
-			if(col.gameObject.tag == "explo")
-			{
-				sangre -= col.gameObject.GetComponent<Explo>().poder;
+		if(col.gameObject.tag == "explo")
+		{
+			sangre -= col.gameObject.GetComponent<Explo>().poder;
 
-				var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-				letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
-			}
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<Explo>().poder.ToString("F0");
 		}
 	}
 	void OnTriggerEnter (Collider col)

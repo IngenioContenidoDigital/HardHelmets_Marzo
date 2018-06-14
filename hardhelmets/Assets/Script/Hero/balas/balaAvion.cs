@@ -65,6 +65,13 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AIVikingo>().salud -= poder;
 			}
+			if(body.GetComponent<baseOffline>())
+			{
+				body.GetComponent<baseOffline>().sangre -= poder;
+			}else
+			{
+				body.GetComponent<Animator>().SetBool("cascado", true);
+			}
 			//ONLINE
 			if(body.GetComponent<HeroNetwork>())
 			{
@@ -102,7 +109,13 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<AIVikingoNetwork>().salud -= poder;
 			}
-			body.GetComponent<Animator>().SetBool("cascado", true);
+			if(body.GetComponent<Base>())
+			{
+				body.GetComponent<Base>().sangre -= poder;
+			}else
+			{
+				body.GetComponent<Animator>().SetBool("cascado", true);
+			}
 		}
 	}
 }

@@ -2073,6 +2073,7 @@ public class Menu : MonoBehaviour {
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m2);
 		}
 	}
+
 	IEnumerator esconder()
 	{
 		yield return new WaitForSeconds(1);
