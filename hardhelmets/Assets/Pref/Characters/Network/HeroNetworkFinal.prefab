@@ -14026,7 +14026,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4250456245168640}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1310976
   grounded: 0
   animator: {fileID: 95663536637471158}
   Girar2: {fileID: 1624746543298678}
@@ -15608,10 +15608,10 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   maskMethod: 0
   masks: 00000100
-  _TilingOffset: 265
-  _MaskBase: 266
-  _MaskLayers: 267
-  instanceID: -5417172
+  _TilingOffset: 382
+  _MaskBase: 383
+  _MaskLayers: 384
+  instanceID: -4109794
 --- !u!114 &114136381807233874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18083,6 +18083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1380778542673984}
+  cuchillado: 0
+  enemigo: {fileID: 0}
 --- !u!114 &114304946886719160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19555,7 +19557,7 @@ MonoBehaviour:
   mortero: {fileID: 1690488037900472, guid: 084593cb58cb0a048b69fe0604f469cc, type: 2}
   panzer: {fileID: 1101430360360092, guid: da4cb7dd9aa0944459a2cfb59b3bf43c, type: 2}
   medico: {fileID: 1147726848574840, guid: 3cc02c8284dae9d4cb4628867f49ffa2, type: 2}
-  tankPesado: {fileID: 1262684020706556, guid: 38cc389867abcc643a2a86ccc372ae1e, type: 2}
+  tankPesado: {fileID: 1685180770969152, guid: 720ab8349d07d02449b623ef27921576, type: 2}
   campamento: {fileID: 1261810858599270, guid: 010af675e5019ce428951922a6514bf3, type: 2}
   torreta: {fileID: 1985223328450204, guid: 6f5b516e1b1592a4cbc19d5e103e33db, type: 2}
   torretaMisil: {fileID: 1804675324062838, guid: da6a6b21cc4327345b651e53239d5fd0,
@@ -19582,7 +19584,7 @@ MonoBehaviour:
     type: 2}
   panzerMalo: {fileID: 1744216832909738, guid: ea76c65b5b3788541bb75276c1bf70b7, type: 2}
   medicoMalo: {fileID: 1448125461057878, guid: 8f826124f8334c0458906e4717fb13d3, type: 2}
-  tankPesadoMalo: {fileID: 1268936720291558, guid: da2159fe6d2b1f9479326b8d3e27aad6,
+  tankPesadoMalo: {fileID: 1151553043159370, guid: 0ba5a5eaf9968ea4bb75a91b6d13e7e9,
     type: 2}
   campamentoMalo: {fileID: 1252939982107866, guid: 4a890c41da6ab934b9a6042d577f3a53,
     type: 2}
