@@ -33,7 +33,7 @@ public class Logo : MonoBehaviour {
 				if(alp >= 255)
 				{
 					alp = 255;
-					Application.LoadLevel("menu");
+					Application.LoadLevel("Trailer");
 				}
 			}
 		}else

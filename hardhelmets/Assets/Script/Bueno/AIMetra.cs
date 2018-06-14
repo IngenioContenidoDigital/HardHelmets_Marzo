@@ -9,7 +9,7 @@ public class AIMetra : MonoBehaviour {
 
 	public string enemyName;
 	public string tankName;
-	Transform Player;
+	public Transform Player;
 
 	bool crearCarta;
 	public GameObject carta;
@@ -111,6 +111,8 @@ public class AIMetra : MonoBehaviour {
 		//Player = GameObject.FindWithTag ("Player").transform;
 		_currentDirection = "right";
 	}
+
+	public GameObject spheraColision;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -200,13 +202,61 @@ public class AIMetra : MonoBehaviour {
 				if(Vector3.Distance(transform.position,Player.position) >= 1)//5.1f) && Vector3.Distance(transform.position,Player.position) <= 30f)
 				{
 					animator.SetInteger("disparo", 1);
-				}else if(Vector3.Distance(transform.position,Player.position) <= 5)// && ajusteZ.z != Player.transform.position.z)
-				{
-					//Hero.cuchillo = true;
 				}else
 				{
 					animator.SetInteger("disparo", -1);
 				}
+
+				if(Player.GetComponent<Hero>() != null)
+				{
+					if(Player.GetComponent<Hero>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AI>() != null)
+				{
+					if(Player.GetComponent<AI>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIMortero>() != null)
+				{
+					if(Player.GetComponent<AIMortero>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIMetra>() != null)
+				{
+					if(Player.GetComponent<AIMetra>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIVikingo>() != null)
+				{
+					if(Player.GetComponent<AIVikingo>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIVehicle>() != null)
+				{
+					if(Player.GetComponent<AIVehicle>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}
+
 			}else
 			{
 				//v3 = Vector3.zero;
@@ -260,6 +310,12 @@ public class AIMetra : MonoBehaviour {
 			Base.layer = LayerMask.NameToLayer("mira");
 			//gameObject.tag = "Untagged";
 		}
+	}
+
+	IEnumerator momentoSphere()
+	{
+		yield return new WaitForSeconds(0.5f);
+		spheraColision.SetActive(true);
 	}
 
 	IEnumerator muertee ()

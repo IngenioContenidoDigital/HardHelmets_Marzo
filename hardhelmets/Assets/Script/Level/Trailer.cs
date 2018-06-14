@@ -24,6 +24,8 @@ public class Trailer : MonoBehaviour {
 	void Start ()
 	{
 		mostrar = true;
+		video.GetComponent<VideoPlayer>().loopPointReached += checkOver;
+		video.GetComponent<VideoPlayer>().targetCameraAlpha = 0.001f;
 	}
 	
 	// Update is called once per frame
@@ -41,10 +43,10 @@ public class Trailer : MonoBehaviour {
 			}
 		}
 
-		if(reproduciendo && !video.GetComponent<VideoPlayer>().isPlaying)
+		/*if(reproduciendo && !video.GetComponent<VideoPlayer>().isPlaying)
 		{
 			esconder = true;
-		}
+		}*/
 
 		if(esconder)
 		{
@@ -63,6 +65,7 @@ public class Trailer : MonoBehaviour {
 
 		if(salir)
 		{
+			print("CARGAR MENU");
 			Application.LoadLevel("Load");
 			loading.nombre = "menu";
 			salir = false;
@@ -79,5 +82,10 @@ public class Trailer : MonoBehaviour {
 		{
 			esconder = true;
 		}
+	}
+
+	void checkOver (UnityEngine.Video.VideoPlayer vp)
+	{
+		esconder = true;
 	}
 }

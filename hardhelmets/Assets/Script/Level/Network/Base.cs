@@ -139,7 +139,7 @@ public class Base : NetworkBehaviour {
 			sangre -= col.gameObject.GetComponent<balaFuego>().poder;
 
 			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "3";
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaFuego>().poder.ToString("F0");
 		}
 	}
 

@@ -10,7 +10,7 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 
 	public string enemyName;
 	public string tankName;
-	Transform Player;
+	public Transform Player;
 
 	bool crearCarta;
 	public GameObject carta;
@@ -114,6 +114,8 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 		_currentDirection = "right";
 	}
 	bool ponermascara;
+
+	public GameObject spheraColision;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -227,6 +229,57 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 				{
 					animator.SetInteger("disparo", -1);
 				}
+
+				if(Player.GetComponent<HeroNetwork>() != null)
+				{
+					if(Player.GetComponent<HeroNetwork>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AINetwork>() != null)
+				{
+					if(Player.GetComponent<AINetwork>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIMorteroNetwork>() != null)
+				{
+					if(Player.GetComponent<AIMorteroNetwork>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIMetraNetwork>() != null)
+				{
+					if(Player.GetComponent<AIMetraNetwork>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AIVikingoNetwork>() != null)
+				{
+					if(Player.GetComponent<AIVikingoNetwork>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}else if(Player.GetComponent<AITank2>() != null)
+				{
+					if(Player.GetComponent<AITank2>().salud <= 0)
+					{
+						Player = null;
+						spheraColision.SetActive(false);
+						StartCoroutine(momentoSphere());
+					}
+				}
+
 			}else
 			{
 				animator.SetInteger("disparo", -1);
@@ -293,7 +346,11 @@ public class AIMetraMaloNetwork : NetworkBehaviour {
 			caminar = true;
 		}
 	}
-
+	IEnumerator momentoSphere()
+	{
+		yield return new WaitForSeconds(0.5f);
+		spheraColision.SetActive(true);
+	}
 	[Command]
 	public void CmdChangeMascara(string newMascara)
 	{

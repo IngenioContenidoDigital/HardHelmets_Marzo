@@ -3166,8 +3166,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
-  - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4169,6 +4167,7 @@ MonoBehaviour:
   medic: 
   level: 0
   Jugador: {fileID: 0}
+  spheraColision: {fileID: 1881892180977446}
   Arma: {fileID: 1217941514867878, guid: 06ae7e7b160902644921f4fa7ad6f7b4, type: 2}
 --- !u!114 &114258513910281526
 MonoBehaviour:

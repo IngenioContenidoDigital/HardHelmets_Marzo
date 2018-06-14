@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class puaz : MonoBehaviour {
 
-	public GameObject destruir;
 	public GameObject parte1;
+	public GameObject textos;
 	public GameObject polvo;
+	public GameObject explocion;
 
-	public int ajuste;
-
-	public int sangre;
+	public float sangre;
 
 	// Use this for initialization
 	void Start ()
 	{
-		sangre = 100;
+		sangre = 300;
 	}
 	
 	// Update is called once per frame
@@ -23,42 +22,48 @@ public class puaz : MonoBehaviour {
 	{
 		if(sangre <= 0)
 		{
-			Destroy(destruir);
-			var part = (GameObject)Instantiate(parte1, destruir.transform.position, destruir.transform.rotation); //new Vector3(transform.position.x,transform.position.y+ajuste,transform.position.z), Quaternion.Euler(0,90,0)
-			var efect = (GameObject)Instantiate(polvo, transform.position, Quaternion.Euler(0,0,0));
 			Destroy(gameObject);
+			parte1.SetActive(true);
+			explocion.SetActive(true);
 		}
 	}
 
 	void OnCollisionEnter (Collision col)
 	{
-		if(col.gameObject.tag == "bala" || col.gameObject.tag == "balaEscopeta" || col.gameObject.tag == "balaFusil"|| col.gameObject.tag == "balaMetra"|| col.gameObject.tag == "balaSubmetra")
+		if(col.gameObject.tag == "bala")
 		{
-			sangre -= 5;
-		}
-		if(col.gameObject.tag == "balaSniper")
-		{
-			sangre -= 10;
+			sangre -= col.gameObject.GetComponent<balaOffline>().poder;
+
+			var partic = (GameObject)Instantiate(polvo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == "explo")
 		{
-			sangre -= 100;
+			sangre -= col.gameObject.GetComponent<ExploOffline>().poder;
+
+			var partic = (GameObject)Instantiate(polvo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+
+			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
+			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<ExploOffline>().poder.ToString("F0");
+		}
+
+		if(col.gameObject.tag == "Matar")
+		{
+			sangre -= 5000;
 		}
 
 		if(col.gameObject.tag == "tank" || col.gameObject.tag == "enemyTank")
 		{
-			Destroy(destruir);
-			//PARTE1
-			var part = (GameObject)Instantiate(parte1, destruir.transform.position, destruir.transform.rotation); //new Vector3(transform.position.x,transform.position.y+ajuste,transform.position.z), Quaternion.Euler(0,90,0)
-			var efect = (GameObject)Instantiate(polvo, transform.position, Quaternion.Euler(0,0,0));
-			Destroy(gameObject);
+			sangre -= 5000;
 		}
 	}
 	void OnTriggerEnter (Collider col)
 	{
 		if(col.gameObject.tag == "balaLlamas")
 		{
-			sangre -= 1;
+			//sangre -= 1;
 		}
 	}
 }
