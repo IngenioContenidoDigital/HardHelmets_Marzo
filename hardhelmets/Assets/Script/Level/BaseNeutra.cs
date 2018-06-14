@@ -133,8 +133,13 @@ public class BaseNeutra : MonoBehaviour {
 				sonar = false;
 				sonando = false;
 			}
-
-			puntosTotales -= 0.1f*puntosMalo;  
+			if(Application.loadedLevelName == "Tutorial")
+			{
+				puntosTotales -= 0.2f*puntosMalo;
+			}else
+			{
+				puntosTotales -= 0.1f*puntosMalo;  
+			}
 		}
 
 		if(puntosTotales > 0)
