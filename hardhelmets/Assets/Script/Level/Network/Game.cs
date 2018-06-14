@@ -300,7 +300,7 @@ public class Game : NetworkBehaviour {
 
 		if(BaseB == null)
 		{
-			BaseB = GameObject.Find("BASE");
+			BaseB = GameObject.Find("BASE MADRE");
 		}else
 		{
 			sagreBB = BaseB.GetComponent<Base>().sangre/2000;
@@ -308,7 +308,7 @@ public class Game : NetworkBehaviour {
 
 		if(BaseM == null)
 		{
-			BaseM = GameObject.Find("BASE MALA");
+			BaseM = GameObject.Find("BASE MALA MADRE");
 		}else
 		{
 			sagreBM =  BaseM.GetComponent<Base>().sangre/2000;

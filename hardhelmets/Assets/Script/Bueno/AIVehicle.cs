@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class AIVehicle : MonoBehaviour {
 
@@ -24,7 +23,6 @@ public class AIVehicle : MonoBehaviour {
 
 	/// MIOS
 	/// 
-	public NavMeshAgent agent;
 	/// 
 	//GROUND CHECHER
 	public Transform groundCheck;
@@ -125,7 +123,6 @@ public class AIVehicle : MonoBehaviour {
 
 	public float giro;
 
-	public GameObject cuerpo;
 	void Update ()
 	{
 		if(Panel == null)
@@ -173,14 +170,6 @@ public class AIVehicle : MonoBehaviour {
 		{
 			if(grounded && !quieto)
 			{
-				if(agent != null)
-				{
-					Destroy(agent);
-				}
-				if(!cuerpo.GetComponent<NavMeshObstacle>().enabled)
-				{
-					cuerpo.GetComponent<NavMeshObstacle>().enabled = true;
-				}
 				trail1.SetActive(true);
 				trail2.SetActive(true);
 				if(disparo && listo)

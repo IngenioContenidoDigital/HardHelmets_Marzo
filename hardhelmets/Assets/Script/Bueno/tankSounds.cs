@@ -32,11 +32,10 @@ public class tankSounds : MonoBehaviour {
 
 	public void Accelerate()
 	{
-		audio1.volume = efectos;
+		/*audio1.volume = efectos;
 		audio1.clip = acelera;
 		audio1.Play();
-		audio1.loop = false;
-		//StartCoroutine(espera());
+		audio1.loop = false;*/
 	}
 	IEnumerator espera ()
 	{

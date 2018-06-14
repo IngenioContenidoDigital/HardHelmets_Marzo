@@ -6,7 +6,6 @@ public class puaz : MonoBehaviour {
 
 	public GameObject parte1;
 	public GameObject textos;
-	public GameObject polvo;
 	public GameObject explocion;
 
 	public float sangre;
@@ -34,19 +33,12 @@ public class puaz : MonoBehaviour {
 		{
 			sangre -= col.gameObject.GetComponent<balaOffline>().poder;
 
-			var partic = (GameObject)Instantiate(polvo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-
 			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
 			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
 		}
 		if(col.gameObject.tag == "explo")
 		{
-			sangre -= col.gameObject.GetComponent<ExploOffline>().poder;
-
-			var partic = (GameObject)Instantiate(polvo, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-
-			var letras = (GameObject)Instantiate(textos, col.gameObject.transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<ExploOffline>().poder.ToString("F0");
+			sangre -= 5000;
 		}
 
 		if(col.gameObject.tag == "Matar")
