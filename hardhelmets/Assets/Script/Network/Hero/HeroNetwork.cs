@@ -1630,6 +1630,9 @@ public class HeroNetwork : NetworkBehaviour{
 
 				esconderBarra.SetActive(false);
 
+				menu.GetComponent<campamentos>().cuentaatras = 5f;
+				menu.GetComponent<campamentos>().contar = true;
+
 				StartCoroutine(muertee());
 				vivo = false;
 			}else

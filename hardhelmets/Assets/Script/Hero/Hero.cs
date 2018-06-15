@@ -1479,6 +1479,9 @@ public class Hero : MonoBehaviour{
 
 				esconderBarra.SetActive(false);
 
+				menu.GetComponent<campamentosOffline>().cuentaatras = 5f;
+				menu.GetComponent<campamentosOffline>().contar = true;
+
 				StartCoroutine(muertee());
 				vivo = false;
 			}else
