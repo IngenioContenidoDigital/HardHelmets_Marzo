@@ -35,8 +35,6 @@ public class Menu : MonoBehaviour {
 	//OBJETO A ANIMAR
 	public GameObject logo;
 	public GameObject any;
-	public GameObject anyES;
-	public GameObject anyCH;
 
 
 	public string pantalla;
@@ -447,8 +445,6 @@ public class Menu : MonoBehaviour {
 		if(iniciar)
 		{
 			any.GetComponent<Animator>().SetBool("bajar", true);
-			anyES.GetComponent<Animator>().SetBool("bajar", true);
-			anyCH.GetComponent<Animator>().SetBool("bajar", true);
 			logo.GetComponent<Animator>().SetBool("bajar", true);
 			nextPosition = new Vector3(153.6f, 3.6f, transform.position.z);
 
@@ -456,8 +452,6 @@ public class Menu : MonoBehaviour {
 			if(transform.position.x > 153.2f)
 			{
 				Destroy(any);
-				Destroy(anyES);
-				Destroy(anyCH);
 
 				if(pantalla == "inicio")
 				{
