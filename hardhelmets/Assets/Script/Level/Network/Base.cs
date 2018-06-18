@@ -90,7 +90,7 @@ public class Base : NetworkBehaviour {
 				Panel = GameObject.Find("GAME");
 			}else
 			{
-				if(gameObject.name == "BASE")
+				if(gameObject.name == "BASE MADRE")
 				{
 					sangre = Panel.GetComponent<Game>().sagreBB*saludMax;
 				}else

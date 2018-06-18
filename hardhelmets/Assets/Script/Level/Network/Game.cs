@@ -1046,18 +1046,12 @@ public class Game : NetworkBehaviour {
 
 		if(sagreBB <= 0)
 		{
-			if(Application.loadedLevelName == "LevelNetwork0")
-			{
-				posicion = new Vector3(BaseB.transform.position.x+7, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
-			}else
-			{
-				posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
-			}
+			posicion = new Vector3(BaseB.transform.position.x+9, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
 			muerte = true;
 		}
 		if(sagreBM <= 0)
 		{
-			posicion = new Vector3(BaseM.transform.position.x-7, BaseB.transform.position.y+10, BaseB.transform.position.z-100);
+			posicion = new Vector3(BaseM.transform.position.x-7, BaseM.transform.position.y+10, BaseM.transform.position.z-100);
 			muerte = true;
 		}
 
