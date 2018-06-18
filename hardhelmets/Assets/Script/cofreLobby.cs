@@ -42,7 +42,6 @@ public class cofreLobby : MonoBehaviour {
 	public int maxima;//1,2,7,8,9,11,15
 
 	public int cajas;
-	public UnityEngine.UI.Text cajasT;
 
 	bool esconder;
 
@@ -84,7 +83,13 @@ public class cofreLobby : MonoBehaviour {
 					PlayerPrefs.SetInt("card"+deb3, carta3);
 
 					GetComponent<Animator>().SetBool("abre", true);
-					master.GetComponent<regresaLobby>().actual = "esconder";
+					if(gameObject.name == "Baul")
+					{
+						master.GetComponent<CommunityList>().pantalla = "esconder";
+					}else
+					{
+						master.GetComponent<regresaLobby>().actual = "esconder";
+					}
 
 					open = false;
 				}
@@ -103,7 +108,13 @@ public class cofreLobby : MonoBehaviour {
 			PlayerPrefs.SetInt("card"+deb3, carta3);
 
 			GetComponent<Animator>().SetBool("abre", true);
-			master.GetComponent<regresaLobby>().actual = "esconder";
+			if(gameObject.name == "Baul")
+			{
+				master.GetComponent<CommunityList>().pantalla = "esconder";
+			}else
+			{
+				master.GetComponent<regresaLobby>().actual = "esconder";
+			}
 
 			open = false;
 		}
@@ -141,16 +152,7 @@ public class cofreLobby : MonoBehaviour {
 			GetComponent<Animator>().SetBool("cerrar", false);
 		}*/
 		////CARTAS
-		cajasT.text = cajas.ToString();
 		PlayerPrefs.SetInt("caja1", cajas);
-
-		if(cajas >= 1)
-		{
-			baul.SetActive(true);
-		}else
-		{
-			baul.SetActive(false);
-		}
 
 		if(listo1)
 		{
@@ -219,7 +221,28 @@ public class cofreLobby : MonoBehaviour {
 		card3.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
 		GetComponent<Animator>().SetBool("cerrar", true);
 
-		StartCoroutine(abreNuevo());
+		if(cajas >= 1)
+		{
+			if(gameObject.name == "Baul")
+			{
+				master.GetComponent<CommunityList>().pantalla = "cofre";
+			}else
+			{
+				master.GetComponent<regresaLobby>().actual = "cofre";
+			}
+			StartCoroutine(abreNuevo());
+		}else
+		{
+			if(gameObject.name == "Baul")
+			{
+				master.GetComponent<CommunityList>().pantalla = "";
+				master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("sale", false);
+				master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);
+			}else
+			{
+				master.GetComponent<regresaLobby>().actual = "";
+			}
+		}
 	}
 	IEnumerator abreNuevo()
 	{
@@ -245,7 +268,13 @@ public class cofreLobby : MonoBehaviour {
 	}
 	public void reset()
 	{
-		master.GetComponent<regresaLobby>().actual = "cofre";
+		if(gameObject.name == "Baul")
+		{
+			master.GetComponent<CommunityList>().pantalla = "cofre";
+		}else
+		{
+			master.GetComponent<regresaLobby>().actual = "cofre";
+		}
 	}
 	public void ahora()
 	{

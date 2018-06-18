@@ -32,7 +32,7 @@ public class CommunityList : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-
+		
 	}
 	public bool zona;
 
@@ -42,6 +42,15 @@ public class CommunityList : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		cajas = PlayerPrefs.GetInt("caja1");
+		if(cajas <= 0)
+		{
+			boton.SetActive(false);
+		}else
+		{
+			boton.SetActive(true);
+		}
+		cajasT.text = cajas.ToString();
 		//RESELECCIONAR ELEMENTO DE MENU
 		//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
 		if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
@@ -176,6 +185,21 @@ public class CommunityList : MonoBehaviour {
 			GetComponent<changeLevelOffline>().escenarios.GetComponent<Animator>().SetBool("sale", true);
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(cartbutton);
 			pantalla = "";
+		}else if(pantalla == "cofre")
+		{
+			boton.GetComponent<Button>().enabled = true;
+
+			baul2.GetComponent<Animator>().SetBool("cancelar", true);
+			baul2.GetComponent<cofreLobby>().open = false;
+
+			menu.GetComponent<Animator>().SetBool("sale", false);
+			menu.GetComponent<Animator>().SetBool("entra", true);
+
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(cartbutton);
+			pantalla = "";
+		}else if(pantalla == "esconder")
+		{
+			
 		}else
 		{
 			Application.LoadLevel("Load");
@@ -240,5 +264,34 @@ public class CommunityList : MonoBehaviour {
 	public void des()
 	{
 		zona = false;
+	}
+
+	public GameObject menu;
+	public GameObject baul;
+	public GameObject baul2;
+	public GameObject boton;
+
+	public int cajas;
+	public UnityEngine.UI.Text cajasT;
+	public void Cofre ()
+	{
+		menu.GetComponent<Animator>().SetBool("entra", false);
+		menu.GetComponent<Animator>().SetBool("sale", true);
+
+
+		if(!baul.activeSelf)
+		{
+			baul.SetActive(true);
+		}else
+		{
+			baul2.GetComponent<Animator>().SetBool("cancelar", false);
+			baul2.GetComponent<Animator>().SetBool("reiniciar", true);
+		}
+		StartCoroutine(momentoCofre());
+	}
+	IEnumerator momentoCofre()
+	{
+		yield return new WaitForSeconds(0.4f);
+		pantalla = "cofre";
 	}
 }

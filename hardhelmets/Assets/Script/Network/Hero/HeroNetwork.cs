@@ -1831,6 +1831,11 @@ public class HeroNetwork : NetworkBehaviour{
 	public GameObject MenuPause;
 	public void Pausa()
 	{
+		SniperCam.GetComponent<CamNetwork>().shake = false;
+		SniperCam.GetComponent<CamNetwork>().shake2 = false;
+		SniperCam.GetComponent<CamNetwork>().shakeAvion = false;
+		SniperCam.GetComponent<CamNetwork>().shakeAvion2 = false;
+
 		pausado = true;
 		ready = false;
 		SniperCam.GetComponent<Grayscale>().enabled = true;

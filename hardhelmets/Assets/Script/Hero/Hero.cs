@@ -1578,6 +1578,11 @@ public class Hero : MonoBehaviour{
 	public GameObject MenuPause;
 	public void Pausa()
 	{
+		SniperCam.GetComponent<Cam>().shake = false;
+		SniperCam.GetComponent<Cam>().shake2 = false;
+		SniperCam.GetComponent<Cam>().shakeAvion = false;
+		SniperCam.GetComponent<Cam>().shakeAvion2 = false;
+
 		pausado = true;
 		Time.timeScale = 0;
 		SniperCam.GetComponent<Grayscale>().enabled = true;

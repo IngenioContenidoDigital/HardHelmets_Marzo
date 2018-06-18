@@ -30515,6 +30515,7 @@ GameObject:
   - component: {fileID: 889048773}
   - component: {fileID: 889048775}
   - component: {fileID: 889048774}
+  - component: {fileID: 889048776}
   m_Layer: 5
   m_Name: ServerName
   m_TagString: Untagged
@@ -30574,7 +30575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: PLAYER BROWSE
+  m_Text: BROWSE PLAYER
 --- !u!222 &889048775
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30582,6 +30583,21 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 889048772}
+--- !u!114 &889048776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889048772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92043b1c12737914988c7ec968bea909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idioma: 
+  ingles: BROWSE PLAYER
+  "espa\xF1ol": BUSCADOR DE PARTIDA
+  chino: "\u6D4F\u89C8\u5668"
 --- !u!1 &891140172
 GameObject:
   m_ObjectHideFlags: 0
