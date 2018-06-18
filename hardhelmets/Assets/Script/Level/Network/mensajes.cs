@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Spine.Unity;
 
 public class mensajes : MonoBehaviour {
 
@@ -17,23 +18,38 @@ public class mensajes : MonoBehaviour {
 	public GameObject online;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		
 	}
 	public GameObject si1;
 	public GameObject si2;
 	public GameObject si3;
 	public GameObject si4;
+
+	[SpineAnimation]
+	public string entrada2;
+
+	public bool hablar;
+	public bool cosiatar;
 	// Update is called once per frame
 	void Update ()
 	{
+		if(cosiatar)
+		{
+			cosiatar = false;
+			StartCoroutine(EspEntra());
+		}
 		mostrar = master.GetComponent<Menu>().mensajes;
 
-		if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hablarcorto") || GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hablarmedio") ||  GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("hablarlargo"))
+		//yield return new WaitForSpineAnimationComplete(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+		//animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "idle", false);hablarcorto
+		/*if(GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0, "hablarcorto") || GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0, "hablarmedio") ||  GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0, "hablarlargo"))
 		{
-			GetComponent<Animator>().SetInteger("habla", 0);
-		}
-		if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("entrada"))
+			print("hablando");
+			//GetComponent<SkeletonGraphic>().SetInteger("habla", 0);
+		}*/
+		/*if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("entrada"))
 		{
 			GetComponent<Animator>().SetBool("entrada", false);
 			//GetComponent<Animator>().SetBool("salir", false);
@@ -41,41 +57,73 @@ public class mensajes : MonoBehaviour {
 		if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("entrada2"))
 		{
 			GetComponent<Animator>().SetBool("salir", false);
+		}*/
+
+		if(GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "hablarcorto" || GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "hablarmedio" || GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "hablarlargo")
+		{
+			if(!hablar)
+			{
+				hablar = true;
+				StartCoroutine(EspHabla());
+			}
+		}else
+		{
+			hablar = false;
 		}
 
 		if(see)
 		{
 			if(mostrar == "salir")
 			{
-				GetComponent<Animator>().SetInteger("habla", 1);
+				//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "hablarcorto", false);
+				//GetComponent<Animator>().SetInteger("habla", 1);
 				mensajeSalir.SetActive(true);
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si4);
+				//EspHabla();
 			}
 			if(mostrar == "tutorial")
 			{
-				GetComponent<Animator>().SetInteger("habla", 1);
+				//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "hablarcorto", false);
+				//GetComponent<Animator>().SetInteger("habla", 1);
 				tutorial.SetActive(true);
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si3);
+				//EspHabla();
 			}
 			if(mostrar == "comunity")
 			{
-				GetComponent<Animator>().SetInteger("habla", 1);
+				//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "hablarcorto", false);
+				//GetComponent<Animator>().SetInteger("habla", 1);
 				comunity.SetActive(true);
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si2);
+				//EspHabla();
 			}
 			if(mostrar == "practica")
 			{
-				GetComponent<Animator>().SetInteger("habla", 1);
+				//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "hablarcorto", false);
+				//GetComponent<Animator>().SetInteger("habla", 1);
 				practica.SetActive(true);
+				//EspHabla();
 			}
 			if(mostrar == "online")
 			{
-				GetComponent<Animator>().SetInteger("habla", 1);
+				//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "hablarcorto", false);
+				//GetComponent<Animator>().SetInteger("habla", 1);
 				online.SetActive(true);
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si1);
+				//EspHabla();
 			}
 			see = false;
 		}
+	}
+	IEnumerator EspEntra()
+	{
+		yield return new WaitForSpineAnimationComplete(GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+		GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "hablarcorto", false);
+	}
+	IEnumerator EspHabla()
+	{
+		yield return new WaitForSpineAnimationComplete(GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
+		GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "idle", false);
 	}
 
 	public void show()
@@ -104,7 +152,9 @@ public class mensajes : MonoBehaviour {
 	}
 	public void salirNo()
 	{
-		GetComponent<Animator>().SetBool("salir", true);
+		StopAllCoroutines();
+		hide();
+		GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 
 		master.GetComponent<Menu>().pantalla = "menu1";
 
@@ -120,7 +170,9 @@ public class mensajes : MonoBehaviour {
 	}
 	public void tutorialNo()
 	{
-		GetComponent<Animator>().SetBool("salir", true);
+		StopAllCoroutines();
+		hide();
+		GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 		master.GetComponent<Menu>().pantalla = "menu2";
 
 		master.GetComponent<Menu>().menu2.GetComponent<Animator>().SetBool("sale", false);

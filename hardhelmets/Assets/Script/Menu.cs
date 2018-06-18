@@ -1370,7 +1370,11 @@ public class Menu : MonoBehaviour {
 		mensajes = "salir";
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(e1);
 		mensaje.SetActive(true);
-		mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		mensaje.GetComponent<mensajes>().mostrar = "salir";
+		mensaje.GetComponent<mensajes>().show();
+		mensaje.GetComponent<mensajes>().cosiatar = true;
 
 		menu2.GetComponent<Animator>().SetBool("entra", false);
 		menu2.GetComponent<Animator>().SetBool("sale", true);
@@ -1399,7 +1403,11 @@ public class Menu : MonoBehaviour {
 		pantalla = "online";
 		mensajes = "online";
 		mensaje.SetActive(true);
-		mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		mensaje.GetComponent<mensajes>().mostrar = "online";
+		mensaje.GetComponent<mensajes>().show();
+		mensaje.GetComponent<mensajes>().cosiatar = true;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(r1);
 
 		menu2.GetComponent<Animator>().SetBool("entra", false);
@@ -1422,7 +1430,11 @@ public class Menu : MonoBehaviour {
 		pantalla = "comunity";
 		mensajes = "comunity";
 		mensaje.SetActive(true);
-		mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		mensaje.GetComponent<mensajes>().mostrar = "comunity";
+		mensaje.GetComponent<mensajes>().show();
+		mensaje.GetComponent<mensajes>().cosiatar = true;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(c1);
 
 		menu2.GetComponent<Animator>().SetBool("entra", false);
@@ -1434,7 +1446,11 @@ public class Menu : MonoBehaviour {
 		pantalla = "tutorial";
 		mensajes = "tutorial";
 		mensaje.SetActive(true);
-		mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		mensaje.GetComponent<mensajes>().mostrar = "tutorial";
+		mensaje.GetComponent<mensajes>().show();
+		mensaje.GetComponent<mensajes>().cosiatar = true;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(t1);
 
 		menu2.GetComponent<Animator>().SetBool("entra", false);
@@ -1446,7 +1462,11 @@ public class Menu : MonoBehaviour {
 		pantalla = "practica";
 		mensajes = "practica";
 		mensaje.SetActive(true);
-		mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		mensaje.GetComponent<mensajes>().mostrar = "practica";
+		mensaje.GetComponent<mensajes>().show();
+		mensaje.GetComponent<mensajes>().cosiatar = true;
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(p1);
 
 		menu2.GetComponent<Animator>().SetBool("entra", false);
@@ -1883,7 +1903,8 @@ public class Menu : MonoBehaviour {
 		{
 			mensajes = "salir";
 			mensaje.SetActive(true);
-			mensaje.GetComponent<Animator>().SetBool("entrada", true);
+			//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+			mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(e1);
 		}
 		if(pantalla == "settings")
@@ -2059,7 +2080,8 @@ public class Menu : MonoBehaviour {
 			pantalla = "menu2";
 			mensajes = "";
 
-			mensaje.GetComponent<Animator>().SetBool("salir", true);
+			//mensaje.GetComponent<Animator>().SetBool("salir", true);
+			mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 
 			menu2.GetComponent<Animator>().SetBool("sale", false);
 			menu2.GetComponent<Animator>().SetBool("entra", true);

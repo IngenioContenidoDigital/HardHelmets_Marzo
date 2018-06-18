@@ -1935,6 +1935,7 @@ public class Game : NetworkBehaviour {
 	public void ResetValues()
 	{
 		Player1.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
+		Player1.GetComponent<HeroNetwork>().v3 = Vector3.zero;
 		
 		Falta = 420;
 		continuar = false;
@@ -2144,6 +2145,7 @@ public class Game : NetworkBehaviour {
 	public void RpcResetValuesCliente()
 	{
 		Player2.GetComponent<HeroNetwork>().barra.GetComponent<barra>().fill = 0;
+		Player2.GetComponent<HeroNetwork>().v3 = Vector3.zero;
 
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nace = 0;
 		Player2.GetComponent<HeroNetwork>().menu.GetComponent<campamentos>().nacer();

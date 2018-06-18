@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//using Com.LuisPedroFonseca.ProCamera2D;
 using UnityStandardAssets.ImageEffects;
 using UnityEngine.Networking;
 
@@ -62,6 +61,8 @@ public class CamNetwork : NetworkBehaviour {
 	public float vib;
 	public bool shake;
 	public bool shakeAvion;
+	public bool shake2;
+	public bool shakeAvion2;
 
 	//OBJETIVO
 	public bool objetivo;
@@ -173,7 +174,6 @@ public class CamNetwork : NetworkBehaviour {
 		if(sube)
 		{
 			loop = true;
-			//ProCamera2DShake.Instance.Shake();
 			shake = true;
 			intensidad += 0.02f;
 			GetComponent<BloomOptimized>().intensity = intensidad;
@@ -566,13 +566,23 @@ public class CamNetwork : NetworkBehaviour {
 		//VIBRACION
 		if(shake)
 		{
-			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
+			shake2 = true;
+			shake = false;
 			StartCoroutine(tiempo());
+		}
+		if(shake2)
+		{
+			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
 		}
 		if(shakeAvion)
 		{
-			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
+			shakeAvion2 = true;
+			shakeAvion = false;
 			StartCoroutine(tiempoAvion());
+		}
+		if(shakeAvion2)
+		{
+			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
 		}
 	}
 	public float ajuste;
@@ -586,11 +596,13 @@ public class CamNetwork : NetworkBehaviour {
 	{
 		yield return new WaitForSeconds(0.1f);
 		shake = false;
+		shake2 = false;
 	}
 	IEnumerator tiempoAvion()
 	{
 		yield return new WaitForSeconds(0.5f);
 		shakeAvion = false;
+		shakeAvion2 = false;
 	}
 }
 

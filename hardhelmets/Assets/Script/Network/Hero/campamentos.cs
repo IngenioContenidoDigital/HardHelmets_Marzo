@@ -460,6 +460,10 @@ public class campamentos : MonoBehaviour {
 		Player.GetComponent<CustomFinalNetwork>().CmdSetCasco(Player.GetComponent<CustomFinalNetwork>().casco);
 		Cabeza.GetComponent<CabezaNetwork>().tirosCabeza = 0;
 
+		Camara.GetComponent<CamNetwork>().shake = false;
+		Camara.GetComponent<CamNetwork>().shake2 = false;
+		Camara.GetComponent<CamNetwork>().shakeAvion = false;
+		Camara.GetComponent<CamNetwork>().shakeAvion2 = false;
 		Camara.GetComponent<CamNetwork>().campamento = false;
 
 		Player.GetComponent<HeroNetwork>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<HeroNetwork>().carta1);
