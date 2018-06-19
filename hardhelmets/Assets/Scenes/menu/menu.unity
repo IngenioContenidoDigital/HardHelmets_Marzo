@@ -27543,6 +27543,7 @@ GameObject:
   - component: {fileID: 634565141}
   - component: {fileID: 634565143}
   - component: {fileID: 634565142}
+  - component: {fileID: 634565140}
   m_Layer: 5
   m_Name: YourEntry
   m_TagString: Untagged
@@ -27550,6 +27551,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &634565140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 634565139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6034dc7fcee6c240bcc5b3e108cef8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RankText: {fileID: 967505446}
+  PlayerNameText: {fileID: 149330107}
+  ScoreText: {fileID: 108960800}
+  Usuario: {fileID: 0}
+  borde: {fileID: 0}
 --- !u!224 &634565141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51888,7 +51905,7 @@ MonoBehaviour:
   Fetch_IDField: {fileID: 0}
   Upload_IDField: {fileID: 548873078}
   Upload_ScoreField: {fileID: 799649317}
-  yourEntryUI: {fileID: 0}
+  yourEntryUI: {fileID: 634565140}
 --- !u!114 &971534380
 MonoBehaviour:
   m_ObjectHideFlags: 0

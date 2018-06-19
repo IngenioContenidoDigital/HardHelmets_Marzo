@@ -20,7 +20,7 @@ public class ESL_LeaderboardEntryUI : MonoBehaviour
 			Usuario = GameObject.Find("UserRank");
 		}else
 		{
-			if(Usuario.GetComponent<Text>().text == RankText.text)
+			if(Usuario.GetComponent<Text>().text == RankText.text && gameObject.name != "YourEntry")
 			{
 				borde.SetActive(true);
 			}
