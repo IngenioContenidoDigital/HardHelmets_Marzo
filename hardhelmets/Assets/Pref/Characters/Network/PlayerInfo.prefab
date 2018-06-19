@@ -3347,7 +3347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 114551201739080786}
@@ -3689,6 +3689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padre: {fileID: 1327779909921808}
   boton: {fileID: 0}
+  boton2: {fileID: 0}
   este: {fileID: 114551201739080786}
   navegar:
     m_Mode: 0
@@ -3699,6 +3700,8 @@ MonoBehaviour:
   direccion: izquierda
   buscar: CartasBoton
   buscar2: CartasBoton2
+  direccion2: 
+  buscar3: 
   Player: 
 --- !u!114 &114983125251058580
 MonoBehaviour:

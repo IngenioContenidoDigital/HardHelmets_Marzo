@@ -9,17 +9,33 @@ public class DisplayName : MonoBehaviour {
 	[Header ("UI Component")]
 	public Text displayName;
 	public Text Nivel;
+	public Text Banderas;
+	public Text Bases;
 	public Image avatarImage;
 
 	[Header ("Stat String Data")]
 	public string[] statStrings;
 	int startC;
 
-	int level;
+	public int level;
+	public int Flags;
+	public int Bass;
+
+	public GameObject skin;
 
 	void Start () 
 	{
+		displayName.text =  PlayerPrefs.GetString("SteamName");
+
 		level = PlayerPrefs.GetInt("PlayerLevel");
+		Flags = PlayerPrefs.GetInt("Banderas");
+		Bass = PlayerPrefs.GetInt("Bases");
+
+		Nivel.text = level.ToString();
+		Banderas.text = Flags.ToString();
+		Bases.text = Bass.ToString();
+
+		skin.GetComponent<combinedSkins>().skinsToCombine[0] = level.ToString();
 
 		if(!SteamManager.Initialized)
 		{
@@ -27,12 +43,10 @@ public class DisplayName : MonoBehaviour {
 		}
 
 		//Display User Name
-		displayName.text = SteamFriends.GetPersonaName();
+		//displayName.text = SteamFriends.GetPersonaName();
 
 		//PLAYER LEVEL
 		//starCount.text = SteamUser.GetPlayerSteamLevel().ToString();
-
-		Nivel.text = level.ToString();
 
 		//PONE IMAGEN DE AVATAR
 		StartCoroutine(_FetchAvatar());

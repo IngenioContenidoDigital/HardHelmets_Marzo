@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Spine.Unity;
 using UnityEngine.Networking;
 using Steamworks;
+using EasySteamLeaderboard;
 
 public class Menu : MonoBehaviour {
 
@@ -378,7 +379,7 @@ public class Menu : MonoBehaviour {
 		{
 			boton.SetActive(false);
 		}
-		if(pantalla == "menu2")
+		if(pantalla == "menu2" || pantalla == "cofre")
 		{
 			global.SetActive(true);
 		}else
@@ -1890,6 +1891,144 @@ public class Menu : MonoBehaviour {
 			descripcion.text = "自定义您的播放器ID以在其他播放器前显示您的个性";
 		}
 	}
+
+	public GameObject lideres;
+	public GameObject L1;
+	public GameObject mensajeleader;
+	public void LeaderBoard()
+	{
+		pantalla = "";
+
+		menu2.GetComponent<Animator>().SetBool("entra", false);
+		menu2.GetComponent<Animator>().SetBool("sale", true);
+
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
+
+		StartCoroutine(apareceLideres());
+	}
+
+	IEnumerator apareceLideres()
+	{
+		yield return new WaitForSeconds(1);
+		lideres.SetActive(true);
+
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(L1);
+
+		pantalla = "lideres";
+	}
+
+	public void UploadScoreToLeaderboard()
+	{
+		int score = Mathf.RoundToInt(PlayerPrefs.GetFloat("PlayerEXTotal"));
+		string lbid = "BestSoldiers";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("CARGADO PUNTAJE");
+					lideres.GetComponent<ESL_LeaderboardUI>().FetchLeaderboard();
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+					mensajeleader.SetActive(true);
+					StartCoroutine(esconderleader());
+				}
+			});
+	}
+
+	public void UploadScoreToLeaderboardKills()
+	{
+		int score = PlayerPrefs.GetInt("Kills");
+		string lbid = "BestKills";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("CARGADO MUERTES");
+					lideres.GetComponent<ESL_LeaderboardUI>().FetchLeaderboardKills();
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+					mensajeleader.SetActive(true);
+					StartCoroutine(esconderleader());
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardFlags()
+	{
+		int score = PlayerPrefs.GetInt("Banderas");
+		string lbid = "BestFlags";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("CARGADO BANDERAS");
+					lideres.GetComponent<ESL_LeaderboardUI>().FetchLeaderboardFlags();
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+					mensajeleader.SetActive(true);
+					StartCoroutine(esconderleader());
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardBases()
+	{
+		int score = PlayerPrefs.GetInt("Bases");
+		string lbid = "BestBases";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("CARGADO BASES");
+					lideres.GetComponent<ESL_LeaderboardUI>().FetchLeaderboardBases();
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+					mensajeleader.SetActive(true);
+					StartCoroutine(esconderleader());
+				}
+			});
+	}
+	public void UploadScoreToLeaderboardWins()
+	{
+		int score = PlayerPrefs.GetInt("Victorias");
+		string lbid = "BestWins";
+
+		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
+			{
+				//check if leaderboard successfully fetched
+				if (result.resultCode == ESL_ResultCode.Success)
+				{
+					Debug.Log("CARGADO VICTORIAS");
+					lideres.GetComponent<ESL_LeaderboardUI>().FetchLeaderboardWins();
+				}
+				else
+				{
+					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
+					StopAllCoroutines();
+					mensajeleader.SetActive(true);
+					StartCoroutine(esconderleader());
+				}
+			});
+	}
+
 	//REGRESAR
 	public GameObject mano;
 	//MENSAJE EN PANTALLA
@@ -2082,6 +2221,19 @@ public class Menu : MonoBehaviour {
 
 			//mensaje.GetComponent<Animator>().SetBool("salir", true);
 			mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
+			mensaje.GetComponent<mensajes>().hide();
+
+			menu2.GetComponent<Animator>().SetBool("sale", false);
+			menu2.GetComponent<Animator>().SetBool("entra", true);
+
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m2);
+		}
+		if(pantalla == "lideres")
+		{
+			pantalla = "menu2";
+			mensajes = "";
+
+			lideres.SetActive(false);
 
 			menu2.GetComponent<Animator>().SetBool("sale", false);
 			menu2.GetComponent<Animator>().SetBool("entra", true);
@@ -2094,6 +2246,11 @@ public class Menu : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(1);
 		mensajecartas.SetActive(false);
+	}
+	IEnumerator esconderleader()
+	{
+		yield return new WaitForSeconds(1);
+		mensajeleader.SetActive(false);
 	}
 
 	public EventSystem eventsystem;

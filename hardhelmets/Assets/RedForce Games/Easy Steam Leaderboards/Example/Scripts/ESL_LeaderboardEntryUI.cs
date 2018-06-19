@@ -10,6 +10,23 @@ public class ESL_LeaderboardEntryUI : MonoBehaviour
 	public Text PlayerNameText;
 	public Text ScoreText;
 
+	public GameObject Usuario;
+	public GameObject borde;
+
+	public void Update()
+	{
+		if(Usuario == null)
+		{
+			Usuario = GameObject.Find("UserRank");
+		}else
+		{
+			if(Usuario.GetComponent<Text>().text == RankText.text)
+			{
+				borde.SetActive(true);
+			}
+		}
+	}
+
 	public void Initialize(ESL_LeaderboardEntry entry)
 	{
 		if (entry == null)

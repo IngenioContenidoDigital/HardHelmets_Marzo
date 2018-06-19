@@ -130,6 +130,29 @@ public class CommunityList : MonoBehaviour {
 			regresar();
 		}
 	}
+
+	public void arribaBoton()
+	{
+		if(!top)
+		{
+			Selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(Selector.GetComponent<RectTransform>().anchoredPosition.x,Selector.GetComponent<RectTransform>().anchoredPosition.y+mover2);
+		}else if(CommunityListObject.activo != "primero")
+		{
+			content.GetComponent<RectTransform>().anchoredPosition = new Vector3(content.GetComponent<RectTransform>().anchoredPosition.x,content.GetComponent<RectTransform>().anchoredPosition.y-mover);
+		}
+	}
+
+	public void abajoBoton()
+	{
+		if(!down)
+		{
+			Selector.GetComponent<RectTransform>().anchoredPosition = new Vector3(Selector.GetComponent<RectTransform>().anchoredPosition.x,Selector.GetComponent<RectTransform>().anchoredPosition.y-mover2);
+		}else if(CommunityListObject.activo != "ultimo")
+		{
+			content.GetComponent<RectTransform>().anchoredPosition = new Vector3(content.GetComponent<RectTransform>().anchoredPosition.x,content.GetComponent<RectTransform>().anchoredPosition.y+mover);
+		}
+	}
+
 	IEnumerator EspHabla()
 	{
 		yield return new WaitForSpineAnimationComplete(capitan.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0));
@@ -178,6 +201,7 @@ public class CommunityList : MonoBehaviour {
 			pantalla = "";
 		}else if(pantalla == "letrero")
 		{
+			StopAllCoroutines();
 			negar();
 		}else if(pantalla == "level")
 		{
@@ -239,6 +263,7 @@ public class CommunityList : MonoBehaviour {
 	public void negar()
 	{
 		pantalla = "";
+		StopAllCoroutines();
 		capitan.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 		mensaje.SetActive(false);
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(list);

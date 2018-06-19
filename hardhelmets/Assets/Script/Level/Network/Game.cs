@@ -1372,16 +1372,6 @@ public class Game : NetworkBehaviour {
 						}
 					}
 				}
-
-				if(!subirpuntaje)
-				{
-					if(XPTotal > 0)
-					{
-						UploadScoreToLeaderboard();
-					}
-
-					subirpuntaje = true;
-				}
 			}
 		}else//PLAYER 2 "CLIENTE"
 		{
@@ -1564,134 +1554,12 @@ public class Game : NetworkBehaviour {
 						//todo se hace desde el servidor
 					}
 				}
-				if(!subirpuntaje)
-				{
-					if(XPTotal > 0)
-					{
-						UploadScoreToLeaderboard();
-					}
-					subirpuntaje = true;
-				}
 			}
 		}
 	}
 	//SUBIR A BASES DE DATOS DE STEAM
 	public bool sumarmatados;
-	public bool subirpuntaje;
 
-	public void UploadScoreToLeaderboard()
-	{
-		int score = Mathf.RoundToInt(XPTotal);
-		string lbid = "BestSoldiers";
-
-		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
-			{
-				//check if leaderboard successfully fetched
-				if (result.resultCode == ESL_ResultCode.Success)
-				{
-					Debug.Log("Succesfully Uploaded!");
-					if(PlayerPrefs.GetInt("Kills") > 0)
-					{
-						UploadScoreToLeaderboardKills();
-					}
-				}
-				else
-				{
-					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
-					StopAllCoroutines();
-				}
-			});
-	}
-	public void UploadScoreToLeaderboardKills()
-	{
-		int score = PlayerPrefs.GetInt("Kills");
-		string lbid = "BestKills";
-
-		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
-			{
-				//check if leaderboard successfully fetched
-				if (result.resultCode == ESL_ResultCode.Success)
-				{
-					Debug.Log("Succesfully Uploaded!");
-					if(PlayerPrefs.GetInt("Banderas") > 0)
-					{
-						UploadScoreToLeaderboardFlags();
-					}
-
-				}
-				else
-				{
-					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
-					StopAllCoroutines();
-				}
-			});
-	}
-	public void UploadScoreToLeaderboardFlags()
-	{
-		int score = PlayerPrefs.GetInt("Banderas");
-		string lbid = "BestFlags";
-
-		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
-			{
-				//check if leaderboard successfully fetched
-				if (result.resultCode == ESL_ResultCode.Success)
-				{
-					Debug.Log("Succesfully Uploaded!");
-					if(PlayerPrefs.GetInt("Bases") > 0)
-					{
-						UploadScoreToLeaderboardBases();
-					}
-
-				}
-				else
-				{
-					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
-					StopAllCoroutines();
-				}
-			});
-	}
-	public void UploadScoreToLeaderboardBases()
-	{
-		int score = PlayerPrefs.GetInt("Bases");
-		string lbid = "BestBases";
-
-		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
-			{
-				//check if leaderboard successfully fetched
-				if (result.resultCode == ESL_ResultCode.Success)
-				{
-					Debug.Log("Succesfully Uploaded!");
-					if(PlayerPrefs.GetInt("Victorias") > 0)
-					{
-						UploadScoreToLeaderboardWins();
-					}
-				}
-				else
-				{
-					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
-					StopAllCoroutines();
-				}
-			});
-	}
-	public void UploadScoreToLeaderboardWins()
-	{
-		int score = PlayerPrefs.GetInt("Victorias");
-		string lbid = "BestWins";
-
-		EasySteamLeaderboards.Instance.UploadScoreToLeaderboard(lbid, score, (result) =>
-			{
-				//check if leaderboard successfully fetched
-				if (result.resultCode == ESL_ResultCode.Success)
-				{
-					Debug.Log("Succesfully Uploaded!");
-				}
-				else
-				{
-					Debug.Log("Failed Uploading: " + result.resultCode.ToString());
-					StopAllCoroutines();
-				}
-			});
-	}
 	//SUBIR A BASES DE DATOS DE STEAM
 	//SE ACABO EL TIEMPO
 	IEnumerator esperatitulos()
@@ -2032,7 +1900,6 @@ public class Game : NetworkBehaviour {
 		sumatoria8 = false;
 
 		sumarmatados = false;
-		subirpuntaje = false;
 
 		Baul.SetActive(false);
 
@@ -2162,7 +2029,6 @@ public class Game : NetworkBehaviour {
 		bajartiempo = false;
 
 		sumarmatados = false;
-		subirpuntaje = false;
 
 		//sleccionFinal = 30;
 		rematchS = -1;
@@ -2256,7 +2122,6 @@ public class Game : NetworkBehaviour {
 		sumatoria8 = false;
 
 		sumarmatados = false;
-		subirpuntaje = false;
 
 		Baul.SetActive(false);
 

@@ -10,6 +10,7 @@ public class LobbyButtonSearch : MonoBehaviour {
 	public GameObject padre;
 
 	public GameObject boton;
+	public GameObject boton2;
 
 	public Button este;
 
@@ -19,6 +20,9 @@ public class LobbyButtonSearch : MonoBehaviour {
 
 	public string buscar;
 	public string buscar2;
+
+	public string direccion2;
+	public string buscar3;
 
 
 	// Use this for initialization
@@ -32,11 +36,12 @@ public class LobbyButtonSearch : MonoBehaviour {
 	{
 		if(Player == "server")
 		{
-			print("buscando 1");
 			boton = GameObject.Find(buscar);
+			boton2 = GameObject.Find(buscar3);
 		}else
 		{
 			boton = GameObject.Find(buscar2);
+			boton2 = GameObject.Find(buscar3);
 		}
 
 		if(padre.GetComponent<ChangeLevel>().set)
@@ -55,6 +60,10 @@ public class LobbyButtonSearch : MonoBehaviour {
 			if(direccion == "izquierda")
 			{
 				navegar.selectOnLeft = boton.GetComponent<Button>();
+			}
+			if(direccion2 == "derecha")
+			{
+				navegar.selectOnRight = boton2.GetComponent<Button>();
 			}
 			este.navigation = navegar;
 		}

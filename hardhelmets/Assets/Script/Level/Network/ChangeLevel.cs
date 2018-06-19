@@ -132,7 +132,10 @@ namespace Prototype.NetworkLobby
 			}
 			if(Input.GetButtonDown("Cancel"))
 			{
-				cerrar();
+				if(entrado)
+				{
+					cerrar();
+				}
 			}
 		}
 
@@ -159,6 +162,8 @@ namespace Prototype.NetworkLobby
 		public GameObject boton1;
 		public GameObject boton2;
 
+		bool entrado;
+
 		public void press ()
 		{
 			master.GetComponent<regresaLobby>().actual2 = "nivel";
@@ -173,10 +178,13 @@ namespace Prototype.NetworkLobby
 
 			print("boton seleccionado");
 			eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(boton1);
+
+			entrado = true;
 		}
 
 		public void cerrar ()
 		{
+			entrado = false;
 			azar = false;
 			escenarios.GetComponent<Animator>().SetBool("sale", true);
 			master.GetComponent<regresaLobby>().actual2 = "jugadores";

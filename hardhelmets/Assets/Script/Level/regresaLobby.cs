@@ -39,9 +39,6 @@ namespace Prototype.NetworkLobby {
 
 		public bool retirada;
 
-		public GameObject cofre;
-		public GameObject baul;
-
 		public void Start ()
 		{
 			actual = "";
@@ -52,6 +49,16 @@ namespace Prototype.NetworkLobby {
 
 		public void Update()
 		{
+			cajas = PlayerPrefs.GetInt("caja1");
+			if(cajas >= 1 && !jugado2)
+			{
+				boton.SetActive(true);
+			}else
+			{
+				boton.SetActive(false);
+			}
+			cajasT.text = cajas.ToString();
+
 			Player1 = GameObject.Find("PlayerInfo1");
 			Player2 = GameObject.Find("PlayerInfo2");
 
@@ -276,8 +283,28 @@ namespace Prototype.NetworkLobby {
 					}else if(actual == "cofre")
 					{
 						actual = actual2;
-						cofre.GetComponent<Animator>().SetBool("cancelar", true);
-						cofre.GetComponent<cofreLobby>().open = false;
+						baul2.GetComponent<Animator>().SetBool("cancelar", true);
+						baul2.GetComponent<cofreLobby>().open = false;
+
+						menu.GetComponent<Animator>().SetBool("sale", false);
+						menu.GetComponent<Animator>().SetBool("entra", true);
+
+						boton.GetComponent<Button>().enabled = true;
+
+						if(actual2 == "jugadores")
+						{
+							eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaServer);
+						}else if(actual2 == "servidores")
+						{
+							eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
+						}else
+						{
+							eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(crearButton);
+						}
+
+					}else if(actual == "esconder")
+					{
+						
 					}else if(actual == "servidores")
 					{
 						master.GetComponent<LobbyManager>().actual = "";
@@ -340,17 +367,30 @@ namespace Prototype.NetworkLobby {
 		public GameObject barajaList;
 
 		//ABRIR COFRE
+
+		public GameObject menu;
+		public GameObject baul;
+		public GameObject baul2;
+		public GameObject boton;
+
+		public int cajas;
+		public UnityEngine.UI.Text cajasT;
 		public void Cofre ()
 		{
 			actual2 = actual;
+
+			menu.GetComponent<Animator>().SetBool("entra", false);
+			menu.GetComponent<Animator>().SetBool("sale", true);
+
 			if(!baul.activeSelf)
 			{
 				baul.SetActive(true);
 			}else
 			{
-				cofre.GetComponent<Animator>().SetBool("cancelar", false);
-				cofre.GetComponent<Animator>().SetBool("reiniciar", true);
+				baul2.GetComponent<Animator>().SetBool("cancelar", false);
+				baul2.GetComponent<Animator>().SetBool("reiniciar", true);
 			}
+			menu.GetComponent<LobbyManager>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
 			StartCoroutine(momentoCofre());
 		}
 		IEnumerator momentoCofre()

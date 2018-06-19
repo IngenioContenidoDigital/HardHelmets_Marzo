@@ -100,8 +100,10 @@ public class cofreLobby : MonoBehaviour {
 
 		if(open && Input.GetButtonDown("Jump") || open && Input.GetButtonDown("Submit"))
 		{
+			open = false;
 			GetComponent<BoxCollider>().enabled = false;
 			cajas -= 1;
+			print("RESTAR COFRE");
 
 			PlayerPrefs.SetInt("card"+deb1, carta1);
 			PlayerPrefs.SetInt("card"+deb2, carta2);
@@ -115,8 +117,6 @@ public class cofreLobby : MonoBehaviour {
 			{
 				master.GetComponent<regresaLobby>().actual = "esconder";
 			}
-
-			open = false;
 		}
 
 		if(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("entrac"))
@@ -211,6 +211,17 @@ public class cofreLobby : MonoBehaviour {
 
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(m1);
 
+		if(gameObject.name == "Baul")
+		{
+			master.GetComponent<CommunityList>().pantalla = "";
+			master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("sale", false);
+			master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);
+		}else
+		{
+			master.GetComponent<regresaLobby>().actual = master.GetComponent<regresaLobby>().actual2;
+			master.GetComponent<regresaLobby>().menu.GetComponent<Animator>().SetBool("sale", false);
+			master.GetComponent<regresaLobby>().menu.GetComponent<Animator>().SetBool("entra", true);
+		}
 	}
 	IEnumerator cerrarNuevo()
 	{
@@ -240,7 +251,11 @@ public class cofreLobby : MonoBehaviour {
 				master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);
 			}else
 			{
-				master.GetComponent<regresaLobby>().actual = "";
+				print("NO MAS COFRES");
+				master.GetComponent<regresaLobby>().Regresar();
+				/*master.GetComponent<regresaLobby>().actual = master.GetComponent<regresaLobby>().actual2;
+				master.GetComponent<regresaLobby>().menu.GetComponent<Animator>().SetBool("sale", false);
+				master.GetComponent<regresaLobby>().menu.GetComponent<Animator>().SetBool("entra", true);*/
 			}
 		}
 	}
