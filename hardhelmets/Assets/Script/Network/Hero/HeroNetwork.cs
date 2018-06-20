@@ -226,12 +226,14 @@ public class HeroNetwork : NetworkBehaviour{
 	// Use this for initialization
 	void Start ()
 	{
-		level = PlayerPrefs.GetInt("PlayerLevel");
-		CmdSendNivel(level);
+		if(isLocalPlayer)
+		{
+			nombre = PlayerPrefs.GetString("SteamName");
+			name.GetComponent<TextMesh>().text = nombre;
 
-		nombre = PlayerPrefs.GetString("SteamName");
-
-		name.GetComponent<TextMesh>().text = nombre;
+			level = PlayerPrefs.GetInt("PlayerLevel");
+			CmdSendNivel(level);
+		}
 		if(!isServer)// && gameObject.tag == "enemy")
 		{
 			saludMax2 = 100+level*4;

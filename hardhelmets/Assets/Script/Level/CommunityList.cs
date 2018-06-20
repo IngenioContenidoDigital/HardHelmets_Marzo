@@ -43,12 +43,12 @@ public class CommunityList : MonoBehaviour {
 	void Update ()
 	{
 		cajas = PlayerPrefs.GetInt("caja1");
-		if(cajas <= 0)
-		{
-			boton.SetActive(false);
-		}else
+		if(cajas >= 1 && pantalla != "cartas")
 		{
 			boton.SetActive(true);
+		}else
+		{
+			boton.SetActive(false);
 		}
 		cajasT.text = cajas.ToString();
 		//RESELECCIONAR ELEMENTO DE MENU
