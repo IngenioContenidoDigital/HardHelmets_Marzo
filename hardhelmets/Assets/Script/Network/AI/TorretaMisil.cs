@@ -75,6 +75,7 @@ public class TorretaMisil : NetworkBehaviour {
 	IEnumerator Quitaragente()
 	{
 		yield return new WaitForSeconds(0.02f);
+		GetComponent<NavMeshObstacle>().enabled = true;
 		Destroy(agent);
 	}
 
