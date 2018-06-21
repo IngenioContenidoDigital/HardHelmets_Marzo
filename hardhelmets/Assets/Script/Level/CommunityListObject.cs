@@ -191,6 +191,7 @@ public class CommunityListObject : MonoBehaviour {
 
 		if(content.GetComponent<CommunityList>().zona && selected)
 		{
+			boton.GetComponent<Button>().interactable = true;
 			boton.GetComponent<UnityEngine.UI.Image>().sprite = a2;
 			if(Input.GetButtonDown("Jump") || Input.GetButtonDown("Submit"))
 			{
@@ -198,6 +199,7 @@ public class CommunityListObject : MonoBehaviour {
 			}
 		}else
 		{
+			boton.GetComponent<Button>().interactable = false;
 			boton.GetComponent<UnityEngine.UI.Image>().sprite = a1;
 		}
 	}

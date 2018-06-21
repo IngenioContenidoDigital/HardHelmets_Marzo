@@ -75,6 +75,11 @@ public class Cofre : MonoBehaviour {
 					GetComponent<BoxCollider>().enabled = false;
 					cajas -= 1;
 
+					if(PlayerPrefs.GetInt("Tutorial") == 1)
+					{
+						PlayerPrefs.SetInt("Tutorial", 2);
+					}
+
 					PlayerPrefs.SetInt("card"+deb1, carta1);
 					PlayerPrefs.SetInt("card"+deb2, carta2);
 					PlayerPrefs.SetInt("card"+deb3, carta3);
@@ -93,6 +98,11 @@ public class Cofre : MonoBehaviour {
 		{
 			GetComponent<BoxCollider>().enabled = false;
 			cajas -= 1;
+
+			if(PlayerPrefs.GetInt("Tutorial") == 1)
+			{
+				PlayerPrefs.SetInt("Tutorial", 2);
+			}
 
 			PlayerPrefs.SetInt("card"+deb1, carta1);
 			PlayerPrefs.SetInt("card"+deb2, carta2);
