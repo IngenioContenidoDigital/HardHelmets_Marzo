@@ -13971,7 +13971,7 @@ MonoBehaviour:
   eventsystem: {fileID: 114696941349025028}
   carta1: {fileID: 1647118117487940}
   muerto1: {fileID: 1279919508752440}
-  pausa1: {fileID: 0}
+  pausa1: {fileID: 1661206195897474}
   pausado: 0
   apuntar: {fileID: 1648570953857984}
   textos: {fileID: 1638684850247350, guid: 3fa7561b60fb995438a3238fd4335041, type: 2}
@@ -15172,7 +15172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.965}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15353,7 +15353,7 @@ MonoBehaviour:
   idioma: 
   ingles: OBJECTIVE
   "espa\xF1ol": OBJETIVO
-  chino: 
+  chino: "\u76EE\u7684"
 --- !u!114 &114131025684523862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15420,10 +15420,10 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   maskMethod: 0
   masks: 00000100
-  _TilingOffset: 483
-  _MaskBase: 484
-  _MaskLayers: 485
-  instanceID: -2033864
+  _TilingOffset: 414
+  _MaskBase: 415
+  _MaskLayers: 416
+  instanceID: -1796648
 --- !u!114 &114136381807233874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15839,7 +15839,7 @@ MonoBehaviour:
   idioma: 
   ingles: QUIT
   "espa\xF1ol": SALIR
-  chino: 
+  chino: "\u653E\u5F03"
 --- !u!114 &114162534776858654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15873,7 +15873,7 @@ MonoBehaviour:
   idioma: 
   ingles: OPTIONS
   "espa\xF1ol": OPCIONES
-  chino: 
+  chino: "\u9009\u9879"
 --- !u!114 &114168533179680572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16067,7 +16067,7 @@ MonoBehaviour:
   idioma: 
   ingles: RESPAWN
   "espa\xF1ol": RENACER
-  chino: 
+  chino: "\u91CD\u751F"
 --- !u!114 &114177594170408216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -20541,7 +20541,7 @@ MonoBehaviour:
   eventsystem: {fileID: 114696941349025028}
   carta1: {fileID: 1647118117487940}
   blood1: {fileID: 1580411886094710}
-  options1: {fileID: 1646486413154304}
+  options1: {fileID: 1661206195897474}
   si1: {fileID: 1891930442164208}
   principal: {fileID: 1945354262919608}
   Opciones: {fileID: 1558132592737458}
@@ -22948,7 +22948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.965}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -24385,7 +24385,7 @@ MonoBehaviour:
   idioma: 
   ingles: OPTIONS
   "espa\xF1ol": OPCIONES
-  chino: 
+  chino: "\u9009\u9879"
 --- !u!114 &114735019249514856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -24921,7 +24921,7 @@ MonoBehaviour:
   idioma: 
   ingles: RESUME
   "espa\xF1ol": CONTINUAR
-  chino: 
+  chino: "\u6062\u590D"
 --- !u!114 &114760706723644188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25489,7 +25489,7 @@ MonoBehaviour:
   idioma: 
   ingles: GAME    MENU
   "espa\xF1ol": "MEN\xDA  DE  JUEGO"
-  chino: 
+  chino: "\u6E38\u620F\u83DC\u5355"
 --- !u!114 &114799898462974158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51965,8 +51965,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34, y: 15}
-  m_SizeDelta: {x: -230.85, y: -94.33}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224653738405972312
 RectTransform:
@@ -52215,8 +52215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27, y: 9}
-  m_SizeDelta: {x: -230.85, y: -94.33}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224770966064222768
 RectTransform:
