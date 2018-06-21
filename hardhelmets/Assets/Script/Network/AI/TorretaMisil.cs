@@ -52,6 +52,8 @@ public class TorretaMisil : NetworkBehaviour {
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
 
+		StartCoroutine(Quitaragente());
+
 		if(!isServer)
 		{
 			return;
@@ -69,8 +71,6 @@ public class TorretaMisil : NetworkBehaviour {
 
 		saludMax = 8*level+200;
 		salud = saludMax;
-
-		StartCoroutine(Quitaragente());
 	}
 	IEnumerator Quitaragente()
 	{

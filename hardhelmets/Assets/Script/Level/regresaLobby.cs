@@ -249,6 +249,7 @@ namespace Prototype.NetworkLobby {
 				{
 					if(mano.GetComponent<Mano>().guardar)
 					{
+						actual = actual2;
 						actual2 = "";
 						cartas.GetComponent<Animator>().SetBool("sale", true);
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaServer);
@@ -261,6 +262,7 @@ namespace Prototype.NetworkLobby {
 				{
 					if(mano.GetComponent<Mano>().guardar)
 					{
+						actual = actual2;
 						actual2 = "";
 						cartas.GetComponent<Animator>().SetBool("sale", true);
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
