@@ -3248,10 +3248,10 @@ public class HeroNetwork : NetworkBehaviour{
 		{
 			if(_currentDirection == "right")
 			{
-				CmdGranadaMalo(avion, "R");
+				CmdGranadaMalo(avion);
 			}else
 			{
-				CmdGranadaMalo(avion, "L");
+				CmdGranadaMaloI(avion);
 			}
 			avion = false;
 		}
@@ -3264,29 +3264,68 @@ public class HeroNetwork : NetworkBehaviour{
 		if(avion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumo, granadaSpawn.position, granadaSpawn.rotation);
+			if(_currentDirection == "right")
+			{
+				granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+				granade.GetComponent<Rigidbody>().AddForce(transform.right * 50);
+			}else
+			{
+				granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+				granade.GetComponent<Rigidbody>().AddForce(transform.right * -50);
+			}
 			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
 			NetworkServer.Spawn(granade);
 			avion = false;
 		}else
 		{
 			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
+			if(_currentDirection == "right")
+			{
+				granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+				granade.GetComponent<Rigidbody>().AddForce(transform.right * 50);
+			}else
+			{
+				granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+				granade.GetComponent<Rigidbody>().AddForce(transform.right * -50);
+			}
 			NetworkServer.Spawn(granade);
 			granade.GetComponent<granadeNetwork>().poder = saludMax*granade.GetComponent<granadeNetwork>().poder/104;
 		}
 	}
 	[Command]
-	public void CmdGranadaMalo(bool newAvion, string newlado)
+	public void CmdGranadaMalo(bool newAvion)
 	{
 		if(newAvion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumoMalo, granadaSpawn.position, granadaSpawn.rotation);
-			granade.GetComponent<granadaHumoNetwork>().lado = newlado;
+			granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+			granade.GetComponent<Rigidbody>().AddForce(transform.right * 50);
 			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
 			NetworkServer.Spawn(granade);
 		}else
 		{
 			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
-			granade.GetComponent<granadeNetwork>().lado = newlado;
+			granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+			granade.GetComponent<Rigidbody>().AddForce(transform.right * 50);
+			NetworkServer.Spawn(granade);
+			granade.GetComponent<granadeNetwork>().poder = saludMax2*granade.GetComponent<granadeNetwork>().poder/104;
+		}
+	}
+	[Command]
+	public void CmdGranadaMaloI(bool newAvion)
+	{
+		if(newAvion)
+		{
+			var granade = (GameObject)Instantiate(granadePrefHumoMalo, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+			granade.GetComponent<Rigidbody>().AddForce(transform.right * -50);
+			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
+			NetworkServer.Spawn(granade);
+		}else
+		{
+			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<Rigidbody>().velocity = transform.up * 20;
+			granade.GetComponent<Rigidbody>().AddForce(transform.right * -50);
 			NetworkServer.Spawn(granade);
 			granade.GetComponent<granadeNetwork>().poder = saludMax2*granade.GetComponent<granadeNetwork>().poder/104;
 		}
