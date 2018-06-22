@@ -25,12 +25,21 @@ public class granadeNetwork : NetworkBehaviour {
 	[SyncVar]
 	public float poder;
 
+	public string lado;
+
 	void Start ()
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
 
-		GetComponent<Rigidbody>().velocity = transform.up * 20;
-		GetComponent<Rigidbody>().AddForce(transform.right * 50);
+		if(lado == "R")
+		{
+			GetComponent<Rigidbody>().velocity = transform.up * 20;
+			GetComponent<Rigidbody>().AddForce(transform.right * 50);
+		}else
+		{
+			GetComponent<Rigidbody>().velocity = transform.up * 20;
+			GetComponent<Rigidbody>().AddForce(transform.right * -50);
+		}
 	}
 
 	void Update ()

@@ -37,8 +37,14 @@
 
 		public string idioma;
 
+		public GameObject mando;
+
+		public GameObject manoTeclado;
+		public GameObject manoXbox;
+
 		public void Start()
 		{
+			
 			idioma = PlayerPrefs.GetString("idioma");
 
 			sonido.GetComponent<AudioSource>().Play();
@@ -58,17 +64,17 @@
 
 			if(idioma == "ENGLISH")
 			{
-				dialogueLines.Enqueue("Very well ... now you have a weapon of great power.");
+				dialogueLines.Enqueue("Very well ... now you have a weapon of great power, press G to launch.");
 				dialogueLines.Enqueue("<b>DESTROY THOSE BLANKS SOLDIER</b>");
 			}
 			if(idioma == "SPANISH")
 			{
-				dialogueLines.Enqueue("Muy bien ... ahora cuenta con un arma de gran poder");
+				dialogueLines.Enqueue("Muy bien ... ahora cuenta con un arma de gran poder, presione G para lanzar.");
 				dialogueLines.Enqueue("<b>DESTRUYA LOS BLANCO SOLDADO</b>");
 			}
 			if(idioma == "CHINESE")
 			{
-				dialogueLines.Enqueue("很好 ... 现在你拥有了一个强大的武器。");
+				dialogueLines.Enqueue("很好 ... 现在你拥有了一个强大的武器。按 G 启动。");
 				dialogueLines.Enqueue("<破坏那些空军士兵</b>");
 			}
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
@@ -105,6 +111,18 @@
 				{
 					animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 					enemy1.SetActive(true);
+					if(mando.GetComponent<tipodecontrol>().mando == "TECLADO")
+					{
+						manoTeclado.SetActive(true);
+					}
+					if(mando.GetComponent<tipodecontrol>().mando == "XBOX")
+					{
+						manoXbox.SetActive(true);
+					}
+					if(mando.GetComponent<tipodecontrol>().mando == "PS4")
+					{
+						manoXbox.SetActive(true);
+					}
 					StartCoroutine(enemi2());
 					StartCoroutine(enemi3());
 				}else if(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "idle")

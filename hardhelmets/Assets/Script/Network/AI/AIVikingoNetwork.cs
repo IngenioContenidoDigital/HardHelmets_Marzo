@@ -94,7 +94,7 @@ public class AIVikingoNetwork : NetworkBehaviour {
 		}
 
 		distancia = Random.Range(minima,maxima);//20-30
-		distanciaZ = Random.Range(3,8);
+		distanciaZ = Random.Range(0,3);
 
 		if(gameObject.tag == "Player")
 		{

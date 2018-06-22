@@ -13,6 +13,8 @@ public class granadaHumoNetwork : NetworkBehaviour {
 
 	bool destruir;
 
+	public string lado;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -20,9 +22,16 @@ public class granadaHumoNetwork : NetworkBehaviour {
 		{
 			return;
 		}
-		
-		GetComponent<Rigidbody>().velocity = transform.up * 20;
-		GetComponent<Rigidbody>().AddForce(transform.right * 60);
+
+		if(lado == "R")
+		{
+			GetComponent<Rigidbody>().velocity = transform.up * 20;
+			GetComponent<Rigidbody>().AddForce(transform.right * 50);
+		}else
+		{
+			GetComponent<Rigidbody>().velocity = transform.up * 20;
+			GetComponent<Rigidbody>().AddForce(transform.right * -50);
+		}
 
 		StartCoroutine(llamar());
 	}

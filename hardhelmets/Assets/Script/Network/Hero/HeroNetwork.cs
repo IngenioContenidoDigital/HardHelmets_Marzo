@@ -485,7 +485,7 @@ public class HeroNetwork : NetworkBehaviour{
 				if(Input.GetButtonDown("Jump") && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !cubierto && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
 					pies.SetActive(false);
-					GetComponent<Rigidbody>().AddForce (new Vector3(0,20,0), ForceMode.Impulse);
+					GetComponent<Rigidbody>().AddForce (new Vector3(0,1300,0), ForceMode.Impulse);
 					animator.SetBool("jump", true);
 					StartCoroutine(ponerPies());
 				}
@@ -3246,7 +3246,13 @@ public class HeroNetwork : NetworkBehaviour{
 			CmdGranada();
 		}else
 		{
-			CmdGranadaMalo(avion);
+			if(_currentDirection == "right")
+			{
+				CmdGranadaMalo(avion, "R");
+			}else
+			{
+				CmdGranadaMalo(avion, "L");
+			}
 			avion = false;
 		}
 	}
@@ -3269,16 +3275,18 @@ public class HeroNetwork : NetworkBehaviour{
 		}
 	}
 	[Command]
-	public void CmdGranadaMalo(bool newAvion)
+	public void CmdGranadaMalo(bool newAvion, string newlado)
 	{
 		if(newAvion)
 		{
 			var granade = (GameObject)Instantiate(granadePrefHumoMalo, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<granadaHumoNetwork>().lado = newlado;
 			granade.GetComponent<granadaHumoNetwork>().Player = gameObject;
 			NetworkServer.Spawn(granade);
 		}else
 		{
 			var granade = (GameObject)Instantiate(granadePref, granadaSpawn.position, granadaSpawn.rotation);
+			granade.GetComponent<granadeNetwork>().lado = newlado;
 			NetworkServer.Spawn(granade);
 			granade.GetComponent<granadeNetwork>().poder = saludMax2*granade.GetComponent<granadeNetwork>().poder/104;
 		}

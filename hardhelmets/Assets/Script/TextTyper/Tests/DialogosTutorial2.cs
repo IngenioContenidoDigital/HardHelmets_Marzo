@@ -37,6 +37,11 @@
 
 		public string idioma;
 
+		public GameObject tipodemando;
+
+		public GameObject manoTeclado;
+		public GameObject manoXbox;
+
 		public void Start()
 		{
 			idioma = PlayerPrefs.GetString("idioma");
@@ -109,6 +114,18 @@
 					Hero.GetComponent<Hero>().pausado = false;
 					Hero.GetComponent<Hero>().ready = true;
 					ventana.SetActive(false);
+					if(tipodemando.GetComponent<tipodecontrol>().mando == "TECLADO")
+					{
+						manoTeclado.SetActive(true);
+					}
+					if(tipodemando.GetComponent<tipodecontrol>().mando == "XBOX")
+					{
+						manoXbox.SetActive(true);
+					}
+					if(tipodemando.GetComponent<tipodecontrol>().mando == "PS4")
+					{
+						manoXbox.SetActive(true);
+					}
 					Destroy(gameObject);
 				}else if(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "idle")
 				{
