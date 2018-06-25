@@ -84,7 +84,7 @@ public class AIVikingo : MonoBehaviour {
 	void Start ()
 	{
 		distancia = Random.Range(minima,maxima);//20-30
-		distanciaZ = Random.Range(3,8);
+		distanciaZ = Random.Range(0,3);
 
 		Jugador = GameObject.Find("Hero");
 

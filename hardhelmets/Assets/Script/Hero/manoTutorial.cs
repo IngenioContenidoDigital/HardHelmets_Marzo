@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 public class manoTutorial : MonoBehaviour {
 
+	public GameObject manoTeclado;
+	public GameObject manoXbox;
+
 	public string nombre;
 	public string nombre2;
 	public float costo;
@@ -349,6 +352,14 @@ public class manoTutorial : MonoBehaviour {
 				if(nombre == "1")
 				{
 					Player.GetComponent<CrearCartas>().crearFusil();
+					if(manoTeclado != null)
+					{
+						Destroy(manoTeclado);
+					}
+					if(manoXbox != null)
+					{
+						Destroy(manoXbox);
+					}
 				}else if(nombre == "2")
 				{
 					Player.GetComponent<CrearCartas>().crearSubmetra();
@@ -442,6 +453,14 @@ public class manoTutorial : MonoBehaviour {
 		if(nombre == "1")
 		{
 			Player.GetComponent<CrearCartas>().crearFusil();
+			if(manoTeclado != null)
+			{
+				Destroy(manoTeclado);
+			}
+			if(manoXbox != null)
+			{
+				Destroy(manoXbox);
+			}
 		}else if(nombre == "2")
 		{
 			Player.GetComponent<CrearCartas>().crearSubmetra();

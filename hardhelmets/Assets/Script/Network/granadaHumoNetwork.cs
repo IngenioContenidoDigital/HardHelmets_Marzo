@@ -20,9 +20,6 @@ public class granadaHumoNetwork : NetworkBehaviour {
 		{
 			return;
 		}
-		
-		GetComponent<Rigidbody>().velocity = transform.up * 20;
-		GetComponent<Rigidbody>().AddForce(transform.right * 60);
 
 		StartCoroutine(llamar());
 	}

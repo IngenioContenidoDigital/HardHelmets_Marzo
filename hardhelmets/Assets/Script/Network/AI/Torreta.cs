@@ -51,6 +51,8 @@ public class Torreta : NetworkBehaviour {
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
 
+		StartCoroutine(Quitaragente());
+
 		if(!isServer)
 		{
 			return;
@@ -68,12 +70,11 @@ public class Torreta : NetworkBehaviour {
 
 		saludMax = 8*level+200;
 		salud = saludMax;
-
-		StartCoroutine(Quitaragente());
 	}
 	IEnumerator Quitaragente()
 	{
 		yield return new WaitForSeconds(0.02f);
+		GetComponent<NavMeshObstacle>().enabled = true;
 		Destroy(agent);
 	}
 	

@@ -6,6 +6,7 @@
 	using RedBlueGames.Tools.TextTyper;
 	using UnityEngine.UI;
 	using Spine.Unity;
+	using UnityEngine.EventSystems;
 
 	/// <summary>
 	/// Class that tests TextTyper and shows how to interface with it.
@@ -37,14 +38,18 @@
 
 		public string idioma;
 
+		public EventSystem eventsystem;
+		public GameObject boton;
+
 		public GameObject master;
 		public GameObject tut;
-		public GameObject baul;
 
 		public GameObject baulregalo;
 
 		public void Start()
 		{
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
+
 			idioma = PlayerPrefs.GetString("idioma");
 
 			sonido.GetComponent<AudioSource>().Play();
@@ -60,23 +65,17 @@
 			if(idioma == "ENGLISH")
 			{
 				dialogueLines.Enqueue("Welcome Soldier.");
-				dialogueLines.Enqueue("Enter the tutorial option in the menu, if you want to learn movements and game mechanics ");
-				dialogueLines.Enqueue("I will give you three gift chests for new players, open them to unlock new cards");
-				dialogueLines.Enqueue("Once you have opened the chests go to the option <color=#EC9B00FF>war bonds</color> to equip the cards that you have unlocked");
+				dialogueLines.Enqueue("Enter the tutorial option in the menu, to learn some movements and game mechanics.");
 			}
 			if(idioma == "SPANISH")
 			{
 				dialogueLines.Enqueue("Bienvenido Soldado.");
-				dialogueLines.Enqueue("Ingrese a la opción tutorial en el menú, si quiere aprender movimientos y las mecánicas del juego");
-				dialogueLines.Enqueue("Te obsequiare tres cofres de regalo para nuevos jugadores, ábrelos para desbloquear nuevas cartas");
-				dialogueLines.Enqueue("Una vez hayas abierto los cofres ve a la opción <color=#EC9B00FF>war bonds</color> para equipar las cartas que hayas desbloqueado ");
+				dialogueLines.Enqueue("Ingrese a la opción tutorial en el menú, para aprender algunos movimientos y mecánicas del juego.");
 			}
 			if(idioma == "CHINESE")
 			{
 				dialogueLines.Enqueue("欢迎士兵。");
-				dialogueLines.Enqueue("如果您想学习动作和游戏机制，请在菜单中输入教程选项");
-				dialogueLines.Enqueue("我会给你三个新玩家的礼物箱，打开他们解锁新卡");
-				dialogueLines.Enqueue("一旦你打开箱子，去选择战争债券来装备你已经解锁的卡片");
+				dialogueLines.Enqueue("在菜单中输入教程选项，学习动作和游戏机制。");
 			}
 
 			/*dialogueLines.Enqueue("Hello! My name is... <delay=0.5>CAPITAN MOSTACHO</delay>. Got it, bub?");
@@ -116,13 +115,6 @@
 				if(dialogos == 2)
 				{
 					tut.SetActive(false);
-					//baul.SetActive(true);
-				}
-				if(dialogos == 3)
-				{
-					baulregalo.SetActive(true);
-					PlayerPrefs.SetInt("caja1", 3);
-					PlayerPrefs.SetInt("regaloBaul", 1);
 				}
 
 				if(dialogos >= max)
@@ -130,7 +122,7 @@
 					animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada2", false);
 					ventana.SetActive(false);
 					master.GetComponent<Menu>().capitan = true;
-					PlayerPrefs.SetInt("FirstTimeCartas",1);
+					eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(boton);
 					Destroy(gameObject);
 				}else if(animacion.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name == "idle")
 				{

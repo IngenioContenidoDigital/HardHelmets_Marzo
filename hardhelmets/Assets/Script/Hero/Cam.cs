@@ -86,6 +86,7 @@ public class Cam : MonoBehaviour {
 		//Player = GameObject.Find("Hero");
 		musica = PlayerPrefs.GetFloat("musica");
 	}
+	public int tiempoVibracion;
 	// Update is called once per frame
 	void Update ()
 	{
@@ -167,6 +168,15 @@ public class Cam : MonoBehaviour {
 				baja = true;
 				sube = false;
 			}
+			tiempoVibracion ++;
+			if(tiempoVibracion >= 10)
+			{
+				baja = true;
+				sube = false;
+			}
+		}else
+		{
+			tiempoVibracion = 0;
 		}
 		if(baja)
 		{

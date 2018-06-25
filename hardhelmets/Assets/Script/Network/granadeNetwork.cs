@@ -28,9 +28,6 @@ public class granadeNetwork : NetworkBehaviour {
 	void Start ()
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
-
-		GetComponent<Rigidbody>().velocity = transform.up * 20;
-		GetComponent<Rigidbody>().AddForce(transform.right * 50);
 	}
 
 	void Update ()

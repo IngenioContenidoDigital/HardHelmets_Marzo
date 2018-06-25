@@ -51,6 +51,8 @@ public class TorretaMisilOffline : MonoBehaviour {
 	{
 		efectos = PlayerPrefs.GetFloat("efects");
 
+		StartCoroutine(Quitaragente());
+
 		if(gameObject.tag == "Player")
 		{
 			Jugador = GameObject.Find("Hero");
@@ -69,12 +71,11 @@ public class TorretaMisilOffline : MonoBehaviour {
 
 		saludMax = 8*level+200;
 		salud = saludMax;
-
-		StartCoroutine(Quitaragente());
 	}
 	IEnumerator Quitaragente()
 	{
 		yield return new WaitForSeconds(0.02f);
+		GetComponent<NavMeshObstacle>().enabled = true;
 		Destroy(agent);
 	}
 

@@ -88,7 +88,7 @@ public class CamNetwork : NetworkBehaviour {
 	}
 	public bool unaVez;
 	// Update is called once per frame
-
+	public int tiempoVibracion;
 	void Update ()
 	{
 		if(!Player.GetComponent<NetworkIdentity>().isLocalPlayer)
@@ -182,6 +182,15 @@ public class CamNetwork : NetworkBehaviour {
 				baja = true;
 				sube = false;
 			}
+			tiempoVibracion ++;
+			if(tiempoVibracion >= 10)
+			{
+				baja = true;
+				sube = false;
+			}
+		}else
+		{
+			tiempoVibracion = 0;
 		}
 		if(baja)
 		{

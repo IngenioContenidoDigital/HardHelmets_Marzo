@@ -14,6 +14,43 @@ public class ESL_LeaderboardUI : MonoBehaviour
 	public InputField Upload_IDField;
 	public InputField Upload_ScoreField;
 	public ESL_LeaderboardEntryUI yourEntryUI;
+	public Scrollbar scrol;
+
+	public bool abajo;
+	public bool arriba;
+
+
+	public void Update()
+	{
+		if(Input.GetAxis("Vertical") < 0)
+		{
+			abajo = true;
+		}
+		if(Input.GetAxis("Vertical") > 0)
+		{
+			arriba = true;
+		}
+
+		if(Input.GetButtonDown("up"))
+		{
+			arriba = true;
+		}
+		if(Input.GetButtonDown("down"))
+		{
+			abajo = true;
+		}
+
+		if(arriba)
+		{
+			arriba = false;
+			scrol.value = Mathf.Clamp(scrol.value + 0.1f, 0, 1);
+		}
+		if(abajo)
+		{
+			abajo = false;
+			scrol.value = Mathf.Clamp(scrol.value - 0.1f, 0, 1);
+		}
+	}
 
 	//enum
 	public enum LeaderboardFilter

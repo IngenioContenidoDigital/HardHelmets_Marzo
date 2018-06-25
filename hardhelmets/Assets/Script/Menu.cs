@@ -114,7 +114,9 @@ public class Menu : MonoBehaviour {
 	public GameObject arriF;
 	public GameObject pro1;
 
-	public GameObject mensajecartasCapitan;
+	public GameObject mensajecartasCapitanA;
+	public GameObject mensajecartasCapitanB;
+	public GameObject mensajecartasCapitanC;
 	public bool capitan;
 
 	void Start ()
@@ -128,6 +130,8 @@ public class Menu : MonoBehaviour {
 		//Cursor.visible = true;
 		if(PlayerPrefs.GetInt("FirstTime") == 0)
 		{
+			PlayerPrefs.SetInt("Tutorial", 0);
+
 			PlayerPrefs.SetString("idioma", "ENGLISH");
 
 			PlayerPrefs.SetInt("Victorias", 0);
@@ -379,6 +383,15 @@ public class Menu : MonoBehaviour {
 		{
 			boton.SetActive(false);
 		}
+		if(pantalla == "menu2")
+		{
+			if(PlayerPrefs.GetInt("Tutorial") == 2)
+			{
+				pantalla = "capitanaso";
+				mensajecartasCapitanC.SetActive(true);
+				iniciar = false;
+			}
+		}
 		if(pantalla == "menu2" || pantalla == "cofre")
 		{
 			global.SetActive(true);
@@ -477,10 +490,20 @@ public class Menu : MonoBehaviour {
 				mover = true;
 				menu2.SetActive(true);
 				menu2.GetComponent<Animator>().SetBool("entra", true);
-				if(PlayerPrefs.GetInt("FirstTimeCartas") == 0)//FirstTimeCartas
+				if(PlayerPrefs.GetInt("Tutorial") == 0)
 				{
 					pantalla = "capitanaso";
-					mensajecartasCapitan.SetActive(true);
+					mensajecartasCapitanA.SetActive(true);
+					iniciar = false;
+				}else if(PlayerPrefs.GetInt("Tutorial") == 1)
+				{
+					pantalla = "capitanaso";
+					mensajecartasCapitanB.SetActive(true);
+					iniciar = false;
+				}else if(PlayerPrefs.GetInt("Tutorial") == 2)
+				{
+					pantalla = "capitanaso";
+					mensajecartasCapitanC.SetActive(true);
 					iniciar = false;
 				}else
 				{
@@ -1398,9 +1421,6 @@ public class Menu : MonoBehaviour {
 	}
 	public void Multiplayer ()
 	{
-		//audio1.volume = efectos;
-		//audio1.Play();
-
 		pantalla = "online";
 		mensajes = "online";
 		mensaje.SetActive(true);
@@ -1417,6 +1437,11 @@ public class Menu : MonoBehaviour {
 	//PERZONALIZAR CARTAS
 	public void CardDeck ()
 	{
+		if(PlayerPrefs.GetInt("Tutorial") == 2)
+		{
+			PlayerPrefs.SetInt("Tutorial", 3);
+		}
+
 		pantalla = "";
 		mover = false;
 
@@ -1913,6 +1938,8 @@ public class Menu : MonoBehaviour {
 		lideres.SetActive(true);
 
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(L1);
+
+		L1.GetComponent<Button>().onClick.Invoke();
 
 		pantalla = "lideres";
 	}

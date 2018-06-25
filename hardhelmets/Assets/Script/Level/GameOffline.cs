@@ -456,6 +456,14 @@ public class GameOffline : MonoBehaviour {
 		}
 		if(titulos2 && !final2)
 		{
+			if(Application.loadedLevelName == "Tutorial")
+			{
+				if(PlayerPrefs.GetInt("Tutorial") == 0)
+				{
+					PlayerPrefs.SetInt("Tutorial", 1);
+				}
+			}
+
 			Destroy(musica);
 			arriba.SetActive(false);
 			iconos.SetActive(false);

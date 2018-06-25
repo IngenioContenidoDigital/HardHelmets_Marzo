@@ -333,7 +333,7 @@ public class Hero : MonoBehaviour{
 				if(Input.GetButtonDown("Jump") && !animator.GetBool("cuchillando") && !sniperListo && !agachado && !cubierto && !animator.GetCurrentAnimatorStateInfo(0).IsName("cae"))
 				{
 					pies.SetActive(false);
-					GetComponent<Rigidbody>().AddForce (new Vector3(0,20,0), ForceMode.Impulse);
+					GetComponent<Rigidbody>().AddForce (new Vector3(0,1300,0), ForceMode.Impulse);
 					animator.SetBool("jump", true);
 					StartCoroutine(ponerPies());
 				}
