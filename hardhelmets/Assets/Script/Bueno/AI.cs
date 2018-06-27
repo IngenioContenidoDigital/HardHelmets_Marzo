@@ -316,6 +316,7 @@ public class AI : MonoBehaviour {
 									agent.isStopped = true;
 								}else
 								{
+									animator.SetBool("walk", true);
 									agent.isStopped = false;
 									agent.SetDestination(new Vector3(transform.position.x+Random.Range(-8,8), transform.position.y, target.position.z));
 								}
@@ -328,10 +329,17 @@ public class AI : MonoBehaviour {
 					}
 				}else //SI ESTA LEJOS EN X
 				{
-					if(Tipo == 5 && !animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot"))//SI ES EL PANZER
+					if(Tipo == 5)//SI ES EL PANZER
 					{
-						agent.isStopped = false;
-						agent.SetDestination(target.position);
+						if(animator.GetCurrentAnimatorStateInfo(0).IsName("panzerShot"))
+						{
+							agent.isStopped = true;
+						}else
+						{
+							animator.SetBool("walk", true);
+							agent.isStopped = false;
+							agent.SetDestination(target.position);
+						}
 					}else if(!animator.GetBool("recargando"))//SI NO ES PANZER
 					{
 						agent.isStopped = false;
