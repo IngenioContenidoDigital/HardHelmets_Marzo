@@ -558,53 +558,15 @@ public class AITank2 : NetworkBehaviour
 	{
 		if(col.gameObject.tag == "bala" && vivo)
 		{
-			salud -= col.gameObject.GetComponent<bala>().poder;
+			salud -= col.gameObject.GetComponent<bala>().poder/4;
+
+			float tex =  col.gameObject.GetComponent<balaOffline>().poder/4;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<bala>().poder.ToString("F0");
+			letras.GetComponent<TextMesh>().text = tex.ToString("F0");
 
 			Destroy(col.gameObject);
 		}
-		/*if(col.gameObject.tag == "balaFusil" && vivo)
-		{
-			Destroy(col.gameObject);
-			salud -= 5;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "5";
-		}
-		if(col.gameObject.tag == "balaEscopeta" && vivo)
-		{
-			Destroy(col.gameObject);
-			salud -= 5;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "5";
-		}
-		if(col.gameObject.tag == "balaSubmetra" && vivo)
-		{
-			Destroy(col.gameObject);
-			salud -= 5;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "5";
-		}
-		if(col.gameObject.tag == "balaMetra" && vivo)
-		{
-			Destroy(col.gameObject);
-			salud -= 5;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "5";
-		}
-		if(col.gameObject.tag == "balaMG" && vivo)
-		{
-			Destroy(col.gameObject);
-			salud -= 5;
-
-			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = "5";
-		}*/
 		if(col.gameObject.tag == "explo" && vivo)
 		{
 			salud -= col.gameObject.GetComponent<Explo>().poder;

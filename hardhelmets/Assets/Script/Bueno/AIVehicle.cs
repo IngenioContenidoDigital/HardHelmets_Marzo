@@ -537,10 +537,12 @@ public class AIVehicle : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "bala" && vivo)
 		{
-			salud -= col.gameObject.GetComponent<balaOffline>().poder;
+			salud -= col.gameObject.GetComponent<balaOffline>().poder/4;
+
+			float tex =  col.gameObject.GetComponent<balaOffline>().poder/4;
 
 			var letras = (GameObject)Instantiate(textos, transform.position, Quaternion.Euler(0,0,0));
-			letras.GetComponent<TextMesh>().text = col.gameObject.GetComponent<balaOffline>().poder.ToString("F0");
+			letras.GetComponent<TextMesh>().text = tex.ToString("F0");
 
 			Destroy(col.gameObject);
 		}
