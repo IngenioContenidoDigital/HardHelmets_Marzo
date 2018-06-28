@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Collector : MonoBehaviour {
 
@@ -8,14 +9,25 @@ public class Collector : MonoBehaviour {
 	public GameObject desbloqueadas;
 	public GameObject bloquedas;
 
+	public EventSystem eventsystem;
+
+	public GameObject selectedObj;
+
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+	{
+		if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
+		{
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(selectedObj);
+			//EventSystem.current.SetSelectedGameObject(selectedObj);
+		}
+
+		selectedObj = eventsystem.GetComponent<EventSystem>().currentSelectedGameObject;
 	}
 
 	public void All()

@@ -2,16 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using UnityEngine.UI;
 
 public class CollectorCard : MonoBehaviour {
 
+	public string idioma;
+
 	public GameObject grafica;
 
+	public bool Objecto3D;
+	public bool Grados360;
+
 	public GameObject nacer;
+	public GameObject nacer2;
 	public GameObject Crear;
 
 	public bool destruir;
 	public bool crear;
+
+	public float posX;
+	public float posY;
+
+	public float escala;
 
 	//------------
 
@@ -19,11 +31,37 @@ public class CollectorCard : MonoBehaviour {
 	public bool bloq;
 	public int card;
 
+	//----DESCRIPCION
+	public float poder;
+	public float poderfinal;
+	public Text power;
+	public bool especifico;
+	public bool medico;
+	public string specificI;
+	public string specificE;
+	public string specificC;
+	public Text descripcion;
+
+	public string ingles;
+	public string español;
+	public string chino;
+
+	public float saludMax;
+	public float suma;
+
 	// Use this for initialization
 	void Start ()
 	{
+		idioma = PlayerPrefs.GetString("idioma");
+
 		PlayerPrefs.SetInt("card1", 0);
 		card = int.Parse(gameObject.name);
+
+		saludMax = 100+PlayerPrefs.GetInt("PlayerLevel")*4;
+
+		suma = saludMax*2/104;
+
+		poderfinal = saludMax*poder/104;
 	}
 	
 	// Update is called once per frame
@@ -52,15 +90,31 @@ public class CollectorCard : MonoBehaviour {
 			{
 				Destroy(child.gameObject);
 			}
+			foreach(Transform child in nacer2.transform)
+			{
+				Destroy(child.gameObject);
+			}
 			crear = true;
 		}
-		if(crear && nacer.transform.childCount <= 0)
+		if(crear && nacer.transform.childCount <= 0 && nacer2.transform.childCount <= 0)
 		{
 			crear = false;
 
-			var objeto = (GameObject)Instantiate(Crear, nacer.transform.position, Quaternion.Euler(0,0,0)); 
-			objeto.transform.parent = nacer.transform;
-			objeto.GetComponent<RectTransform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
+			if(Objecto3D)
+			{
+				var objeto = (GameObject)Instantiate(Crear, new Vector3(nacer2.transform.position.x+posX, nacer2.transform.position.y+posY, nacer2.transform.position.z), Quaternion.Euler(0,0,0)); 
+				if(Grados360)
+				{
+					objeto.transform.rotation = Quaternion.Euler(0,Random.Range(0,360),0);
+				}
+				objeto.transform.parent = nacer2.transform;
+				objeto.transform.localScale = new Vector3(escala, escala, escala);
+			}else
+			{
+				var objeto = (GameObject)Instantiate(Crear, new Vector3(nacer.transform.position.x+posX, nacer.transform.position.y+posY, nacer.transform.position.z), Quaternion.Euler(0,0,0)); //(posX,posY,0)
+				objeto.transform.parent = nacer.transform;
+				objeto.GetComponent<RectTransform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
+			}
 		}
 	}
 
@@ -76,12 +130,46 @@ public class CollectorCard : MonoBehaviour {
 		
 	}
 
-
 	public void click()
 	{
 		destruir = true;
 
 		grafica.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "arrastre", false);
+
+		if(especifico)
+		{
+			if(idioma == "ENGLISH")
+			{
+				power.text = specificI;
+			}
+			if(idioma == "SPANISH")
+			{
+				power.text = specificE;
+			}
+			if(idioma == "CHINESE")
+			{
+				power.text = specificC;
+			}
+		}else if(medico)
+		{
+			power.text = "+"+suma.ToString("F0");
+		}else
+		{
+			power.text = poderfinal.ToString("F0");
+		}
+
+		if(idioma == "ENGLISH")
+		{
+			descripcion.GetComponent<UnityEngine.UI.Text>().text = ingles;
+		}
+		if(idioma == "SPANISH")
+		{
+			descripcion.GetComponent<UnityEngine.UI.Text>().text = español;
+		}
+		if(idioma == "CHINESE")
+		{
+			descripcion.GetComponent<UnityEngine.UI.Text>().text = chino;
+		}
 
 		StartCoroutine(EspCarta());
 	}
