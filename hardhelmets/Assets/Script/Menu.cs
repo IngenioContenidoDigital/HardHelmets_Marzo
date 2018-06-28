@@ -109,6 +109,7 @@ public class Menu : MonoBehaviour {
 	public GameObject atras1;
 	public GameObject card1;
 	public GameObject t1;
+	public GameObject collector1;
 	public GameObject p1;
 	public GameObject arriB;
 	public GameObject arriF;
@@ -1930,6 +1931,21 @@ public class Menu : MonoBehaviour {
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
 
 		StartCoroutine(apareceLideres());
+	}
+	public void Collector()
+	{
+		pantalla = "tutorial";
+		mensajes = "colector";
+		mensaje.SetActive(true);
+		//mensaje.GetComponent<Animator>().SetBool("entrada", true);
+		mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
+		mensaje.GetComponent<mensajes>().mostrar = "colector";
+		mensaje.GetComponent<mensajes>().show();
+		mensaje.GetComponent<mensajes>().cosiatar = true;
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(collector1);
+
+		menu2.GetComponent<Animator>().SetBool("entra", false);
+		menu2.GetComponent<Animator>().SetBool("sale", true);
 	}
 
 	IEnumerator apareceLideres()

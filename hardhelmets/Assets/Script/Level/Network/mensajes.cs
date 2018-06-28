@@ -13,6 +13,7 @@ public class mensajes : MonoBehaviour {
 
 	public GameObject mensajeSalir;
 	public GameObject tutorial;
+	public GameObject colector;
 	public GameObject comunity;
 	public GameObject practica;
 	public GameObject online;
@@ -26,6 +27,7 @@ public class mensajes : MonoBehaviour {
 	public GameObject si2;
 	public GameObject si3;
 	public GameObject si4;
+	public GameObject si5;
 
 	[SpineAnimation]
 	public string entrada2;
@@ -80,6 +82,11 @@ public class mensajes : MonoBehaviour {
 				mensajeSalir.SetActive(true);
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si4);
 				//EspHabla();
+			}
+			if(mostrar == "colector")
+			{
+				colector.SetActive(true);
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(si5);
 			}
 			if(mostrar == "tutorial")
 			{
@@ -139,6 +146,7 @@ public class mensajes : MonoBehaviour {
 		comunity.SetActive(false);
 		practica.SetActive(false);
 		online.SetActive(false);
+		colector.SetActive(false);
 	}
 	//SELECCIONAR BOTONES
 	public EventSystem eventsystem;
@@ -178,6 +186,11 @@ public class mensajes : MonoBehaviour {
 		master.GetComponent<Menu>().menu2.GetComponent<Animator>().SetBool("sale", false);
 		master.GetComponent<Menu>().menu2.GetComponent<Animator>().SetBool("entra", true);
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(match);
+	}
+	public void CollectorSI()
+	{
+		Application.LoadLevel("Load");
+		loading.nombre = "Collector";
 	}
 	public void practicaSI()
 	{
