@@ -49,6 +49,8 @@ public class CollectorCard : MonoBehaviour {
 	public float saludMax;
 	public float suma;
 
+	public GameObject gris;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -62,6 +64,11 @@ public class CollectorCard : MonoBehaviour {
 		suma = saludMax*2/104;
 
 		poderfinal = saludMax*poder/104;
+
+		if(PlayerPrefs.GetInt("card"+card) == 0)
+		{
+			gris.SetActive(true);
+		}
 	}
 	
 	// Update is called once per frame
@@ -116,6 +123,11 @@ public class CollectorCard : MonoBehaviour {
 				objeto.GetComponent<RectTransform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
 			}
 		}
+		if(Input.GetButtonDown("Cancel"))
+		{
+			Application.LoadLevel("Load");
+			loading.nombre = "menu";
+		}
 	}
 
 
@@ -123,7 +135,6 @@ public class CollectorCard : MonoBehaviour {
 	{
 		
 	}
-
 
 	public void sale()
 	{

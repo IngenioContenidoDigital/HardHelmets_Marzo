@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Collector : MonoBehaviour {
 
@@ -13,9 +14,12 @@ public class Collector : MonoBehaviour {
 
 	public GameObject selectedObj;
 
+	public GameObject inicio;
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+	{
+		inicio.GetComponent<Button>().onClick.Invoke();
 	}
 	
 	// Update is called once per frame

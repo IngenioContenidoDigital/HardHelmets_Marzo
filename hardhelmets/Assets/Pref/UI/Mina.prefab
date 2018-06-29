@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4033017214504986}
   - component: {fileID: 33035171148370526}
   - component: {fileID: 23986715299581560}
-  - component: {fileID: 114465803675034382}
+  - component: {fileID: 95970288485383604}
   m_Layer: 0
   m_Name: Mina
   m_TagString: Untagged
@@ -35,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202013893137994}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.27597284, y: 0, z: 0, w: 0.9611655}
   m_LocalPosition: {x: 1.1, y: 1, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -32.04, y: 0, z: 0}
 --- !u!23 &23986715299581560
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -83,15 +83,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202013893137994}
   m_Mesh: {fileID: 4300000, guid: acb7541799c4b5e4484c6434af930f94, type: 3}
---- !u!114 &114465803675034382
-MonoBehaviour:
+--- !u!95 &95970288485383604
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202013893137994}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc5d6542f694c4a52bcc8997d34a8523, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.5
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fbea174cd266f2449bbfea57f01640b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
