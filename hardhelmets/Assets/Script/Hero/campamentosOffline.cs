@@ -276,93 +276,132 @@ public class campamentosOffline : MonoBehaviour {
 	}
 	public void nacer()
 	{
-		if(nace == 0)
+		if(Application.loadedLevelName == "Tutorial")
 		{
 			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
 			Player.GetComponent<Hero>().vivo = true;
 			Player.GetComponent<Animator>().SetBool("muerto", false);
-			//Player.GetComponent<Hero>().mascara = "Player";
 			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
-			Player.transform.position = new Vector3(Player.GetComponent<Animaciones>().inicial.x, Player.GetComponent<Animaciones>().inicial.y+10, Player.GetComponent<Animaciones>().inicial.z);//Player.GetComponent<Animaciones>().inicial;
-		}else if(nace == 1)
-		{
-			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
-			Player.GetComponent<Hero>().vivo = true;
-			Player.GetComponent<Animator>().SetBool("muerto", false);
-			//Player.GetComponent<Hero>().mascara = "Player";
-			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
-			Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, camp[0].transform.position.z);
 
 			nace = 0;
-		}else if(nace == 2)
-		{
-			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
-			Player.GetComponent<Hero>().vivo = true;
-			Player.GetComponent<Animator>().SetBool("muerto", false);
-			//Player.GetComponent<Hero>().mascara = "Player";
-			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
-			Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, camp[1].transform.position.z);
 
-			nace = 0;
-		}else if(nace == 3)
-		{
-			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
-			Player.GetComponent<Hero>().vivo = true;
-			Player.GetComponent<Animator>().SetBool("muerto", false);
-			//Player.GetComponent<Hero>().mascara = "Player";
-			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
-			Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, camp[2].transform.position.z);
+			BasePrimaria.SetActive(false);
+			alpha.SetActive(false);
+			beta.SetActive(false);
 
-			nace = 0;
-		}else if(nace == 5)
-		{
-			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
-			Player.GetComponent<Hero>().vivo = true;
-			Player.GetComponent<Animator>().SetBool("muerto", false);
-			//Player.GetComponent<Hero>().mascara = "Player";
-			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
-			Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, Bases[0].transform.position.z-3);
+			uno.SetActive(false);
+			dos.SetActive(false);
+			tres.SetActive(false);
 
-			nace = 0;
-		}else if(nace == 6)
+			alphaEnemy.SetActive(false);
+			betaEnemy.SetActive(false);
+
+			Player.GetComponent<Hero>().animacion.SetActive(false);
+			Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
+			Player.GetComponent<CustomFinal>().listo = false;
+			Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
+
+			Camara.GetComponent<Cam>().shake = false;
+			Camara.GetComponent<Cam>().shake2 = false;
+			Camara.GetComponent<Cam>().shakeAvion = false;
+			Camara.GetComponent<Cam>().shakeAvion2 = false;
+			Camara.GetComponent<Cam>().campamento = false;
+			Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<Hero>().carta1);
+			Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
+			Player.GetComponent<Hero>().esconderBarra.SetActive(true);
+
+		}else
 		{
-			Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
-			Player.GetComponent<Hero>().vivo = true;
-			Player.GetComponent<Animator>().SetBool("muerto", false);
-			//Player.GetComponent<Hero>().mascara = "Player";
-			Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
-			Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, Bases[1].transform.position.z-3);
+			if(nace == 0)
+			{
+				Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
+				Player.GetComponent<Hero>().vivo = true;
+				Player.GetComponent<Animator>().SetBool("muerto", false);
+				//Player.GetComponent<Hero>().mascara = "Player";
+				Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
+				Player.transform.position = new Vector3(Player.GetComponent<Animaciones>().inicial.x, Player.GetComponent<Animaciones>().inicial.y+10, Player.GetComponent<Animaciones>().inicial.z);//Player.GetComponent<Animaciones>().inicial;
+			}else if(nace == 1)
+			{
+				Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
+				Player.GetComponent<Hero>().vivo = true;
+				Player.GetComponent<Animator>().SetBool("muerto", false);
+				//Player.GetComponent<Hero>().mascara = "Player";
+				Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
+				Player.transform.position = new Vector3(camp[0].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, camp[0].transform.position.z);
+
+				nace = 0;
+			}else if(nace == 2)
+			{
+				Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
+				Player.GetComponent<Hero>().vivo = true;
+				Player.GetComponent<Animator>().SetBool("muerto", false);
+				//Player.GetComponent<Hero>().mascara = "Player";
+				Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
+				Player.transform.position = new Vector3(camp[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, camp[1].transform.position.z);
+
+				nace = 0;
+			}else if(nace == 3)
+			{
+				Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
+				Player.GetComponent<Hero>().vivo = true;
+				Player.GetComponent<Animator>().SetBool("muerto", false);
+				//Player.GetComponent<Hero>().mascara = "Player";
+				Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
+				Player.transform.position = new Vector3(camp[2].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, camp[2].transform.position.z);
+
+				nace = 0;
+			}else if(nace == 5)
+			{
+				Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
+				Player.GetComponent<Hero>().vivo = true;
+				Player.GetComponent<Animator>().SetBool("muerto", false);
+				//Player.GetComponent<Hero>().mascara = "Player";
+				Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
+				Player.transform.position = new Vector3(Bases[0].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, Bases[0].transform.position.z-3);
+
+				nace = 0;
+			}else if(nace == 6)
+			{
+				Player.GetComponent<Hero>().salud = Player.GetComponent<Hero>().saludMax;
+				Player.GetComponent<Hero>().vivo = true;
+				Player.GetComponent<Animator>().SetBool("muerto", false);
+				//Player.GetComponent<Hero>().mascara = "Player";
+				Player.GetComponent<Hero>().Base.layer = LayerMask.NameToLayer("Vista");
+				Player.transform.position = new Vector3(Bases[1].transform.position.x, Player.GetComponent<Animaciones>().inicial.y+10, Bases[1].transform.position.z-3);
+
+				nace = 0;
+			}
+
+			BasePrimaria.SetActive(false);
+			alpha.SetActive(false);
+			beta.SetActive(false);
+
+			uno.SetActive(false);
+			dos.SetActive(false);
+			tres.SetActive(false);
+
+			alphaEnemy.SetActive(false);
+			betaEnemy.SetActive(false);
+
+			Player.GetComponent<Hero>().animacion.SetActive(false);
+			Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
+			Player.GetComponent<CustomFinal>().listo = false;
+			Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
+
+			Camara.GetComponent<Cam>().shake = false;
+			Camara.GetComponent<Cam>().shake2 = false;
+			Camara.GetComponent<Cam>().shakeAvion = false;
+			Camara.GetComponent<Cam>().shakeAvion2 = false;
+			Camara.GetComponent<Cam>().campamento = false;
+			Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<Hero>().carta1);
+			Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
+
+			Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
+			Player.GetComponent<Hero>().esconderBarra.SetActive(true);
 
 			nace = 0;
 		}
-
-		BasePrimaria.SetActive(false);
-		alpha.SetActive(false);
-		beta.SetActive(false);
-
-		uno.SetActive(false);
-		dos.SetActive(false);
-		tres.SetActive(false);
-
-		alphaEnemy.SetActive(false);
-		betaEnemy.SetActive(false);
-
-		Player.GetComponent<Hero>().animacion.SetActive(false);
-		Player.GetComponent<CustomFinal>().skinsToCombine[0] = Player.GetComponent<CustomFinal>().casco;
-		Player.GetComponent<CustomFinal>().listo = false;
-		Cabeza.GetComponent<Cabeza>().tirosCabeza = 0;
-
-		Camara.GetComponent<Cam>().shake = false;
-		Camara.GetComponent<Cam>().shake2 = false;
-		Camara.GetComponent<Cam>().shakeAvion = false;
-		Camara.GetComponent<Cam>().shakeAvion2 = false;
-		Camara.GetComponent<Cam>().campamento = false;
-		Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<Hero>().carta1);
-		Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
-
-		Player.GetComponent<Hero>().animacion.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "simple", false);
-		Player.GetComponent<Hero>().esconderBarra.SetActive(true);
-
-		nace = 0;
 	}
 }

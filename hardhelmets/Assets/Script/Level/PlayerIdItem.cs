@@ -10,9 +10,6 @@ public class PlayerIdItem : MonoBehaviour {
 	public string nombre;
 
 	public static string activo;
-	public Button joinButton;
-
-	public bool selected;
 
 	// Use this for initialization
 	void Start ()
@@ -31,45 +28,31 @@ public class PlayerIdItem : MonoBehaviour {
 		{
 			GetComponent<Animator>().SetBool("sale", false);
 		}
-		if(panel.GetComponent<PlayerIDPanel>().zona && selected && Input.GetButtonDown("Jump") || Input.GetButtonDown("Submit"))
-		{
-			joinButton.onClick.Invoke();
-		}
+	}
+
+	public void seleccionado()
+	{
+		activo = gameObject.name;
+
+		GetComponent<AudioSource>().Play();
+
+		GetComponent<Animator>().SetBool("entra", true);
+
+		panel.GetComponent<PlayerIDPanel>().nombreItem = gameObject.name;
+
+		panel.GetComponent<PlayerIDPanel>().moverArriba = false;
+		panel.GetComponent<PlayerIDPanel>().moverAbajo = false;
+	}
+	public void desseleccionado()
+	{
+		GetComponent<Animator>().SetBool("sale", true);
 	}
 
 	public GameObject panel;
 
-	void OnTriggerEnter2D (Collider2D col)
-	{
-		if(col.gameObject.tag == "Player")
-		{
-			activo = gameObject.name;
-			selected = true;
-
-			GetComponent<AudioSource>().Play();
-
-			GetComponent<Animator>().SetBool("entra", true);
-
-			panel.GetComponent<PlayerIDPanel>().nombreItem = gameObject.name;
-
-			panel.GetComponent<PlayerIDPanel>().moverArriba = false;
-			panel.GetComponent<PlayerIDPanel>().moverAbajo = false;
-		}
-	}
-
-	void OnTriggerExit2D (Collider2D col)
-	{
-		if(col.gameObject.tag == "Player")
-		{
-			selected = false;
-		
-			GetComponent<Animator>().SetBool("sale", true);
-		}
-	}
-
 	public void select ()
 	{
-		if(panel.GetComponent<PlayerIDPanel>().zona && selected)
+		if(panel.GetComponent<PlayerIDPanel>().zona)
 		{
 			if(tipo == "avatar")
 			{
