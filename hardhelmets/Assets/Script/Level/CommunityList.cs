@@ -29,11 +29,37 @@ public class CommunityList : MonoBehaviour {
 
 	public string nivel;
 
+	public string idioma;
+	List<string> names = new List<string>() {"NORMAL", "DEFENCE"};
+
 	// Use this for initialization
 	void Start ()
 	{
-		
+		if(idioma == "ENGLISH")
+		{
+			names = new List<string>() {"NORMAL", "DEFENCE"};
+		}
+		if(idioma == "SPANISH")
+		{
+			names = new List<string>() {"NORMAL", "DEFENDER"};
+		}
+		if(idioma == "CHINESE")
+		{
+			names = new List<string>() {"正常", "防御"};
+		}
+		juego = "normal";
+		populateList();
 	}
+	public void populateList()
+	{
+		lista.AddOptions(names);
+	}
+	public void listaCambia(int index)
+	{
+		tipoJuego.text = names[index];
+		juego = names[index];
+	}
+
 	public bool zona;
 
 	public bool soltar;
@@ -249,6 +275,12 @@ public class CommunityList : MonoBehaviour {
 	public string skinBorde;
 	public string skinRango;
 
+	//TIPO DE JUEGO
+	public Dropdown lista;
+	public string juego;
+	public Text tipoJuego;
+
+
 	public void aceptar ()
 	{
 		//PlayerPrefs.SetString("nameCommunity", nombre);
@@ -257,7 +289,14 @@ public class CommunityList : MonoBehaviour {
 		PlayerPrefs.SetString("BordeCommunity", skinBorde);
 
 		Application.LoadLevel("Load2");
-		loading2.nombre = "ComunityMatch"+nivel;
+
+		if(juego == "DEFENCE" || juego == "DEFENDER" || juego == "防御")
+		{
+			loading2.nombre = "Defend"+nivel;
+		}else
+		{
+			loading2.nombre = "ComunityMatch"+nivel;
+		}
 	}
 
 	public void negar()

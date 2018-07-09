@@ -1146,6 +1146,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22581687}
+--- !u!1 &26237369
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 26237372}
+  - component: {fileID: 26237370}
+  - component: {fileID: 26237371}
+  m_Layer: 0
+  m_Name: MiddleRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &26237370
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26237369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.4, y: 0.19999999}
+  offset: {x: 0.6, y: 0.4}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28578
+--- !u!114 &26237371
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26237369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &26237372
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 26237369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.49478903, y: 0, z: 0}
+  m_LocalScale: {x: 0.010421909, y: 0.98934865, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &26973647
 GameObject:
   m_ObjectHideFlags: 0
@@ -5921,6 +5989,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &200527102
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 200527105}
+  - component: {fileID: 200527103}
+  - component: {fileID: 200527104}
+  m_Layer: 0
+  m_Name: MiddleMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &200527103
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 200527102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.19999999, y: 0.19999999}
+  offset: {x: 0.4, y: 0.4}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28570
+--- !u!114 &200527104
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 200527102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &200527105
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 200527102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9791562, y: 0.98934865, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &202946206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6389,6 +6525,74 @@ Transform:
   m_Father: {fileID: 1627111698}
   m_RootOrder: 339
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &218048868
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 218048871}
+  - component: {fileID: 218048869}
+  - component: {fileID: 218048870}
+  m_Layer: 0
+  m_Name: BottomMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &218048869
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218048868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.19999999, y: 0.4}
+  offset: {x: 0.4, y: 0}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28594
+--- !u!114 &218048870
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218048868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &218048871
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218048868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.49733716, z: 0}
+  m_LocalScale: {x: 0.9791562, y: 0.0053256624, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218502731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6609,7 +6813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idioma: 
-  grafica: {fileID: 663997174}
+  grafica: {fileID: 1909652279}
   Objecto3D: 1
   Grados360: 0
   nacer: {fileID: 32495972}
@@ -6632,14 +6836,14 @@ MonoBehaviour:
   specificE: 
   specificC: 
   descripcion: {fileID: 1006544779}
-  ingles: "El amigo en el campo de batalla, restaurar\xE1 tu energ\xEDa y la de tus
-    hombres. Tambi\xE9n cumple labores de defensa."
-  "espa\xF1ol": The friendly man in the field that will restore you and your men energy.
+  ingles: The friendly man in the field that will restore you and your men energy.
     He will also perform defense tasks.
+  "espa\xF1ol": "El amigo en el campo de batalla, restaurar\xE1 tu energ\xEDa y la
+    de tus hombres. Tambi\xE9n cumple labores de defensa."
   chino: "\u8FD9\u4E2A\u53CB\u5584\u7684\u4EBA\u5C06\u4F1A\u6062\u590D\u4F60\u548C\u4F60\u7684\u7537\u4EBA\u7684\u80FD\u91CF\u3002\u4ED6\u8FD8\u5C06\u6267\u884C\u9632\u52A1\u4EFB\u52A1\u3002"
   saludMax: 0
   suma: 0
-  gris: {fileID: 885475688}
+  gris: {fileID: 879620282}
 --- !u!114 &220762775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9056,16 +9260,16 @@ MonoBehaviour:
   borderPixelSize: 0.4
   borderWorldSize: 0.5
   spritePieces:
-  - {fileID: 1895296080}
-  - {fileID: 561882345}
-  - {fileID: 1596280254}
-  - {fileID: 1573984081}
-  - {fileID: 1310981904}
-  - {fileID: 1371929702}
-  - {fileID: 1330231265}
-  - {fileID: 430004252}
-  - {fileID: 2029838499}
-  instanceID: 155800
+  - {fileID: 1917605095}
+  - {fileID: 1741549790}
+  - {fileID: 1687367784}
+  - {fileID: 2117230830}
+  - {fileID: 200527103}
+  - {fileID: 26237370}
+  - {fileID: 1335538745}
+  - {fileID: 218048869}
+  - {fileID: 1666000026}
+  instanceID: 71996
 --- !u!4 &261847778
 Transform:
   m_ObjectHideFlags: 0
@@ -9076,15 +9280,15 @@ Transform:
   m_LocalPosition: {x: 78.3, y: -0, z: -5.9}
   m_LocalScale: {x: 47.975853, y: 93.88503, z: 25.314852}
   m_Children:
-  - {fileID: 1895296082}
-  - {fileID: 561882347}
-  - {fileID: 1596280256}
-  - {fileID: 1573984083}
-  - {fileID: 1310981906}
-  - {fileID: 1371929704}
-  - {fileID: 1330231267}
-  - {fileID: 430004254}
-  - {fileID: 2029838501}
+  - {fileID: 1917605097}
+  - {fileID: 1741549792}
+  - {fileID: 1687367786}
+  - {fileID: 2117230832}
+  - {fileID: 200527105}
+  - {fileID: 26237372}
+  - {fileID: 1335538747}
+  - {fileID: 218048871}
+  - {fileID: 1666000028}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -12812,74 +13016,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 423606135}
---- !u!1 &430004251
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 430004254}
-  - component: {fileID: 430004252}
-  - component: {fileID: 430004253}
-  m_Layer: 0
-  m_Name: BottomMiddle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &430004252
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 430004251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.19999999, y: 0.4}
-  offset: {x: 0.4, y: 0}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136644
---- !u!114 &430004253
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 430004251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &430004254
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 430004251}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49733716, z: 0}
-  m_LocalScale: {x: 0.9791562, y: 0.0053256624, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &435210735
 GameObject:
   m_ObjectHideFlags: 0
@@ -15837,74 +15973,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 560310073}
---- !u!1 &561882344
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 561882347}
-  - component: {fileID: 561882345}
-  - component: {fileID: 561882346}
-  m_Layer: 0
-  m_Name: TopMiddle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &561882345
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 561882344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.19999999, y: 0.4}
-  offset: {x: 0.4, y: 0.6}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136596
---- !u!114 &561882346
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 561882344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &561882347
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 561882344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.49733716, z: 0}
-  m_LocalScale: {x: 0.9791562, y: 0.0053256624, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563662372
 GameObject:
   m_ObjectHideFlags: 0
@@ -31516,10 +31584,10 @@ MonoBehaviour:
   specificE: 
   specificC: 
   descripcion: {fileID: 1006544779}
-  ingles: "El amigo en el campo de batalla, restaurar\xE1 tu energ\xEDa y la de tus
-    hombres. Tambi\xE9n cumple labores de defensa."
-  "espa\xF1ol": The friendly man in the field that will restore you and your men energy.
+  ingles: The friendly man in the field that will restore you and your men energy.
     He will also perform defense tasks.
+  "espa\xF1ol": "El amigo en el campo de batalla, restaurar\xE1 tu energ\xEDa y la
+    de tus hombres. Tambi\xE9n cumple labores de defensa."
   chino: "\u8FD9\u4E2A\u53CB\u5584\u7684\u4EBA\u5C06\u4F1A\u6062\u590D\u4F60\u548C\u4F60\u7684\u7537\u4EBA\u7684\u80FD\u91CF\u3002\u4ED6\u8FD8\u5C06\u6267\u884C\u9632\u52A1\u4EFB\u52A1\u3002"
   saludMax: 0
   suma: 0
@@ -36885,74 +36953,6 @@ Transform:
   m_Father: {fileID: 1627111698}
   m_RootOrder: 124
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1310981903
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1310981906}
-  - component: {fileID: 1310981904}
-  - component: {fileID: 1310981905}
-  m_Layer: 0
-  m_Name: MiddleMiddle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1310981904
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1310981903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.19999999, y: 0.19999999}
-  offset: {x: 0.4, y: 0.4}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136620
---- !u!114 &1310981905
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1310981903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1310981906
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1310981903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9791562, y: 0.98934865, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311277688
 GameObject:
   m_ObjectHideFlags: 0
@@ -37452,74 +37452,6 @@ Transform:
   m_Father: {fileID: 1627111698}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1330231264
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1330231267}
-  - component: {fileID: 1330231265}
-  - component: {fileID: 1330231266}
-  m_Layer: 0
-  m_Name: BottomLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1330231265
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330231264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.4, y: 0.4}
-  offset: {x: 0, y: 0}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136636
---- !u!114 &1330231266
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330231264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1330231267
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1330231264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49478903, y: -0.49733716, z: 0}
-  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1333794982
 GameObject:
   m_ObjectHideFlags: 0
@@ -37685,6 +37617,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1627111698}
   m_RootOrder: 465
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1335538744
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1335538747}
+  - component: {fileID: 1335538745}
+  - component: {fileID: 1335538746}
+  m_Layer: 0
+  m_Name: BottomLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1335538745
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1335538744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.4, y: 0.4}
+  offset: {x: 0, y: 0}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28586
+--- !u!114 &1335538746
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1335538744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1335538747
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1335538744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.49478903, y: -0.49733716, z: 0}
+  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336403036
 GameObject:
@@ -39124,74 +39124,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1627111698}
   m_RootOrder: 111
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1371929701
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1371929704}
-  - component: {fileID: 1371929702}
-  - component: {fileID: 1371929703}
-  m_Layer: 0
-  m_Name: MiddleRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1371929702
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371929701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.4, y: 0.19999999}
-  offset: {x: 0.6, y: 0.4}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136628
---- !u!114 &1371929703
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371929701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1371929704
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371929701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49478903, y: 0, z: 0}
-  m_LocalScale: {x: 0.010421909, y: 0.98934865, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374418445
 GameObject:
@@ -44944,74 +44876,6 @@ Transform:
   m_Father: {fileID: 1627111698}
   m_RootOrder: 498
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1573984080
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1573984083}
-  - component: {fileID: 1573984081}
-  - component: {fileID: 1573984082}
-  m_Layer: 0
-  m_Name: MiddleLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1573984081
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1573984080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.4, y: 0.19999999}
-  offset: {x: 0, y: 0.4}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136612
---- !u!114 &1573984082
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1573984080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1573984083
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1573984080}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49478903, y: 0, z: 0}
-  m_LocalScale: {x: 0.010421909, y: 0.98934865, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1574134490
 GameObject:
   m_ObjectHideFlags: 0
@@ -45856,74 +45720,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1593393759}
---- !u!1 &1596280253
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1596280256}
-  - component: {fileID: 1596280254}
-  - component: {fileID: 1596280255}
-  m_Layer: 0
-  m_Name: TopRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1596280254
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1596280253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.4, y: 0.4}
-  offset: {x: 0.6, y: 0.6}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136604
---- !u!114 &1596280255
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1596280253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1596280256
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1596280253}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49478903, y: 0.49733716, z: 0}
-  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598832847
 GameObject:
   m_ObjectHideFlags: 0
@@ -47813,6 +47609,74 @@ Transform:
   m_Father: {fileID: 1627111698}
   m_RootOrder: 370
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1666000025
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1666000028}
+  - component: {fileID: 1666000026}
+  - component: {fileID: 1666000027}
+  m_Layer: 0
+  m_Name: BottomRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1666000026
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666000025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.4, y: 0.4}
+  offset: {x: 0.6, y: 0}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28602
+--- !u!114 &1666000027
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666000025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1666000028
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1666000025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.49478903, y: -0.49733716, z: 0}
+  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1666739152
 GameObject:
   m_ObjectHideFlags: 0
@@ -48505,6 +48369,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1684535826}
+--- !u!1 &1687367783
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1687367786}
+  - component: {fileID: 1687367784}
+  - component: {fileID: 1687367785}
+  m_Layer: 0
+  m_Name: TopRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1687367784
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687367783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.4, y: 0.4}
+  offset: {x: 0.6, y: 0.6}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28554
+--- !u!114 &1687367785
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687367783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1687367786
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687367783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.49478903, y: 0.49733716, z: 0}
+  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689918470
 GameObject:
   m_ObjectHideFlags: 0
@@ -50797,6 +50729,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1740282160}
+--- !u!1 &1741549789
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1741549792}
+  - component: {fileID: 1741549790}
+  - component: {fileID: 1741549791}
+  m_Layer: 0
+  m_Name: TopMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1741549790
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741549789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.19999999, y: 0.4}
+  offset: {x: 0.4, y: 0.6}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28546
+--- !u!114 &1741549791
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741549789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1741549792
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741549789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.49733716, z: 0}
+  m_LocalScale: {x: 0.9791562, y: 0.0053256624, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746849592
 GameObject:
   m_ObjectHideFlags: 0
@@ -52696,7 +52696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idioma: 
-  grafica: {fileID: 1958104206}
+  grafica: {fileID: 1909652279}
   Objecto3D: 1
   Grados360: 0
   nacer: {fileID: 32495972}
@@ -52719,14 +52719,14 @@ MonoBehaviour:
   specificE: 
   specificC: 
   descripcion: {fileID: 1006544779}
-  ingles: "El amigo en el campo de batalla, restaurar\xE1 tu energ\xEDa y la de tus
-    hombres. Tambi\xE9n cumple labores de defensa."
-  "espa\xF1ol": The friendly man in the field that will restore you and your men energy.
+  ingles: The friendly man in the field that will restore you and your men energy.
     He will also perform defense tasks.
+  "espa\xF1ol": "El amigo en el campo de batalla, restaurar\xE1 tu energ\xEDa y la
+    de tus hombres. Tambi\xE9n cumple labores de defensa."
   chino: "\u8FD9\u4E2A\u53CB\u5584\u7684\u4EBA\u5C06\u4F1A\u6062\u590D\u4F60\u548C\u4F60\u7684\u7537\u4EBA\u7684\u80FD\u91CF\u3002\u4ED6\u8FD8\u5C06\u6267\u884C\u9632\u52A1\u4EFB\u52A1\u3002"
   saludMax: 0
   suma: 0
-  gris: {fileID: 423606135}
+  gris: {fileID: 879620282}
 --- !u!114 &1791961652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56443,74 +56443,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894866916}
---- !u!1 &1895296079
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1895296082}
-  - component: {fileID: 1895296080}
-  - component: {fileID: 1895296081}
-  m_Layer: 0
-  m_Name: TopLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1895296080
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1895296079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.4, y: 0.4}
-  offset: {x: 0, y: 0.6}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136588
---- !u!114 &1895296081
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1895296079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1895296082
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1895296079}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.49478903, y: 0.49733716, z: 0}
-  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895743456
 GameObject:
   m_ObjectHideFlags: 0
@@ -57826,6 +57758,74 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1916474715}
+--- !u!1 &1917605094
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1917605097}
+  - component: {fileID: 1917605095}
+  - component: {fileID: 1917605096}
+  m_Layer: 0
+  m_Name: TopLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1917605095
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917605094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.4, y: 0.4}
+  offset: {x: 0, y: 0.6}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28538
+--- !u!114 &1917605096
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917605094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1917605097
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917605094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.49478903, y: 0.49733716, z: 0}
+  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1929755896
 GameObject:
   m_ObjectHideFlags: 0
@@ -60792,74 +60792,6 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
---- !u!1 &2029838498
-GameObject:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2029838501}
-  - component: {fileID: 2029838499}
-  - component: {fileID: 2029838500}
-  m_Layer: 0
-  m_Name: BottomRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2029838499
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2029838498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
-  properties:
-  - name: Albedo
-    nameID: 10
-    type: 0
-    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
-    value: 0
-    enabled: 1
-  tiling: {x: 0.4, y: 0.4}
-  offset: {x: 0.6, y: 0}
-  maskMethod: 0
-  masks: 01000000
-  _TilingOffset: 291
-  _MaskBase: 292
-  _MaskLayers: 293
-  instanceID: -136652
---- !u!114 &2029838500
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2029838498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2029838501
-Transform:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2029838498}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49478903, y: -0.49733716, z: 0}
-  m_LocalScale: {x: 0.010421909, y: 0.0053256624, z: 1}
-  m_Children: []
-  m_Father: {fileID: 261847778}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2031348578
 GameObject:
   m_ObjectHideFlags: 0
@@ -62724,6 +62656,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1627111698}
   m_RootOrder: 330
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2117230829
+GameObject:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2117230832}
+  - component: {fileID: 2117230830}
+  - component: {fileID: 2117230831}
+  m_Layer: 0
+  m_Name: MiddleLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2117230830
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117230829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba303429bf6dcd489303c045ead295f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projection: {fileID: 11400000, guid: 9bfb21d7154358c478f5055be96fd426, type: 2}
+  properties:
+  - name: Albedo
+    nameID: 10
+    type: 0
+    color: {r: 0.5628356, g: 0.55471456, b: 0.66176474, a: 0.627451}
+    value: 0
+    enabled: 1
+  tiling: {x: 0.4, y: 0.19999999}
+  offset: {x: 0, y: 0.4}
+  maskMethod: 0
+  masks: 01000000
+  _TilingOffset: 433
+  _MaskBase: 434
+  _MaskLayers: 435
+  instanceID: -28562
+--- !u!114 &2117230831
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117230829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739f63f7a66532b46a604c5e9cf47659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2117230832
+Transform:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117230829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.49478903, y: 0, z: 0}
+  m_LocalScale: {x: 0.010421909, y: 0.98934865, z: 1}
+  m_Children: []
+  m_Father: {fileID: 261847778}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121997448
 GameObject:
