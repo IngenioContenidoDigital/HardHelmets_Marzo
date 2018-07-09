@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33655951694042556}
   - component: {fileID: 23196229631435282}
   - component: {fileID: 114028652593820390}
+  - component: {fileID: 65813105609800696}
+  - component: {fileID: 114847408059555984}
   m_Layer: 0
   m_Name: Spine GameObject (maisa)
   m_TagString: Untagged
@@ -83,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1774945010799480}
   m_Mesh: {fileID: 0}
+--- !u!65 &65813105609800696
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774945010799480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 6, z: 2}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &114028652593820390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +124,19 @@ MonoBehaviour:
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: 
-  loop: 0
+  _animationName: idle
+  loop: 1
   timeScale: 1
+--- !u!114 &114847408059555984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774945010799480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866122e6afa05cf41855afa3883e20f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loop: idle
+  mueve: hit
