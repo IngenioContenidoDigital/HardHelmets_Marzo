@@ -50,7 +50,7 @@ namespace Prototype.NetworkLobby {
 		public void Update()
 		{
 			cajas = PlayerPrefs.GetInt("caja1");
-			if(cajas >= 1 && !jugado2 && actual2 != "cartas" && actual2 != "cartas2")
+			if(cajas >= 1 && !jugado2 && actual2 != "cartas" && actual2 != "cartas2" && Application.loadedLevelName != "LevelNetwork0" && Application.loadedLevelName != "LevelNetwork1" && Application.loadedLevelName != "LevelNetwork2" && Application.loadedLevelName != "Load")
 			{
 				boton.SetActive(true);
 			}else
@@ -140,6 +140,7 @@ namespace Prototype.NetworkLobby {
 				servidores.SetActive(false);
 				perfilServer.SetActive(false);
 				perfilLista.SetActive(false);
+				boton.SetActive(false);
 				versus.SetActive(false);
 
 				if(!retirada)

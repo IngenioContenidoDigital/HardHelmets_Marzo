@@ -17,13 +17,10 @@ namespace Prototype.NetworkLobby
 		public GameObject boton;
 
 		public UnityEngine.UI.Image imagen;
-		public Sprite cero;
 		public Sprite uno;
 		public Sprite dos;
 
-		public UnityEngine.UI.Image lev0;
-		public Sprite ceroa;
-		public Sprite cerob;
+
 		public UnityEngine.UI.Image lev1;
 		public Sprite unoa;
 		public Sprite unob;
@@ -32,7 +29,6 @@ namespace Prototype.NetworkLobby
 		public Sprite dosb;
 
 		public UnityEngine.UI.Image level;
-		public Sprite l0;
 		public Sprite l1;
 		public Sprite l2;
 
@@ -81,20 +77,10 @@ namespace Prototype.NetworkLobby
 				lob = GameObject.Find("LobbyManager");
 			}
 
-			if(nivel == 0)
-			{
-				imagen.sprite = cero;
-
-				lev0.sprite = cerob;
-				lev1.sprite = unoa;
-				lev2.sprite = dosa;
-
-				level.sprite = l0;
-			}else if(nivel == 1)
+			if(nivel == 1)
 			{
 				imagen.sprite = uno;
 
-				lev0.sprite = ceroa;
 				lev1.sprite = unob;
 				lev2.sprite = dosa;
 
@@ -103,7 +89,6 @@ namespace Prototype.NetworkLobby
 			{
 				imagen.sprite = dos;
 
-				lev0.sprite = ceroa;
 				lev1.sprite = unoa;
 				lev2.sprite = dosb;
 
