@@ -31,7 +31,17 @@ public class maisal : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Player" || col.gameObject.tag == "enemy" || col.gameObject.tag == "tank")
 		{
+			sonar();
 			GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, mueve, false);
 		}
+	}
+
+	public AudioClip[] sonido;
+
+	void sonar()
+	{
+		GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("efects");
+		GetComponent<AudioSource>().clip = sonido[Random.Range(0,sonido.Length)];
+		GetComponent<AudioSource>().Play();
 	}
 }

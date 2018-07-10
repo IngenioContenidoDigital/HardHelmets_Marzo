@@ -8,13 +8,9 @@ public class changeLevelOffline : MonoBehaviour {
 	public int nivel;
 
 	public UnityEngine.UI.Image imagen;
-	public Sprite cero;
 	public Sprite uno;
 	public Sprite dos;
 
-	public UnityEngine.UI.Image lev0;
-	public Sprite ceroa;
-	public Sprite cerob;
 	public UnityEngine.UI.Image lev1;
 	public Sprite unoa;
 	public Sprite unob;
@@ -23,7 +19,6 @@ public class changeLevelOffline : MonoBehaviour {
 	public Sprite dosb;
 
 	public UnityEngine.UI.Image level;
-	public Sprite l0;
 	public Sprite l1;
 	public Sprite l2;
 
@@ -52,20 +47,10 @@ public class changeLevelOffline : MonoBehaviour {
 			escenarios.GetComponent<Animator>().SetBool("sale", false);
 		}
 
-		if(nivel == 0)
-		{
-			imagen.sprite = cero;
-
-			lev0.sprite = cerob;
-			lev1.sprite = unoa;
-			lev2.sprite = dosa;
-
-			level.sprite = l0;
-		}else if(nivel == 1)
+		if(nivel == 1)
 		{
 			imagen.sprite = uno;
 
-			lev0.sprite = ceroa;
 			lev1.sprite = unob;
 			lev2.sprite = dosa;
 
@@ -74,7 +59,6 @@ public class changeLevelOffline : MonoBehaviour {
 		{
 			imagen.sprite = dos;
 
-			lev0.sprite = ceroa;
 			lev1.sprite = unoa;
 			lev2.sprite = dosb;
 
