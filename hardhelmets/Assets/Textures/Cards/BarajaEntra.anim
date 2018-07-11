@@ -364,7 +364,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 2.0166667
-        value: -225
+        value: -215.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -386,7 +386,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 2.0166667
-        value: -258.2
+        value: -215.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -769,6 +769,28 @@ AnimationClip:
     path: Mano
     classID: 1
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -78.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 2.0166667
+        value: -78.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: Canvas/Battle Deck
+    classID: 224
+    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -1027,6 +1049,13 @@ AnimationClip:
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2887754326
+      attribute: 538195251
+      script: {fileID: 0}
+      typeID: 224
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
@@ -1540,7 +1569,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 2.0166667
-        value: -225
+        value: -215.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1562,7 +1591,7 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 2.0166667
-        value: -258.2
+        value: -215.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1944,6 +1973,28 @@ AnimationClip:
     attribute: m_IsActive
     path: Mano
     classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: -78.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 2.0166667
+        value: -78.8
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_AnchoredPosition.y
+    path: Canvas/Battle Deck
+    classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0

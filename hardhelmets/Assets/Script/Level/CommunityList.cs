@@ -202,6 +202,9 @@ public class CommunityList : MonoBehaviour {
 	{
 		pantalla = "cartas";
 
+		menu.GetComponent<Animator>().SetBool("entra", false);
+		menu.GetComponent<Animator>().SetBool("sale", true);
+
 		cards.SetActive(true);
 		cards.GetComponent<Animator>().SetBool("sale", false);
 		cards.GetComponent<Animator>().SetBool("entra", true);
@@ -216,6 +219,9 @@ public class CommunityList : MonoBehaviour {
 		{
 			if(mano.GetComponent<Mano>().guardar)
 			{
+				menu.GetComponent<Animator>().SetBool("sale", false);
+				menu.GetComponent<Animator>().SetBool("entra", true);
+
 				cards.GetComponent<Animator>().SetBool("entra", false);
 				cards.GetComponent<Animator>().SetBool("sale", true);
 				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(cartbutton);
