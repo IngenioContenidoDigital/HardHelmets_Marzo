@@ -95,6 +95,10 @@ public class cofreLobby : MonoBehaviour {
 				}
 			}
 		}
+		if(Input.GetButtonDown("Cancel"))
+		{
+			open = false;
+		}
 
 		PlayerPrefs.SetInt("caja", cajas);
 

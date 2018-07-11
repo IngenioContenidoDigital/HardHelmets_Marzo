@@ -21,7 +21,8 @@ public class ajustarScroll : MonoBehaviour {
 	void Update() {
 		UpdateScrollToSelected();
 	}
-
+	//public float ajuste;
+	//public GameObject content;
 	void UpdateScrollToSelected() {
 
 		// grab the current selected from the eventsystem
@@ -42,16 +43,18 @@ public class ajustarScroll : MonoBehaviour {
 
 		float selectedPosition = ( m_ContentRectTransform.rect.height - selectedDifference.y );
 		float currentScrollRectPosition = m_ScrollRect.normalizedPosition.y * contentHeightDifference;
-		float above = currentScrollRectPosition - ( m_SelectedRectTransform.rect.height / 2 ) + m_RectTransform.rect.height;
+		float above = currentScrollRectPosition - ( m_SelectedRectTransform.rect.height / 0.5f ) + m_RectTransform.rect.height;
 		float below = currentScrollRectPosition + ( m_SelectedRectTransform.rect.height / 2 );
 
 		// check if selected is out of bounds
-		if ( selectedPosition > above ) {
+		if ( selectedPosition > above )
+		{
 			float step = selectedPosition - above;
 			float newY = currentScrollRectPosition + step;
 			float newNormalizedY = newY / contentHeightDifference;
 			m_ScrollRect.normalizedPosition = Vector2.Lerp( m_ScrollRect.normalizedPosition, new Vector2( 0, newNormalizedY ), scrollSpeed * Time.deltaTime );
-		} else if ( selectedPosition < below ) {
+		}else if ( selectedPosition < below )
+		{
 			float step = selectedPosition - below;
 			float newY = currentScrollRectPosition + step;
 			float newNormalizedY = newY / contentHeightDifference;

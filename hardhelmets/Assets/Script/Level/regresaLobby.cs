@@ -220,6 +220,9 @@ namespace Prototype.NetworkLobby {
 		{
 			actual2 = "cartas";
 
+			menu.GetComponent<Animator>().SetBool("entra", false);
+			menu.GetComponent<Animator>().SetBool("sale", true);
+
 			crear.SetActive(false);
 			lista.SetActive(false);
 			//jugadores.SetActive(false);
@@ -232,6 +235,9 @@ namespace Prototype.NetworkLobby {
 		public void baraja2()
 		{
 			actual2 = "cartas2";
+
+			menu.GetComponent<Animator>().SetBool("entra", false);
+			menu.GetComponent<Animator>().SetBool("sale", true);
 
 			crear.SetActive(false);
 			lista.SetActive(false);
@@ -250,8 +256,9 @@ namespace Prototype.NetworkLobby {
 				{
 					if(mano.GetComponent<Mano>().guardar)
 					{
-						actual = actual2;
 						actual2 = "";
+						menu.GetComponent<Animator>().SetBool("sale", false);
+						menu.GetComponent<Animator>().SetBool("entra", true);
 						cartas.GetComponent<Animator>().SetBool("sale", true);
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaServer);
 					}else
@@ -263,8 +270,9 @@ namespace Prototype.NetworkLobby {
 				{
 					if(mano.GetComponent<Mano>().guardar)
 					{
-						actual = actual2;
 						actual2 = "";
+						menu.GetComponent<Animator>().SetBool("sale", false);
+						menu.GetComponent<Animator>().SetBool("entra", true);
 						cartas.GetComponent<Animator>().SetBool("sale", true);
 						eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
 					}else
@@ -298,6 +306,7 @@ namespace Prototype.NetworkLobby {
 					}else if(actual == "cofre")
 					{
 						actual = actual2;
+
 						baul2.GetComponent<Animator>().SetBool("cancelar", true);
 						baul2.GetComponent<cofreLobby>().open = false;
 
@@ -309,12 +318,15 @@ namespace Prototype.NetworkLobby {
 						if(actual2 == "jugadores")
 						{
 							eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaServer);
+							actual2 = "";
 						}else if(actual2 == "servidores")
 						{
 							eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(barajaList);
+							actual2 = "";
 						}else
 						{
 							eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(crearButton);
+							actual2 = "";
 						}
 
 					}else if(actual == "esconder")
@@ -393,6 +405,7 @@ namespace Prototype.NetworkLobby {
 		public void Cofre ()
 		{
 			actual2 = actual;
+			actual = "cofre";
 
 			menu.GetComponent<Animator>().SetBool("entra", false);
 			menu.GetComponent<Animator>().SetBool("sale", true);
@@ -406,13 +419,13 @@ namespace Prototype.NetworkLobby {
 				baul2.GetComponent<Animator>().SetBool("reiniciar", true);
 			}
 			menu.GetComponent<LobbyManager>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(null);
-			StartCoroutine(momentoCofre());
+			//StartCoroutine(momentoCofre());
 		}
-		IEnumerator momentoCofre()
+		/*IEnumerator momentoCofre()
 		{
 			yield return new WaitForSeconds(0.4f);
 			actual = "cofre";
-		}
+		}*/
 
 	}
 }
