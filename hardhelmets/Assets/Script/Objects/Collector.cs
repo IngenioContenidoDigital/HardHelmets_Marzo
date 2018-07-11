@@ -25,6 +25,19 @@ public class Collector : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		//CAMBIE ENTRE CONTROL Y TECLADO
+		if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+		{
+			eventsystem.GetComponent<StandaloneInputModule>().horizontalAxis = "Horizontal";
+			eventsystem.GetComponent<StandaloneInputModule>().verticalAxis = "Vertical";
+		}
+
+		if(Input.GetButtonDown("HorizontalUI") || Input.GetButtonDown("VerticalUI"))
+		{
+			eventsystem.GetComponent<StandaloneInputModule>().horizontalAxis = "HorizontalUI";
+			eventsystem.GetComponent<StandaloneInputModule>().verticalAxis = "VerticalUI";
+		}
+
 		if (eventsystem.GetComponent<EventSystem>().currentSelectedGameObject == null)
 		{
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(selectedObj);
