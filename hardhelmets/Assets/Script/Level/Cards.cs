@@ -17,7 +17,7 @@ public class Cards : MonoBehaviour {
 	public UnityEngine.UI.Text levelT;
 
 	//SUBMINT BUTTON EN CARTA
-	public Button joinButton;
+	//public Button joinButton;
 	public bool selected;
 
 	void Start ()
@@ -30,13 +30,13 @@ public class Cards : MonoBehaviour {
 	}
 	public AudioSource audio1;
 	public EventSystem eventsystem;
-	public GameObject flecha;
+	//public GameObject flecha;
 	public void click ()
 	{
-		mano.GetComponent<Mano>().zona = true;
-		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(flecha);
+		//mano.GetComponent<Mano>().zona = true;
+		//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(flecha);
 
-		if(!usada && selected)
+		if(!usada)//if(!usada && selected)
 		{
 			audio1.volume = 1;
 			audio1.clip = selec[Random.Range(0,selec.Length)];
@@ -83,8 +83,8 @@ public class Cards : MonoBehaviour {
 
 				usada = true;
 
-				//GetComponent<Button>().enabled = false;
-				//GetComponent<Image>().color = new Color32(100,100,100,100);
+				selected = false;
+				GetComponent<Animator>().SetBool("sale", true);
 
 			}
 		}
@@ -116,31 +116,36 @@ public class Cards : MonoBehaviour {
 		if(PlayerPrefs.GetInt("card"+carta) == 0)
 		{
 			cantidaT.text = "";
-			//boton.SetActive(false);
 			GetComponent<Button>().enabled = false;
+			GetComponent<Button>().interactable = false;
+			GetComponent<Image>().raycastTarget = false;
 			imagen.sprite = volteada;
-			//GetComponent<Image>().color = new Color32(100,100,100,100);
+			gameObject.SetActive(false);
+		}else if(!usada)
+		{
+			gameObject.SetActive(true);
 		}
 
-		if(usada)
+		if(usada && !selected)
 		{
-			//boton.SetActive(false);
-			GetComponent<Button>().enabled = false;
-			//GetComponent<Image>().color = new Color32(150,150,150,150);
+			//GetComponent<Button>().enabled = false;
+			//GetComponent<Button>().interactable = false;
+			//GetComponent<Image>().raycastTarget = false;
 			imagen.sprite = atras;
 
 		}else if(cantidadTotal > 0)
 		{
-			//boton.SetActive(true);
 			GetComponent<Button>().enabled = true;
+			GetComponent<Button>().interactable = true;
+			GetComponent<Image>().raycastTarget = true;
 			GetComponent<Image>().color = new Color32(255,255,255,255);
 			imagen.sprite = normal;
 		}
 		//SELECCIONAR CARTA CON SUBMIT BURRON
-		if(!usada && mano.GetComponent<Mano>().zona && selected && Input.GetButtonDown("Jump") || Input.GetButtonDown("Submit"))
+		/*if(!usada && mano.GetComponent<Mano>().zona && selected && Input.GetButtonDown("Jump") || Input.GetButtonDown("Submit"))
 		{
 			joinButton.onClick.Invoke();
-		}
+		}*/
 	}
 
 	public AudioClip[] selec;
@@ -159,7 +164,25 @@ public class Cards : MonoBehaviour {
 	////NUEVO
 	public GameObject mano;
 
-	void OnTriggerEnter2D (Collider2D col)
+	public void seleccionada ()
+	{
+		if(!usada)
+		{
+			selected = true;
+			GetComponent<Animator>().SetBool("entra", true);
+			//eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(gameObject);
+		}
+	}
+	public void deseleccionada ()
+	{
+		if(!usada)
+		{
+			selected = false;
+			GetComponent<Animator>().SetBool("sale", true);
+		}
+	}
+
+	/*void OnTriggerEnter2D (Collider2D col)
 	{
 		if(col.gameObject.tag == "Player")
 		{
@@ -176,16 +199,16 @@ public class Cards : MonoBehaviour {
 			mano.GetComponent<Mano>().moverAdelante = false;
 			mano.GetComponent<Mano>().moverAtras = false;
 		}
-	}
+	}*/
 
-	void OnTriggerExit2D (Collider2D col)
+	/*void OnTriggerExit2D (Collider2D col)
 	{
 		if(col.gameObject.tag == "Player")
 		{
 			selected = false;
 			GetComponent<Animator>().SetBool("sale", true);
 		}
-	}
+	}*/
 	public AudioSource audio2;
 	public void S_Select ()
 	{

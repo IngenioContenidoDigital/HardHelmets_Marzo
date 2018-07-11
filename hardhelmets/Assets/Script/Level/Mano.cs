@@ -38,7 +38,7 @@ public class Mano : MonoBehaviour {
 	public bool guardar;
 
 	//MOVIMIENTOS TECLADO
-	public bool zona;
+	/*public bool zona;
 
 	public bool I;
 	public bool D;
@@ -61,7 +61,7 @@ public class Mano : MonoBehaviour {
 
 		I = false;
 		D = false;
-	}
+	}*/
 
 	void Start ()
 	{
@@ -73,7 +73,7 @@ public class Mano : MonoBehaviour {
 
 	void Update ()
 	{
-		if(nombreCarta == first)
+		/*if(nombreCarta == first)
 		{
 			moverAtras = false;
 			I = false;
@@ -113,7 +113,7 @@ public class Mano : MonoBehaviour {
 			{
 				adelante();
 			}
-		}
+		}*/
 
 		if(animator.GetCurrentAnimatorStateInfo(0).IsName("BarajaEntra") || animator.GetCurrentAnimatorStateInfo(0).IsName("Baraja2Entra") || animator.GetCurrentAnimatorStateInfo(0).IsName("BarajaEntra3"))
 		{
@@ -132,7 +132,7 @@ public class Mano : MonoBehaviour {
 			//listo.SetActive(false);
 		}
 
-		if(moverAdelante)
+		/*if(moverAdelante)
 		{
 			moverAtras = false;
 			content.GetComponent<ScrollRect>().horizontalNormalizedPosition += 0.01f;
@@ -149,7 +149,7 @@ public class Mano : MonoBehaviour {
 			{
 				moverAtras = false;
 			}
-		}
+		}*/
 		//GUARDA LA BARAJA ACTUAL
 		if(Cartas.uno != 0)
 		{
@@ -213,7 +213,7 @@ public class Mano : MonoBehaviour {
 	}
 
 	//PANEL DE CARTAS
-	public GameObject content;
+	/*public GameObject content;
 
 	public bool moverAdelante;
 	public bool moverAtras;
@@ -238,5 +238,5 @@ public class Mano : MonoBehaviour {
 		{
 			moverAtras = true;
 		}
-	}
+	}*/
 }
