@@ -31,6 +31,7 @@ public class customMGOffline : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		skinsToCombine[8] = "";
 
@@ -42,12 +43,14 @@ public class customMGOffline : MonoBehaviour {
 			skinsToCombine[3] = "chaleco1"+malo;
 			skinsToCombine[4] = "balas1"+malo;
 			skinsToCombine[5] = "shemag1"+malo;
+			skinsToCombine[6] = "cuerpo1"+malo;
 		}else if(casco == 2)
 		{
 			skinsToCombine[1] = "casco1"+malo;
 			skinsToCombine[2] = "maleta1"+malo;
 			skinsToCombine[3] = "balas1"+malo;
 			skinsToCombine[4] = "abrigo1"+malo;
+			skinsToCombine[6] = "cuerpo1"+malo;
 		}
 
 		var skeletonComponent = GetComponent<ISkeletonComponent>();

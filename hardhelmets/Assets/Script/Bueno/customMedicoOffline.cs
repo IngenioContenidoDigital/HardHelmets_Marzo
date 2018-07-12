@@ -29,10 +29,12 @@ public class customMedicoOffline : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		skinsToCombine[0] = "cara"+cara.ToString();
 
 		skinsToCombine[1] = "medico1"+malo;
+		skinsToCombine[2] = "cuerpo1"+malo;
 
 		var skeletonComponent = GetComponent<ISkeletonComponent>();
 		if (skeletonComponent == null) return;

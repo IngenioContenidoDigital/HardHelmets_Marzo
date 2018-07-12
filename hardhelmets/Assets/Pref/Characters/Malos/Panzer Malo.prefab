@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 114644023592399852}
   - component: {fileID: 114787134989459096}
   - component: {fileID: 114604382072634254}
-  - component: {fileID: 114045100302912290}
+  - component: {fileID: 114957824775191086}
   - component: {fileID: 195366316927886210}
   m_Layer: 11
   m_Name: Panzer Malo
@@ -3138,8 +3138,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
-  - {fileID: 2100000, guid: 88db880da3d809c428a59dccd0a29599, type: 2}
-  - {fileID: 2100000, guid: 492340a9dd9276a4c91c3e84dbd91d7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3619,28 +3617,6 @@ MonoBehaviour:
   translator:
     autoReset: 1
     layerMixModes: 00000000
---- !u!114 &114045100302912290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742285031829474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8cbca2c281d9c4eac6a2676a5a262f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinsToCombine:
-  - 
-  - 
-  - 
-  - 
-  - cuerpo1b
-  - cuerpo1b
-  - default
-  - panzer
-  malo: b
-  poner: 1
 --- !u!114 &114045173718249686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5533,6 +5509,27 @@ MonoBehaviour:
   sordo: {fileID: 8300000, guid: c057905a99e75354599c01fbe8e54f2a, type: 3}
   falli: {fileID: 8300000, guid: a390705b9f7db5a41bcb11c35028d09a, type: 3}
   gunmini: {fileID: 8300000, guid: 680bedd13bb211741b9b33fc45126e79, type: 3}
+--- !u!114 &114957824775191086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742285031829474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea82396716e46949b172fcb5a3d5b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsToCombine:
+  - 
+  - 
+  - 
+  - 
+  - cuerpo1
+  - panzer
+  - default
+  malo: 
+  poner: 1
 --- !u!114 &114982233650778646
 MonoBehaviour:
   m_ObjectHideFlags: 1

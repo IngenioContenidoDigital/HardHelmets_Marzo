@@ -85,7 +85,7 @@ public class cofreLobby : MonoBehaviour {
 					GetComponent<Animator>().SetBool("abre", true);
 					if(gameObject.name == "Baul")
 					{
-						master.GetComponent<CommunityList>().pantalla = "esconder";
+						//master.GetComponent<CommunityList>().pantalla = "esconder";
 					}else
 					{
 						master.GetComponent<regresaLobby>().actual = "esconder";
@@ -116,7 +116,7 @@ public class cofreLobby : MonoBehaviour {
 			GetComponent<Animator>().SetBool("abre", true);
 			if(gameObject.name == "Baul")
 			{
-				master.GetComponent<CommunityList>().pantalla = "esconder";
+				//master.GetComponent<CommunityList>().pantalla = "esconder";
 			}else
 			{
 				master.GetComponent<regresaLobby>().actual = "esconder";
@@ -217,9 +217,9 @@ public class cofreLobby : MonoBehaviour {
 
 		if(gameObject.name == "Baul")
 		{
-			master.GetComponent<CommunityList>().pantalla = "";
+			/*master.GetComponent<CommunityList>().pantalla = "";
 			master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("sale", false);
-			master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);
+			master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);*/
 		}else
 		{
 			master.GetComponent<regresaLobby>().actual = master.GetComponent<regresaLobby>().actual2;
@@ -240,7 +240,7 @@ public class cofreLobby : MonoBehaviour {
 		{
 			if(gameObject.name == "Baul")
 			{
-				master.GetComponent<CommunityList>().pantalla = "cofre";
+				//master.GetComponent<CommunityList>().pantalla = "cofre";
 			}else
 			{
 				master.GetComponent<regresaLobby>().actual = "cofre";
@@ -250,9 +250,9 @@ public class cofreLobby : MonoBehaviour {
 		{
 			if(gameObject.name == "Baul")
 			{
-				master.GetComponent<CommunityList>().pantalla = "";
+				/*master.GetComponent<CommunityList>().pantalla = "";
 				master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("sale", false);
-				master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);
+				master.GetComponent<CommunityList>().menu.GetComponent<Animator>().SetBool("entra", true);*/
 			}else
 			{
 				print("NO MAS COFRES");
@@ -289,7 +289,7 @@ public class cofreLobby : MonoBehaviour {
 	{
 		if(gameObject.name == "Baul")
 		{
-			master.GetComponent<CommunityList>().pantalla = "cofre";
+			//master.GetComponent<CommunityList>().pantalla = "cofre";
 		}else
 		{
 			master.GetComponent<regresaLobby>().actual = "cofre";

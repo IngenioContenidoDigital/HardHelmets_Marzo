@@ -15,6 +15,7 @@ public class MenuSolitario : MonoBehaviour {
 	public GameObject scrollFaction;
 
 	public int nivel;
+	public string level;
 	public string factionBuena;
 	public string factionMala;
 
@@ -34,6 +35,8 @@ public class MenuSolitario : MonoBehaviour {
 	//---MENUS---------
 	public GameObject menu1;
 	public GameObject menu2;
+	public GameObject menu3;
+	public GameObject ocultar;
 
 	//---COFRE---------
 	public int cajas;
@@ -50,6 +53,9 @@ public class MenuSolitario : MonoBehaviour {
 	public EventSystem eventsystem;
 	public GameObject cartas1;
 	public GameObject adelante;
+	public GameObject jugar;
+	public GameObject yes;
+	public GameObject atras;
 
 	// Use this for initialization
 	void Start ()
@@ -83,6 +89,7 @@ public class MenuSolitario : MonoBehaviour {
 			{
 				bloqueadoN0.SetActive(true);
 			}
+			level = "2";
 		}
 		if(nivel == 1)
 		{
@@ -92,6 +99,7 @@ public class MenuSolitario : MonoBehaviour {
 			{
 				bloqueadoN1.SetActive(true);
 			}
+			level = "1";
 		}
 
 		minText.text = min.ToString();
@@ -107,7 +115,7 @@ public class MenuSolitario : MonoBehaviour {
 		{
 			bloqueado.SetActive(false);
 		}
-		if(pantalla == "cartas")
+		if(pantalla == "cartas" || pantalla == "3")
 		{
 			enter.SetActive(false);
 		}else
@@ -129,6 +137,14 @@ public class MenuSolitario : MonoBehaviour {
 		}else
 		{
 			boton.SetActive(false);
+		}
+
+		if(pantalla == "2")
+		{
+			ocultar.SetActive(true);
+		}else
+		{
+			ocultar.SetActive(false);
 		}
 
 		if(Input.GetButtonDown("Cancel"))
@@ -166,6 +182,18 @@ public class MenuSolitario : MonoBehaviour {
 
 			menu2.GetComponent<Animator>().SetBool("sale", false);
 			menu2.GetComponent<Animator>().SetBool("entra", true);
+			return;
+		}
+		if(pantalla == "2")
+		{
+			pantalla = "3";
+			//menu2.GetComponent<Animator>().SetBool("entra", false);
+			//menu2.GetComponent<Animator>().SetBool("sale", true);
+
+			menu3.GetComponent<Animator>().SetBool("sale", false);
+			menu3.GetComponent<Animator>().SetBool("entra", true);
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(jugar);
+			return;
 		}
 	}
 	public void regresar()
@@ -179,14 +207,21 @@ public class MenuSolitario : MonoBehaviour {
 
 				cards.GetComponent<Animator>().SetBool("entra", false);
 				cards.GetComponent<Animator>().SetBool("sale", true);
-				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(adelante);
+				if(pantalla2 == "3")
+				{
+					eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(jugar);
+				}else
+				{
+					eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(adelante);
+				}
+
+				pantalla = pantalla2;
+				pantalla2 = "";
 			}else
 			{
 				mensajecartas.SetActive(true);
 				StartCoroutine(esconder());
 			}
-			pantalla = pantalla2;
-			pantalla2 = "";
 			return;
 		}
 		if(pantalla == "2")
@@ -201,10 +236,46 @@ public class MenuSolitario : MonoBehaviour {
 			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(adelante);
 			return;
 		}
+		if(pantalla == "3")
+		{
+			pantalla = "2";
+			//menu2.GetComponent<Animator>().SetBool("sale", false);
+			//menu2.GetComponent<Animator>().SetBool("entra", true);
+
+			menu3.GetComponent<Animator>().SetBool("entra", false);
+			menu3.GetComponent<Animator>().SetBool("sale", true);
+
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(adelante);
+			return;
+		}
+		if(pantalla == "1")
+		{
+			mensajesalir.SetActive(true);
+
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(yes);
+			return;
+		}
+	}
+	public GameObject mensajesalir;
+	public void si()
+	{
+		Application.LoadLevel("Load");
+		loading.nombre = "menu";
+	}
+	public void no()
+	{
+		mensajesalir.SetActive(false);
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(atras);
 	}
 	IEnumerator esconder()
 	{
 		yield return new WaitForSeconds(1);
 		mensajecartas.SetActive(false);
+	}
+
+	public void Terminar()
+	{
+		Application.LoadLevel("Load");
+		loading.nombre = "ComunityMatch"+level;
 	}
 }

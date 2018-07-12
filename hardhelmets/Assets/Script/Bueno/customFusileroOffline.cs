@@ -31,6 +31,7 @@ public class customFusileroOffline : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		skinsToCombine[0] = "cara"+cara.ToString();
 
@@ -39,10 +40,12 @@ public class customFusileroOffline : MonoBehaviour {
 			skinsToCombine[1] = "casco1"+malo;
 			skinsToCombine[2] = "maleta1"+malo;
 			skinsToCombine[3] = "chaleco1"+malo;
+			skinsToCombine[4] = "cuerpo1"+malo;
 		}else if(casco == 2)
 		{
 			skinsToCombine[1] = "casco2"+malo;
 			skinsToCombine[2] = "maleta2"+malo;
+			skinsToCombine[4] = "cuerpo1"+malo;
 		}
 
 		var skeletonComponent = GetComponent<ISkeletonComponent>();

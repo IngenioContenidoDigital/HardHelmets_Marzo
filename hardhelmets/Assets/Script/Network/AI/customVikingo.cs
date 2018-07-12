@@ -19,7 +19,7 @@ public class customVikingo : MonoBehaviour {
 	{
 		cuerpo = Random.Range(1,3);
 	}
-
+	public bool activar;
 	// Use this for initialization
 	void Start ()
 	{
@@ -30,6 +30,7 @@ public class customVikingo : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		if(cuerpo == 1)
 		{
@@ -55,5 +56,29 @@ public class customVikingo : MonoBehaviour {
 		skeleton.SetToSetupPose();
 		var animationStateComponent = skeletonComponent as IAnimationStateComponent;
 		if (animationStateComponent != null) animationStateComponent.AnimationState.Apply(skeleton);
+	}
+	void Update ()
+	{
+		if(activar)
+		{
+			var skeletonComponent = GetComponent<ISkeletonComponent>();
+			if (skeletonComponent == null) return;
+			var skeleton = skeletonComponent.Skeleton;
+			if (skeleton == null) return;
+
+			combinedSkin = combinedSkin ?? new Spine.Skin("combined");
+			combinedSkin.Clear();
+			foreach (var skinName in skinsToCombine) {
+				var skin = skeleton.Data.FindSkin(skinName);
+				if (skin != null) combinedSkin.Append(skin);
+			}
+
+			skeleton.SetSkin(combinedSkin);
+			skeleton.SetToSetupPose();
+			var animationStateComponent = skeletonComponent as IAnimationStateComponent;
+			if (animationStateComponent != null) animationStateComponent.AnimationState.Apply(skeleton);
+
+			activar = false;
+		}
 	}
 }

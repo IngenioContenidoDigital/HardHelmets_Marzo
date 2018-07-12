@@ -31,6 +31,7 @@ public class customMetraOffline : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		skinsToCombine[7] = "";
 
@@ -41,12 +42,14 @@ public class customMetraOffline : MonoBehaviour {
 			skinsToCombine[2] = "maleta1"+malo;
 			skinsToCombine[3] = "abrigo1"+malo;
 			skinsToCombine[4] = "balas1"+malo;
+			skinsToCombine[5] = "cuerpo1"+malo;
 		}else if(casco == 2)
 		{
 			skinsToCombine[1] = "casco3"+malo;
 			skinsToCombine[2] = "chaleco1"+malo;
 			skinsToCombine[3] = "balas1"+malo;
 			skinsToCombine[4] = "maleta2"+malo;
+			skinsToCombine[5] = "cuerpo1"+malo;
 		}
 
 		var skeletonComponent = GetComponent<ISkeletonComponent>();

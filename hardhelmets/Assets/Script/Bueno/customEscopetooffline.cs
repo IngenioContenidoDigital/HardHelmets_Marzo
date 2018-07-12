@@ -31,6 +31,7 @@ public class customEscopetooffline : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		skinsToCombine[8] = "";
 
@@ -43,6 +44,7 @@ public class customEscopetooffline : MonoBehaviour {
 			skinsToCombine[3] = "maleta1"+malo;
 			skinsToCombine[4] = "chaleco1"+malo;
 			skinsToCombine[5] = "balas1"+malo;
+			skinsToCombine[6] = "cuerpo1"+malo;
 		}else if(casco == 2)
 		{
 			skinsToCombine[1] = "casco5"+malo;
@@ -50,6 +52,7 @@ public class customEscopetooffline : MonoBehaviour {
 			skinsToCombine[3] = "shemag1"+malo;
 			skinsToCombine[4] = "maleta1"+malo;
 			skinsToCombine[5] = "abrigo1"+malo;
+			skinsToCombine[6] = "cuerpo1"+malo;
 		}
 
 		var skeletonComponent = GetComponent<ISkeletonComponent>();

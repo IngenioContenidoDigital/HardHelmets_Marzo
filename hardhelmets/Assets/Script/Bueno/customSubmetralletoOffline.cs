@@ -31,6 +31,7 @@ public class customSubmetralletoOffline : MonoBehaviour {
 		{
 			malo = PlayerPrefs.GetString("factionMala");
 		}
+		activar = true;
 
 		skinsToCombine[7] = "";
 
@@ -41,12 +42,14 @@ public class customSubmetralletoOffline : MonoBehaviour {
 			skinsToCombine[1] = "casco4"+malo;
 			skinsToCombine[2] = "shemag1"+malo;
 			skinsToCombine[3] = "chaleco1"+malo;
+			skinsToCombine[5] = "cuerpo1"+malo;
 		}else if(casco == 2)
 		{
 			skinsToCombine[1] = "casco3"+malo;
 			skinsToCombine[2] = "chaleco1"+malo;
 			skinsToCombine[3] = "shemag1"+malo;
 			skinsToCombine[4] = "mascara1"+malo;
+			skinsToCombine[5] = "cuerpo1"+malo;
 		}
 
 

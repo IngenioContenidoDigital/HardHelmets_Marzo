@@ -57,13 +57,7 @@ public class CustomFinal : MonoBehaviour {
 
 	void Start ()
 	{
-		if(gameObject.tag == "Player")
-		{
-			skin = PlayerPrefs.GetString("factionBuena");
-		}else
-		{
-			skin = PlayerPrefs.GetString("factionMala");
-		}
+		skin = PlayerPrefs.GetString("factionBuena");
 
 		casco = PlayerPrefs.GetString("casco");
 		cara = PlayerPrefs.GetString("cara");
@@ -116,8 +110,8 @@ public class CustomFinal : MonoBehaviour {
 	{
 		if(!listo)
 		{
-			if(gameObject.tag == "Player")
-			{
+			//if(gameObject.tag == "Player")
+			//{
 				casco = PlayerPrefs.GetString("casco");
 				cara = PlayerPrefs.GetString("cara");
 				mascara = PlayerPrefs.GetString("mascara");
@@ -126,8 +120,8 @@ public class CustomFinal : MonoBehaviour {
 				chaleco = PlayerPrefs.GetString("chaleco");
 				maleta = PlayerPrefs.GetString("maleta");
 				cuerpo = "cuerpo1";
-			}else
-			{
+			//}else
+			/*{
 				casco = PlayerPrefs.GetString("casco")+"b";
 				cara = PlayerPrefs.GetString("cara");
 				mascara = PlayerPrefs.GetString("mascara")+"b";
@@ -136,10 +130,10 @@ public class CustomFinal : MonoBehaviour {
 				chaleco = PlayerPrefs.GetString("chaleco")+"b";
 				maleta = PlayerPrefs.GetString("maleta")+"b";
 				cuerpo = "cuerpo1b";
-			}
+			}*/
 
 			skinsToCombine[0] = casco+skin;
-			skinsToCombine[1] = cara+skin;
+			skinsToCombine[1] = cara;
 			skinsToCombine[2] = mascara+skin;
 			skinsToCombine[3] = uniforme+skin;
 			skinsToCombine[4] = cuello+skin;

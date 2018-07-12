@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 114372103937715224}
   - component: {fileID: 114550669602407412}
   - component: {fileID: 114486028165828478}
-  - component: {fileID: 114757391499345878}
+  - component: {fileID: 114409947855561230}
   - component: {fileID: 195514360030420502}
   m_Layer: 11
   m_Name: Panzer Bueno
@@ -4335,6 +4335,27 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
+--- !u!114 &114409947855561230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1330540630586956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea82396716e46949b172fcb5a3d5b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsToCombine:
+  - 
+  - 
+  - 
+  - 
+  - cuerpo1
+  - panzer
+  - default
+  malo: 
+  poner: 1
 --- !u!114 &114419209824708588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5106,28 +5127,6 @@ MonoBehaviour:
   scale: 1
   zPosition: 1
   overrideAlpha: 1
---- !u!114 &114757391499345878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1330540630586956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8cbca2c281d9c4eac6a2676a5a262f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinsToCombine:
-  - 
-  - 
-  - 
-  - 
-  - cuerpo1
-  - cuerpo1
-  - default
-  - panzer
-  malo: 
-  poner: 1
 --- !u!114 &114757453401262654
 MonoBehaviour:
   m_ObjectHideFlags: 1

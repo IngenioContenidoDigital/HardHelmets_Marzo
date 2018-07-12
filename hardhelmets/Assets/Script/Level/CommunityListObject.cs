@@ -32,30 +32,15 @@ public class CommunityListObject : MonoBehaviour {
 	public bool listo9;
 	public bool listo10;
 
-	public GameObject boton;
-	public Sprite a1;
-	public Sprite a2;
-
 	public GameObject perfil;
-
-	//public static int name = 1;
-
-	public static string activo;
-	public Button joinButton;
-
-	public bool selected;
-
-	public GameObject content;
 
 	public string[] arrayName = new string[]{"SeekNDstroy","Bulletz4Breakfast","BigDamnHero","LaidtoRest","IronMAN77","Xenomorphing","TylerDurden","PennywiseTheClown","BluntMachete","SniperLyfe","SilentWraith","BloodyAssault","FightClubAlum","KillSwitch","ExecuteElectrocute","BadBaneCat","IndominusRexxx","AzogtheDefiler","PervertPeewee","TubbyCandyHoarder","GotASegway","LookWhatICanDo","IPlayFarmHeroes","EatingHawaiianPizza","YOURnameHERE","TickleMeElmo","MouseRatRockBand","NinjasInPyjamas","Mistake","SomeTacos","12Nuns","AHungryPolarBear","aDistraction","XBoxShutDown","RollingBarrelz","Something","AllGoodNamesRGone","Error404","CerealKillah","ShittinBullets89","WarningLowBattery","Granny4theWIN","PookieChips","TheMustardCat","DnknDonuts","EdgarAllenPoo","PickingBoogers","BeanieWeenees","SevenofNine","CandyStripper","SmokinHotChick","MadBabyMaker","PistolPrincess","TiaraONtop","SuperGurl3000","GlitterGunner","PurpleBunnySlippers","ImTheBirthdayGirl","FlameThrower","SmittenKitten66","SniperPrincess","SexyShooter","vBluberriMuffins","CutiePatootie22","MsPiggysREVENGE","ShotHottie33","PetalPrincess","FallenAngel","Hraefn","IMTooPrettyToDie","CatWoman","SniperFemme","Zeldarian","CursedWings","IceQueen","SongbirdFatale","LadyPhantom","WarriorPriestess"};
 	public string nombre;
 
-	public Text nombrea;
 	public Text nombreb;
 
 	public GameObject rango;
 
-	public Text levela;
 	public Text levelb;
 
 	public Text banderast;
@@ -68,15 +53,13 @@ public class CommunityListObject : MonoBehaviour {
 	void Start ()
 	{
 		nombre = arrayName[Random.Range(0,arrayName.Length)];
-		level = Random.Range(1,51);
+		level = PlayerPrefs.GetInt("PlayerLevel")+Random.Range(0,3);
 
 		banderas = Random.Range(5,30)+level;
 		torres = Random.Range(1,20)+level;
 
-		nombrea.text = nombre;
 		nombreb.text = nombre;
 
-		levela.text = level.ToString();
 		levelb.text = level.ToString();
 
 		banderast.text = banderas.ToString();
@@ -85,8 +68,6 @@ public class CommunityListObject : MonoBehaviour {
 		rango.GetComponent<combinedSkins>().skinsToCombine[1] = "fondo"+Random.Range(1,11).ToString();
 		rango.GetComponent<combinedSkins>().skinsToCombine[2] = "borde"+Random.Range(1,6).ToString();
 		rango.GetComponent<combinedSkins>().skinsToCombine[3] = "rango"+level.ToString();
-
-		selected = false;
 
 		listo1 = true;
 	}
@@ -180,55 +161,10 @@ public class CommunityListObject : MonoBehaviour {
 				listo10 = false;
 			}
 		}
-
-		if(content.GetComponent<CommunityList>().zona && selected)
-		{
-			perfil.GetComponent<RectTransform>().localScale = new Vector3(0.48f, 0.48f, 0.48f);
-		}else
-		{
-			perfil.GetComponent<RectTransform>().localScale = new Vector3(0.3f, 0.3f, 0.3f);
-		}
-
-		if(content.GetComponent<CommunityList>().zona && selected)
-		{
-			boton.GetComponent<Button>().interactable = true;
-			boton.GetComponent<UnityEngine.UI.Image>().sprite = a2;
-			if(Input.GetButtonDown("Jump") || Input.GetButtonDown("Submit"))
-			{
-				joinButton.onClick.Invoke();
-			}
-		}else
-		{
-			boton.GetComponent<Button>().interactable = false;
-			boton.GetComponent<UnityEngine.UI.Image>().sprite = a1;
-		}
-	}
-
-	void OnTriggerEnter2D (Collider2D col)
-	{
-		if(col.gameObject.tag == "Player")
-		{
-			activo = gameObject.name;
-			selected = true;
-			GetComponent<AudioSource>().Play();
-			//boton.GetComponent<UnityEngine.UI.Image>().sprite = a2;
-		}
-	}
-
-	void OnTriggerExit2D (Collider2D col)
-	{
-		if(col.gameObject.tag == "Player")
-		{
-			selected = false;
-			boton.GetComponent<UnityEngine.UI.Image>().sprite = a1;
-		}
 	}
 
 	public void entrar()
 	{
-		//print("CARGAR NIVEL "+joinButton.transform.parent.name);
-		selected = false;
-
 		PlayerPrefs.SetString("nameCommunity", nombre);
 
 		PlayerPrefs.SetInt("levelCommunity", level);
@@ -246,17 +182,5 @@ public class CommunityListObject : MonoBehaviour {
 		PlayerPrefs.SetInt("ManoComunity8", carta8);
 		PlayerPrefs.SetInt("ManoComunity9", carta9);
 		PlayerPrefs.SetInt("ManoComunity10", carta10);
-
-		content.GetComponent<CommunityList>().user = nombre;
-		content.GetComponent<CommunityList>().level = level.ToString();
-
-		content.GetComponent<CommunityList>().banderas = banderas.ToString();
-		content.GetComponent<CommunityList>().torres = torres.ToString();
-
-		content.GetComponent<CommunityList>().skinFondo = rango.GetComponent<combinedSkins>().skinsToCombine[1];
-		content.GetComponent<CommunityList>().skinBorde = rango.GetComponent<combinedSkins>().skinsToCombine[2];
-		content.GetComponent<CommunityList>().skinRango = rango.GetComponent<combinedSkins>().skinsToCombine[3];
-
-		content.GetComponent<CommunityList>().pregunta = true;
 	}
 }
