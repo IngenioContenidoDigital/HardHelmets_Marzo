@@ -23,6 +23,14 @@ public class customVikingo : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		if(gameObject.tag == "Player")
+		{
+			malo = PlayerPrefs.GetString("factionBuena");
+		}else
+		{
+			malo = PlayerPrefs.GetString("factionMala");
+		}
+
 		if(cuerpo == 1)
 		{
 			skinsToCombine[0] = "1"+malo;

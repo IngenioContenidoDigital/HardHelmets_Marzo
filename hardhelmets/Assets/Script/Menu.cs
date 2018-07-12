@@ -147,6 +147,10 @@ public class Menu : MonoBehaviour {
 			PlayerPrefs.SetFloat("PlayerEX", 0);
 			PlayerPrefs.SetInt("Bases", 0);
 			PlayerPrefs.SetInt("Banderas", 0);
+
+			PlayerPrefs.SetString("factionBuena", "");
+			PlayerPrefs.SetString("factionMala", "b");
+
 			//POR PRIMERA VEZ DESBLOQUEA TODO
 			PlayerPrefs.SetFloat("voice",1);
 			PlayerPrefs.SetFloat("efects",1);

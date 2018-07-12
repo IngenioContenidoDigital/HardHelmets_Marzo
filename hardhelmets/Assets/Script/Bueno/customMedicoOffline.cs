@@ -22,6 +22,14 @@ public class customMedicoOffline : MonoBehaviour {
 
 	void Start ()
 	{
+		if(gameObject.tag == "Player")
+		{
+			malo = PlayerPrefs.GetString("factionBuena");
+		}else
+		{
+			malo = PlayerPrefs.GetString("factionMala");
+		}
+
 		skinsToCombine[0] = "cara"+cara.ToString();
 
 		skinsToCombine[1] = "medico1"+malo;

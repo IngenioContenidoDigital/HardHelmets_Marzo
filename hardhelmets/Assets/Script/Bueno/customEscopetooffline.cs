@@ -24,6 +24,14 @@ public class customEscopetooffline : MonoBehaviour {
 
 	void Start ()
 	{
+		if(gameObject.tag == "Player")
+		{
+			malo = PlayerPrefs.GetString("factionBuena");
+		}else
+		{
+			malo = PlayerPrefs.GetString("factionMala");
+		}
+
 		skinsToCombine[8] = "";
 
 		skinsToCombine[0] = "cara"+cara.ToString();

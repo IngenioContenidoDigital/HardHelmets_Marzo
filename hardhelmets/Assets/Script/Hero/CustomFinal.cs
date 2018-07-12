@@ -53,8 +53,18 @@ public class CustomFinal : MonoBehaviour {
 
 	public GameObject cabeza;
 
+	public string skin;
+
 	void Start ()
 	{
+		if(gameObject.tag == "Player")
+		{
+			skin = PlayerPrefs.GetString("factionBuena");
+		}else
+		{
+			skin = PlayerPrefs.GetString("factionMala");
+		}
+
 		casco = PlayerPrefs.GetString("casco");
 		cara = PlayerPrefs.GetString("cara");
 		mascara = PlayerPrefs.GetString("mascara");
@@ -128,16 +138,16 @@ public class CustomFinal : MonoBehaviour {
 				cuerpo = "cuerpo1b";
 			}
 
-			skinsToCombine[0] = casco;
-			skinsToCombine[1] = cara;
-			skinsToCombine[2] = mascara;
-			skinsToCombine[3] = uniforme;
-			skinsToCombine[4] = cuello;
-			skinsToCombine[5] = chaleco;
-			skinsToCombine[6] = maleta;
+			skinsToCombine[0] = casco+skin;
+			skinsToCombine[1] = cara+skin;
+			skinsToCombine[2] = mascara+skin;
+			skinsToCombine[3] = uniforme+skin;
+			skinsToCombine[4] = cuello+skin;
+			skinsToCombine[5] = chaleco+skin;
+			skinsToCombine[6] = maleta+skin;
 			skinsToCombine[7] = "";
 			skinsToCombine[8] = "gun";
-			skinsToCombine[9] = cuerpo;
+			skinsToCombine[9] = cuerpo+skin;
 
 			StartCoroutine(momento());
 		}
