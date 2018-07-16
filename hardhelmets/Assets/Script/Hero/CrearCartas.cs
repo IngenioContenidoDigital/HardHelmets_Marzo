@@ -48,7 +48,9 @@ public class CrearCartas : MonoBehaviour {
 	//OTROS
 	public GameObject campamento;
 	public GameObject torreta;
+	public GameObject torretaB;
 	public GameObject torretaMisil;
+	public GameObject torretaMisilB;
 	public GameObject minaAntiTanque;
 	public GameObject minaAntiPersona;
 
@@ -438,7 +440,13 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
+			if(PlayerPrefs.GetString("factionBuena") == "")
+			{
+				var objeto = (GameObject)Instantiate(torreta, nace2.transform.position, Quaternion.Euler(0,0,0));
+			}else
+			{
+				var objeto = (GameObject)Instantiate(torretaB, nace2.transform.position, Quaternion.Euler(0,0,0));
+			}
 
 			tirar = true;
 		}
@@ -457,7 +465,13 @@ public class CrearCartas : MonoBehaviour {
 	{
 		if(!tirar)
 		{
-			var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
+			if(PlayerPrefs.GetString("factionBuena") == "")
+			{
+				var objeto = (GameObject)Instantiate(torretaMisil, nace2.transform.position, Quaternion.Euler(0,0,0));
+			}else
+			{
+				var objeto = (GameObject)Instantiate(torretaMisilB, nace2.transform.position, Quaternion.Euler(0,0,0));
+			}
 
 			tirar = true;
 		}

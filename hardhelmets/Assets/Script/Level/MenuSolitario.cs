@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Spine.Unity;
 
 public class MenuSolitario : MonoBehaviour {
 
@@ -43,6 +44,9 @@ public class MenuSolitario : MonoBehaviour {
 	public GameObject boton;
 	public Text cantidadcajas;
 	public GameObject baul;
+	public GameObject baul2;
+	public GameObject baulcanvas;
+	public GameObject cartasCofre;
 
 	//---CARTAS---------
 	public GameObject mano;
@@ -60,7 +64,7 @@ public class MenuSolitario : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		PlayerPrefs.SetInt("caja1", 10);
+		//PlayerPrefs.SetInt("caja1", 10);
 	}
 	
 	// Update is called once per frame
@@ -115,7 +119,7 @@ public class MenuSolitario : MonoBehaviour {
 		{
 			bloqueado.SetActive(false);
 		}
-		if(pantalla == "cartas" || pantalla == "3")
+		if(pantalla == "cartas" || pantalla == "3" || pantalla == "cofre")
 		{
 			enter.SetActive(false);
 		}else
@@ -154,11 +158,21 @@ public class MenuSolitario : MonoBehaviour {
 	}
 	public void Cofre ()
 	{
-		menu.GetComponent<Animator>().SetBool("entra", false);
-		menu.GetComponent<Animator>().SetBool("sale", true);
+		pantalla2 = pantalla;
+		pantalla = "cofre";
 
 		baul.SetActive(true);
+		baulcanvas.GetComponent<CajaCartas2>().reiniciar();
+		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", false);
+		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(baul2);
 	}
+
+	public void CofreAbrir ()
+	{
+		cartasCofre.SetActive(true);
+		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
+	}
+
 	public void cartas()
 	{
 		pantalla2 = pantalla;
@@ -222,6 +236,23 @@ public class MenuSolitario : MonoBehaviour {
 				mensajecartas.SetActive(true);
 				StartCoroutine(esconder());
 			}
+			return;
+		}
+		if(pantalla == "cofre")
+		{
+			baul.SetActive(false);
+
+			if(pantalla2 == "3")
+			{
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(jugar);
+			}else
+			{
+				eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(adelante);
+			}
+
+			pantalla = pantalla2;
+			pantalla2 = "";
+
 			return;
 		}
 		if(pantalla == "2")

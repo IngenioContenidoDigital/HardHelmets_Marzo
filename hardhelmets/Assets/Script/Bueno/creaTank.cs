@@ -5,6 +5,7 @@ using UnityEngine;
 public class creaTank : MonoBehaviour {
 
 	public GameObject tankPesado;
+	public GameObject tankPesadoB;
 
 	public GameObject nace;
 
@@ -36,7 +37,14 @@ public class creaTank : MonoBehaviour {
 
 	public void TanquePesadoBueno()
 	{
-		var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
+		if(PlayerPrefs.GetString("factionBuena") == "")
+		{
+			var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
+		}else
+		{
+			var objeto = (GameObject)Instantiate(tankPesadoB, nace.transform.position, Quaternion.Euler(0,90,0));
+		}
+
 		Destroy(gameObject);
 	}
 }

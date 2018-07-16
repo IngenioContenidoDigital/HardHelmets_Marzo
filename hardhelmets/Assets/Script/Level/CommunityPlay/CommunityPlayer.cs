@@ -29,6 +29,8 @@ public class CommunityPlayer : MonoBehaviour {
 	public GameObject a20;
 	public GameObject a21;
 	public GameObject a22;
+	public GameObject a23;
+	public GameObject a24;
 
 	public GameObject crear;
 
@@ -132,12 +134,24 @@ public class CommunityPlayer : MonoBehaviour {
 			}
 			if(tirar == 21)
 			{
-				crear = a21;
+				if(PlayerPrefs.GetString("factionMala") == "b")
+				{
+					crear = a21;
+				}else
+				{
+					crear = a22;
+				}
 				objeto();
 			}
 			if(tirar == 22)
 			{
-				crear = a22;
+				if(PlayerPrefs.GetString("factionMala") == "b")
+				{
+					crear = a23;
+				}else
+				{
+					crear = a24;
+				}
 				objeto();
 			}
 
