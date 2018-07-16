@@ -42,7 +42,7 @@ public class BaseNeutra : MonoBehaviour {
 		audio1.volume = efectos;
 	}
 
-	void OnChangeColor (float puntosTotales)
+	/*void OnChangeColor (float puntosTotales)
 	{
 		if(puntosTotales > 0)
 		{
@@ -52,7 +52,7 @@ public class BaseNeutra : MonoBehaviour {
 		{
 			Bandera.GetComponent<Renderer>().material.mainTexture = bad;
 		}
-	}
+	}*/
 
 	public GameObject Panel;
 	// Update is called once per frame
@@ -145,13 +145,25 @@ public class BaseNeutra : MonoBehaviour {
 		if(puntosTotales > 0)
 		{
 			ajuste = puntosTotales/142;
-			Bandera.GetComponent<Renderer>().material.mainTexture = good;
+			if(PlayerPrefs.GetString("factionBuena") == "")
+			{
+				Bandera.GetComponent<Renderer>().material.mainTexture = good;
+			}else
+			{
+				Bandera.GetComponent<Renderer>().material.mainTexture = bad;
+			}
 		}
 		if(puntosTotales < 0)
 		{
 			//ajuste = puntosTotales-(puntosTotales*2)/142;
 			ajuste = Mathf.Abs(puntosTotales/142);
-			Bandera.GetComponent<Renderer>().material.mainTexture = bad;
+			if(PlayerPrefs.GetString("factionMala") == "b")
+			{
+				Bandera.GetComponent<Renderer>().material.mainTexture = bad;
+			}else
+			{
+				Bandera.GetComponent<Renderer>().material.mainTexture = good;
+			}
 		}
 		if(puntosTotales >= 100)
 		{

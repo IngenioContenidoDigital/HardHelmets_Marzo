@@ -365,6 +365,9 @@ public class GameOffline : MonoBehaviour {
 	public bool sumatoria8;
 	public AudioSource audio1;
 	public AudioSource audio2;
+	public AudioSource audio3;
+	public AudioClip gana;
+	public AudioClip pierde;
 
 	bool finalizado;
 
@@ -478,63 +481,175 @@ public class GameOffline : MonoBehaviour {
 
 			if(sagreBM <= 0)
 			{
-				Ganador.SetActive(true);
-				if(idioma == "ENGLISH")
+				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
-					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
-				}
-				if(idioma == "SPANISH")
+					Ganador.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
+					audio3.clip = gana;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}else
 				{
-					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
-				}
-				if(idioma == "CHINESE")
-				{
-					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					Perdedor.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
+					audio3.clip = gana;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
 				}
 			}else if(sagreBB <= 0)
 			{
-				Perdedor.SetActive(true);
-				if(idioma == "ENGLISH")
+				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
-				}
-				if(idioma == "SPANISH")
+					Perdedor.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
+					audio3.clip = pierde;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}else
 				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
-				}
-				if(idioma == "CHINESE")
-				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					Ganador.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
+					audio3.clip = pierde;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
 				}
 			}else if(CapturedFlagsB > CapturedFlagsM)
 			{
-				Ganador.SetActive(true);
-				if(idioma == "ENGLISH")
+				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
-					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
-				}
-				if(idioma == "SPANISH")
+					Ganador.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
+					audio3.clip = gana;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}else
 				{
-					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
-				}
-				if(idioma == "CHINESE")
-				{
-					Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					Perdedor.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
+					audio3.clip = gana;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
 				}
 			}else if(CapturedFlagsB < CapturedFlagsM)
 			{
-				Perdedor.SetActive(true);
-				if(idioma == "ENGLISH")
+				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
-				}
-				if(idioma == "SPANISH")
+					Perdedor.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCh";
+					}
+					audio3.clip = pierde;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}else
 				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
-				}
-				if(idioma == "CHINESE")
-				{
-					Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCh";
+					Ganador.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
+					audio3.clip = pierde;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
 				}
 			}else if(CapturedFlagsB == CapturedFlagsM)
 			{
