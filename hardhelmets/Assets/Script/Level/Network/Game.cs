@@ -587,6 +587,10 @@ public class Game : NetworkBehaviour {
 		{
 			Tiempo.text = ""+Falta.ToString("F0");
 		}
+		if(Falta <= 100 && !musica.GetComponent<AudioSource>().isPlaying)
+		{
+			musica.GetComponent<AudioSource>().Play();
+		}
 		nivel1.text = level1.ToString();
 		nivel2.text = level2.ToString();
 

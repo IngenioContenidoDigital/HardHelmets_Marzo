@@ -292,6 +292,11 @@ public class GameOffline : MonoBehaviour {
 				Falta -= Time.deltaTime;
 			}
 
+			if(Falta <= 100 && !musica.GetComponent<AudioSource>().isPlaying)
+			{
+				musica.GetComponent<AudioSource>().Play();
+			}
+
 			if(Falta <= 0 && !final && !muerte)
 			{
 				final = true;
