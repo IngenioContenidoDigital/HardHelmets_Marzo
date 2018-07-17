@@ -7,6 +7,8 @@ public class ajustarScroll : MonoBehaviour {
 
 	public float scrollSpeed = 10f;
 
+	public float ajuste = 0.5f;
+
 	ScrollRect m_ScrollRect;
 	RectTransform m_RectTransform;
 	RectTransform m_ContentRectTransform;
@@ -43,7 +45,7 @@ public class ajustarScroll : MonoBehaviour {
 
 		float selectedPosition = ( m_ContentRectTransform.rect.height - selectedDifference.y );
 		float currentScrollRectPosition = m_ScrollRect.normalizedPosition.y * contentHeightDifference;
-		float above = currentScrollRectPosition - ( m_SelectedRectTransform.rect.height / 0.5f ) + m_RectTransform.rect.height;
+		float above = currentScrollRectPosition - ( m_SelectedRectTransform.rect.height / ajuste ) + m_RectTransform.rect.height;
 		float below = currentScrollRectPosition + ( m_SelectedRectTransform.rect.height / 2 );
 
 		// check if selected is out of bounds

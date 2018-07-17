@@ -105,6 +105,10 @@ public class balaAvion : MonoBehaviour {
 			{
 				body.GetComponent<TorretaMisil>().salud -= poder;
 			}
+			if(body.GetComponent<AITank2>())
+			{
+				body.GetComponent<AITank2>().salud -= poder;
+			}
 			if(body.GetComponent<AIVikingoNetwork>())
 			{
 				body.GetComponent<AIVikingoNetwork>().salud -= poder;

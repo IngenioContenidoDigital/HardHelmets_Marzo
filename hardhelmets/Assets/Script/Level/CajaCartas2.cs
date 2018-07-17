@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class CajaCartas2 : MonoBehaviour {
 
+	public GameObject master;
+
 	public int abiertas;
 
 	public bool seleccionada;
@@ -64,7 +66,6 @@ public class CajaCartas2 : MonoBehaviour {
 		card2.GetComponent<skinCarta>().skinsToCombine[0] = deb2.ToString();
 		card3.GetComponent<skinCarta>().skinsToCombine[0] = deb3.ToString();
 	}
-
 	void Update ()
 	{
 		if(Input.GetButtonDown("Jump") || Input.GetButtonDown("Submit") || Input.GetAxis("DISPARO") > 0 || Input.GetButtonDown("DISPARO 2"))
@@ -86,7 +87,7 @@ public class CajaCartas2 : MonoBehaviour {
 			}
 			seleccionada = true;
 		}
-		PlayerPrefs.SetInt("caja", cajas);
+		PlayerPrefs.SetInt("caja1", cajas);
 
 		if(abiertas >= 3 && !esconder)
 		{
@@ -105,12 +106,21 @@ public class CajaCartas2 : MonoBehaviour {
 		card2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
 		card3.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "salida", false);
 
+		if(master.GetComponent<MenuSolitario>().pantalla2 == "3")
+		{
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(master.GetComponent<MenuSolitario>().jugar);
+		}else
+		{
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(master.GetComponent<MenuSolitario>().adelante);
+		}
+
+		master.GetComponent<MenuSolitario>().pantalla = master.GetComponent<MenuSolitario>().pantalla2;
+		master.GetComponent<MenuSolitario>().pantalla2 = "";
+
 		abiertas = 0;
 		esconder = false;
 
 		seleccionada = false;
-
-		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(enter);
 		gameObject.SetActive(false);
 
 		cofre.SetActive(false);

@@ -38,6 +38,7 @@ public class MenuSolitario : MonoBehaviour {
 	public GameObject menu2;
 	public GameObject menu3;
 	public GameObject ocultar;
+	public GameObject ocultar2;
 
 	//---COFRE---------
 	public int cajas;
@@ -119,7 +120,7 @@ public class MenuSolitario : MonoBehaviour {
 		{
 			bloqueado.SetActive(false);
 		}
-		if(pantalla == "cartas" || pantalla == "3" || pantalla == "cofre")
+		if(pantalla == "cartas" || pantalla == "3" || pantalla == "cofre" || pantalla == "abrir")
 		{
 			enter.SetActive(false);
 		}else
@@ -143,12 +144,26 @@ public class MenuSolitario : MonoBehaviour {
 			boton.SetActive(false);
 		}
 
-		if(pantalla == "2")
+		if(pantalla == "cartas")
+		{
+			ocultar.SetActive(false);
+			ocultar2.SetActive(false);
+		}
+
+		if(pantalla != "1")
 		{
 			ocultar.SetActive(true);
 		}else
 		{
 			ocultar.SetActive(false);
+		}
+
+		if(pantalla != "2")
+		{
+			ocultar2.SetActive(true);
+		}else
+		{
+			ocultar2.SetActive(false);
 		}
 
 		if(Input.GetButtonDown("Cancel"))
@@ -161,6 +176,7 @@ public class MenuSolitario : MonoBehaviour {
 		pantalla2 = pantalla;
 		pantalla = "cofre";
 
+
 		baul.SetActive(true);
 		baulcanvas.GetComponent<CajaCartas2>().reiniciar();
 		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", false);
@@ -169,6 +185,7 @@ public class MenuSolitario : MonoBehaviour {
 
 	public void CofreAbrir ()
 	{
+		pantalla = "abrir";
 		cartasCofre.SetActive(true);
 		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
 	}
