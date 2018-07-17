@@ -65,7 +65,7 @@ public class MenuSolitario : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		//PlayerPrefs.SetInt("caja1", 10);
+		PlayerPrefs.SetInt("caja1", 2);
 	}
 	
 	// Update is called once per frame
@@ -136,9 +136,15 @@ public class MenuSolitario : MonoBehaviour {
 		//---COFRE---------
 		cajas = PlayerPrefs.GetInt("caja1");
 		cantidadcajas.text = "X"+cajas.ToString();
-		if(cajas >= 1 && pantalla != "cartas")
+		if(cajas >= 1)
 		{
-			boton.SetActive(true);
+			if(pantalla == "cartas")
+			{
+				boton.SetActive(false);
+			}else
+			{
+				boton.SetActive(true);
+			}
 		}else
 		{
 			boton.SetActive(false);
