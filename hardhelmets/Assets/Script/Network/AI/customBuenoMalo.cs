@@ -17,15 +17,41 @@ public class customBuenoMalo : MonoBehaviour {
 
 	public string skin;
 
+	public bool personaje;
+
 	// Use this for initialization
 	void Start ()
 	{
-		if(gameObject.tag == "Player")
+		if(personaje)
 		{
-			malo = PlayerPrefs.GetString("factionBuena");
+			if(gameObject.tag == "Player")
+			{
+				malo = PlayerPrefs.GetString("factionBuena");
+			}else
+			{
+				malo = PlayerPrefs.GetString("factionMala");
+			}
 		}else
 		{
-			malo = PlayerPrefs.GetString("factionMala");
+			if(gameObject.tag == "Player")
+			{
+				if(PlayerPrefs.GetString("factionBuena") == "")
+				{
+					malo = "1";
+				}else
+				{
+					malo = "2";
+				}
+			}else
+			{
+				if(PlayerPrefs.GetString("factionMala") == "b")
+				{
+					malo = "2";
+				}else
+				{
+					malo = "1";
+				}
+			}
 		}
 
 		activar = true;

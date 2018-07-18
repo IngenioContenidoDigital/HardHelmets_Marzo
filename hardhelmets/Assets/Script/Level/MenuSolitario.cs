@@ -46,6 +46,7 @@ public class MenuSolitario : MonoBehaviour {
 	public Text cantidadcajas;
 	public GameObject baul;
 	public GameObject baul2;
+	public GameObject baul3;
 	public GameObject baulcanvas;
 	public GameObject cartasCofre;
 
@@ -65,7 +66,7 @@ public class MenuSolitario : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		PlayerPrefs.SetInt("caja1", 2);
+		//PlayerPrefs.SetInt("caja1", 2);
 	}
 	
 	// Update is called once per frame
@@ -176,6 +177,10 @@ public class MenuSolitario : MonoBehaviour {
 		{
 			regresar();
 		}
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			next();
+		}
 	}
 	public void Cofre ()
 	{
@@ -185,7 +190,7 @@ public class MenuSolitario : MonoBehaviour {
 
 		baul.SetActive(true);
 		baulcanvas.GetComponent<CajaCartas2>().reiniciar();
-		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", false);
+		baul3.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", false);
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(baul2);
 	}
 
@@ -193,7 +198,7 @@ public class MenuSolitario : MonoBehaviour {
 	{
 		pantalla = "abrir";
 		cartasCofre.SetActive(true);
-		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
+		baul3.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
 	}
 
 	public void cartas()
