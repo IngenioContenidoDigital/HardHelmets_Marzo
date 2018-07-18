@@ -2087,12 +2087,11 @@ public class Menu : MonoBehaviour {
 	{
 		if(pantalla == "menu1")
 		{
-			Salir();
-			/*mensajes = "salir";
+			mensajes = "salir";
 			mensaje.SetActive(true);
 			//mensaje.GetComponent<Animator>().SetBool("entrada", true);
 			mensaje.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "entrada", false);
-			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(e1);*/
+			eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(e1);
 		}
 		if(pantalla == "settings")
 		{
