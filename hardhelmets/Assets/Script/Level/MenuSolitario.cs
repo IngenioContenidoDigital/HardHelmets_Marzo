@@ -46,6 +46,7 @@ public class MenuSolitario : MonoBehaviour {
 	public Text cantidadcajas;
 	public GameObject baul;
 	public GameObject baul2;
+	public GameObject baul3;
 	public GameObject baulcanvas;
 	public GameObject cartasCofre;
 
@@ -62,10 +63,12 @@ public class MenuSolitario : MonoBehaviour {
 	public GameObject yes;
 	public GameObject atras;
 
+	public bool puesto;
+
 	// Use this for initialization
 	void Start ()
 	{
-		//PlayerPrefs.SetInt("caja1", 10);
+		//PlayerPrefs.SetInt("caja1", 2);
 	}
 	
 	// Update is called once per frame
@@ -76,12 +79,36 @@ public class MenuSolitario : MonoBehaviour {
 		if(scrollFaction.GetComponent<ScrollSnap>().cellIndex == 0)
 		{
 			factionBuena = "";
-			factionMala = "b";
+			if(!puesto)
+			{
+				string[] fact = {"b", "c"};
+				factionMala = fact[Random.Range(0,fact.Length)];
+
+				puesto = true;
+			}
 		}
 		if(scrollFaction.GetComponent<ScrollSnap>().cellIndex == 1)
 		{
 			factionBuena = "b";
-			factionMala = "";
+			if(!puesto)
+			{
+				string[] fact = {"", "c"};
+				factionMala = fact[Random.Range(0,fact.Length)];
+
+				puesto = true;
+			}
+
+		}
+		if(scrollFaction.GetComponent<ScrollSnap>().cellIndex == 2)
+		{
+			factionBuena = "c";
+			if(!puesto)
+			{
+				string[] fact = {"", "b"};
+				factionMala = fact[Random.Range(0,fact.Length)];
+
+				puesto = true;
+			}
 		}
 		PlayerPrefs.SetString("factionBuena", factionBuena);
 		PlayerPrefs.SetString("factionMala", factionMala);
@@ -136,9 +163,15 @@ public class MenuSolitario : MonoBehaviour {
 		//---COFRE---------
 		cajas = PlayerPrefs.GetInt("caja1");
 		cantidadcajas.text = "X"+cajas.ToString();
-		if(cajas >= 1 && pantalla != "cartas")
+		if(cajas >= 1)
 		{
-			boton.SetActive(true);
+			if(pantalla == "cartas")
+			{
+				boton.SetActive(false);
+			}else
+			{
+				boton.SetActive(true);
+			}
 		}else
 		{
 			boton.SetActive(false);
@@ -170,6 +203,10 @@ public class MenuSolitario : MonoBehaviour {
 		{
 			regresar();
 		}
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			next();
+		}
 	}
 	public void Cofre ()
 	{
@@ -179,7 +216,7 @@ public class MenuSolitario : MonoBehaviour {
 
 		baul.SetActive(true);
 		baulcanvas.GetComponent<CajaCartas2>().reiniciar();
-		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", false);
+		baul3.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", false);
 		eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(baul2);
 	}
 
@@ -187,7 +224,7 @@ public class MenuSolitario : MonoBehaviour {
 	{
 		pantalla = "abrir";
 		cartasCofre.SetActive(true);
-		baul2.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
+		baul3.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "cofre", false);
 	}
 
 	public void cartas()
@@ -326,4 +363,10 @@ public class MenuSolitario : MonoBehaviour {
 		Application.LoadLevel("Load");
 		loading.nombre = "ComunityMatch"+level;
 	}
+
+	public void reset()
+	{
+		puesto = false;
+	}
+
 }

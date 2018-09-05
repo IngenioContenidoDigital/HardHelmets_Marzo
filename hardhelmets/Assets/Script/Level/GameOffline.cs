@@ -193,8 +193,9 @@ public class GameOffline : MonoBehaviour {
 
 	public GameObject finpartida;
 
-	public GameObject Ganador;
-	public GameObject Perdedor;
+	public GameObject USA;
+	public GameObject GER;
+	public GameObject JPN;
 	public GameObject Empate;
 
 	bool titulos;
@@ -488,38 +489,60 @@ public class GameOffline : MonoBehaviour {
 			{
 				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
-					Ganador.SetActive(true);
+					USA.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
 					}
 					if(idioma == "SPANISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
 					}
 					if(idioma == "CHINESE")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
 					}
 					audio3.clip = gana;
 					if(!audio3.isPlaying)
 					{
 						audio3.Play();
 					}
-				}else
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "b")
 				{
-					Perdedor.SetActive(true);
+					GER.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
 					}
 					if(idioma == "SPANISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
 					}
 					if(idioma == "CHINESE")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
+					audio3.clip = gana;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "c")
+				{
+					JPN.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
 					}
 					audio3.clip = gana;
 					if(!audio3.isPlaying)
@@ -529,40 +552,62 @@ public class GameOffline : MonoBehaviour {
 				}
 			}else if(sagreBB <= 0)
 			{
-				if(PlayerPrefs.GetString("factionBuena") == "")
+				if(PlayerPrefs.GetString("factionMala") == "")
 				{
-					Perdedor.SetActive(true);
+					USA.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
 					}
 					if(idioma == "SPANISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
 					}
 					if(idioma == "CHINESE")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
 					}
 					audio3.clip = pierde;
 					if(!audio3.isPlaying)
 					{
 						audio3.Play();
 					}
-				}else
+				}
+				if(PlayerPrefs.GetString("factionMala") == "b")
 				{
-					Ganador.SetActive(true);
+					GER.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
 					}
 					if(idioma == "SPANISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
 					}
 					if(idioma == "CHINESE")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
+					audio3.clip = pierde;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
+				{
+					JPN.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
 					}
 					audio3.clip = pierde;
 					if(!audio3.isPlaying)
@@ -574,38 +619,60 @@ public class GameOffline : MonoBehaviour {
 			{
 				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
-					Ganador.SetActive(true);
+					USA.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
 					}
 					if(idioma == "SPANISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
 					}
 					if(idioma == "CHINESE")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
 					}
 					audio3.clip = gana;
 					if(!audio3.isPlaying)
 					{
 						audio3.Play();
 					}
-				}else
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "b")
 				{
-					Perdedor.SetActive(true);
+					GER.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
 					}
 					if(idioma == "SPANISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
 					}
 					if(idioma == "CHINESE")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
+					}
+					audio3.clip = gana;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "c")
+				{
+					JPN.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "victory";
+					}
+					if(idioma == "SPANISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "victoria";
+					}
+					if(idioma == "CHINESE")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "victoriaCH";
 					}
 					audio3.clip = gana;
 					if(!audio3.isPlaying)
@@ -615,40 +682,62 @@ public class GameOffline : MonoBehaviour {
 				}
 			}else if(CapturedFlagsB < CapturedFlagsM)
 			{
-				if(PlayerPrefs.GetString("factionBuena") == "")
+				if(PlayerPrefs.GetString("factionMala") == "")
 				{
-					Perdedor.SetActive(true);
+					USA.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
 					}
 					if(idioma == "SPANISH")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
 					}
 					if(idioma == "CHINESE")
 					{
-						Perdedor.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCh";
+						USA.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
 					}
 					audio3.clip = pierde;
 					if(!audio3.isPlaying)
 					{
 						audio3.Play();
 					}
-				}else
+				}
+				if(PlayerPrefs.GetString("factionMala") == "b")
 				{
-					Ganador.SetActive(true);
+					GER.SetActive(true);
 					if(idioma == "ENGLISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
 					}
 					if(idioma == "SPANISH")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
 					}
 					if(idioma == "CHINESE")
 					{
-						Ganador.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+						GER.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
+					}
+					audio3.clip = pierde;
+					if(!audio3.isPlaying)
+					{
+						audio3.Play();
+					}
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
+				{
+					JPN.SetActive(true);
+					if(idioma == "ENGLISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "defeated";
+					}
+					if(idioma == "SPANISH")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "derrota";
+					}
+					if(idioma == "CHINESE")
+					{
+						JPN.GetComponent<combinedSkins>().skinsToCombine[0] = "derrotaCH";
 					}
 					audio3.clip = pierde;
 					if(!audio3.isPlaying)
@@ -676,13 +765,17 @@ public class GameOffline : MonoBehaviour {
 
 		if(final && final2)
 		{
-			if(Ganador.activeSelf && Ganador.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(USA.activeSelf && USA.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Ganador.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
+				USA.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
-			if(Perdedor.activeSelf && Perdedor.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			if(GER.activeSelf && GER.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
-				Perdedor.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
+				GER.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
+			}
+			if(JPN.activeSelf && JPN.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
+			{
+				JPN.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "loop", true);
 			}
 			if(Empate.activeSelf && Empate.GetComponent<SkeletonGraphic>().AnimationState.GetCurrent(0).Animation.Name != "loop")
 			{
