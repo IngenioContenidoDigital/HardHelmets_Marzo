@@ -18,6 +18,7 @@ public class BaseNeutra : MonoBehaviour {
 
 	public Texture good;
 	public Texture bad;
+	public Texture jpn;
 
 	public GameObject mover;
 
@@ -145,24 +146,36 @@ public class BaseNeutra : MonoBehaviour {
 		if(puntosTotales > 0)
 		{
 			ajuste = puntosTotales/142;
+
 			if(PlayerPrefs.GetString("factionBuena") == "")
 			{
 				Bandera.GetComponent<Renderer>().material.mainTexture = good;
-			}else
+			}
+			if(PlayerPrefs.GetString("factionBuena") == "b")
 			{
 				Bandera.GetComponent<Renderer>().material.mainTexture = bad;
+			}
+			if(PlayerPrefs.GetString("factionBuena") == "c")
+			{
+				Bandera.GetComponent<Renderer>().material.mainTexture = jpn;
 			}
 		}
 		if(puntosTotales < 0)
 		{
 			//ajuste = puntosTotales-(puntosTotales*2)/142;
 			ajuste = Mathf.Abs(puntosTotales/142);
+
+			if(PlayerPrefs.GetString("factionMala") == "")
+			{
+				Bandera.GetComponent<Renderer>().material.mainTexture = good;
+			}
 			if(PlayerPrefs.GetString("factionMala") == "b")
 			{
 				Bandera.GetComponent<Renderer>().material.mainTexture = bad;
-			}else
+			}
+			if(PlayerPrefs.GetString("factionMala") == "c")
 			{
-				Bandera.GetComponent<Renderer>().material.mainTexture = good;
+				Bandera.GetComponent<Renderer>().material.mainTexture = jpn;
 			}
 		}
 		if(puntosTotales >= 100)

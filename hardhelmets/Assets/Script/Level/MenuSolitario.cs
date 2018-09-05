@@ -63,6 +63,8 @@ public class MenuSolitario : MonoBehaviour {
 	public GameObject yes;
 	public GameObject atras;
 
+	public bool puesto;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -77,12 +79,36 @@ public class MenuSolitario : MonoBehaviour {
 		if(scrollFaction.GetComponent<ScrollSnap>().cellIndex == 0)
 		{
 			factionBuena = "";
-			factionMala = "b";
+			if(!puesto)
+			{
+				string[] fact = {"b", "c"};
+				factionMala = fact[Random.Range(0,fact.Length)];
+
+				puesto = true;
+			}
 		}
 		if(scrollFaction.GetComponent<ScrollSnap>().cellIndex == 1)
 		{
 			factionBuena = "b";
-			factionMala = "";
+			if(!puesto)
+			{
+				string[] fact = {"", "c"};
+				factionMala = fact[Random.Range(0,fact.Length)];
+
+				puesto = true;
+			}
+
+		}
+		if(scrollFaction.GetComponent<ScrollSnap>().cellIndex == 2)
+		{
+			factionBuena = "c";
+			if(!puesto)
+			{
+				string[] fact = {"", "b"};
+				factionMala = fact[Random.Range(0,fact.Length)];
+
+				puesto = true;
+			}
 		}
 		PlayerPrefs.SetString("factionBuena", factionBuena);
 		PlayerPrefs.SetString("factionMala", factionMala);
@@ -337,4 +363,10 @@ public class MenuSolitario : MonoBehaviour {
 		Application.LoadLevel("Load");
 		loading.nombre = "ComunityMatch"+level;
 	}
+
+	public void reset()
+	{
+		puesto = false;
+	}
+
 }

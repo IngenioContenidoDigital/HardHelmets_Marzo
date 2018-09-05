@@ -38,18 +38,28 @@ public class customBuenoMalo : MonoBehaviour {
 				if(PlayerPrefs.GetString("factionBuena") == "")
 				{
 					malo = "1";
-				}else
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "b")
 				{
 					malo = "2";
 				}
+				if(PlayerPrefs.GetString("factionBuena") == "c")
+				{
+					malo = "3";
+				}
 			}else
 			{
+				if(PlayerPrefs.GetString("factionMala") == "")
+				{
+					malo = "1";
+				}
 				if(PlayerPrefs.GetString("factionMala") == "b")
 				{
 					malo = "2";
-				}else
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
 				{
-					malo = "1";
+					malo = "3";
 				}
 			}
 		}
