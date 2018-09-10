@@ -31,6 +31,8 @@ public class CommunityPlayer : MonoBehaviour {
 	public GameObject a22;
 	public GameObject a23;
 	public GameObject a24;
+	public GameObject a25;
+	public GameObject a26;
 
 	public GameObject crear;
 
@@ -134,23 +136,33 @@ public class CommunityPlayer : MonoBehaviour {
 			}
 			if(tirar == 21)
 			{
-				if(PlayerPrefs.GetString("factionMala") == "b")
+				if(PlayerPrefs.GetString("factionMala") == "")
 				{
 					crear = a21;
-				}else
+				}
+				if(PlayerPrefs.GetString("factionMala") == "b")
 				{
 					crear = a22;
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
+				{
+					crear = a23;
 				}
 				objeto();
 			}
 			if(tirar == 22)
 			{
-				if(PlayerPrefs.GetString("factionMala") == "b")
-				{
-					crear = a23;
-				}else
+				if(PlayerPrefs.GetString("factionMala") == "")
 				{
 					crear = a24;
+				}
+				if(PlayerPrefs.GetString("factionMala") == "b")
+				{
+					crear = a25;
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
+				{
+					crear = a26;
 				}
 				objeto();
 			}

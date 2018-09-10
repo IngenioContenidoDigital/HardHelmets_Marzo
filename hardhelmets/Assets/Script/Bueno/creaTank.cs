@@ -6,6 +6,7 @@ public class creaTank : MonoBehaviour {
 
 	public GameObject tankPesado;
 	public GameObject tankPesadoB;
+	public GameObject tankPesadoC;
 
 	public GameObject nace;
 
@@ -40,9 +41,14 @@ public class creaTank : MonoBehaviour {
 		if(PlayerPrefs.GetString("factionBuena") == "")
 		{
 			var objeto = (GameObject)Instantiate(tankPesado, nace.transform.position, Quaternion.Euler(0,90,0));
-		}else
+		}
+		if(PlayerPrefs.GetString("factionBuena") == "b")
 		{
 			var objeto = (GameObject)Instantiate(tankPesadoB, nace.transform.position, Quaternion.Euler(0,90,0));
+		}
+		if(PlayerPrefs.GetString("factionBuena") == "c")
+		{
+			var objeto = (GameObject)Instantiate(tankPesadoC, nace.transform.position, Quaternion.Euler(0,90,0));
 		}
 
 		Destroy(gameObject);
