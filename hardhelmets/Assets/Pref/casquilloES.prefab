@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4006111367166662}
   - component: {fileID: 198263532412232290}
   - component: {fileID: 199333219333400414}
+  - component: {fileID: 114903654022948504}
+  - component: {fileID: 82082179457808942}
   m_Layer: 0
   m_Name: Shells
   m_TagString: Untagged
@@ -39,6 +41,7 @@ GameObject:
   - component: {fileID: 198087613149763860}
   - component: {fileID: 199828022440144562}
   - component: {fileID: 114173736144811496}
+  - component: {fileID: 114819301774748714}
   m_Layer: 0
   m_Name: casquilloES
   m_TagString: Untagged
@@ -116,8 +119,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130453062848680}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 156.8019, y: -0.91418934, z: 131.20459}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 223.93188, y: 126.294586, z: -18.751183}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4006111367166662}
@@ -166,6 +169,86 @@ Transform:
   m_Father: {fileID: 4142111836248494}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82082179457808942
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011629192800544}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6e51f34a0bffd8442afaff4f29e1d357, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114173736144811496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +261,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sonidos: {fileID: 8300000, guid: 6e51f34a0bffd8442afaff4f29e1d357, type: 3}
+--- !u!114 &114819301774748714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130453062848680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDuration: 2
+  maxDuration: 4
+--- !u!114 &114903654022948504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011629192800544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee8861bbd10bb0540a6595ced6af2535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198087613149763860
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -238,7 +345,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1966533310
+  randomSeed: 1614429248
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3599,7 +3706,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 350579401
+  randomSeed: 240295540
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6145,7 +6252,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -10280,7 +10387,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -362928949
+  randomSeed: -64933659
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13638,7 +13745,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -305533953
+  randomSeed: 225305682
   InitialModule:
     serializedVersion: 3
     enabled: 1

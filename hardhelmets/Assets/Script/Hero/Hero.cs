@@ -91,6 +91,7 @@ public class Hero : MonoBehaviour{
 	public Transform granadaSpawn;
 	public GameObject casquilloPref;
 	public GameObject casquilloPrefB;
+	public GameObject casquilloPrefC;
 	public Transform casquilloSpawn;
 	public GameObject granadePref;
 	public GameObject granadePrefHumo;
@@ -2259,7 +2260,7 @@ public class Hero : MonoBehaviour{
 		var letras = (GameObject)Instantiate(textos2, transform.position, Quaternion.Euler(0,0,0));
 		letras.GetComponent<TextMesh>().text = "+"+suma.ToString("F0");
 	}
-		
+
 	public void PistolaDisparoPisoBueno()
 	{
 		var bullet = (GameObject)Instantiate(bulletPref, bulletSpawn.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2)));
@@ -2268,11 +2269,14 @@ public class Hero : MonoBehaviour{
 		bullet.GetComponent<balaOffline>().poder = saludMax*bullet.GetComponent<balaOffline>().poder/104;
 		Destroy(bullet, 1.0f);
 
-		//CASQUILLOS}
-		var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.right * Random.Range(-10,-50);
-		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(-1,-6);
+		//CASQUILLOS
+		if(_currentDirection == "left")
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, Quaternion.Euler(0,0,-90)); 
+		}else
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
+		}
 
 	}
 
@@ -2294,6 +2298,7 @@ public class Hero : MonoBehaviour{
 
 		}
 	}
+
 	public void FusilDisparoBueno()
 	{
 		var bullet = (GameObject)Instantiate(bulletPrefFusil, bulletSpawnFusil.position, Quaternion.Euler(bulletSpawn.rotation.eulerAngles.x,bulletSpawn.rotation.eulerAngles.y,bulletSpawn.rotation.eulerAngles.z+Random.Range(7,2))); 
@@ -2302,11 +2307,13 @@ public class Hero : MonoBehaviour{
 		bullet.GetComponent<balaOffline>().poder = saludMax*bullet.GetComponent<balaOffline>().poder/104;
 		Destroy(bullet, 1.0f);
 		//CASQUILLOS
-		var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.right * Random.Range(-10,-50);
-		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(-1,-6);
-
+		if(_currentDirection == "left")
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPrefC, casquilloSpawn.position, Quaternion.Euler(0,0,-90)); 
+		}else
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPrefC, casquilloSpawn.position, casquilloSpawn.rotation); 
+		}
 	}
 
 	void ShotB ()//ESCOPETA
@@ -2380,10 +2387,13 @@ public class Hero : MonoBehaviour{
 			Destroy(bulletB5, 1.0f);
 		}
 		//CASQUILLOS}
-		var casquillo = (GameObject)Instantiate(casquilloPrefB, casquilloSpawn.position, casquilloSpawn.rotation); 
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.right * Random.Range(-10,-50);
-		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(-1,-6);
+		if(_currentDirection == "left")
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPrefB, casquilloSpawn.position, Quaternion.Euler(0,0,-90)); 
+		}else
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPrefB, casquilloSpawn.position, casquilloSpawn.rotation); 
+		}
 	}
 
 	void ShotC ()//SUBMETRA
@@ -2406,10 +2416,13 @@ public class Hero : MonoBehaviour{
 		bullet.GetComponent<balaOffline>().poder = saludMax*bullet.GetComponent<balaOffline>().poder/104;
 		Destroy(bullet, 1.0f);
 		//CASQUILLOS}
-		var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.right * Random.Range(-10,-50);
-		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(-1,-6);
+		if(_currentDirection == "left")
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, Quaternion.Euler(0,0,-90)); 
+		}else
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
+		}
 
 	}
 
@@ -2436,10 +2449,13 @@ public class Hero : MonoBehaviour{
 		bullet.GetComponent<balaOffline>().poder = saludMax*bullet.GetComponent<balaOffline>().poder/104;
 		Destroy(bullet, 1.0f);
 		//CASQUILLOS}
-		var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.right * Random.Range(-10,-50);
-		casquillo.GetComponent<Rigidbody>().AddForce(transform.forward * Random.Range(-0.0f,-0.2f));
-		casquillo.GetComponent<Rigidbody>().velocity = casquillo.transform.up * Random.Range(-1,-6);
+		if(_currentDirection == "left")
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, Quaternion.Euler(0,0,-90)); 
+		}else
+		{
+			var casquillo = (GameObject)Instantiate(casquilloPref, casquilloSpawn.position, casquilloSpawn.rotation); 
+		}
 
 	}
 
