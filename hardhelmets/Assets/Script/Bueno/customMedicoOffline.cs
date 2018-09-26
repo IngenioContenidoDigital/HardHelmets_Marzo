@@ -17,7 +17,7 @@ public class customMedicoOffline : MonoBehaviour {
 
 	void Awake ()
 	{
-		cara = Random.Range(1,6);
+		cara = Random.Range(1,4);
 	}
 
 	void Start ()
@@ -31,7 +31,13 @@ public class customMedicoOffline : MonoBehaviour {
 		}
 		activar = true;
 
-		skinsToCombine[0] = "cara"+cara.ToString();
+		if(malo == "")
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+"a";
+		}else
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+malo;
+		}
 
 		skinsToCombine[1] = "medico1"+malo;
 		skinsToCombine[2] = "cuerpo1"+malo;

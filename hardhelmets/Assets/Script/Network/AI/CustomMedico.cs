@@ -17,12 +17,18 @@ public class CustomMedico : MonoBehaviour {
 
 	void Awake ()
 	{
-		cara = Random.Range(1,6);
+		cara = Random.Range(1,4);
 	}
 
 	void Start ()
 	{
-		skinsToCombine[0] = "cara"+cara.ToString();
+		if(malo == "")
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+"a";
+		}else
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+malo;
+		}
 
 		skinsToCombine[1] = "medico1"+malo;
 

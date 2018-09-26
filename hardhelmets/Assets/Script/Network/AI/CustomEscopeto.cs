@@ -18,7 +18,7 @@ public class CustomEscopeto : MonoBehaviour {
 
 	void Awake ()
 	{
-		cara = Random.Range(1,6);
+		cara = Random.Range(1,4);
 		casco = Random.Range(1,3);
 	}
 
@@ -26,7 +26,13 @@ public class CustomEscopeto : MonoBehaviour {
 	{
 		skinsToCombine[8] = "";
 
-		skinsToCombine[0] = "cara"+cara.ToString();
+		if(malo == "")
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+"a";
+		}else
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+malo;
+		}
 
 		if(casco == 1)
 		{

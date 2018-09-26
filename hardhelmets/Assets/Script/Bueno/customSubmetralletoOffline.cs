@@ -18,7 +18,7 @@ public class customSubmetralletoOffline : MonoBehaviour {
 
 	void Awake ()
 	{
-		cara = Random.Range(1,6);
+		cara = Random.Range(1,4);
 		casco = Random.Range(1,3);
 	}
 
@@ -35,7 +35,13 @@ public class customSubmetralletoOffline : MonoBehaviour {
 
 		skinsToCombine[7] = "";
 
-		skinsToCombine[0] = "cara"+cara.ToString();
+		if(malo == "")
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+"a";
+		}else
+		{
+			skinsToCombine[0] = "cara"+cara.ToString()+malo;
+		}
 
 		if(casco == 1)
 		{
