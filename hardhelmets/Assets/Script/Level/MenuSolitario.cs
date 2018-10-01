@@ -360,8 +360,8 @@ public class MenuSolitario : MonoBehaviour {
 
 	public void Terminar()
 	{
-		Application.LoadLevel("Load");
-		loading.nombre = "ComunityMatch"+level;
+		Application.LoadLevel("Load2");
+		loading2.nombre = "ComunityMatch"+level;
 	}
 
 	public void reset()
