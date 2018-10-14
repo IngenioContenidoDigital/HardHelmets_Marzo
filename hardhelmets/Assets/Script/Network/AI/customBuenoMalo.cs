@@ -19,17 +19,43 @@ public class customBuenoMalo : MonoBehaviour {
 
 	public bool personaje;
 
+	public string[] aleatorio = new string[]{"A","B","C","E"};
+
 	// Use this for initialization
 	void Start ()
 	{
+		string animation = aleatorio[Random.Range(0,aleatorio.Length)];
 		if(personaje)
 		{
+			//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, animation, true);
 			if(gameObject.tag == "Player")
 			{
-				malo = PlayerPrefs.GetString("factionBuena");
+				if(PlayerPrefs.GetString("factionBuena") == "")
+				{
+					malo = "a";
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "b")
+				{
+					malo = "b";
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "c")
+				{
+					malo = "c";
+				}
 			}else
 			{
-				malo = PlayerPrefs.GetString("factionMala");
+				if(PlayerPrefs.GetString("factionMala") == "")
+				{
+					malo = "a";
+				}
+				if(PlayerPrefs.GetString("factionMala") == "b")
+				{
+					malo = "b";
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
+				{
+					malo = "c";
+				}
 			}
 		}else
 		{
@@ -63,7 +89,6 @@ public class customBuenoMalo : MonoBehaviour {
 				}
 			}
 		}
-
 		activar = true;
 	}
 	
@@ -71,6 +96,7 @@ public class customBuenoMalo : MonoBehaviour {
 	void Update ()
 	{
 		skinsToCombine[0] = skin+malo;
+
 		if(activar)
 		{
 			var skeletonComponent = GetComponent<ISkeletonComponent>();
@@ -89,7 +115,58 @@ public class customBuenoMalo : MonoBehaviour {
 			skeleton.SetToSetupPose();
 			var animationStateComponent = skeletonComponent as IAnimationStateComponent;
 			if (animationStateComponent != null) animationStateComponent.AnimationState.Apply(skeleton);
+
 			activar = false;
+		}
+
+		if(personaje)
+		{
+			var skeletonComponent = GetComponent<ISkeletonComponent>();
+			if (skeletonComponent == null) return;
+			var skeleton = skeletonComponent.Skeleton;
+			if (skeleton == null) return;
+
+			combinedSkin = combinedSkin ?? new Spine.Skin("combined");
+			combinedSkin.Clear();
+			foreach (var skinName in skinsToCombine) {
+				var skin = skeleton.Data.FindSkin(skinName);
+				if (skin != null) combinedSkin.Append(skin);
+			}
+
+			skeleton.SetSkin(combinedSkin);
+			skeleton.SetToSetupPose();
+			var animationStateComponent = skeletonComponent as IAnimationStateComponent;
+			if (animationStateComponent != null) animationStateComponent.AnimationState.Apply(skeleton);
+
+			if(gameObject.tag == "Player")
+			{
+				if(PlayerPrefs.GetString("factionBuena") == "")
+				{
+					malo = "a";
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "b")
+				{
+					malo = "b";
+				}
+				if(PlayerPrefs.GetString("factionBuena") == "c")
+				{
+					malo = "c";
+				}
+			}else
+			{
+				if(PlayerPrefs.GetString("factionMala") == "")
+				{
+					malo = "a";
+				}
+				if(PlayerPrefs.GetString("factionMala") == "b")
+				{
+					malo = "b";
+				}
+				if(PlayerPrefs.GetString("factionMala") == "c")
+				{
+					malo = "c";
+				}
+			}
 		}
 	}
 }

@@ -70,7 +70,6 @@ public class MenuSolitario : MonoBehaviour {
 	{
 		//PlayerPrefs.SetInt("caja1", 2);
 	}
-	
 	// Update is called once per frame
 	void Update ()
 	{

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using UnityEngine.Events;
+using System.Collections;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(ScrollRect))]
@@ -99,8 +100,22 @@ public class ScrollSnap : UIBehaviour, IDragHandler, IEndDragHandler {
 		{
 			Right.onClick.Invoke();
 		}*/
+		if(faction)
+		{
+			if(cellIndex == 0)
+			{
+				GetComponent<AudioSource>().clip = usa;
+			}
+			if(cellIndex == 1)
+			{
+				GetComponent<AudioSource>().clip = ger;
+			}
+			if(cellIndex == 2)
+			{
+				GetComponent<AudioSource>().clip = jpn;
+			}
+		}
 	}
-
 	public void PushLayoutElement(LayoutElement element) {
 		element.transform.SetParent(content.transform, false);
 		SetContentSize(LayoutElementCount());
@@ -161,12 +176,33 @@ public class ScrollSnap : UIBehaviour, IDragHandler, IEndDragHandler {
 		}
 	}
 
-	public void SnapToNext() {
+	public AudioClip usa;
+	public AudioClip ger;
+	public AudioClip jpn;
+
+	public bool faction;
+	public void SnapToNext() 
+	{
 		SnapToIndex(cellIndex + 1);
+		if(faction)
+		{
+			StartCoroutine(momentito());
+		}
 	}
 
-	public void SnapToPrev() {
+	public void SnapToPrev()
+	{
 		SnapToIndex(cellIndex - 1);
+		if(faction)
+		{
+			StartCoroutine(momentito());
+		}
+	}
+
+	IEnumerator momentito()
+	{
+		yield return new WaitForSeconds(0.1f);
+		GetComponent<AudioSource>().Play();
 	}
 
 	public void SnapToIndex(int newCellIndex) {
