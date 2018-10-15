@@ -71,6 +71,10 @@ public class Cam : MonoBehaviour {
 	public bool campamento;
 	public Vector3 campPos;
 
+	public bool dramatica;
+	public AudioSource dramatic;
+	//public bool wait;
+
 	//PANEL PARTIDA
 	GameObject Panel;
 	bool ver;
@@ -433,8 +437,22 @@ public class Cam : MonoBehaviour {
 			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 20);
 		}else if(campamento && !ver)
 		{
-			nextPosition = new Vector3(campPos.x, campPos.y, campPos.z);//campPos.y+5
-			transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 50);
+			if(dramatica)
+			{
+				//Time.timeScale =  0.8f;
+				GetComponent<Grayscale>().enabled = true;
+				nextPosition = new Vector3(Player.transform.position.x, transform.position.y, -80);//campPos.y+5
+				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 0.3f);
+				/*if(!wait)
+				{
+					wait = true;
+					StartCoroutine(momento());
+				}*/
+			}else
+			{
+				nextPosition = new Vector3(campPos.x, campPos.y, campPos.z);//campPos.y+5
+				transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 50);
+			}
 		}else if(!ver)
 		{
 			campPos = new Vector3(transform.position.x, transform.position.y, transform.position.z-5);
@@ -576,6 +594,13 @@ public class Cam : MonoBehaviour {
 			vibrador.transform.position = new Vector3(vibrador.transform.position.x+Random.Range(-vib,vib), vibrador.transform.position.y+Random.Range(-vib,vib), vibrador.transform.position.z);
 		}
 	}
+
+	/*IEnumerator momento()
+	{
+		yield return new WaitForSeconds(2);
+		Time.timeScale =  1;
+	}*/
+
 	public float ajuste;
 	public float altura;
 	IEnumerator finalizar()

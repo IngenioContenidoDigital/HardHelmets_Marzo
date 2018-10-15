@@ -1466,6 +1466,9 @@ public class Hero : MonoBehaviour{
 					animator.SetInteger("muerte", 4);
 				}else
 				{
+					SniperCam.GetComponent<Cam>().dramatic.Play();
+					SniperCam.GetComponent<Cam>().dramatica = true;
+					print("muerte DRAMATICA");
 					animator.SetBool("muerto", true);
 					muerte = Random.Range(1,3);
 					animator.SetInteger("muerte", muerte);

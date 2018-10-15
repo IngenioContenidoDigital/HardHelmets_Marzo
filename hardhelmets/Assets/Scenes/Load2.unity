@@ -591,9 +591,10 @@ GameObject:
   - component: {fileID: 295958558}
   - component: {fileID: 295958557}
   - component: {fileID: 295958559}
+  - component: {fileID: 295958560}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -638,7 +639,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   skeletonDataAsset: {fileID: 11400000, guid: d074afd0d23b10a47aa2f5145caf2dbf, type: 2}
-  initialSkinName: avatar1
+  initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
   startingAnimation: entrada
@@ -674,6 +675,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loop: loop
+--- !u!114 &295958560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 295958555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a2df280fa264f4ab4dadfe76dbab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsToCombine:
+  - default
+  activar: 0
+  malo: 
+  skin: avatar
+  personaje: 0
+  personajeUI: 0
+  aleatorio:
+  - A
+  - B
+  - C
+  - E
 --- !u!1 &311817433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,9 +1380,10 @@ GameObject:
   - component: {fileID: 749593198}
   - component: {fileID: 749593197}
   - component: {fileID: 749593199}
+  - component: {fileID: 749593200}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1379,7 +1404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 789.00006, y: -288}
+  m_AnchoredPosition: {x: 789, y: -288}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749593197
@@ -1403,7 +1428,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   skeletonDataAsset: {fileID: 11400000, guid: d074afd0d23b10a47aa2f5145caf2dbf, type: 2}
-  initialSkinName: avatar2
+  initialSkinName: default
   initialFlipX: 0
   initialFlipY: 0
   startingAnimation: entrada
@@ -1439,6 +1464,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loop: loop
+--- !u!114 &749593200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749593195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a2df280fa264f4ab4dadfe76dbab52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinsToCombine:
+  - default
+  activar: 0
+  malo: 
+  skin: avatar
+  personaje: 0
+  personajeUI: 0
+  aleatorio:
+  - A
+  - B
+  - C
+  - E
 --- !u!1 &779054428
 GameObject:
   m_ObjectHideFlags: 0

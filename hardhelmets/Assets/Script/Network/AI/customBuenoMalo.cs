@@ -18,6 +18,7 @@ public class customBuenoMalo : MonoBehaviour {
 	public string skin;
 
 	public bool personaje;
+	public bool personajeUI;
 
 	public string[] aleatorio = new string[]{"A","B","C","E"};
 
@@ -25,7 +26,7 @@ public class customBuenoMalo : MonoBehaviour {
 	void Start ()
 	{
 		string animation = aleatorio[Random.Range(0,aleatorio.Length)];
-		if(personaje)
+		if(personajeUI)
 		{
 			//GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, animation, true);
 			if(gameObject.tag == "Player")
@@ -56,6 +57,15 @@ public class customBuenoMalo : MonoBehaviour {
 				{
 					malo = "c";
 				}
+			}
+		}else if(personaje)
+		{
+			if(gameObject.tag == "Player")
+			{
+				malo = PlayerPrefs.GetString("factionBuena");
+			}else
+			{
+				malo = PlayerPrefs.GetString("factionMala");
 			}
 		}else
 		{
@@ -119,7 +129,7 @@ public class customBuenoMalo : MonoBehaviour {
 			activar = false;
 		}
 
-		if(personaje)
+		if(personajeUI)
 		{
 			var skeletonComponent = GetComponent<ISkeletonComponent>();
 			if (skeletonComponent == null) return;

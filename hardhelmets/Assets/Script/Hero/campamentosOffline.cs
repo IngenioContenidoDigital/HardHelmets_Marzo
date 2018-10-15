@@ -395,6 +395,7 @@ public class campamentosOffline : MonoBehaviour {
 			Camara.GetComponent<Cam>().shakeAvion = false;
 			Camara.GetComponent<Cam>().shakeAvion2 = false;
 			Camara.GetComponent<Cam>().campamento = false;
+			Camara.GetComponent<Cam>().dramatica = false;
 			Player.GetComponent<Hero>().eventsystem.GetComponent<EventSystem>().SetSelectedGameObject(Player.GetComponent<Hero>().carta1);
 			Player.GetComponent<Hero>().SniperCam.GetComponent<Grayscale>().enabled = false;
 
